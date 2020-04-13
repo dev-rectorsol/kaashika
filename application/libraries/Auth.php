@@ -77,11 +77,15 @@ class Auth
      */
     public function login($request)
     {
+      //pre($request);exit;
 
         if ($this->validate($request)) {
+        //  echo $this->userName;exit;
             $this->user = $this->credentials($this->userName, $this->password);
+          //  pre($this->user);exit;
             if ($this->user) {
                 return $this->setUser();
+
             } else {
                 return $this->failedLogin($request);
             }
@@ -120,7 +124,6 @@ class Auth
      */
     protected function credentials($username, $password)
     {
-
         $user = $this->CI->db->select("*")
         ->where("phone", $username)
         ->or_where("email", $username)
@@ -128,6 +131,7 @@ class Auth
         // ->where("deleted_at/, null)
         ->get('logme')
         ->row(0);
+
         if($user && password_verify($password, $user->password)) {
             return $user;
         }
@@ -140,8 +144,8 @@ class Auth
      */
     protected function setUser()
     {
+    //  pre($this->user);exit;
         $this->userID = $this->user->logid;
-
         $this->CI->session->set_userdata(array(
             "userID" => $this->user->logid,
             "username" => $this->get_userName(),
@@ -375,11 +379,9 @@ class Auth
     public function route_access()
     {
         $this->check();
-
         $routeName = (is_null($this->CI->uri->segment(2)) ? "index" : $this->CI->uri->segment(2)) . "-" . $this->CI->uri->segment(1);
-
         if ($this->CI->uri->segment(1) == 'home')
-            return true;
+        return true;
 
         if($this->can($routeName))
             return true;
@@ -472,7 +474,6 @@ class Auth
     {
         $this->CI->session->unset_userdata(array("userID", "username", "loginStatus"));
         $this->CI->session->sess_destroy();
-
         return true;
     }
 }

@@ -25,7 +25,7 @@
 <script src="<?php echo base_url('optimum'); ?>/dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Sparkline JavaScript -->
-<script src="<?php echo base_url(); ?>/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script> -->
 
 <!-- Owl JavaScript -->
 <script src="<?php echo base_url(); ?>/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>

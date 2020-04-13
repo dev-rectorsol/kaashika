@@ -8,21 +8,14 @@
 
 										<a href="#">Home</a> <span class="bread-slash">/</span><span class="bread-blod active"><?php echo	$page ?></span>
 
-								</div><br>
-								<div class="container-fluid">
-									<div class="row-fluid">
-										<div class="span4 text-right">
-										   <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
-										</div>
-									</div>
-							</div>
 							</div>
 
 						</div>
 					</div>
 				</div>
 
-
+</div>
+<div>
 <div class="container-fluid">
 	<hr class="light-grey-hr" />
 
