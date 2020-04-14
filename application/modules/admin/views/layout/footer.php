@@ -7,6 +7,7 @@
   <script src="<?php echo base_url(); ?>/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Data table JavaScript -->
+<!-- <script src="<?php echo base_url(); ?>dist/js/dataTables-data.js"></script> -->
 <script src="<?php echo base_url(); ?>/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 
 <!-- Slimscroll JavaScript -->
@@ -14,12 +15,12 @@
 
 <!-- simpleWeather JavaScript -->
 <script src="<?php echo base_url(); ?>/vendors/bower_components/moment/min/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>/vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
-<script src="<?php echo base_url('optimum'); ?>/dist/js/simpleweather-data.js"></script>
+<!-- <script src="<?php echo base_url(); ?>/vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
+<script src="<?php echo base_url('optimum'); ?>/dist/js/simpleweather-data.js"></script> -->
 
 <!-- Progressbar Animation JavaScript -->
-<script src="<?php echo base_url(); ?>/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="<?php echo base_url(); ?>/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="<?php echo base_url(); ?>/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script> -->
 
 <!-- Fancy Dropdown JS -->
 <script src="<?php echo base_url('optimum'); ?>/dist/js/dropdown-bootstrap-extended.js"></script>
@@ -48,6 +49,11 @@
 
 <!-- Bootstrap Select JavaScript -->
 <script src="<?php echo base_url(); ?>/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<!-- Gallery JavaScript -->
+		<script src="<?php echo base_url(); ?>/optimum/dist/js/isotope.js"></script>
+		<script src="<?php echo base_url(); ?>/optimum/dist/js/lightgallery-all.js"></script>
+		<script src="<?php echo base_url(); ?>/optimum/dist/js/froogaloop2.min.js"></script>
+		<script src="<?php echo base_url(); ?>/optimum/dist/js/gallery-data.js"></script>
 
 <!-- Init JavaScript -->
 <script src="<?php echo base_url('optimum'); ?>/dist/js/init.js"></script>

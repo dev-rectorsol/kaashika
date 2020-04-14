@@ -1,31 +1,27 @@
-<div class="breadcome-area">
+  <div class="breadcome-area">
 			<div class="container-fluid">
 				<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex no-block align-items-center">
 								<br/>
               <h6 class="page-title"><?php echo isset($page_name) ? $page_name : 'Dashbord';  ?></h6>
 								<div class=" text-right">
-
 										<a href="#">Home</a> <span class="bread-slash">/</span><span class="bread-blod active"><?php echo	$page ?></span>
-
 								</div><br>
-								<div class="container-fluid">
 									<div class="row-fluid">
 										<div class="span4 text-right">
 										   <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
 										</div>
 									</div>
-							</div>
+
 							</div>
 
 						</div>
 					</div>
-				</div>
+	 </div>
 
-
-<div class="container-fluid">
 	<hr class="light-grey-hr" />
 
+<div class="container-fluid">
 	<div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 		<div class="modal-dialog" role="document ">
 			<div class="modal-content">

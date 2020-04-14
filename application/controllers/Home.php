@@ -12,9 +12,9 @@ class Home extends CI_Controller {
         else
            redirect(base_url() . 'web', 'refresh' );
       }
-      // else {
-      //   redirect(base_url() . 'web/home', 'refresh' );
-      // }
+      else {
+        redirect(base_url() . 'web/home', 'refresh' );
+      }
   	}
     public function index(){
 

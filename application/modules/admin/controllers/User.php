@@ -19,7 +19,7 @@ class User extends CI_Controller {
 		$data= array();
         $data['page'] ='User';
         $data['tag']=  $this->Common_model->select('tags');
-        $data['aim']=  $this->Common_model->select('category');
+        $data['aim']=  $this->Common_model->select('user_details');
 		$data['main_content']= $this->load->view('user/add',$data, true);
 		$this->load->view('index',$data);
 	}

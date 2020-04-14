@@ -136,7 +136,7 @@
 						</li>
 
 						<li>
-							<a href="#"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
+							<a href="<?php echo base_url('Authentication/logout')?>"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
 						</li>
 					</ul>
 				</li>
@@ -681,20 +681,28 @@
 
 		<?php echo	$main_content ?>
 
-		<!-- Footer -->
 		<footer class="footer container-fluid pl-30 pr-30">
-			<div class="row">
-				<div class="col-sm-12">
-					<p>2018 &copy; Snoopy. Pampered by Hencework</p>
-				</div>
-			</div>
+			<div class="footer-bottom">
+		            <div class="container">
+		                <div class="row">
+		                    <div class="col-12">
+		                        <div class="copyright-text text-center">
+		                            <p>Powered By <a href="#">Corano</a>. Store 1 © 2020</p>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
 		</footer>
-		<!-- /Footer -->
 
 	</div>
+	<!-- Footer -->
+
+	<!-- /Footer -->
 	<!-- /Main Content -->
 
 </div>
+
 <!-- /#wrapper -->
 
 <?php include('layout/footer.php'); ?>
