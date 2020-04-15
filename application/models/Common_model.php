@@ -179,13 +179,11 @@ function getMaxUserId(){
 
             $this->load->library('upload', $config);
             if ($this->upload->do_upload("file")) {
-
                 $data = $this->upload->data();
-
                 //-- set upload path
                 $source             = UPLOAD_FILE . "/\images/" . $data['file_name'] ;
-                $destination_thumb  = UPLOAD_FILE . "/images/thumbnail/" ;
-                $destination_medium = UPLOAD_FILE . "/images/medium/" ;
+                // $destination_thumb  = UPLOAD_FILE . "/images/thumbnail/" ;
+                // $destination_medium = UPLOAD_FILE . "/images/medium/" ;
                 $main_img = $data['file_name'];
                 // Permission Configuration
                 chmod($source, 0777) ;
@@ -211,20 +209,20 @@ function getMaxUserId(){
                 }
 
                 //// Making THUMBNAIL ///////
-                $img['width']  = $limit_use > $limit_thumb ?  $data['image_width'] * $percent_thumb : $data['image_width'] ;
-                $img['height'] = $limit_use > $limit_thumb ?  $data['image_height'] * $percent_thumb : $data['image_height'] ;
+                // $img['width']  = $limit_use > $limit_thumb ?  $data['image_width'] * $percent_thumb : $data['image_width'] ;
+                // $img['height'] = $limit_use > $limit_thumb ?  $data['image_height'] * $percent_thumb : $data['image_height'] ;
 
                 // Configuration Of Image Manipulation :: Dynamic
-                $img['thumb_marker'] = '_thumb-'.floor($img['width']).'x'.floor($img['height']) ;
-                $img['quality']      = ' 100%' ;
-                $img['source_image'] = $source ;
-                $img['new_image']    = $destination_thumb ;
-
-                $thumb_nail = $data['raw_name']. $img['thumb_marker'].$data['file_ext'];
-                // Do Resizing
-                $this->image_lib->initialize($img);
-                $this->image_lib->resize();
-                $this->image_lib->clear() ;
+                // $img['thumb_marker'] = '_thumb-'.floor($img['width']).'x'.floor($img['height']) ;
+                // $img['quality']      = ' 100%' ;
+                // $img['source_image'] = $source ;
+                // $img['new_image']    = $destination_thumb ;
+                //
+                // $thumb_nail = $data['raw_name']. $img['thumb_marker'].$data['file_ext'];
+                // // Do Resizing
+                // $this->image_lib->initialize($img);
+                // $this->image_lib->resize();
+                // $this->image_lib->clear() ;
 
                 ////// Making MEDIUM /////////////
                 $img['width']   = $limit_use > $limit_medium ?  $data['image_width'] * $percent_medium : $data['image_width'] ;
@@ -234,7 +232,7 @@ function getMaxUserId(){
                 $img['thumb_marker'] = '_medium-'.floor($img['width']).'x'.floor($img['height']) ;
                 $img['quality']      = '100%' ;
                 $img['source_image'] = $source ;
-                $img['new_image']    = $destination_medium ;
+                // $img['new_image']    = $destination_medium ;
 
                 $mid = $data['raw_name']. $img['thumb_marker'].$data['file_ext'];
                 // Do Resizing
@@ -243,14 +241,15 @@ function getMaxUserId(){
                 $this->image_lib->clear() ;
 
                 //-- set upload path
-                $images = UPLOAD_FILE . "/images/medium/" . $mid;
-                $thumb  = UPLOAD_FILE . "/images/thumbnail/" . $thumb_nail;
+                $images = UPLOAD_FILE . "/images/" . $mid;
+                // $thumb  = UPLOAD_FILE . "/images/thumbnail/" . $thumb_nail;
                 unlink($source);
 
                 return array(
                     'image' => $images,
-                    'thumb' => $thumb
+                    // 'thumb' => $thumb
                 );
+
             }
             else {
                 echo "Failed! to upload images" ;
@@ -276,7 +275,7 @@ function getMaxUserId(){
           $temp['type'] = 'category';
           $this->db->insert($table, $temp);
         }
-      } 
+      }
     }
 
 

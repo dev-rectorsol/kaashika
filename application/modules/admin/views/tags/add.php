@@ -1,135 +1,154 @@
-		<div class="breadcome-area">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="breadcome-list">
-							<div class="row">
-								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-									<div class="breadcome-heading">
-										<form role="search" class="sr-input-func">
-											<input type="text" placeholder="Search..." class="search-int form-control">
-											<a href="#"><i class="fa fa-search"></i></a>
-										</form>
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-									<ul class="breadcome-menu">
-										<li><a href="#">Home</a> <span class="bread-slash">/</span>
-										</li>
-										<li><span class="bread-blod"><?php echo	$page ?></span>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="alert-wrap2 shadow-inner wrap-alert-b">
-							<?php if ($this->session->flashdata()):?>
-							<?php if($this->session->flashdata('status')): ?>
-							<div class="alert alert-success">
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
-								<strong>Success!</strong> <?php echo $this->session->flashdata('msg'); ?>
-							</div>
-							<?php else: ?>
 
-							<div class="alert alert-danger alert-mg-b">
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
-								<strong>Danger!</strong> <?php echo $this->session->flashdata('msg'); ?>
-							</div>
 
-							<?php endif; ?>
-							<?php endif; ?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
 		<div class="container-fluid">
 
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-					<div class="row">
-						<form action="<?php echo base_url('admin/Article/save')?>" method="POST">
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-								<div class="product-status-wrap drp-lst">
-
-									<h4>Add Article </h4>
-									<div class="form-group">
-										<label class="login2">Article name</label>
-										<input name="name" type="text" class="form-control" placeholder="Article Name" required>
-									</div>
-
-									<div class="form-group">
-										<label class="login2">Article content</label>
-										<textarea name="content" id="summernote1" required>Add a content here</textarea>
-									</div>
-
-
-								</div>
-							</div>
-
-							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="product-status-wrap drp-lst">
-									<span id="addfeaturepreview">
-									</span>
-									<button id="removepreview" type="button" class="btn btn-link hide">remove</button>
-									<button id="addfeatureimage" type="button" class="btn btn-link" name="button">Add feature image</button>
-									<div class="form-group">
-										<label class="login2">Slug</label>
-										<input name="slug" type="text" class="form-control" placeholder="slug">
-									</div>
-									<div class="form-group res-mg-t-15">
-										<label class="login2">Course Tag</label>
-										<select class="select2_demo_2 form-control" name='tag[]' data-placeholder="Choose a Tags..." multiple="multiple">
-											<?php foreach($tag as $row){ ?>
-											<option value="<?php echo $row['title'] ?>"> <?php echo $row['title'] ?> </option>
-											<?php } ?>
-										</select>
-									</div>
-									<div class="form-group res-mg-t-15">
-										<label class="login2">Course Category</label>
-										<select class="select2_demo_2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
-											<?php foreach($category as $row){ ?>
-											<option value="<?php echo $row['name'] ?>"> <?php echo $row['name'] ?> </option>
-											<?php } ?>
-										</select>
-									</div>
-									<div class="payment-adress">
-										<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
-										<button type="submit" name='submit' value="save" class="btn btn-primary ">SAVE</button>
-										<button type="submit" name="submit" value="publish" class="btn btn-primary pull-right ">Publish</button>
-
-									</div>
-
-
-								</div>
-							</div>
-
-						</form>
-					</div>
-
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					<h5 class="txt-dark">Dashboard</h5>
+				</div>
+				<!-- Breadcrumb -->
+				<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+					<ol class="breadcrumb">
+					<li><a href="<?php echo base_url('admin/Dashboard')?>">Dashboard</a></li>
+					<li  class="active"><span><?php echo $page?></span></li>
+					<!-- <li class="active"><span>data-table</span></li> -->
+					</ol>
 
 				</div>
+
+
+				<!-- /Breadcrumb -->
 			</div>
+			<div class="span4 text-right">
+				 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
+		 </div><br>
+<hr class="light-grey-hr" />
+			<!-- /Title -->
+			 <div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+				<div class="modal-dialog" role="document ">
+					<div class="modal-content">
+
+									<form action="<?php echo base_url('admin/Tags/Add')?>" method="POST">
+										<div class="modal-header header-color-modal bg-color-1 ">
+										<h4>Add Tags </h4>
+										<div class="modal-close-area modal-close-df">
+											<a class="close" data-dismiss="modal" href="#"><i
+													class="fa fa-close"></i></a>
+										</div>
+									</div>
+										<div class="modal-body">
+											<div class="widget-content nopadding">
+										<div class="form-group row">
+												<label class="control-label col-sm-3">Title</label>
+												<div class="col-sm-9">
+											    <input name="title" type="text" class="form-control" placeholder="Title">
+										   </div>
+										</div>
+
+										<div class="modal-footer">
+											<input type="hidden"	value="<?php echo $this->security->get_csrf_hash();?>">
+											<input type="submit" value="Submit" class="btn btn-primary">
+											<a data-dismiss="modal" class="btn" href="#">Cancel</a>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+				 </div>
+			</div>
+
+			<!-- Row -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">Tag List</h6>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										<table class="table table-striped table-bordered">
+								 <caption>
+									 <!-- <h4> User  List</h4> -->
+								 </caption>
+								 <tr>
+									 <th>S.No</th>
+									 <th>Title</th>
+									 <!-- <th>Source</th>
+									 <th>Price</th>
+									 <th>Descount</th> -->
+
+									 <th>Action</th>
+								 </tr>
+								 <?php $i=1; foreach($tag_data as $row){?>
+								 <tr>
+									 <td> <?php echo $i ?></td>
+									 <td><?php echo $row['title'] ?></td>
+
+									 <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
+											 data-toggle="modal" data-original-title="Edit"><i
+												 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+										 <a title="Trash" class="pd-setting-ed"
+											 onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
+												 aria-hidden="true"></i></a></td>
+								 </tr>
+
+								 <div id="<?php echo $row['id'] ; ?>"
+									 class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+									 <div class="modal-dialog" role="document ">
+										 <div class="modal-content">
+											 <form class="form-horizontal" method="post"
+												 action="<?php echo base_url('admin/Tags/Edit/').$row['id'] ?>"
+												 name="basic_validate" id="basic_validate" novalidate="novalidate">
+												 <div class="modal-header header-color-modal bg-color-1 ">
+													 <h4 class="modal-title">Edit Tags</h4>
+													 <div class="modal-close-area modal-close-df">
+														 <a class="close" data-dismiss="modal" href="#"><i
+																 class="fa fa-close"></i></a>
+													 </div>
+												 </div>
+												 <div class="modal-body">
+													 <div class="widget-content nopadding">
+														 <div class="form-group row">
+															 <label class="control-label col-sm-3">Title</label>
+																 <div class="col-sm-9">
+																	 <input type="text" class="form-control" name="title" value="<?php echo $row['title'] ?>" id="required">
+																 </div>
+														 </div>
+														</div>
+												 </div>
+
+												 <div class="modal-footer">
+													 <input type="hidden"  value="<?php echo $this->security->get_csrf_hash();?>">
+													 <input type="submit" value="Update" class="btn btn-primary">
+													 <a data-dismiss="modal" class="btn" href="#">Cancel</a>
+												 </div>
+												 </div>
+											 </form>
+										 </div>
+									 </div>
+								 </div>
+								 <?php
+																																	 $i++ ;
+																																	 }?>
+							 </table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Row -->
+
 
 		</div>
 
 
-		<script>
-			function publish($id) {
-				var val1 = $("form").serialize();
-				$.ajax({
-					type: "POST",
-					url: "insert.php",
-					data: val1,
-					success: function(result) {
-						alert(result);
-					}
-				});
-			}
-		</script>
+
+	<!-- /Main Content -->

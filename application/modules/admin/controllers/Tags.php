@@ -19,7 +19,7 @@ class Tags extends CI_Controller {
 		$data= array();
     $data['page'] ='Tags';
     $data['tag']=  $this->Common_model->select('tags');
-    $data['aim']=  $this->Common_model->select('category');
+    $data['tag_data']=  $this->Common_model->select('tags');
 		$data['main_content']= $this->load->view('tags/add',$data, true);
 		$this->load->view('index',$data);
 	}
@@ -27,13 +27,12 @@ class Tags extends CI_Controller {
 		{
 			if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
-			$aim=[
-			'name' => $data1['name'],
-			'parent' => $data1['parent'],
-			'icon' => $data1['icon'],
+			$data=[
+			'title' => $data1['title'],
+
 			];
-			$this->Common_model->insert($aim,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
+			$this->Common_model->insert($data,'tags');
+			redirect(base_url() . 'admin/Tags', 'refresh');
 			}
 		}
 
@@ -58,12 +57,12 @@ class Tags extends CI_Controller {
 	{
 		if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
-             $aim=[
-            'name' => $data1['name'],
-            'parent' => $data1['parent'],
-        ];
-           $this->Common_model->update($aim,'id',$id,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
+			 $data=[
+			 'title' => $data1['title'],
+
+			 ];
+           $this->Common_model->update($data,'id',$id,'tags');
+			redirect(base_url() . 'admin/Tags', 'refresh');
 	}
 	}
 }

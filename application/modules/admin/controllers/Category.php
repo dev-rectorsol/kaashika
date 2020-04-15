@@ -30,7 +30,7 @@ class Category extends CI_Controller {
 			$aim=[
 			'name' => $data1['name'],
 			'parent' => $data1['parent'],
-			'icon' => $data1['icon'],
+			// 'icon' => $data1['icon'],
 			];
 			$this->Common_model->insert($aim,'category');
 			redirect(base_url() . 'admin/category', 'refresh');

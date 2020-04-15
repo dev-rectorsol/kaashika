@@ -29,12 +29,11 @@
 				<div class="modal-dialog" role="document ">
 					<div class="modal-content">
 
-									<form action="<?php echo base_url('admin/Gallery/Add')?>" method="POST">
+							<form action="<?php echo base_url('File_upload')?>" method="POST" enctype="multipart/form-data">
 										<div class="modal-header header-color-modal bg-color-1 ">
-										<h4>Add Category </h4>
+										<h4>Add Category</h4>
 										<div class="modal-close-area modal-close-df">
-											<a class="close" data-dismiss="modal" href="#"><i
-													class="fa fa-close"></i></a>
+											<a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
 										</div>
 									</div>
 										<div class="modal-body">
@@ -42,14 +41,12 @@
 										<div class="form-group row">
 												<label class="control-label col-sm-3">Image</label>
 												<div class="col-sm-9">
-											    <input name="image" type="file" class="form-control" placeholder="Image">
+											    <input name="file" type="file" class="form-control" placeholder="Image">
 										    </div>
 										</div>
 
 										<div class="modal-footer">
-											<input type="hidden"
-												name="<?php echo $this->security->get_csrf_token_name();?>"
-												value="<?php echo $this->security->get_csrf_hash();?>">
+											<input type="hidden"	value="<?php echo $this->security->get_csrf_hash();?>">
 											<input type="submit" value="Submit" class="btn btn-primary">
 											<a data-dismiss="modal" class="btn" href="#">Cancel</a>
 										</div>
@@ -89,18 +86,20 @@
 
 													<div class="portfolio-wrap project-gallery">
 														<ul id="portfolio" class="portf auto-construct  project-gallery" data-col="3">
-															<li  class="item tall branding"   data-src="<?php echo base_url(); ?>/optimum/img/gallery/mock1.jpg" data-sub-html="<h6>Bagwati</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>" >
+                         <?php  foreach($image_data as $row) { ?>
+															<li  class="item tall branding"   data-src="<?php echo base_url($row['image']) ?>" data-sub-html="<h6>Bagwati</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>" >
 																<a href="">
-																<img class="img-responsive" src="<?php echo base_url(); ?>/optimum/img/gallery/mock1.jpg"  alt="Image description" />
-																<span class="hover-cap">Bagwati</span>
+																<img class="img-responsive" src="<?php echo base_url($row['image']) ?>"  alt="Image description" />
+																<!-- <span class="hover-cap">Bagwati</span> -->
 																</a>
 															</li>
-															<li class="item small photography" data-src="http://www.youtube.com/watch?v=Pq9yPrLWMyU" data-poster="<?php echo base_url(); ?>/optimum/img/gallery/mock2.jpg"  data-sub-html="<h6>Not a Keyboard</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
+												<?php } ?>
+															<!-- <li class="item small photography" data-src="http://www.youtube.com/watch?v=Pq9yPrLWMyU" data-poster="<?php echo base_url(); ?>/optimum/img/gallery/mock2.jpg"  data-sub-html="<h6>Not a Keyboard</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
 																<a href="">
 																<img class="img-responsive" src="<?php echo base_url(); ?>/optimum/img/gallery/mock2.jpg"  alt="Image description" />
 																<span class="hover-cap">Not a Keyboard</span>
 																</a>
-															</li>
+															</li> -->
 
 														</ul>
 														<!-- Hidden video div -->

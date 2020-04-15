@@ -213,12 +213,20 @@
 
 			</li>
 			<li>
-				<a href="<?php echo base_url('admin/Article')?>" data-toggle="collapse" data-target="#icon_dr">
-					<div class="pull-left"><i class="zmdi zmdi-iridescent mr-20"></i><span class="right-nav-text">Article</span></div>
-
+				<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr1">
+					<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Article</span></div>
+					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
 					<div class="clearfix"></div>
 				</a>
+				<ul id="ui_dr1" class="collapse collapse-level-1 two-col-list">
+					<li>
+						<a href="<?php echo base_url('admin/Article')?>">Add Article</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/Article/View')?>">Show List</a>
+					</li>
 
+				</ul>
 			</li>
 			<li>
 				<a href="<?php echo base_url('admin/News')?>" data-toggle="collapse" data-target="#maps_dr">

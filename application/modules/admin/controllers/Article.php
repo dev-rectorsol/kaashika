@@ -36,7 +36,7 @@ class Article extends CI_Controller {
 		            'title' => $data1['name'],
 		            'slug' => $data1['slug'],
 		            'content' => $_POST['content'],
-		            'created_by	' => $this->session->userdata('userID'),
+		            // 'created_by	' => $this->session->userdata('userID'),
 							];
 							$status = $this->common_model->insert($article, 'article');
 		 				 if (!$status) {
@@ -61,7 +61,7 @@ class Article extends CI_Controller {
 								'title' => $data1['name'],
 								'slug' => $data1['slug'],
 								'content' => $_POST['content'],
-								'created_by	' => $this->session->userdata('username'),
+								// 'created_by	' => $this->session->userdata('username'),
 								'public_at	' => current_datetime(),
 								'is_publish' => '1'
 							];

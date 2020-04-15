@@ -19,7 +19,7 @@ class Contact extends CI_Controller {
 		$data= array();
         $data['page'] ='category';
         $data['tag']=  $this->Common_model->select('tags');
-        $data['aim']=  $this->Common_model->select('category');
+        $data['product_data']=  $this->Common_model->select('Products');
 		$data['main_content']= $this->load->view('contact/contact_list',$data, true);
 		$this->load->view('index',$data);
 	}

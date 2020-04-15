@@ -17,9 +17,9 @@ class Order extends CI_Controller {
 	public function index()
 	{
 		$data= array();
-        $data['page'] ='category';
+        $data['page'] ='order';
         $data['tag']=  $this->Common_model->select('tags');
-        $data['aim']=  $this->Common_model->select('category');
+        $data['product_data']=  $this->Common_model->select('products');
 		$data['main_content']= $this->load->view('order/order_list',$data, true);
 		$this->load->view('index',$data);
 	}
