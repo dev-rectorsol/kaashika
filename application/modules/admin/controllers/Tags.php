@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class Tags extends CI_Controller {
 
 	public function __construct()
 	{
@@ -17,23 +17,22 @@ class Category extends CI_Controller {
 	public function index()
 	{
 		$data= array();
-        $data['page'] ='category';
-        $data['tag']=  $this->Common_model->select('tags');
-        $data['aim']=  $this->Common_model->select('category');
-		$data['main_content']= $this->load->view('category/add',$data, true);
+    $data['page'] ='Tags';
+    $data['tag']=  $this->Common_model->select('tags');
+    $data['tag_data']=  $this->Common_model->select('tags');
+		$data['main_content']= $this->load->view('tags/add',$data, true);
 		$this->load->view('index',$data);
 	}
     public function Add()
 		{
 			if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
-			$aim=[
-			'name' => $data1['name'],
-			'parent' => $data1['parent'],
-			// 'icon' => $data1['icon'],
+			$data=[
+			'title' => $data1['title'],
+
 			];
-			$this->Common_model->insert($aim,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
+			$this->Common_model->insert($data,'tags');
+			redirect(base_url() . 'admin/Tags', 'refresh');
 			}
 		}
 
@@ -45,7 +44,7 @@ class Category extends CI_Controller {
 		            'title' => $data1['name'],
 		        ];
             $this->Common_model->insert($tag,'tags');
-			redirect(base_url() . 'admin/category', 'refresh');
+			      redirect(base_url() . 'admin/category', 'refresh');
 				}
 			}
  public function Delete($id)
@@ -58,12 +57,12 @@ class Category extends CI_Controller {
 	{
 		if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
-             $aim=[
-            'name' => $data1['name'],
-            'parent' => $data1['parent'],
-        ];
-           $this->Common_model->update($aim,'id',$id,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
+			 $data=[
+			 'title' => $data1['title'],
+
+			 ];
+           $this->Common_model->update($data,'id',$id,'tags');
+			redirect(base_url() . 'admin/Tags', 'refresh');
 	}
 	}
 }

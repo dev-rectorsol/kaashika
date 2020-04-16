@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class Product extends CI_Controller {
 
 	public function __construct()
 	{
@@ -17,23 +17,24 @@ class Category extends CI_Controller {
 	public function index()
 	{
 		$data= array();
-        $data['page'] ='category';
-        $data['tag']=  $this->Common_model->select('tags');
-        $data['aim']=  $this->Common_model->select('category');
-		$data['main_content']= $this->load->view('category/add',$data, true);
+    $data['page'] ='Products';
+    $data['tag']=  $this->Common_model->select('tags');
+    $data['product_data']=  $this->Common_model->select('products');
+    $data['main_content']= $this->load->view('product/add',$data, true);
 		$this->load->view('index',$data);
 	}
     public function Add()
 		{
 			if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-			$aim=[
-			'name' => $data1['name'],
-			'parent' => $data1['parent'],
-			// 'icon' => $data1['icon'],
+			$data1=$this->security->xss_clean($_POST);
+			$data=[
+			'product' => $data1['product'],
+			'source' => $data1['source'],
+			'price' => $data1['price'],
+			'discount' => $data1['discount'],
 			];
-			$this->Common_model->insert($aim,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
+			$this->Common_model->insert($data,'products');
+			redirect(base_url() . 'admin/Product', 'refresh');
 			}
 		}
 
@@ -58,12 +59,9 @@ class Category extends CI_Controller {
 	{
 		if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
-             $aim=[
-            'name' => $data1['name'],
-            'parent' => $data1['parent'],
-        ];
-           $this->Common_model->update($aim,'id',$id,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
+
+           $this->Common_model->update($data1,'id',$id,'products');
+			redirect(base_url() . 'admin/Product', 'refresh');
 	}
 	}
 }

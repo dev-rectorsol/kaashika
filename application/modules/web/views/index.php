@@ -5,7 +5,7 @@
 			<!-- main header start -->
 			<div class="main-header d-none d-lg-block">
 					<!-- header top start -->
-					<div class="header-top bdr-bottom">
+					<!-- <div class="header-top bdr-bottom">
 							<div class="container">
 									<div class="row align-items-center">
 											<div class="col-lg-6">
@@ -37,7 +37,7 @@
 											</div>
 									</div>
 							</div>
-					</div>
+					</div> -->
 					<!-- header top end -->
 
 					<!-- header middle area start -->
@@ -167,10 +167,11 @@
 																							<i class="pe-7s-user"></i>
 																					</a>
 																					<ul class="dropdown-list">
-																							<li><a href="login-register.html">login</a></li>
-																							<li><a href="login-register.html">register</a></li>
-																							<li><a href="my-account.html">my account</a></li>
-																					</ul>
+																								<li><a href="<?php echo base_url('login')?>">login</a></li>
+																								<li><a href="<?php echo base_url('join')?>">Register</a></li>
+																								<li><a href="my-account.html">my account</a></li>
+																								<li><a href="<?php echo base_url('Authentication/logout')?>">Logout</a></li>
+																						</ul>
 																			</li>
 																			<li>
 																					<a href="wishlist.html">

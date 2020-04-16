@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class News extends CI_Controller {
 
 	public function __construct()
 	{
@@ -20,7 +20,7 @@ class Category extends CI_Controller {
         $data['page'] ='category';
         $data['tag']=  $this->Common_model->select('tags');
         $data['aim']=  $this->Common_model->select('category');
-		$data['main_content']= $this->load->view('category/add',$data, true);
+		$data['main_content']= $this->load->view('news/add',$data, true);
 		$this->load->view('index',$data);
 	}
     public function Add()
@@ -30,7 +30,7 @@ class Category extends CI_Controller {
 			$aim=[
 			'name' => $data1['name'],
 			'parent' => $data1['parent'],
-			// 'icon' => $data1['icon'],
+			'icon' => $data1['icon'],
 			];
 			$this->Common_model->insert($aim,'category');
 			redirect(base_url() . 'admin/category', 'refresh');

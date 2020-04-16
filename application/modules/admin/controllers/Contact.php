@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class Contact extends CI_Controller {
 
 	public function __construct()
 	{
@@ -19,8 +19,8 @@ class Category extends CI_Controller {
 		$data= array();
         $data['page'] ='category';
         $data['tag']=  $this->Common_model->select('tags');
-        $data['aim']=  $this->Common_model->select('category');
-		$data['main_content']= $this->load->view('category/add',$data, true);
+        $data['product_data']=  $this->Common_model->select('Products');
+		$data['main_content']= $this->load->view('contact/contact_list',$data, true);
 		$this->load->view('index',$data);
 	}
     public function Add()
@@ -30,7 +30,7 @@ class Category extends CI_Controller {
 			$aim=[
 			'name' => $data1['name'],
 			'parent' => $data1['parent'],
-			// 'icon' => $data1['icon'],
+			'icon' => $data1['icon'],
 			];
 			$this->Common_model->insert($aim,'category');
 			redirect(base_url() . 'admin/category', 'refresh');

@@ -12,11 +12,12 @@ class Authentication extends CI_Controller {
 
 
     public function index() {
-      // echo print_r($this->session->userdata());exit;
-      if(check()){
-        redirect(base_url(), 'refresh');
-      }
+    // echo print_r($this->session->userdata());exit;
+      // if(check()){
+      //   redirect(base_url(), 'refresh');
+      // }
       if($_POST){
+      //  pre($_POST);exit;
         $temp = $this->auth->login($_POST);
         if($temp['status']){
           redirect(base_url(), 'refresh');
@@ -35,8 +36,7 @@ class Authentication extends CI_Controller {
     public function resetPass() {
       $pass = self::randomPassword();
       $data =  array('email' => $_POST['email']);
-      $data = $this->
-      self::send_email($data['email'],  $pass);
+      $data = self::send_email($data['email'],  $pass);
 
     }
     function logout(){

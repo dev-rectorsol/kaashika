@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class Gallery extends CI_Controller {
 
 	public function __construct()
 	{
@@ -17,25 +17,39 @@ class Category extends CI_Controller {
 	public function index()
 	{
 		$data= array();
-        $data['page'] ='category';
-        $data['tag']=  $this->Common_model->select('tags');
-        $data['aim']=  $this->Common_model->select('category');
-		$data['main_content']= $this->load->view('category/add',$data, true);
+    $data['page'] ='Gallery';
+    $data['tag']=  $this->Common_model->select('tags');
+    $data['image_data']=  $this->Common_model->select('gallery');
+		$data['main_content']= $this->load->view('gallery/add',$data, true);
 		$this->load->view('index',$data);
 	}
-    public function Add()
+
+public function add()
+{
+		if ($_POST)
 		{
-			if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-			$aim=[
-			'name' => $data1['name'],
-			'parent' => $data1['parent'],
-			// 'icon' => $data1['icon'],
-			];
-			$this->Common_model->insert($aim,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
-			}
-		}
+		$config['upload_path']          = './uploads/images';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 11264;
+		$config['max_width']            = 3840;
+		$config['max_height']           = 2160;
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('image');
+		$img=$this->upload->data();
+						 // echo "<pre>";
+						 // print_r($img);
+						 // exit();
+			$pic=$img['file_name'];
+			$data=array(
+				'image'=>$pic,
+			);
+			//print_r($data); exit();
+		  $this->Common_model->insert($data,'gallery');
+			redirect(base_url('admin/Gallery'));
+				}
+  }
+
 
       public function AddTag()
 			{
