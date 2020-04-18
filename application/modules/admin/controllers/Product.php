@@ -53,15 +53,15 @@ class Product extends CI_Controller {
 	{
             $data1=['id'=> $id];
             $this->Common_model->delete($data1,'category');
-            redirect(base_url() . 'admin/category', 'refresh');
-    }
+            redirect(base_url() . 'admin/Product', 'refresh');
+  }
     public function Edit($id)
 	{
 		if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
 
            $this->Common_model->update($data1,'id',$id,'products');
-			redirect(base_url() . 'admin/Product', 'refresh');
+			     redirect(base_url() . 'admin/Product', 'refresh');
 	}
 	}
 }

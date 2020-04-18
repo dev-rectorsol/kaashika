@@ -1,7 +1,4 @@
-
-
 		<div class="container-fluid">
-
 			<!-- Title -->
 			<div class="row heading-bg">
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -16,15 +13,11 @@
 					</ol>
 
 				</div>
-
-
 				<!-- /Breadcrumb -->
 			</div>
 
-<hr class="light-grey-hr" />
+    <hr class="light-grey-hr" />
 			<!-- /Title -->
-
-
 			<!-- Row -->
 			<div class="row">
 				<div class="col-sm-12">
@@ -112,7 +105,6 @@
 														 </div>
 													 </div>
 													 </div>
-
 												 <div class="modal-footer">
 													 <input type="hidden"  value="<?php echo $this->security->get_csrf_hash();?>">
 													 <input type="submit" value="Update" class="btn btn-primary">
@@ -123,9 +115,7 @@
 										 </div>
 									 </div>
 								 </div>
-								 <?php
-																																	 $i++ ;
-																																	 }?>
+								 <?php $i++ ;	}?>
 							 </table>
 									</div>
 								</div>

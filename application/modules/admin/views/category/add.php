@@ -1,7 +1,6 @@
 
 
 		<div class="container-fluid">
-
 			<!-- Title -->
 			<div class="row heading-bg">
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -14,16 +13,13 @@
 					<li  class="active"><span><?php echo $page?></span></li>
 					<!-- <li class="active"><span>data-table</span></li> -->
 					</ol>
-
 				</div>
-
-
 				<!-- /Breadcrumb -->
 			</div>
 			<div class="span4 text-right">
 				 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
 		 </div><br>
-<hr class="light-grey-hr" />
+   <hr class="light-grey-hr" />
 			<!-- /Title -->
 			 <div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 				<div class="modal-dialog" role="document ">
@@ -55,14 +51,10 @@
                 <label class="control-label col-sm-3">Parent</label>
                 <div class="col-sm-9">
                   <select name="parent" id="icon" class="form-control">
-                  <option value="">Select icon</option>
-                  <option value="book">Book</option>
-                  <option value="assignment">assignment</option>
-                  <option value="computer">Computer</option>
-                  <option value="school">School</option>
-                  <option value="alarm">Alarm</option>
-                  <option value="bookmarks">Bookmarks</option>
-                  <option value="settings">Settings</option>
+										<option value="none">none</option>
+										<?php foreach($category as $row){ ?>
+										<option value="<?php echo $row['name'] ?>"> <?php echo $row['name'] ?> </option>
+										<?php } ?>
                   </select>
                </div>
               </div>
@@ -70,8 +62,8 @@
                 <input type="hidden"
                   name="<?php echo $this->security->get_csrf_token_name();?>"
                   value="<?php echo $this->security->get_csrf_hash();?>">
-                <input type="submit" value="Submit" class="btn btn-primary">
-                <a data-dismiss="modal" class="btn" href="#">Cancel</a>
+	                <input type="submit" value="Submit" class="btn btn-primary">
+	                <a data-dismiss="modal" class="btn" href="#">Cancel</a>
               </div>
             </div>
           </div>
@@ -127,7 +119,7 @@
                          action="<?php echo base_url('admin/Category/Edit/').$row['id'] ?>"
                          name="basic_validate" id="basic_validate" novalidate="novalidate">
                          <div class="modal-header header-color-modal bg-color-1 ">
-                           <h4 class="modal-title">Edit Aim</h4>
+                           <h4 class="modal-title">Edit Category</h4>
                            <div class="modal-close-area modal-close-df">
                              <a class="close" data-dismiss="modal" href="#"><i
                                  class="fa fa-close"></i></a>
@@ -136,12 +128,23 @@
                          <div class="modal-body">
                            <div class="widget-content nopadding">
                              <div class="form-group row">
-                               <label class="control-label col-sm-3">Name</label>
+                               <label class="control-label col-sm-3">Category</label>
                                <div class="col-sm-9">
                                  <input type="text" class="form-control" name="name"
-                                   value="<?php echo $row['title'] ?>" id="required">
+                                   value="<?php echo $row['name'] ?>" id="required">
                                </div>
                              </div>
+														 <div class="form-group row">
+															 <label class="control-label col-sm-3">Parent</label>
+															 <div class="col-sm-9">
+																 <select name="parent" id="icon" class="form-control">
+ 																	<option value="none">none</option>
+ 																	<?php foreach($category as $row1){ ?>
+ 																	<option <?php if($row1['parent']==$row['parent']){?>selected<?php } ?> value="<?php echo $row1['parent'] ?>"> <?php echo $row1['parent'] ?> </option>
+																<?php } ?>
+ 							                  </select>
+															 </div>
+														 </div>
 
                            </div>
 

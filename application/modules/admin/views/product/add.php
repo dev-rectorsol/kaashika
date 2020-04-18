@@ -127,7 +127,7 @@
 												 action="<?php echo base_url('admin/Product/Edit/').$row['id'] ?>"
 												 name="basic_validate" id="basic_validate" novalidate="novalidate">
 												 <div class="modal-header header-color-modal bg-color-1 ">
-													 <h4 class="modal-title">Edit Aim</h4>
+													 <h4 class="modal-title">Edit Product</h4>
 													 <div class="modal-close-area modal-close-df">
 														 <a class="close" data-dismiss="modal" href="#"><i
 																 class="fa fa-close"></i></a>
@@ -194,3 +194,15 @@
 
 
 	<!-- /Main Content -->
+	<script>
+		function delete_detail(id) {
+			var del = confirm("Do you want to Delete");
+			if (del == true) {
+				var sureDel = confirm("Are you sure want to delete");
+				if (sureDel == true) {
+					window.location = "<?php echo base_url()?>admin/Product/Delete/" + id;
+				}
+
+			}
+		}
+	</script>

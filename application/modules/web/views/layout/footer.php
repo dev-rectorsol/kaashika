@@ -28,7 +28,7 @@
 <!-- contact form dynamic js -->
 <script src="<?php echo base_url() ?>/assets/js/plugins/ajax-mail.js"></script>
 <!-- google map api -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfmCVTjRI007pC1Yk2o2d_EhgkjTsFVN8"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfmCVTjRI007pC1Yk2o2d_EhgkjTsFVN8"></script> -->
 <!-- google map active js -->
 <script src="<?php echo base_url() ?>/assets/js/plugins/google-map.js"></script>
 <!-- Main JS -->
