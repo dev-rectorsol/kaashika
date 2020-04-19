@@ -98,19 +98,21 @@
 								 <tr>
 									 <th>S.No</th>
 									 <th>Product</th>
-									 <th>Source</th>
-									 <th>Price</th>
-									 <th>Descount</th>
 
+								
+	               <?php  foreach($attribute as $row){?>
+							 	<th> <?php echo $row['attribute'] ?></th>
+						  	<?php }?>
 									 <th>Action</th>
 								 </tr>
 								 <?php $i=1; foreach($product_data as $row){?>
 								 <tr>
 									 <td> <?php echo $i ?></td>
 									 <td><?php echo $row['product'] ?></td>
-									 <td><?php echo $row['source'] ?></td>
-									 <td><?php echo $row['price'] ?></td>
-									  <td><?php echo $row['discount'] ?></td>
+
+									 <?php $i=1; foreach($attribute as $att_data){?>
+										 <td><?php echo $att_data['value'] ?></td>
+									 <?php }?>
 									 <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
 											 data-toggle="modal" data-original-title="Edit"><i
 												 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
