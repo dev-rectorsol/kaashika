@@ -1,5 +1,4 @@
 
-
 		<div class="container-fluid">
 
 			<!-- Title -->
@@ -16,7 +15,6 @@
 					</ol>
 
 				</div>
-
 
 				<!-- /Breadcrumb -->
 			</div>
@@ -79,7 +77,7 @@
 
 			<!-- Row -->
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-4">
 					<div class="panel panel-default card-view">
 						<div class="panel-heading">
 							<div class="pull-left">
@@ -92,36 +90,25 @@
 								<div class="table-wrap">
 									<div class="table-responsive">
 										<table class="table table-striped table-bordered">
-								 <caption>
-									 <!-- <h4> User  List</h4> -->
-								 </caption>
-								 <tr>
-									 <th>S.No</th>
-									 <th>Product</th>
+											 <caption>
+												 <!-- <h4> User  List</h4> -->
+											 </caption>
+												 <tr>
+													 <th>S.No</th>
+													 <th>Product</th>
+													 <th>Action</th>
+												 </tr>
+								       <?php $i=1; foreach($product_data as $row){?>
+												 <tr>
+													 <td> <?php echo $i ?></td>
+													 <td class="get_data" id="<?php echo $row['id']?>"><?php echo $row['product'] ?></td>
+													 <td>
+														 <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+														 <a title="Trash" class="pd-setting-ed" onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+													 </td>
+												 </tr>
 
-								
-	               <?php  foreach($attribute as $row){?>
-							 	<th> <?php echo $row['attribute'] ?></th>
-						  	<?php }?>
-									 <th>Action</th>
-								 </tr>
-								 <?php $i=1; foreach($product_data as $row){?>
-								 <tr>
-									 <td> <?php echo $i ?></td>
-									 <td><?php echo $row['product'] ?></td>
-
-									 <?php $i=1; foreach($attribute as $att_data){?>
-										 <td><?php echo $att_data['value'] ?></td>
-									 <?php }?>
-									 <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
-											 data-toggle="modal" data-original-title="Edit"><i
-												 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-										 <a title="Trash" class="pd-setting-ed"
-											 onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
-												 aria-hidden="true"></i></a></td>
-								 </tr>
-
-								 <div id="<?php echo $row['id'] ; ?>"
+								 <div id="<?php echo $row['id'];?>"
 									 class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 									 <div class="modal-dialog" role="document ">
 										 <div class="modal-content">
@@ -177,9 +164,8 @@
 										 </div>
 									 </div>
 								 </div>
-								 <?php
-																																	 $i++ ;
-																																	 }?>
+								 <?php $i++ ; }?>
+
 							 </table>
 									</div>
 								</div>
@@ -187,6 +173,8 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-sm-8 body"></div>
+
 			</div>
 			<!-- /Row -->
 
@@ -208,3 +196,4 @@
 			}
 		}
 	</script>
+	<?php include('product_js.php');?>

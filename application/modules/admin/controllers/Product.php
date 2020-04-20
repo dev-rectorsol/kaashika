@@ -13,6 +13,7 @@ class Product extends CI_Controller {
 				 	redirect(base_url(), 'refresh');
 			}
 			$this->load->model('Common_model');
+				$this->load->model('Product_model');
 	}
 	public function index()
 	{
@@ -21,9 +22,21 @@ class Product extends CI_Controller {
     $data['tag']=  $this->Common_model->select('tags');
     $data['product_data']=  $this->Common_model->select('products');
 		$data['attribute']=  $this->Common_model->select('attribute');
-    $data['main_content']= $this->load->view('product/add',$data, true);
+    $data['main_content']= $this->load->view('product/list',$data, true);
 		$this->load->view('index',$data);
 	}
+	public function product_details()
+	{
+		$data= array();
+		$data['page'] ='Products';
+		$data['tag']=  $this->Common_model->select('tags');
+		$data['product_data']=  $this->Common_model->select('products');
+		$data['attribute']=  $this->Product_model->select($_POST['id'],'attribute');
+		//echo print_r(	$data['attribute']);exit;
+		$data['main_content']= $this->load->view('product/list_details',$data, true);
+		$this->load->view('product/index',$data);
+	}
+	
 	public function attribute()
 	{
 		$data= array();
@@ -37,15 +50,20 @@ class Product extends CI_Controller {
 	{
 		 if($_POST){
 		 $data1=$this->security->xss_clean($_POST);
+		 $data=[ 'product' => $data1['product']];
+		  $id=$this->Common_model->insert($data,'products');
+			if($id)
+			{
 		 	for($i = 0; $i < count($data1['attribute']); $i++){
 		 $data=[
-	  'pro_id' => $data1['product'],
+	  'pro_id' => $id,
 		'attribute' => $data1['attribute'][$i],
-		'value' => $data1['value'][$i],
+		'value' => $data1['value'][$i]
 
 		];
 		$this->Common_model->insert($data,'attribute');
 	}
+}
 		redirect(base_url() . 'admin/Product', 'refresh');
 		}
 	}

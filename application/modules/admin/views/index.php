@@ -172,13 +172,13 @@
 				</a>
 				<ul id="pro" class="collapse collapse-level-1 two-col-list">
 					<li>
-						<a href="<?php echo base_url('admin/Product/attribute')?>">Add Attribute</a>
+						<a href="<?php echo base_url('admin/Product/attribute')?>">Add Product</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="<?php echo base_url('admin/Product/add')?>">Add Product</a>
-					</li>
+					</li> -->
 					<li>
-						<a href="<?php echo base_url('admin/Product/list')?>">Product List</a>
+						<a href="<?php echo base_url('admin/Product')?>">Product List</a>
 					</li>
 				</ul>
 			</li>

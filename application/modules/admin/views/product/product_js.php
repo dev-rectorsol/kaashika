@@ -1,6 +1,6 @@
   <script src="<?php echo base_url(); ?>/vendors/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
-
+$(document).ready(function() {
     $('#add').on('click', function() {
       var element = '	<div class="row">'
 
@@ -15,6 +15,28 @@
     $(document).on('click', '.remove', function() {
       $(this).parent().parent().remove();
     });
+
+    $(".get_data").click(function(){
+            // alert ('ok');
+            var id =  $(this).attr('id');
+             //alert(id);
+
+                  var csrf_name = $("#get_csrf_hash").attr('name');
+                  var csrf_val = $("#get_csrf_hash").val();
+                  $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('admin/Product/product_details') ?>",
+                    data: {'id' : 	id, '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php  echo $this->security->get_csrf_hash(); ?>'},
+                    datatype: 'json',
+                    success: function(data){
+
+                       $(".body").html(data);
+                    }
+                  });
+                });
+
+              });
+
 
 
 </script>

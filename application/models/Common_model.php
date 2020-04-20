@@ -147,6 +147,15 @@ function select_user_option($id){
         $query = $query->result_array();
         return $query;
     }
+    // function select_attribute($table){
+    //     $this->db->select('distinct(attribute),value');
+    //     //$this->db->select('value');
+    //     $this->db->from($table);
+    //     $this->db->order_by('id','ASC');
+    //     $query = $this->db->get();
+    //     $query = $query->result_array();
+    //     return $query;
+    // }
 function getMaxUserId(){
         $this->db->select('max(logid) as id');
         $this->db->from('logme');

@@ -26,7 +26,7 @@
 						<div class="panel panel-default card-view">
 							<div class="panel-heading">
 								<div class="pull-left">
-									<h6 class="panel-title txt-dark">Add Attribute</h6>
+									<h6 class="panel-title txt-dark">Add Product</h6>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -35,19 +35,21 @@
 									<div class="form-wrap">
 									<form action="<?php echo base_url('admin/Product/Add_attribute')?>" method="POST">
 										<div class="form-group row">
-											<label class="col-sm-2 control-label " for="example-input-small">Select product</label>
+											<label class="col-sm-2 control-label " for="example-input-small"> product</label>
 											<div class="col-sm-9">
-												<select name="product" id="icon" class="form-control">
+												<!-- <select name="product" id="icon" class="form-control">
 													<option value="none">Select product</option>
 													<?php foreach($product_data as $row){ ?>
 													<option value="<?php echo $row['id'] ?>"> <?php echo $row['product'] ?> </option>
 													<?php } ?>
-			                  </select>
+			                  </select> -->
+												<input type="text" id="example-input-small" name="product" class="form-control input-sm" placeholder="product">
+
 											</div>
 
 										</div>
 											<div class="form-group row">
-												<label class="col-sm-2 control-label " for="example-input-small">name</label>
+												<label class="col-sm-2 control-label " for="example-input-small">Attribute</label>
 												<div class="col-sm-4">
 													<input type="text" id="example-input-small" name="attribute[]" class="form-control input-sm" placeholder="attribute">
 												</div>
@@ -61,7 +63,7 @@
 											<div class="form-group row" id="add_data">
 
 											</div>
-											<br><br><br><br>
+
 										<div class="form-group row">
 											<div class="col-sm-12 text-center">
 												 <input type="hidden"
@@ -78,9 +80,6 @@
 						</div>
 					</div>
 		</div>
-
-
-
 	<!-- /Main Content -->
 	<script>
 		function delete_detail(id) {
@@ -90,7 +89,6 @@
 				if (sureDel == true) {
 					window.location = "<?php echo base_url()?>admin/Product/Delete/" + id;
 				}
-
 			}
 		}
 	</script>
