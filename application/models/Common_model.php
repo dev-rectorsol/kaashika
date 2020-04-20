@@ -181,7 +181,7 @@ function getMaxUserId(){
 
             //-- set upload path
             $config['upload_path']  = UPLOAD_FILE . '/' . 'images';
-            $config['allowed_types']= 'gif|jpg|png|jpeg';
+            $config['allowed_types']= 'gif|jpg|png|jpeg|';
             $config['max_size']     = '920000';
             $config['max_width']    = '92000';
             $config['max_height']   = '92000';

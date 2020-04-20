@@ -20,15 +20,19 @@ class Media extends CI_Controller {
 
 	public function index()
 	{
+				$data= array();
+		    $data['page'] ='Media';
 				$map = directory_map(UPLOAD_FILE, FALSE, TRUE);
 				$files = self::Concatenate_Filepaths($map);
-				$fileData = self::getFileWithExt($files);
-				$data['main_content'] = $this->load->view('media/list-view', $fileData, TRUE);
+				$data = self::getFileWithExt($files);
+				$data['main_content'] = $this->load->view('media/list-view', $data, TRUE);
 				$this->load->view('index', $data);
 	}
 
 	public function add(){
-		$data['main_content'] = $this->load->view('media/add-view', '', TRUE);
+		$data= array();
+		$data['page'] ='Media';
+		$data['main_content'] = $this->load->view('media/add-view', $data, TRUE);
 		$this->load->view('index', $data);
 	}
 

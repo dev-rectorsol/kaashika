@@ -46,14 +46,22 @@
 
 <!-- Switchery JavaScript -->
 <script src="<?php echo base_url(); ?>/vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="<?php echo base_url(); ?>/vendors/bower_components/dropify/dist/js/dropify.min.js"></script>
 
+<!-- Form Flie Upload Data JavaScript -->
+<script src="<?php echo base_url('optimum'); ?>/dist/js/form-file-upload-data.js"></script>
+<!-- Dropzone JavaScript -->
+<script src="<?php echo base_url(); ?>/vendors/bower_components/dropzone/dist/dropzone.js"></script>
+
+		<!-- Dropzone Init JavaScript -->
+<script src="<?php echo base_url('optimum'); ?>/dist/js/dropzone-data.js"></script>
 <!-- Bootstrap Select JavaScript -->
 <script src="<?php echo base_url(); ?>/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <!-- Gallery JavaScript -->
-		<script src="<?php echo base_url(); ?>/optimum/dist/js/isotope.js"></script>
-		<script src="<?php echo base_url(); ?>/optimum/dist/js/lightgallery-all.js"></script>
-		<script src="<?php echo base_url(); ?>/optimum/dist/js/froogaloop2.min.js"></script>
-		<script src="<?php echo base_url(); ?>/optimum/dist/js/gallery-data.js"></script>
+  <script src="<?php echo base_url(); ?>/optimum/dist/js/isotope.js"></script>
+  <script src="<?php echo base_url(); ?>/optimum/dist/js/lightgallery-all.js"></script>
+  <script src="<?php echo base_url(); ?>/optimum/dist/js/froogaloop2.min.js"></script>
+  <script src="<?php echo base_url(); ?>/optimum/dist/js/gallery-data.js"></script>
 
 <!-- Init JavaScript -->
 <script src="<?php echo base_url('optimum'); ?>/dist/js/init.js"></script>
