@@ -4,13 +4,10 @@
 	<header class="header-area header-wide">
 			<!-- main header start -->
 			<div class="main-header d-none d-lg-block">
-
-
 					<!-- header middle area start -->
 					<div class="header-main-area sticky">
 							<div class="container">
 									<div class="row align-items-center position-relative">
-
 											<!-- start logo area -->
 											<div class="col-lg-2">
 													<div class="logo">
@@ -58,14 +55,10 @@
 																									</li>
 																									<li class="mega-title"><span>column 02</span>
 																											<ul>
-																													<li><a href="#">product details</a></li>
-																													<li><a href="#">product
-																																	details
-																																	affiliate</a></li>
-																													<li><a href="#">product details
-																																	variable</a></li>
-																													<li><a href="#">product details
-																																	group</a></li>
+																													<li><a href="<?php echo base_url('web/Product')?>">product details</a></li>
+																													<li><a href="#">product	details affiliate</a></li>
+																													<li><a href="<?php echo base_url('web/Product/product_variable')?>">product details variable</a></li>
+																													<li><a href="#">product details group</a></li>
 																											</ul>
 																									</li>
 																									<li class="mega-title"><span>column 03</span>
