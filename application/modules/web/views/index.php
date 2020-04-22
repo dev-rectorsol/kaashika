@@ -28,10 +28,10 @@
 																	<!-- main menu navbar start -->
 																	<nav class="desktop-menu">
 																			<ul>
-																					<li class="active"><a href="index.html">Home</a>
+																					<li class="active"><a href="<?php echo base_url('web/home')?>">Home</a>
 																					</li>
 
-																					<li><a href="shop.html">shop <i class="fa fa-angle-down"></i></a>
+																					<li><a href="<?php echo base_url('web/shop')?>">shop <i class="fa fa-angle-down"></i></a>
 																							<ul class="dropdown">
 																									<li><a href="#">shop grid layout <i class="fa fa-angle-right"></i></a>
 																											<ul class="dropdown">
@@ -48,11 +48,11 @@
 																							<ul class="megamenu dropdown">
 																									<li class="mega-title"><span>column 01</span>
 																											<ul>
-																													<li><a href="shop.html">shop grid left
+																													<li><a href="<?php echo base_url('web/shop')?>">shop grid left
 																																	sidebar</a></li>
 																													<li><a href="#">shop grid right
 																																	sidebar</a></li>
-																													<li><a href="#">shop list left sidebar</a></li>
+																													<li><a href="<?php echo base_url('web/shop/shop_list_left')?>">shop list left sidebar</a></li>
 																													<li><a href="#">shop list right sidebar</a></li>
 																											</ul>
 																									</li>
@@ -70,18 +70,18 @@
 																									</li>
 																									<li class="mega-title"><span>column 03</span>
 																											<ul>
-																													<li><a href="cart.html">cart</a></li>
-																													<li><a href="checkout.html">checkout</a></li>
-																													<li><a href="compare.html">compare</a></li>
-																													<li><a href="wishlist.html">wishlist</a></li>
+																													<li><a href="<?php echo base_url('web/Collection/cart')?>">cart</a></li>
+																													<li><a href="<?php echo base_url('web/Collection/checkout')?>">checkout</a></li>
+																													<li><a href="<?php echo base_url('web/Collection/compare')?>">compare</a></li>
+																													<li><a href="<?php echo base_url('web/Collection/wishlist')?>">wishlist</a></li>
 																											</ul>
 																									</li>
 																									<li class="mega-title"><span>column 04</span>
 																											<ul>
-																													<li><a href="my-account.html">my-account</a></li>
-																													<li><a href="login-register.html">login-register</a></li>
-																													<li><a href="about-us.html">about us</a></li>
-																													<li><a href="contact-us.html">contact us</a></li>
+																													<li><a href="<?php echo base_url('web/Home/my_account')?>">my-account</a></li>
+																													<li><a href="<?php echo base_url('login')?>">login-register</a></li>
+																													<li><a href="<?php echo base_url('web/Home/about')?>">about us</a></li>
+																													<li><a href="<?php echo base_url('web/Home/contact')?>">contact us</a></li>
 																											</ul>
 																									</li>
 																									<li class="megamenu-banners d-none d-lg-block">

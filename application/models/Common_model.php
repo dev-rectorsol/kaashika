@@ -263,8 +263,7 @@ function getMaxUserId(){
             else {
                 echo "Failed! to upload images" ;
             }
-
-    }
+        }
 
     public function indexing($data, $rootid) {
       $temp = array();

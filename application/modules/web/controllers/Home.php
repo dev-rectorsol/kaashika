@@ -20,7 +20,7 @@ class Home extends CI_Controller {
     public function about(){
         $data = array();
         $data['page'] = 'About Us';
-        $data['main_content'] = $this->load->view('about', $data, true);
+        $data['main_content'] = $this->load->view('about_us', $data, true);
         $this->load->view('index', $data);
     }
 
@@ -76,6 +76,14 @@ class Home extends CI_Controller {
 				$data['main_content'] = $this->load->view('pages/order', $data, true);
 				$this->load->view('index', $data);
 		}
+		public function my_account(){
+				$data = array();
+				$data['page'] = 'Order';
+				$data['product_data']=  $this->Common_model->select('products');
+				$data['user_data']=  $this->Common_model->select('user_details');
+				$data['main_content'] = $this->load->view('my_account', $data, true);
+				$this->load->view('index', $data);
+		}
 
     public function faq(){
         $data = array();
@@ -83,6 +91,7 @@ class Home extends CI_Controller {
         $data['main_content'] = $this->load->view('faq', $data, true);
         $this->load->view('index', $data);
     }
+
 
 }
 
