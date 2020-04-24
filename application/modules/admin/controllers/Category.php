@@ -19,6 +19,7 @@ class Category extends CI_Controller {
 		$data= array();
         $data['page'] ='category';
         $data['tag']=  $this->Common_model->select('tags');
+				$data['category']=  $this->Common_model->select('category');
         $data['aim']=  $this->Common_model->select('category');
 		$data['main_content']= $this->load->view('category/add',$data, true);
 		$this->load->view('index',$data);

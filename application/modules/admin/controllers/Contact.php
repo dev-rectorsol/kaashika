@@ -19,40 +19,18 @@ class Contact extends CI_Controller {
 		$data= array();
         $data['page'] ='category';
         $data['tag']=  $this->Common_model->select('tags');
-        $data['product_data']=  $this->Common_model->select('Products');
+        $data['contact_data']=  $this->Common_model->select('contact');
 		$data['main_content']= $this->load->view('contact/contact_list',$data, true);
 		$this->load->view('index',$data);
 	}
-    public function Add()
-		{
-			if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-			$aim=[
-			'name' => $data1['name'],
-			'parent' => $data1['parent'],
-			'icon' => $data1['icon'],
-			];
-			$this->Common_model->insert($aim,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
-			}
-		}
 
-      public function AddTag()
-			{
-				if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-		         $tag=[
-		            'title' => $data1['name'],
-		        ];
-            $this->Common_model->insert($tag,'tags');
-			redirect(base_url() . 'admin/category', 'refresh');
-				}
-			}
+
+
  public function Delete($id)
 	{
             $data1=['id'=> $id];
-            $this->Common_model->delete($data1,'category');
-            redirect(base_url() . 'admin/category', 'refresh');
+            $this->Common_model->delete($data1,'contact');
+            redirect(base_url() . 'admin/contact', 'refresh');
     }
     public function Edit($id)
 	{

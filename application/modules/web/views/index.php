@@ -4,47 +4,10 @@
 	<header class="header-area header-wide">
 			<!-- main header start -->
 			<div class="main-header d-none d-lg-block">
-					<!-- header top start -->
-					<!-- <div class="header-top bdr-bottom">
-							<div class="container">
-									<div class="row align-items-center">
-											<div class="col-lg-6">
-													<div class="welcome-message">
-															<p>Welcome to Free shoping the all product</p>
-													</div>
-											</div>
-											<div class="col-lg-6 text-right">
-													<div class="header-top-settings">
-															<ul class="nav align-items-center justify-content-end">
-																	<li class="curreny-wrap">
-																			$ Currency
-																			<i class="fa fa-angle-down"></i>
-																			<ul class="dropdown-list curreny-list">
-																					<li><a href="#">$ USD</a></li>
-																					<li><a href="#">€ EURO</a></li>
-																			</ul>
-																	</li>
-																	<li class="language">
-																			<img src="<?php echo base_url() ?>/assets/img/icon/en.png" alt="flag"> English
-																			<i class="fa fa-angle-down"></i>
-																			<ul class="dropdown-list">
-																					<li><a href="#"><img src="<?php echo base_url() ?>/assets/img/icon/en.png" alt="flag"> english</a></li>
-																					<li><a href="#"><img src="<?php echo base_url() ?>/assets/img/icon/fr.png" alt="flag"> french</a></li>
-																			</ul>
-																	</li>
-															</ul>
-													</div>
-											</div>
-									</div>
-							</div>
-					</div> -->
-					<!-- header top end -->
-
 					<!-- header middle area start -->
 					<div class="header-main-area sticky">
 							<div class="container">
 									<div class="row align-items-center position-relative">
-
 											<!-- start logo area -->
 											<div class="col-lg-2">
 													<div class="logo">
@@ -62,10 +25,10 @@
 																	<!-- main menu navbar start -->
 																	<nav class="desktop-menu">
 																			<ul>
-																					<li class="active"><a href="index.html">Home</a>
+																					<li class="active"><a href="<?php echo base_url('web/home')?>">Home</a>
 																					</li>
 
-																					<li><a href="shop.html">shop <i class="fa fa-angle-down"></i></a>
+																					<li><a href="<?php echo base_url('web/shop')?>">shop <i class="fa fa-angle-down"></i></a>
 																							<ul class="dropdown">
 																									<li><a href="#">shop grid layout <i class="fa fa-angle-right"></i></a>
 																											<ul class="dropdown">
@@ -82,40 +45,36 @@
 																							<ul class="megamenu dropdown">
 																									<li class="mega-title"><span>column 01</span>
 																											<ul>
-																													<li><a href="shop.html">shop grid left
+																													<li><a href="<?php echo base_url('web/shop')?>">shop grid left
 																																	sidebar</a></li>
 																													<li><a href="#">shop grid right
 																																	sidebar</a></li>
-																													<li><a href="#">shop list left sidebar</a></li>
+																													<li><a href="<?php echo base_url('web/shop/shop_list_left')?>">shop list left sidebar</a></li>
 																													<li><a href="#">shop list right sidebar</a></li>
 																											</ul>
 																									</li>
 																									<li class="mega-title"><span>column 02</span>
 																											<ul>
-																													<li><a href="#">product details</a></li>
-																													<li><a href="#">product
-																																	details
-																																	affiliate</a></li>
-																													<li><a href="#">product details
-																																	variable</a></li>
-																													<li><a href="#">product details
-																																	group</a></li>
+																													<li><a href="<?php echo base_url('web/Product')?>">product details</a></li>
+																													<li><a href="#">product	details affiliate</a></li>
+																													<li><a href="<?php echo base_url('web/Product/product_variable')?>">product details variable</a></li>
+																													<li><a href="#">product details group</a></li>
 																											</ul>
 																									</li>
 																									<li class="mega-title"><span>column 03</span>
 																											<ul>
-																													<li><a href="cart.html">cart</a></li>
-																													<li><a href="checkout.html">checkout</a></li>
-																													<li><a href="compare.html">compare</a></li>
-																													<li><a href="wishlist.html">wishlist</a></li>
+																													<li><a href="<?php echo base_url('web/Collection/cart')?>">cart</a></li>
+																													<li><a href="<?php echo base_url('web/Collection/checkout')?>">checkout</a></li>
+																													<li><a href="<?php echo base_url('web/Collection/compare')?>">compare</a></li>
+																													<li><a href="<?php echo base_url('web/Collection/wishlist')?>">wishlist</a></li>
 																											</ul>
 																									</li>
 																									<li class="mega-title"><span>column 04</span>
 																											<ul>
-																													<li><a href="my-account.html">my-account</a></li>
-																													<li><a href="login-register.html">login-register</a></li>
-																													<li><a href="about-us.html">about us</a></li>
-																													<li><a href="contact-us.html">contact us</a></li>
+																													<li><a href="<?php echo base_url('web/Home/my_account')?>">my-account</a></li>
+																													<li><a href="<?php echo base_url('login')?>">login-register</a></li>
+																													<li><a href="<?php echo base_url('web/Home/about')?>">about us</a></li>
+																													<li><a href="<?php echo base_url('web/Home/contact')?>">contact us</a></li>
 																											</ul>
 																									</li>
 																									<li class="megamenu-banners d-none d-lg-block">
@@ -133,15 +92,13 @@
 																					<li><a href="#">Campaigns</a>
 
 																					</li>
-																					<li><a href="#">Craft</a>
+																					<!-- <li><a href="#">Craft</a>
 
-																					</li>
-																					<li><a href="blog.html">Blog</a>
+																					</li> -->
+																					<li><a href="blog.html">Blog</a></li>
+																					<li><a href="<?php echo base_url('web/Home/contact')?>">Contact us</a></li>
+																					<li><a href="<?php echo base_url('web/Home/order')?>">Order </a></li>
 
-																					</li>
-
-
-																					<li><a href="contact-us.html">Contact us</a></li>
 																			</ul>
 																	</nav>
 																	<!-- main menu navbar end -->

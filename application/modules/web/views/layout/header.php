@@ -86,60 +86,7 @@
                         <li class="dropdown">
                             <a href="<?php echo base_url('about') ?>" class="active">About Us</a>
                         </li>
-                        <!-- <li class="dropdown megamenu-fw">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <ul class="dropdown-menu megamenu-content" role="menu">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Gallery</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="gallery-2-colum.html">Gallery Two Colum</a></li>
-                                                    <li><a href="gallery-3-colum.html">Gallery Three Colum</a></li>
-                                                    <li><a href="gallery-4-colum.html">Gallery Four Colum</a></li>
-                                                    <li><a href="gallery-6-colum.html">Gallery Six Colum</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>end col-3
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Advisor</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="advisor-carousel.html">Advisor Carousel</a></li>
-                                                    <li><a href="advisor-2-colum.html">Advisor Two Colum</a></li>
-                                                    <li><a href="advisor-3-colum.html">Advisor Three Colum</a></li>
-                                                    <li><a href="advisor-carousel-2.html">Advisor Carousel Two</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>end col-3
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">User Pages</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="profile.html">Profile</a></li>
-                                                    <li><a href="edit-profile.html">Edit Profile</a></li>
-                                                    <li><a href="login.html">login</a></li>
-                                                    <li><a href="register.html">register</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>end col-3
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Other Pages</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="about-us.html">About Us</a></li>
-                                                    <li><a href="faq.html">Faq</a></li>
-                                                    <li><a href="pricing-table.html">Pricing Table</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                    <li><a href="404.html">Error Page</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>end col-3
-                                    </div>end row
-                                </li>
-                            </ul>
-                        </li> -->
+
                         <li class="dropdown">
                             <a href="<?php echo base_url('courses') ?>" class="active">Courses</a>
                         </li>
@@ -149,17 +96,7 @@
                         <li class="dropdown">
                             <a href="<?php echo base_url('event') ?>" class="active">Event</a>
                         </li>
-                        <!-- <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Blog</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog-standard.html">Blog Standard</a></li>
-                                <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                <li><a href="blog-single-standard.html">Single Standard</a></li>
-                                <li><a href="blog-single-left-sidebar.html">Single Left Sidebar</a></li>
-                                <li><a href="blog-single-right-sidebar.html">Single Right Sidebar</a></li>
-                            </ul>
-                        </li> -->
+                      
                         <li>
                             <a href="<?php echo base_url('contact') ?>">contact</a>
                         </li>

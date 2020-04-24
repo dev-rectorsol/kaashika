@@ -1,5 +1,4 @@
 
-
 		<div class="container-fluid">
 
 			<!-- Title -->
@@ -16,7 +15,6 @@
 					</ol>
 
 				</div>
-
 
 				<!-- /Breadcrumb -->
 			</div>
@@ -79,7 +77,7 @@
 
 			<!-- Row -->
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-4">
 					<div class="panel panel-default card-view">
 						<div class="panel-heading">
 							<div class="pull-left">
@@ -92,34 +90,25 @@
 								<div class="table-wrap">
 									<div class="table-responsive">
 										<table class="table table-striped table-bordered">
-								 <caption>
-									 <!-- <h4> User  List</h4> -->
-								 </caption>
-								 <tr>
-									 <th>S.No</th>
-									 <th>Product</th>
-									 <th>Source</th>
-									 <th>Price</th>
-									 <th>Descount</th>
+											 <caption>
+												 <!-- <h4> User  List</h4> -->
+											 </caption>
+												 <tr>
+													 <th>S.No</th>
+													 <th>Product</th>
+													 <th>Action</th>
+												 </tr>
+								       <?php $i=1; foreach($product_data as $row){?>
+												 <tr>
+													 <td> <?php echo $i ?></td>
+													 <td class="get_data" id="<?php echo $row['id']?>"><?php echo $row['product'] ?></td>
+													 <td>
+														 <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+														 <a title="Trash" class="pd-setting-ed" onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+													 </td>
+												 </tr>
 
-									 <th>Action</th>
-								 </tr>
-								 <?php $i=1; foreach($product_data as $row){?>
-								 <tr>
-									 <td> <?php echo $i ?></td>
-									 <td><?php echo $row['product'] ?></td>
-									 <td><?php echo $row['source'] ?></td>
-									 <td><?php echo $row['price'] ?></td>
-									  <td><?php echo $row['discount'] ?></td>
-									 <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
-											 data-toggle="modal" data-original-title="Edit"><i
-												 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-										 <a title="Trash" class="pd-setting-ed"
-											 onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
-												 aria-hidden="true"></i></a></td>
-								 </tr>
-
-								 <div id="<?php echo $row['id'] ; ?>"
+								 <div id="<?php echo $row['id'];?>"
 									 class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 									 <div class="modal-dialog" role="document ">
 										 <div class="modal-content">
@@ -127,7 +116,7 @@
 												 action="<?php echo base_url('admin/Product/Edit/').$row['id'] ?>"
 												 name="basic_validate" id="basic_validate" novalidate="novalidate">
 												 <div class="modal-header header-color-modal bg-color-1 ">
-													 <h4 class="modal-title">Edit Aim</h4>
+													 <h4 class="modal-title">Edit Product</h4>
 													 <div class="modal-close-area modal-close-df">
 														 <a class="close" data-dismiss="modal" href="#"><i
 																 class="fa fa-close"></i></a>
@@ -175,9 +164,8 @@
 										 </div>
 									 </div>
 								 </div>
-								 <?php
-																																	 $i++ ;
-																																	 }?>
+								 <?php $i++ ; }?>
+
 							 </table>
 									</div>
 								</div>
@@ -185,6 +173,8 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-sm-8 body"></div>
+
 			</div>
 			<!-- /Row -->
 
@@ -194,3 +184,16 @@
 
 
 	<!-- /Main Content -->
+	<script>
+		function delete_detail(id) {
+			var del = confirm("Do you want to Delete");
+			if (del == true) {
+				var sureDel = confirm("Are you sure want to delete");
+				if (sureDel == true) {
+					window.location = "<?php echo base_url()?>admin/Product/Delete/" + id;
+				}
+
+			}
+		}
+	</script>
+	<?php include('product_js.php');?>

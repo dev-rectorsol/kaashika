@@ -165,11 +165,20 @@
 
 			</li>
 			<li>
-				<a href="<?php echo base_url('admin/Product')?>" data-toggle="collapse" data-target="#app_dr">
+				<a href="javascript:void(0)" data-toggle="collapse" data-target="#pro">
 					<div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Products </span></div>
+					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
 					<div class="clearfix"></div>
 				</a>
+				<ul id="pro" class="collapse collapse-level-1 two-col-list">
+					<li>
+						<a href="<?php echo base_url('admin/Product/attribute')?>">Add Product</a>
+					</li>
 
+					<li>
+						<a href="<?php echo base_url('admin/Product')?>">Product List</a>
+					</li>
+				</ul>
 			</li>
 			<li>
 				<a href="<?php echo base_url('admin/Gallery')?>">
@@ -187,12 +196,11 @@
 				</a>
 				<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
 					<li>
-						<a href="<?php echo base_url('admin/Media')?>">Audio</a>
+						<a href="<?php echo base_url('admin/Media/add')?>">Video/Audio</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url('admin/Media/add')?>">Video</a>
+						<a href="<?php echo base_url('admin/Media')?>">View List</a>
 					</li>
-
 				</ul>
 			</li>
 			<li>

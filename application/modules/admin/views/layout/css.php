@@ -28,6 +28,8 @@
 
 	<!-- switchery CSS -->
 	<link href="<?php echo base_url(); ?>/vendors/bower_components/switchery/dist/switchery.min.css" rel="stylesheet" type="text/css"/>
+  		<!-- Bootstrap Dropify CSS -->
+  		<link href="<?php echo base_url(); ?>/vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
 
 	<!-- Custom CSS -->
 	<link href="<?php echo base_url('optimum'); ?>/dist/css/style.css" rel="stylesheet" type="text/css">

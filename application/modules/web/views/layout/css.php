@@ -13,7 +13,7 @@
     <!-- CSS
 	============================================ -->
     <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900" rel="stylesheet"> -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/vendor/bootstrap.min.css">
     <!-- Pe-icon-7-stroke CSS -->

@@ -6,6 +6,7 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+			$this->load->model('Common_model');
 		//Do your magic here
 	}
 
@@ -19,7 +20,7 @@ class Home extends CI_Controller {
     public function about(){
         $data = array();
         $data['page'] = 'About Us';
-        $data['main_content'] = $this->load->view('about', $data, true);
+        $data['main_content'] = $this->load->view('about_us', $data, true);
         $this->load->view('index', $data);
     }
 
@@ -50,6 +51,39 @@ class Home extends CI_Controller {
         $data['main_content'] = $this->load->view('contact', $data, true);
         $this->load->view('index', $data);
     }
+		public function Add_contact()
+		{
+			if($_POST){
+			 $data1=$this->security->xss_clean($_POST);
+			$data=[
+			'name' => $data1['name'],
+			'phone' => $data1['phone'],
+			'email' => $data1['email'],
+			'subject' => $data1['subject'],
+			'message' => $data1['message'],
+			// 'icon' => $data1['icon'],
+			];
+			$this->Common_model->insert($data,'contact');
+			redirect(base_url() . 'web/Home/contact', 'refresh');
+			}
+		}
+
+		public function order(){
+				$data = array();
+				$data['page'] = 'Order';
+				$data['product_data']=  $this->Common_model->select('products');
+				$data['user_data']=  $this->Common_model->select('user_details');
+				$data['main_content'] = $this->load->view('pages/order', $data, true);
+				$this->load->view('index', $data);
+		}
+		public function my_account(){
+				$data = array();
+				$data['page'] = 'Order';
+				$data['product_data']=  $this->Common_model->select('products');
+				$data['user_data']=  $this->Common_model->select('user_details');
+				$data['main_content'] = $this->load->view('my_account', $data, true);
+				$this->load->view('index', $data);
+		}
 
     public function faq(){
         $data = array();
@@ -57,6 +91,7 @@ class Home extends CI_Controller {
         $data['main_content'] = $this->load->view('faq', $data, true);
         $this->load->view('index', $data);
     }
+
 
 }
 
