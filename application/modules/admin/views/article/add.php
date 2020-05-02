@@ -39,7 +39,7 @@
 
 		              <div class="form-group">
 		                <label class="login2">Article content</label>
-		                <textarea name="content" id="summernote1" coll="10" row="10" required>Add a content here</textarea>
+		                <textarea name="content" class="summernote" coll="10" row="10" required>Add a content here</textarea>
 		              </div>
 
 
@@ -58,7 +58,7 @@
 		              </div>
 		              <div class="form-group res-mg-t-15">
 		                <label class="login2">Course Tag</label>
-		                <select class="select2_demo_2 form-control" name='tag[]' data-placeholder="Choose a Tags..." multiple="multiple">
+		                <select class="select2 form-control" name='tag[]' data-placeholder="Choose a Tags..." multiple="multiple">
 		                  <?php foreach($tag as $row){ ?>
 		                  <option value="<?php echo $row['title'] ?>"> <?php echo $row['title'] ?> </option>
 		                  <?php } ?>
@@ -66,7 +66,7 @@
 		              </div>
 		              <div class="form-group res-mg-t-15">
 		                <label class="login2">Course Category</label>
-		                <select class="select2_demo_2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
+		                <select class="select2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
 		                  <?php foreach($category as $row){ ?>
 		                  <option value="<?php echo $row['name'] ?>"> <?php echo $row['name'] ?> </option>
 		                  <?php } ?>

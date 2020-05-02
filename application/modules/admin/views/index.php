@@ -178,6 +178,9 @@
 					<li>
 						<a href="<?php echo base_url('admin/Product')?>">Product List</a>
 					</li>
+					<li>
+						<a href="<?php echo base_url('admin/Attribute')?>">Attribute </a>
+					</li>
 				</ul>
 			</li>
 			<li>
