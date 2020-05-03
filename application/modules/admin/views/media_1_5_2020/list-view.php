@@ -1,4 +1,8 @@
+<?php
 
+
+
+?>
 <div class="single-pro-review-area mt-t-30 mg-b-15">
   <div class="container-fluid">
     <div class="row">
@@ -32,22 +36,10 @@
                   <div class="review-content-section">
                     <div class="row">
                       <?php foreach ($video as $key => $value): ?>
-                        <?php $temp = getFileInfo($value);  ?>
                       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="hpanel widget-int-shape responsive-mg-b-30">
-                          <div class="panel-body">
-                            <div class="text-center content-box">
-                                <div class="m icon-box">
-                                  <video class="afterglow" width="250" height="180">
-                                    <source type="video/mp4" src="<?php echo base_url($value) ?>" />
-                                  </video>
-                                </div>
-                                <p class="small mg-t-box">
-                                  <h5 class="m-b-xs"><?php echo $temp['basename'] ?></h5>
-                                </p>
-                            </div>
-                          </div>
-                        </div>
+                        <video class="afterglow" width="250" height="180">
+                          <source type="video/mp4" src="<?php echo base_url($value) ?>" />
+                        </video>
                       </div>
                       <?php endforeach; ?>
                     </div>

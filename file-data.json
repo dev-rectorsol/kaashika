@@ -1,0 +1,183 @@
+[
+  
+    {
+        "dirname": "uploads\/images\\\/medium",
+        "basename": "slid5_medium-376x134.jpg",
+        "extension": "jpg",
+        "filename": "slid5_medium-376x134",
+        "status": 1,
+        "last_modified": "May 03 2020 07:41:01.",
+        "size": 14570,
+        "dime": {
+            "0": 376,
+            "1": 134,
+            "2": 2,
+            "3": "width=\"376\" height=\"134\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/medium",
+        "basename": "slid1_medium-1910x1000.jpg",
+        "extension": "jpg",
+        "filename": "slid1_medium-1910x1000",
+        "status": 1,
+        "last_modified": "May 03 2020 07:41:00.",
+        "size": 200387,
+        "dime": {
+            "0": 1910,
+            "1": 1000,
+            "2": 2,
+            "3": "width=\"1910\" height=\"1000\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/thumbnail",
+        "basename": "slid1_thumb-200x104.jpg",
+        "extension": "jpg",
+        "filename": "slid1_thumb-200x104",
+        "status": 1,
+        "last_modified": "May 03 2020 07:41:00.",
+        "size": 27054,
+        "dime": {
+            "0": 200,
+            "1": 105,
+            "2": 2,
+            "3": "width=\"200\" height=\"105\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/thumbnail",
+        "basename": "slid5_thumb-200x71.jpg",
+        "extension": "jpg",
+        "filename": "slid5_thumb-200x71",
+        "status": 1,
+        "last_modified": "May 03 2020 07:41:00.",
+        "size": 20775,
+        "dime": {
+            "0": 200,
+            "1": 72,
+            "2": 2,
+            "3": "width=\"200\" height=\"72\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/medium",
+        "basename": "IMG_20190105_225525_medium-150x180.jpg",
+        "extension": "jpg",
+        "filename": "IMG_20190105_225525_medium-150x180",
+        "status": 1,
+        "last_modified": "May 03 2020 07:39:20.",
+        "size": 69787,
+        "dime": {
+            "0": 150,
+            "1": 180,
+            "2": 2,
+            "3": "width=\"150\" height=\"180\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/thumbnail",
+        "basename": "IMG_20190105_225525_thumb-150x180.jpg",
+        "extension": "jpg",
+        "filename": "IMG_20190105_225525_thumb-150x180",
+        "status": 1,
+        "last_modified": "May 03 2020 07:39:20.",
+        "size": 69787,
+        "dime": {
+            "0": 150,
+            "1": 180,
+            "2": 2,
+            "3": "width=\"150\" height=\"180\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/thumbnail",
+        "basename": "slid2_thumb-200x71.jpg",
+        "extension": "jpg",
+        "filename": "slid2_thumb-200x71",
+        "status": 1,
+        "last_modified": "May 03 2020 07:19:36.",
+        "size": 19995,
+        "dime": {
+            "0": 200,
+            "1": 72,
+            "2": 2,
+            "3": "width=\"200\" height=\"72\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/medium",
+        "basename": "slid2_medium-1400x500.jpg",
+        "extension": "jpg",
+        "filename": "slid2_medium-1400x500",
+        "status": 1,
+        "last_modified": "May 03 2020 07:19:36.",
+        "size": 90015,
+        "dime": {
+            "0": 1400,
+            "1": 500,
+            "2": 2,
+            "3": "width=\"1400\" height=\"500\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/medium",
+        "basename": "slid4_medium-376x134.jpg",
+        "extension": "jpg",
+        "filename": "slid4_medium-376x134",
+        "status": 1,
+        "last_modified": "May 03 2020 07:14:59.",
+        "size": 14303,
+        "dime": {
+            "0": 376,
+            "1": 134,
+            "2": 2,
+            "3": "width=\"376\" height=\"134\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    },
+    {
+        "dirname": "uploads\/images\\\/thumbnail",
+        "basename": "slid4_thumb-200x71.jpg",
+        "extension": "jpg",
+        "filename": "slid4_thumb-200x71",
+        "status": 1,
+        "last_modified": "May 03 2020 07:14:59.",
+        "size": 21491,
+        "dime": {
+            "0": 200,
+            "1": 72,
+            "2": 2,
+            "3": "width=\"200\" height=\"72\"",
+            "bits": 8,
+            "channels": 3,
+            "mime": "image\/jpeg"
+        }
+    }
+]

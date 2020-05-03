@@ -11,7 +11,7 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="icon" href="<?php echo base_url('optimum'); ?>/favicon.ico" type="image/x-icon">
-	
+
 <!-- Summernote css -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>vendors/bower_components/summernote/dist/summernote.css" />
 	<!-- Morris Charts CSS -->
@@ -43,11 +43,12 @@
   		<link href="<?php echo base_url(); ?>vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
 <!-- Bootstrap Dropzone CSS -->
 		<link href="<?php echo base_url(); ?>vendors/bower_components/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css"/>
-	
+
 <!-- Bootstrap Switches CSS -->
-		<link href="<?php echo base_url(); ?>vendors/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>	
+		<link href="<?php echo base_url(); ?>vendors/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 	<!-- Custom CSS -->
 	<link href="<?php echo base_url('optimum'); ?>/dist/css/style.css" rel="stylesheet" type="text/css">
+  <script src="<?php echo base_url(); ?>vendors/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body>

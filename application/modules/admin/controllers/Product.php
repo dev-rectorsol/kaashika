@@ -192,7 +192,7 @@ class Product extends CI_Controller {
 		//  echo "<pre>";
 		// 				 print_r($_FILES);
 		// 				 exit();
-		 // if(isset($_FILES['profile']['name'])){
+		
 			$config['upload_path']          = './uploads/product';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 11264;
@@ -206,14 +206,7 @@ class Product extends CI_Controller {
 						//  print_r($img);
 						//  exit();
 		$pic=$img['file_name'];
-		// }else{
-		// 	echo "file not uploaded"; echo $this->upload->display_errors();exit;
-		// }
 
-		 // }else{
-			// $pic="";
-			// echo "file not found"; exit;
-		 // }
 		 if($pic!='')
 		 {
 

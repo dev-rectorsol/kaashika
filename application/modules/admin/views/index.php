@@ -199,7 +199,7 @@
 				</a>
 				<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
 					<li>
-						<a href="<?php echo base_url('admin/Media/add')?>">Video/Audio</a>
+						<a href="<?php echo base_url('admin/Media/add')?>">Add New</a>
 					</li>
 					<li>
 						<a href="<?php echo base_url('admin/Media')?>">View List</a>
@@ -261,8 +261,17 @@
 				</a>
 			</li>
 			<li>
+				<a href="javascript:void(0)" data-toggle="collapse" data-target="#setting">
+					<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Setting</span></div>
+					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+					<div class="clearfix"></div>
+				</a>
+				<ul id="setting" class="collapse collapse-level-1 two-col-list">
+					<li>
+						<a href="<?php echo base_url('admin/setting/slider')?>">Add Slider</a>
+					</li>
 
-
+				</ul>
 			</li>
 		</ul>
 	</div>

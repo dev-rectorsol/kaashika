@@ -20,12 +20,12 @@
 
 				<!-- /Breadcrumb -->
 			</div>
-			<!-- <div class="span4 text-right">
+			<div class="span4 text-right">
 				 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
-		 </div><br> -->
+		 </div><br>
 <hr class="light-grey-hr" />
 			<!-- /Title -->
-			<!-- <div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+			<div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 				<div class="modal-dialog" role="document ">
 					<div class="modal-content">
 
@@ -78,7 +78,7 @@
 							</form>
 						</div>
 				 </div>
-			</div> -->
+			</div>
 
 			<!-- Row -->
 			<div class="row">

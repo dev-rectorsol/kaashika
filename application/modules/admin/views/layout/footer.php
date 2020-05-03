@@ -78,10 +78,10 @@
 		<script src="<?php echo base_url(); ?>vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
 <!-- Slimscroll JavaScript -->
 		<script src="<?php echo base_url('optimum'); ?>/dist/js/jquery.slimscroll.js"></script>
-	
+
 		<!-- Fancy Dropdown JS -->
 		<script src="<?php echo base_url('optimum'); ?>/dist/js/dropdown-bootstrap-extended.js"></script>
-		
+
 		<!-- Owl JavaScript -->
 		<script src="<?php echo base_url(); ?>vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 	<!-- Bootstrap Switch JavaScript -->
@@ -93,6 +93,8 @@
 <script src="<?php echo base_url('optimum'); ?>/dist/js/ecommerce-data.js"></script>
 <!-- Form Advance Init JavaScript -->
 		<script src="<?php echo base_url('optimum'); ?>/dist/js/form-advance-data.js"></script>
+    <?php include("__media.php"); ?>
+  <?php include("__notification.php"); ?>
 </body>
 
 </html>
