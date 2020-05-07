@@ -7,12 +7,23 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 			$this->load->model('Common_model');
+			$this->load->model('article_model');
 		//Do your magic here
 	}
 
 	public function index(){
         $data = array();
         $data['page'] = 'Education Board';
+				$data['homeSlider'] = 1;
+			  $slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '';
+			  $data['slider'] = json_decode($slider_value, true);
+				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
+			  $data['social'] = json_decode($social_value, true);
+				$data['category']=  $this->Common_model->select('category');
+        $data['article_data']=  $this->article_model->select_article_data('article');
+        $data['product']=  $this->Common_model->select('products');
+				$data['testimonial']=  $this->Common_model->select('testimonial');
+				$data['product_data']=  $this->Common_model->select_limit_value('products');
         $data['main_content'] = $this->load->view('home', $data, true);
         $this->load->view('index', $data);
     }
@@ -91,6 +102,12 @@ class Home extends CI_Controller {
         $data['main_content'] = $this->load->view('faq', $data, true);
         $this->load->view('index', $data);
     }
+		public function shop(){
+				$data = array();
+				$data['page'] = 'shop';
+				$data['main_content'] = $this->load->view('shop/shop', $data, true);
+				$this->load->view('index', $data);
+		}
 
 
 }

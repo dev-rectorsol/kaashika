@@ -147,6 +147,15 @@ function select_user_option($id){
         $query = $query->result_array();
         return $query;
     }
+    function select_limit_value($table){
+        $this->db->select();
+        $this->db->from($table);
+        $this->db->order_by('id','ASC');
+        $this->db->limit(4);
+        $query = $this->db->get();
+        $query = $query->result_array();
+        return $query;
+    }
     // function select_attribute($table){
     //     $this->db->select('distinct(attribute),value');
     //     //$this->db->select('value');
@@ -291,5 +300,84 @@ function getMaxUserId(){
       }
     }
 
-
+    public function updateThumb($data, $rootid){
+          $table = 'thumbnail';
+          $this->db->delete($table, array('root' => $rootid));
+          $data = [
+            'root' => $rootid,
+            'thumb' => $data,
+            'image' => $data,
+          ];
+          return $this->db->insert($table, $data);
+        }
+        public function updateIndexing($data, $rootid) {
+      if ( isset($data['tag']) ||  isset($data['category']) ) {
+        $temp = array();
+        $table = 'indexing';
+        $this->db->delete($table, array('root' => $rootid));
+        if ( is_array($data['tag']) ) {
+          foreach ($data['tag'] as $value) {
+            $temp['root'] = $rootid;
+            $temp['port'] = $value;
+            $temp['type'] = 'tag';
+            $this->db->insert($table, $temp);
+          }
+        }
+        if ( is_array($data['category']) ) {
+          foreach ($data['category'] as $value) {
+            $temp['root'] = $rootid;
+            $temp['port'] = $value;
+            $temp['type'] = 'category';
+            $this->db->insert($table, $temp);
+          }
+        }
+        return;
+      }else{
+        return;
+      }
+    }
+    public function get_last_id($table){
+      return $this->db->select('MAX(id) AS id')
+      ->from($table)
+      ->get()->row()->id;
+    }
+    public function getThumByRoot($id){
+      $this->db->select('thumb', 'image');
+      return $this->db->get_where("thumbnail", array('root' => $id))->row();
+    }
+    public function getIndexCategorys($root){
+    $data = array();
+    $this->db->select('port');
+    $this->db->from('indexing');
+    $this->db->WHERE('root', $root);
+    $this->db->WHERE('type', 'category');
+    $query = $this->db->get();
+    $query = $query->result_array();
+    foreach ($query as $value) {
+      $data[] = $value['port'];
+    }
+    return $data;
+  }
+  public function getIndexTags($root){
+      $data = array();
+      $this->db->select('port');
+      $this->db->from('indexing');
+      $this->db->WHERE('root', $root);
+      $this->db->WHERE('type', 'tag');
+      $query = $this->db->get();
+      $query = $query->result_array();
+      foreach ($query as $value) {
+        $data[] = $value['port'];;
+      }
+      return $data;
+    }
+    public function addThumb($data, $rootid){
+          $table = 'thumbnail';
+          $data = [
+            'root' => $rootid,
+            'thumb' => $data,
+            'image' => $data,
+          ];
+          return $this->db->insert($table, $data);
+        }
 }

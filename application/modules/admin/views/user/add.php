@@ -172,9 +172,7 @@
 										 </div>
 									 </div>
 								 </div>
-								 <?php
-																																	 $i++ ;
-																																	 }?>
+								 <?php $i++ ; }?>
 							 </table>
 									</div>
 								</div>

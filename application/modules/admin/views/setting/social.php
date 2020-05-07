@@ -25,9 +25,9 @@
 				<div class="modal-dialog" role="document ">
 					<div class="modal-content">
 
-            <form action="<?php echo base_url('admin/setting/addslider')?>" method="POST">
+            <form action="<?php echo base_url('admin/Social/addsocial')?>" method="POST">
               <div class="modal-header header-color-modal bg-color-1 ">
-              <h4>Add Category </h4>
+              <h4>Add Socaical Icon </h4>
               <div class="modal-close-area modal-close-df">
                 <a class="close" data-dismiss="modal" href="#"><i
                     class="fa fa-close"></i></a>
@@ -36,18 +36,21 @@
               <div class="modal-body">
                 <div class="widget-content nopadding">
                   <div class="form-group">
-                      <input name="heading" type="text" class="form-control" placeholder="Slider Heading (optional)">
+                    <select class="form-control" name="link">
+	                    <option value="https://www.facebook.com/">facebook</option>
+											<option value="https://web.whatsapp.com/">whatsapp</option>
+											<option value="https://www.instagram.com/">instagram</option>
+											<option value="https://twitter.com/Twitter">twitter</option>
+											<option value="https://www.linkedin.com/">LinkedIn</option>
+											<option value="https://www.youtube.com/">YouTube</option>
+										</select>
                   </div>
-                    <div class="form-group">
-                        <textarea name="details" style="height: auto;width:100%;" placeholder="Enter some detail here (optional)"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <input name="url" type="url" class="form-control" placeholder="Button Url (optional)" style="color:blue;">
-                    </div>
-                    <span id="addfeaturepreview" >
-      							</span>
-                    <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
-                    <button id="addfeatureimage" type="button" class="btn btn-link" style="color:blue" name="button">Add Slider image</button>
+									<div class="form-group">
+										<label for="">Display Icon</label>
+										<button type="button" id='addIcon' class="btn btn-primary" name="button">Add Icon</button>
+										<div id="icon_view"></div>
+							   </div>
+
                     <div class="modal-footer">
                       <span id="msg" style="color: red;"></span>
                         <input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">
@@ -80,25 +83,20 @@
 								 </caption>
                  <tr>
                    <!-- <th data-field="state" data-checkbox="true"></th> -->
-                   <th>Heading</th>
-                   <th>Details</th>
-                   <th class="text-center">Image</th>
-              <th>Button</th>
+                   <th>URL</th>
+                   <th>Icon</th>
+
                    <th data-field="action">Action</th>
                  </tr>
-                 <?php foreach ($slider as $key => $value): ?>
+                 <?php foreach ($social as $key => $value): ?>
 
                    <tr>
-                     <td><?php echo $value['heading'] ?></td>
-                     <td>
-                       <?php echo $value['details'] ?>
-                     </td>
+                     <td><?php echo $value['link'] ?></td>
+
                      <td class="text-center">
-                       <img src="<?php echo base_url($value['source']) ?>" alt="" width="120" height="80">
+                      	<span class="<?php echo $value['icon'] ?>" style="color:black;font-size:30px;"></span>
                      </td>
-                     <td>
-                       <a href="<?php echo $value['buttonUrl'] ?>"></a>
-                     </td>
+
                      <td>
                        <a  href="<?php echo '#'.$key; ?>" data-toggle="modal"  data-original-title="Edit"> <button type="button"   class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
 
@@ -164,6 +162,14 @@
 			<!-- /Row -->
 </div>
 
+<style media="screen">
+#icon_view{
+	display: none;
+	height: 156px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+</style>
 
 	<!-- /Main Content -->
   <script>
@@ -187,3 +193,16 @@
   // })
 
   </script>
+	<script type="text/javascript">
+			$(document).ready(function(){
+				$('#addIcon').on('click', function(){
+					$.ajax({
+						url:'<?php echo base_url('admin/social/icons') ?>',
+						type: 'POST',
+			      success: function(response){
+			        $("#icon_view").show().html(response);
+			      }
+					});
+				});
+			});
+		</script>

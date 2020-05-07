@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class setting extends CI_Controller {
+class Social extends CI_Controller {
 
 	public function __construct()
 	{
@@ -16,29 +16,27 @@ class setting extends CI_Controller {
             $this->load->model('article_model');
 	}
   public function index(){
-
-  }
-
-	public function slider(){
 		$data= array();
 		$data['page'] ='Slider';
-		$data['slider'] = json_decode($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value, true);
-		$data['main_content']= $this->load->view('setting/slider',$data, true);
+		$data['social'] = json_decode($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value, true);
+		$data['main_content']= $this->load->view('setting/social',$data, true);
 		$this->load->view('index',$data);
+  }
+
+	public function socail(){
+
 	}
-	public function addslider(){
+	public function addsocial(){
 		if($_POST){
-			$slider=$this->security->xss_clean($_POST);
+			$data1=$this->security->xss_clean($_POST);
 			//echo print_r($slider);exit;
 			$data = [
-				'heading' => $slider['heading'],
-				'details' => $slider['details'],
-				'buttonUrl' => $slider['url'],
-				'source' => $slider['featureImage']
+				'link' => $data1['link'],
+				'icon' => $data1['icon']
 			];
-			$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '[]';
+			$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '[]';
 	//echo print_r($slider_value);exit;
-			$arr_data = json_decode($slider_value, true);
+			$arr_data = json_decode($social_value, true);
 			//echo print_r($arr_data);exit;
 			// Push user data to array
 			array_push($arr_data, $data);
@@ -47,9 +45,9 @@ class setting extends CI_Controller {
 			$data = [
 				"setting_value" => $jsondata,
 			];
-			$this->common_model->update($data, 'setting_name', 'home_slider', 'setting');
+			$this->common_model->update($data, 'setting_name', 'social_icon', 'setting');
 
-			$data['slider'] = $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value;
+			$data['slider'] = $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value;
 
 			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Slider Added Done'));
 
@@ -58,21 +56,19 @@ class setting extends CI_Controller {
 	}
 	public function editslider($id){
 		if($_POST){
-			$slider=$this->security->xss_clean($_POST);
+			$data1=$this->security->xss_clean($_POST);
 			//echo print_r($slider);exit;
 			$data = [
-				'heading' => $slider['heading'],
-				'details' => $slider['details'],
-				'buttonUrl' => $slider['url'],
-				'source' => $slider['featureImage']
+				'link' => $data1['link'],
+				'icon' => $data1['icon']
 			];
-			$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '[]';
+			$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '[]';
 	//echo print_r($slider_value);exit;
 			$arr_data = json_decode($slider_value, true);
 			//echo print_r($arr_data);exit;
 			// Push user data to array
 			unset($arr_data[$id]);
-			
+
 			array_push($arr_data, $data);
 
 			$jsondata = json_encode($arr_data);
@@ -105,5 +101,9 @@ class setting extends CI_Controller {
 		$this->session->set_flashdata(array('error' => 0, 'msg' => 'Slider Deleted Done'));
 
 		redirect($_SERVER['HTTP_REFERER'], 'refresh');
+	}
+	public function icons(){
+		header('Content-Type: text/html; charset=UTF-8');
+		echo $this->load->view('setting/icons');
 	}
 }

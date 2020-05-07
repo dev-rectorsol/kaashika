@@ -25,9 +25,8 @@
 																	<!-- main menu navbar start -->
 																	<nav class="desktop-menu">
 																			<ul>
-																					<li class="active"><a href="<?php echo base_url('web/home')?>">Home</a>
-																					</li>
-
+																					<li class="active"><a href="<?php echo base_url('web/home')?>">Home</a></li>
+	                                        <li><a href="<?php echo base_url('web/home/about')?>">About Us</a></li>
 																					<li><a href="<?php echo base_url('web/shop')?>">shop <i class="fa fa-angle-down"></i></a>
 																							<ul class="dropdown">
 																									<li><a href="#">shop grid layout <i class="fa fa-angle-right"></i></a>
@@ -89,15 +88,9 @@
 																									</li>
 																							</ul>
 																					</li>
-																					<li><a href="#">Campaigns</a>
 
-																					</li>
-																					<!-- <li><a href="#">Craft</a>
-
-																					</li> -->
-																					<li><a href="blog.html">Blog</a></li>
 																					<li><a href="<?php echo base_url('web/Home/contact')?>">Contact us</a></li>
-																					<li><a href="<?php echo base_url('web/Home/order')?>">Order </a></li>
+
 
 																			</ul>
 																	</nav>
@@ -420,12 +413,21 @@
 									<div class="col-lg-3 col-md-6">
 											<div class="widget-item">
 													<h6 class="widget-title">Follow Us</h6>
+													<?php if (is_array($social)): ?>
 													<div class="widget-body social-link">
-															<a href="#"><i class="fa fa-facebook"></i></a>
+														<?php foreach ($social as $value):?>
+															<a href="<?php echo $value['link']; ?>"><i class="<?php echo $value['icon']; ?>"></i></a>
+
+															<?php endforeach;?>
+													</div>
+												<?php else:?>
+													<div class="widget-body social-link">
+															<a href="#"><i class="fa fa-twitter"></i></a>
 															<a href="#"><i class="fa fa-twitter"></i></a>
 															<a href="#"><i class="fa fa-instagram"></i></a>
 															<a href="#"><i class="fa fa-youtube"></i></a>
 													</div>
+												<?php endif;?>
 											</div>
 									</div>
 							</div>

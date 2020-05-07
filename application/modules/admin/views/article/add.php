@@ -27,7 +27,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 		      <div class="row">
-		        <form action="<?php echo base_url('admin/Article/save')?>" method="POST">
+		        <form action="<?php echo base_url('admin/Article/add')?>" method="POST">
 		          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		            <div class="product-status-wrap drp-lst">
 
@@ -50,8 +50,8 @@
 		            <div class="product-status-wrap drp-lst">
 		              <span id="addfeaturepreview">
 		              </span>
-		              <button id="removepreview" type="button" class="btn btn-link hide">remove</button>
-		              <!-- <button id="addfeatureimage" type="button" class="btn btn-link" name="button">Add feature image</button> -->
+		              <button id="removepreview" type="button" class="btn btn-link hide" style="color:#667add;">remove</button>
+		              <button id="addfeatureimage" type="button" class="btn btn-link" name="button" style="color:#667add;">Add feature image</button>
 		              <div class="form-group">
 		                <label class="login2">Slug</label>
 		                <input name="slug" type="text" class="form-control" placeholder="slug">

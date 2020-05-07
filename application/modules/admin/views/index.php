@@ -240,8 +240,8 @@
 				</ul>
 			</li>
 			<li>
-				<a href="<?php echo base_url('admin/News')?>" data-toggle="collapse" data-target="#maps_dr">
-					<div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">News</span></div>
+				<a href="<?php echo base_url('admin/Testimonial')?>" data-toggle="collapse" data-target="#maps_dr">
+					<div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Testimonial</span></div>
 					<div class="clearfix"></div>
 				</a>
 
@@ -269,6 +269,9 @@
 				<ul id="setting" class="collapse collapse-level-1 two-col-list">
 					<li>
 						<a href="<?php echo base_url('admin/setting/slider')?>">Add Slider</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/Social')?>">Add Social icon</a>
 					</li>
 
 				</ul>

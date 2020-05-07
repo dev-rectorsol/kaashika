@@ -94,7 +94,7 @@
 <!-- Form Advance Init JavaScript -->
 		<script src="<?php echo base_url('optimum'); ?>/dist/js/form-advance-data.js"></script>
     <?php include("__media.php"); ?>
-  <?php include("__notification.php"); ?>
+    <?php include("__notification.php"); ?>
 </body>
 
 </html>

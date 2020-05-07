@@ -87,7 +87,7 @@ var refresh = $('button[name=refresh]');
 var counter = 0;
 var flickerAPI = "<?php echo base_url(FILE_JSON_INFO) ?>";
 var refraceAPI = "<?php echo base_url('admin/media/get_file_refrace') ?>";
-var image = ['png', 'jpg', 'jpeg'];
+var video = ['mp4', 'mkv'];
 var file = (function(){
     var result = null;
     function load(){
@@ -111,40 +111,60 @@ var file = (function(){
 })();
    // file.getHtml();
 (function(){
-  go_loop(0);
+  counter = go_loop(counter);
   $('#loadmore').on('click', function(){
-    go_loop(counter + 10);
-    counter = counter + 10;
+    counter =  go_loop(counter);
   })
   refresh.on('click', function(){
     $(this).attr('disabled', 'true');
     get_refrace();
   });
+
   $("select[name=mediatype]").on('change', function(){
     var type = $(this).val();
     if(type === 'image'){
-
+      window.location = "<?php echo base_url('admin/media') ?>"
     }else if (type === 'video'){
-      window.location = "<?php echo base_url('admin/media/videos') ?>"
+
     }
   });
+
 })();
 function go_loop(counter) {
+  var element = 0;
   var data = file.getHtml();
+  // console.log(counter);
   for(i = counter; i < data.length; i++) {
-      if(jQuery.inArray(data[i].extension, image) != -1) {
-        if (i <= (counter + 10)) {
-        var url = "<?php echo base_url() ?>" + data[i].dirname + '/' + data[i].basename;
-          $( "<img>" )
-          .attr({
-            "data-sizes": "auto",
-            "data-src": url,
-            // "data-srcset":  url + " 30w," + url + " 600w, " + url + " 900w",
-            "class": "lazyload blur-up",
-          })
-          .appendTo( load );
+      if(jQuery.inArray(data[i].extension, video) != -1) {
+        if (element < 3 ) {
+          // console.log(data[i]);
+          var url = "<?php echo base_url() ?>" + data[i].dirname + '/' + data[i].basename;
+          var path = "" + data[i].dirname + '/' + data[i].basename;
+          var name = "" + data[i].basename;
+          var extension = data[i].extension;
+          $(`<div class="col-sm-4 mix `+name+`">
+                      <div class="hpanel widget-int-shape responsive-mg-b-30 title">
+                        <div class="panel-body">
+                          <div class="text-center content-box __video-file"
+                          data-src="`+url+`"
+                          data-path="`+path+`"
+                          data-name="`+name+`">
+                          <div class="m icon-box">
+                            <video class="lazyloaded" width="250" height="180">
+                              <source type="video/`+extension+`" src="`+url+`" />
+                            </video>
+                          </div>
+                          <p class="small mg-t-box">
+                            <h5 class="m-b-xs">`+name+`</h5>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`)
+            .appendTo( load );
+            element++;
       } else {
-          break;
+        return i;
       }
     }else{
 

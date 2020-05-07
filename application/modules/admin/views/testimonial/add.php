@@ -1,6 +1,6 @@
 <div class="breadcome-area">
 			<div class="container-fluid">
-				<div class="row">
+				 <div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex no-block align-items-center">
 								<br/>
               <h6 class="page-title"><?php echo isset($page_name) ? $page_name : 'Dashbord';  ?></h6>
@@ -20,7 +20,7 @@
 
 						</div>
 					</div>
-				</div>
+       </div>
 
 
 <div class="container-fluid">
@@ -30,9 +30,9 @@
 		<div class="modal-dialog" role="document ">
 			<div class="modal-content">
 
-							<form action="<?php echo base_url('admin/Category/Add')?>" method="POST">
+							<form action="<?php echo base_url('admin/Testimonial/Add')?>" method="POST" enctype="multipart/form-data">
 								<div class="modal-header header-color-modal bg-color-1 ">
-								<h4>Add Category </h4>
+								<h4>Add Testimonial </h4>
 								<div class="modal-close-area modal-close-df">
 									<a class="close" data-dismiss="modal" href="#"><i
 											class="fa fa-close"></i></a>
@@ -40,33 +40,33 @@
 							</div>
 								<div class="modal-body">
 									<div class="widget-content nopadding">
-								<div class="form-group row">
-										<label class="control-label col-sm-3">Name</label>
-										<div class="col-sm-9">
-									    <input name="name" type="text" class="form-control" placeholder="Name">
-								   </div>
-								</div>
-								<div class="form-group row">
-									<label class="control-label col-sm-3">Parent</label>
-									<div class="col-sm-9">
-									  <input name="parent" type="text" class="form-control" placeholder="Parent">
-								  </div>
-							 </div>
-								<div class="form-group row">
-									<label class="control-label col-sm-3">Category</label>
-									<div class="col-sm-9">
-										<select name="icon" id="icon" class="form-control">
-										<option value="">Select icon</option>
-										<option value="book">Book</option>
-										<option value="assignment">assignment</option>
-										<option value="computer">Computer</option>
-										<option value="school">School</option>
-										<option value="alarm">Alarm</option>
-										<option value="bookmarks">Bookmarks</option>
-										<option value="settings">Settings</option>
-										</select>
-								 </div>
-								</div>
+										<div class="form-group row">
+												<label class="control-label col-sm-3">Name</label>
+												<div class="col-sm-9">
+											    <input name="name" type="text" class="form-control" placeholder="Name">
+										    </div>
+										</div>
+										<div class="form-group row">
+												<label class="control-label col-sm-3">Add Discription</label>
+												<div class="col-sm-9">
+												  <textarea name="discription"  coll="50" row="10" width="100%" required>Add a content here</textarea>
+											  </div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-3 control-label " for="example-input-small">
+	 											Add Image</label>
+	 										<div class="col-sm-9">
+	 											<input type="file" name="profile" class="form-control dropify input-sm" placeholder="image">
+			                </div>
+									 </div>
+									 <div class="form-group row">
+		 								<label class="col-sm-3 control-label " for="example-input-small">
+		 									Add Ratting</label>
+		 								<div class="col-sm-9">
+		 									<input type="text" name="ratting" maxlength="5" id="ratt" class="form-control input-sm" placeholder="Add Ratting">
+											<span id="error"></span>
+		 								</div>
+		 						 </div>
 								<div class="modal-footer">
 									<input type="hidden"
 										name="<?php echo $this->security->get_csrf_token_name();?>"
@@ -92,17 +92,18 @@
 									</caption>
 									<tr>
 										<th>S.No</th>
-										<th>Id</th>
 										<th>Name</th>
-										<th>Parent</th>
+										<th>Content</th>
+										<th>image</th>
 										<th>Setting</th>
 									</tr>
-									<?php $i=1; foreach($aim as $row){?>
+									<?php $i=1; foreach($testimonial_data as $row){?>
 									<tr>
 										<td> <?php echo $i ?></td>
-										<td><?php echo $row['id'] ?></td>
+
 										<td><?php echo $row['name'] ?></td>
-										<td><?php echo $row['parent'] ?></td>
+										<td><?php echo $row['discription'] ?></td>
+										<td><img src="<?php echo base_url('uploads/testimonial/').$row['image']?>"></td>
 										<td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
 												data-toggle="modal" data-original-title="Edit"><i
 													class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -170,10 +171,21 @@
 				if (del == true) {
 					var sureDel = confirm("Are you sure want to delete");
 					if (sureDel == true) {
-						window.location = "<?php echo base_url()?>admin/Category/Delete/" + id;
+						window.location = "<?php echo base_url()?>admin/testimonial/Delete/" + id;
 					}
 
 				}
 			}
+
+			$(document).ready(function(){
+				$("#ratt").keyup(function(){
+      var rating =$('#ratt').val();
+		  if(rating>5){
+				 $("#error").text("please enter less than  5");
+				 $("#error").css("color","red");
+			}
+        });
+     });
+
 		</script>
 </div>

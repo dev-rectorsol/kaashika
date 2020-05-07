@@ -62,19 +62,15 @@
 
 											<textarea type="text" name="desc"
 												class="form-control summernote"></textarea>
-
 										</div>
 
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-2 control-label " for="example-input-small"> Price</label>
 										<div class="col-sm-9">
-
 											<input type="text" name="price" class="form-control input-sm"
 												placeholder="Price">
-
 										</div>
-
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-2 control-label " for="example-input-small">

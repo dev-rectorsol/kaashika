@@ -131,7 +131,7 @@ class Product extends CI_Controller {
          					 $_FILES['file']['name'] = $_FILES['pics']['name'][$i];
          					 $_FILES['file']['type'] = $_FILES['pics']['type'][$i];
          					 $_FILES['file']['tmp_name'] = $_FILES['pics']['tmp_name'][$i];
-							$_FILES['file']['error'] = $_FILES['pics']['error'][$i];
+							     $_FILES['file']['error'] = $_FILES['pics']['error'][$i];
          					 $_FILES['file']['size'] = $_FILES['pics']['size'][$i];
 
          					 // Set preference
@@ -192,7 +192,7 @@ class Product extends CI_Controller {
 		//  echo "<pre>";
 		// 				 print_r($_FILES);
 		// 				 exit();
-		
+
 			$config['upload_path']          = './uploads/product';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 11264;
