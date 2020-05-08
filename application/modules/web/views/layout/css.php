@@ -28,8 +28,15 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/plugins/nice-select.css">
     <!-- jquery UI css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/plugins/jqueryui.min.css">
+    <!-- Line CSS
+   ============================================ -->
+
+   <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/icons.css">
+   <!-- <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/font-awesome.min.css"> -->
+   <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/line-awesome.css">
     <!-- main style css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/style.css">
+
 
 </head>
 

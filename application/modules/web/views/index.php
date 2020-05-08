@@ -31,10 +31,12 @@
 																							<ul class="dropdown">
 																									<li><a href="#">shop grid layout <i class="fa fa-angle-right"></i></a>
 																											<ul class="dropdown">
-																													<li><a href="#">shop grid left sidebar</a></li>
-																													<li><a href="#">shop grid right sidebar</a></li>
-																													<li><a href="#">shop grid full 3 col</a></li>
-																													<li><a href="#">shop grid full 4 col</a></li>
+																												<?php foreach ($category as $value) {?>
+																													<li><a href="#"><?php echo $value['name']?></a></li>
+
+																													<?php
+																												}?>
+
 																											</ul>
 																									</li>
 
@@ -42,7 +44,7 @@
 																					</li>
 																					<li class="position-static"><a href="#">Colection <i class="fa fa-angle-down"></i></a>
 																							<ul class="megamenu dropdown">
-																									<li class="mega-title"><span>column 01</span>
+																									<!-- <li class="mega-title"><span>column 01</span>
 																											<ul>
 																													<li><a href="<?php echo base_url('web/shop')?>">shop grid left
 																																	sidebar</a></li>
@@ -51,8 +53,8 @@
 																													<li><a href="<?php echo base_url('web/shop/shop_list_left')?>">shop list left sidebar</a></li>
 																													<li><a href="#">shop list right sidebar</a></li>
 																											</ul>
-																									</li>
-																									<li class="mega-title"><span>column 02</span>
+																									</li> -->
+																									<li class="mega-title"><span>column 01</span>
 																											<ul>
 																													<li><a href="<?php echo base_url('web/Product')?>">product details</a></li>
 																													<li><a href="#">product	details affiliate</a></li>
@@ -60,7 +62,7 @@
 																													<li><a href="#">product details group</a></li>
 																											</ul>
 																									</li>
-																									<li class="mega-title"><span>column 03</span>
+																									<li class="mega-title"><span>column 02</span>
 																											<ul>
 																													<li><a href="<?php echo base_url('web/Collection/cart')?>">cart</a></li>
 																													<li><a href="<?php echo base_url('web/Collection/checkout')?>">checkout</a></li>
@@ -68,7 +70,7 @@
 																													<li><a href="<?php echo base_url('web/Collection/wishlist')?>">wishlist</a></li>
 																											</ul>
 																									</li>
-																									<li class="mega-title"><span>column 04</span>
+																									<li class="mega-title"><span>column 03</span>
 																											<ul>
 																													<li><a href="<?php echo base_url('web/Home/my_account')?>">my-account</a></li>
 																													<li><a href="<?php echo base_url('login')?>">login-register</a></li>
@@ -400,12 +402,12 @@
 													<h6 class="widget-title">Information</h6>
 													<div class="widget-body">
 															<ul class="info-list">
-																	<li><a href="#">about us</a></li>
-																	<li><a href="#">Delivery Information</a></li>
+																	<li><a href="<?php echo base_url('web/home/about')?>">about us</a></li>
+																	<!-- <li><a href="#">Delivery Information</a></li>
 																	<li><a href="#">privet policy</a></li>
-																	<li><a href="#">Terms & Conditions</a></li>
-																	<li><a href="#">contact us</a></li>
-																	<li><a href="#">site map</a></li>
+																	<li><a href="#">Terms & Conditions</a></li> -->
+																	<li><a href="<?php echo base_url('web/home/contact')?>">contact us</a></li>
+																	<!-- <li><a href="#">site map</a></li> -->
 															</ul>
 													</div>
 											</div>
@@ -416,13 +418,13 @@
 													<?php if (is_array($social)): ?>
 													<div class="widget-body social-link">
 														<?php foreach ($social as $value):?>
-															<a href="<?php echo $value['link']; ?>"><i class="<?php echo $value['icon']; ?>"></i></a>
+															<a href="<?php echo $value['link']; ?>"><i class="<?php echo $value['icon'];?>"></i></a>
 
 															<?php endforeach;?>
 													</div>
 												<?php else:?>
 													<div class="widget-body social-link">
-															<a href="#"><i class="fa fa-twitter"></i></a>
+															<a href="#"><i class="icon-line-awesome-youtube"></i></a>
 															<a href="#"><i class="fa fa-twitter"></i></a>
 															<a href="#"><i class="fa fa-instagram"></i></a>
 															<a href="#"><i class="fa fa-youtube"></i></a>
@@ -431,7 +433,7 @@
 											</div>
 									</div>
 							</div>
-							<div class="row align-items-center mt-20">
+							<!-- <div class="row align-items-center mt-20">
 									<div class="col-md-6">
 											<div class="newsletter-wrapper">
 													<h6 class="widget-title-text">Signup for newsletter</h6>
@@ -440,20 +442,20 @@
 															<button class="news-btn" id="mc-submit">Subscribe</button>
 													</form>
 													<!-- mailchimp-alerts Start -->
-													<div class="mailchimp-alerts">
-															<div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-															<div class="mailchimp-success"></div><!-- mailchimp-success end -->
-															<div class="mailchimp-error"></div><!-- mailchimp-error end -->
-													</div>
+													<!-- <div class="mailchimp-alerts">
+															<div class="mailchimp-submitting"></div>
+															<div class="mailchimp-success"></div>
+															<div class="mailchimp-error"></div>
+													</div> -->
 													<!-- mailchimp-alerts end -->
-											</div>
+											<!-- </div>
 									</div>
 									<div class="col-md-6">
 											<div class="footer-payment">
 													<img src="<?php echo base_url() ?>/assets/img/payment.png" alt="payment method">
 											</div>
 									</div>
-							</div>
+							</div>  -->
 					</div>
 			</div>
 			<div class="footer-bottom">

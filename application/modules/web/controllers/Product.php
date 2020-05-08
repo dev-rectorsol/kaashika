@@ -13,6 +13,8 @@ class Product extends CI_Controller {
 	public function index(){
         $data = array();
         $data['page'] = 'product details';
+				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
+				$data['social'] = json_decode($social_value, true);
         $data['main_content'] = $this->load->view('product/product_details', $data, true);
         $this->load->view('index', $data);
     }
@@ -20,6 +22,8 @@ class Product extends CI_Controller {
 		public function product_variable(){
 				$data = array();
 				$data['page'] = 'Cart';
+				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
+				$data['social'] = json_decode($social_value, true);
 				$data['product_data']=  $this->Common_model->select('products');
 				$data['user_data']=  $this->Common_model->select('user_details');
 			  $data['main_content'] = $this->load->view('product/product_variable', $data, true);

@@ -31,6 +31,8 @@ class Home extends CI_Controller {
     public function about(){
         $data = array();
         $data['page'] = 'About Us';
+				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
+				$data['social'] = json_decode($social_value, true);
         $data['main_content'] = $this->load->view('about_us', $data, true);
         $this->load->view('index', $data);
     }
@@ -59,6 +61,8 @@ class Home extends CI_Controller {
     public function contact(){
         $data = array();
         $data['page'] = 'contact';
+				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
+				$data['social'] = json_decode($social_value, true);
         $data['main_content'] = $this->load->view('contact', $data, true);
         $this->load->view('index', $data);
     }
