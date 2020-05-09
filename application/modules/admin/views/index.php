@@ -276,6 +276,12 @@
 					<li>
 						<a href="<?php echo base_url('admin/setting/contact')?>">Add Contact</a>
 					</li>
+					<li>
+						<a href="<?php echo base_url('admin/setting/title')?>">Add Application Title</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/setting/logo')?>">Add Application Logo</a>
+					</li>
 
 				</ul>
 			</li>

@@ -11,9 +11,11 @@
 											<!-- start logo area -->
 											<div class="col-lg-2">
 													<div class="logo">
+														<?php foreach($logo as $value):?>
 															<a href="index.html">
-																	<img src="<?php echo base_url() ?>/assets/img/logo/logo.png" alt="Brand Logo">
+																	<img src="<?php echo base_url($value['source']) ?>" alt="Brand Logo" height="70px;">
 															</a>
+														<?php endforeach;?>
 													</div>
 											</div>
 											<!-- start logo area -->
@@ -143,9 +145,11 @@
 									<div class="col-12">
 											<div class="mobile-main-header">
 													<div class="mobile-logo">
+														<?php foreach($logo as $value):?>
 															<a href="index.html">
-																	<img src="<?php echo base_url() ?>/assets/img/logo/logo.png" alt="Brand Logo">
+																	<img src="<?php echo base_url($value['source']) ?>" alt="Brand Logo">
 															</a>
+														<?php endforeach;?>
 													</div>
 													<div class="mobile-menu-toggler">
 															<div class="mini-cart-wrap">
@@ -352,16 +356,20 @@
 							<div class="row">
 									<div class="col-lg-3 col-md-6">
 											<div class="widget-item">
+												<?php foreach ($logo as $value): ?>
+
+
 													<div class="widget-title">
 															<div class="widget-logo">
 																	<a href="index.html">
-																			<img src="<?php echo base_url() ?>/assets/img/logo/logo.png" alt="brand logo">
+																			<img src="<?php echo base_url($value['source']) ?>" alt="brand logo" height="80px">
 																	</a>
 															</div>
 													</div>
 													<div class="widget-body">
-															<p>We are a team of designers and developers that create high quality wordpress, shopify, Opencart </p>
+															<p><?php echo $value['discription']?> </p>
 													</div>
+												<?php endforeach;?>
 											</div>
 									</div>
 									<div class="col-lg-3 col-md-6">

@@ -18,10 +18,19 @@ class Home extends CI_Controller {
 				$data['homeSlider'] = 1;
 			  $slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '';
 			  $data['slider'] = json_decode($slider_value, true);
+
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 			  $data['social'] = json_decode($social_value, true);
+
 				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
+      	$data['contact'] = json_decode($contact_value, true);
+
+				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
+		    $data['title'] = json_decode($title_value, true);
+
+				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
+				$data['logo'] = json_decode($logo, true);
+
 				$data['category']=  $this->Common_model->select('category');
         $data['article_data']=  $this->article_model->select_article_data('article');
         $data['product']=  $this->Common_model->select('products');
@@ -109,12 +118,7 @@ class Home extends CI_Controller {
         $data['main_content'] = $this->load->view('faq', $data, true);
         $this->load->view('index', $data);
     }
-		// public function shop(){
-		// 		$data = array();
-		// 		$data['page'] = 'shop';
-		// 		$data['main_content'] = $this->load->view('shop/shop', $data, true);
-		// 		$this->load->view('index', $data);
-		// }
+
 
 
 }

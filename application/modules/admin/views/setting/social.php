@@ -37,6 +37,7 @@
                 <div class="widget-content nopadding">
                   <div class="form-group">
                     <select class="form-control" name="link">
+											<option value="select">Select</option>
 	                    <option value="https://www.facebook.com/">facebook</option>
 											<option value="https://web.whatsapp.com/">whatsapp</option>
 											<option value="https://www.instagram.com/">instagram</option>
@@ -109,10 +110,10 @@
 									 <div class="modal-dialog" role="document ">
 										 <div class="modal-content">
                        <form  id="sliderForm" class="form-horizontal" method="post"
-                         action="<?php echo base_url('admin/setting/editslider/').$key?>"
+                         action="<?php echo base_url('admin/socail/editsocail/').$key?>"
                          name="basic_validate" id="basic_validate" novalidate="novalidate">
                          <div class="modal-header header-color-modal bg-color-1 ">
-                           <h4 class="modal-title">Edit slider</h4>
+                           <h4 class="modal-title">Edit socail</h4>
                            <div class="modal-close-area modal-close-df">
                              <a class="close" data-dismiss="modal" href="#"><i
                                  class="fa fa-close"></i></a>
@@ -121,24 +122,22 @@
                         <div class="modal-body">
                            <div class="widget-content nopadding">
 
-															 <div class="form-group">
-						                       <input name="heading" type="text" class="form-control" placeholder="Slider Heading (optional)" value="<?php echo $value['heading'] ?>">
-						                   </div>
-
-																<div class="form-group">
-		 				                        <textarea name="details" style="height: auto;width:100%;" placeholder="Enter some detail here (optional)"><?php echo $value['details'] ?></textarea>
-		 				                    </div>
-
-		 				                    <div class="form-group">
-		 				                      <input name="url" type="url" class="form-control" placeholder="Button Url (optional)" style="color:blue;" value="<?php echo $value['buttonUrl'] ?>">
-		 				                    </div>
-
-	 				                      <span id="addfeaturepreview"></span>
-																<!-- <span><img src="<?php echo base_url($value['source']) ?>" alt="" width="120" height="80"></span> -->
-
-		 				                    <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
-		 				                    <button id="addfeatureimage" type="button" class="btn btn-link" style="color:blue" name="button">Add Slider image</button>
-
+														 <div class="form-group">
+															 <select class="form-control" name="link">
+																<option value="select">Select</option>
+																<option value="https://www.facebook.com/">facebook</option>
+																<option value="https://web.whatsapp.com/">whatsapp</option>
+																<option value="https://www.instagram.com/">instagram</option>
+																<option value="https://twitter.com/Twitter">twitter</option>
+																<option value="https://www.linkedin.com/">LinkedIn</option>
+																<option value="https://www.youtube.com/">YouTube</option>
+															</select>
+														 </div>
+														<div class="form-group">
+															<label for="">Display Icon</label>
+															<button type="button" id='addIcon' class="btn btn-primary" name="button">Add Icon</button>
+															<div id="icon_view"></div>
+													 </div>
 			                         <div class="modal-footer">
 																   <span id="msg" style="color: red;"></span>
 																	 <input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">

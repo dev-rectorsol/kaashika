@@ -54,7 +54,7 @@ class Social extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
 		}
 	}
-	public function editslider($id){
+	public function editsocail($id){
 		if($_POST){
 			$data1=$this->security->xss_clean($_POST);
 			//echo print_r($slider);exit;
@@ -75,11 +75,11 @@ class Social extends CI_Controller {
 			$data = [
 				"setting_value" => $jsondata,
 			];
-			$this->common_model->update($data, 'setting_name', 'home_slider', 'setting');
+			$this->common_model->update($data, 'setting_name', 'social_icon', 'setting');
 
-			$data['slider'] = $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value;
+			$data['slider'] = $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value;
 
-			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Slider Added Done'));
+			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Edit socail Done'));
 
 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
 		}

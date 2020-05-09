@@ -1,5 +1,4 @@
 
-
 		<div class="container-fluid">
 			<!-- Title -->
 			<div class="row heading-bg">
@@ -25,9 +24,9 @@
 				<div class="modal-dialog" role="document ">
 					<div class="modal-content">
 
-            <form action="<?php echo base_url('admin/setting/addcontact')?>" method="POST">
+            <form action="<?php echo base_url('admin/setting/addlogo')?>" method="POST">
               <div class="modal-header header-color-modal bg-color-1 ">
-              <h4>Add Contact Us </h4>
+              <h4>Add Application Logo</h4>
               <div class="modal-close-area modal-close-df">
                 <a class="close" data-dismiss="modal" href="#"><i
                     class="fa fa-close"></i></a>
@@ -35,15 +34,14 @@
             </div>
               <div class="modal-body">
                 <div class="widget-content nopadding">
-									<div class="form-group">
-                      <input name="address" type="text" class="form-control" placeholder="Address">
+                  <div class="form-group">
+                      <input name="discription" type="text" class="form-control" placeholder="Discription">
                   </div>
-									<div class="form-group">
-                      <input name="email" type="text" class="form-control" placeholder="Email Id">
-                  </div>
-									<div class="form-group">
-                      <input name="phone" type="text" class="form-control" placeholder="Contact Number">
-                  </div>
+
+                    <span id="addfeaturepreview" ></span>
+
+                    <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
+                    <button id="addfeatureimage" type="button" class="btn btn-link" style="color:blue" name="button">Add Slider image</button>
                     <div class="modal-footer">
                       <span id="msg" style="color: red;"></span>
                         <input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">
@@ -76,24 +74,26 @@
 								 </caption>
                  <tr>
                    <!-- <th data-field="state" data-checkbox="true"></th> -->
-									 <th>Address</th>
-                   <th>Email</th>
-                   <th>contact number</th>
+                   <th>Title</th>
+
+                   <th class="text-center">Image</th>
 
                    <th data-field="action">Action</th>
                  </tr>
-                 <?php foreach ($contact as $key => $value): ?>
+                 <?php foreach ($app_logo as $key => $value): ?>
 
                    <tr>
-                     <td><?php echo $value['address'] ?></td>
-                     <td><?php echo $value['email'] ?></td>
-                     <td><?php echo $value['phone'] ?></td>
+                     <td><?php echo $value['discription'] ?></td>
+
+                     <td class="text-center">
+                       <img src="<?php echo base_url($value['source']) ?>" alt="" width="120" height="80">
+                     </td>
 
                      <td>
                        <a  href="<?php echo '#'.$key; ?>" data-toggle="modal"  data-original-title="Edit"> <button type="button"   class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
-
                        <button type="button" class="btn btn-danger" onclick="delete_detail('<?php echo $key; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                      </td>
+
                    </tr>
 
 							 <div id="<?php echo $key; ?>"
@@ -101,10 +101,10 @@
 									 <div class="modal-dialog" role="document ">
 										 <div class="modal-content">
                        <form  id="sliderForm" class="form-horizontal" method="post"
-                         action="<?php echo base_url('admin/setting/editcontact/').$key?>"
+                         action="<?php echo base_url('admin/setting/editlogo/').$key?>"
                          name="basic_validate" id="basic_validate" novalidate="novalidate">
                          <div class="modal-header header-color-modal bg-color-1 ">
-                           <h4 class="modal-title">Edit contact</h4>
+                           <h4 class="modal-title">Edit slider</h4>
                            <div class="modal-close-area modal-close-df">
                              <a class="close" data-dismiss="modal" href="#"><i
                                  class="fa fa-close"></i></a>
@@ -112,15 +112,15 @@
                          </div>
                         <div class="modal-body">
                            <div class="widget-content nopadding">
+
 														 <div class="form-group">
-														 		<input name="address" type="text" class="form-control" placeholder="Address" value="<?php echo $value['address']?>">
+																 <input name="discription" type="text" class="form-control" placeholder="Title" value="<?php echo $value['discription']?>">
 														 </div>
-														 <div class="form-group">
-														 		<input name="email" type="text" class="form-control" placeholder="Email Id" value="<?php echo $value['email']?>">
-														 </div>
-														 <div class="form-group">
-														 		<input name="phone" type="text" class="form-control" placeholder="Contact Number" value="<?php echo $value['phone']?>">
-														 </div>
+
+															 <span id="addfeaturepreview" ></span>
+															 <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
+															 <button id="addfeatureimage" type="button" class="btn btn-link" style="color:blue" name="button">Add Slider image</button>
+
 			                         <div class="modal-footer">
 																   <span id="msg" style="color: red;"></span>
 																	 <input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">
@@ -144,14 +144,6 @@
 			<!-- /Row -->
 </div>
 
-<style media="screen">
-#icon_view{
-	display: none;
-	height: 156px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
-</style>
 
 	<!-- /Main Content -->
   <script>
@@ -160,7 +152,7 @@
       if (del == true) {
         var sureDel = confirm("Are you sure want to delete");
         if (sureDel == true) {
-          window.location = "<?php echo base_url()?>admin/setting/deletecontact/" + id;
+          window.location = "<?php echo base_url()?>admin/setting/deletelogo/" + id;
         }
 
       }
@@ -175,16 +167,3 @@
   // })
 
   </script>
-	<script type="text/javascript">
-			$(document).ready(function(){
-				$('#addIcon').on('click', function(){
-					$.ajax({
-						url:'<?php echo base_url('admin/social/icons') ?>',
-						type: 'POST',
-			      success: function(response){
-			        $("#icon_view").show().html(response);
-			      }
-					});
-				});
-			});
-		</script>

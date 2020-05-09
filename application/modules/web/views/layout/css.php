@@ -3,13 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Corano</title>
+    <?php foreach($title as $value):?>
+    <title><?php echo $value['title']?></title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url() ?>/assets/img/favicon.ico">
-
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url($value['source']) ?>/assets/img/favicon.ico">
+   <?php endforeach;?>
     <!-- CSS
 	============================================ -->
     <!-- google fonts -->
