@@ -72,7 +72,7 @@ class setting extends CI_Controller {
 			//echo print_r($arr_data);exit;
 			// Push user data to array
 			unset($arr_data[$id]);
-			
+
 			array_push($arr_data, $data);
 
 			$jsondata = json_encode($arr_data);
@@ -103,6 +103,65 @@ class setting extends CI_Controller {
 		$this->common_model->update($data, 'setting_name', 'home_slider', 'setting');
 
 		$this->session->set_flashdata(array('error' => 0, 'msg' => 'Slider Deleted Done'));
+
+		redirect($_SERVER['HTTP_REFERER'], 'refresh');
+	}
+
+	// Add contact Us details
+	public function contact(){
+		$data= array();
+		$data['page'] ='Slider';
+		$data['contact'] = json_decode($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value, true);
+		$data['main_content']= $this->load->view('setting/contact',$data, true);
+		$this->load->view('index',$data);
+	}
+	public function addcontact(){
+		if($_POST){
+			$contact_us=$this->security->xss_clean($_POST);
+			//echo print_r($slider);exit;
+			$data = [
+				'address' => $contact_us['address'],
+				'email' => $contact_us['email'],
+				'phone' => $contact_us['phone'],
+				// 'icon' => $contact_us['icon'],
+				'active'=>1,
+				'deactive'=>0
+			];
+			$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '[]';
+	//echo print_r($slider_value);exit;
+			$arr_data = json_decode($contact_value, true);
+			//echo print_r($arr_data);exit;
+			// Push user data to array
+			array_push($arr_data, $data);
+
+			$jsondata = json_encode($arr_data);
+			$data = [
+				"setting_value" => $jsondata,
+			];
+			$this->common_model->update($data, 'setting_name', 'contact_us', 'setting');
+
+			$data['slider'] = $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value;
+
+			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Contact Added Done'));
+
+			redirect($_SERVER['HTTP_REFERER'], 'refresh');
+		}
+	}
+	public function deletecontact($id){
+		$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '[]';
+
+		$arr_data = json_decode($slider_value, true);
+
+		unset($arr_data[$id]);
+
+		$jsondata = json_encode($arr_data);
+
+		$data = [
+			"setting_value" => $jsondata,
+		];
+		$this->common_model->update($data, 'setting_name', 'contact_us', 'setting');
+
+		$this->session->set_flashdata(array('error' => 0, 'msg' => 'contact Deleted Done'));
 
 		redirect($_SERVER['HTTP_REFERER'], 'refresh');
 	}

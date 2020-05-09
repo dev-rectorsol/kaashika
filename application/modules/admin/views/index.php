@@ -273,6 +273,9 @@
 					<li>
 						<a href="<?php echo base_url('admin/Social')?>">Add Social icon</a>
 					</li>
+					<li>
+						<a href="<?php echo base_url('admin/setting/contact')?>">Add Contact</a>
+					</li>
 
 				</ul>
 			</li>

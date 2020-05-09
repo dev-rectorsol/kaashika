@@ -469,7 +469,6 @@ class Auth
     {
         $this->CI->session->unset_userdata(array("userID", "username", "loginStatus"));
         $this->CI->session->sess_destroy();
-
         return true;
     }
 }
