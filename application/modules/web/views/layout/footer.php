@@ -1,10 +1,11 @@
 <!-- JS
 ============================================ -->
 
-<!-- Modernizer JS -->
-<script src="<?php echo base_url() ?>/assets/js/vendor/modernizr-3.6.0.min.js"></script>
 <!-- jQuery JS -->
 <script src="<?php echo base_url() ?>/assets/js/vendor/jquery-3.3.1.min.js"></script>
+
+<!-- Modernizer JS -->
+<script src="<?php echo base_url() ?>/assets/js/vendor/modernizr-3.6.0.min.js"></script>
 <!-- Popper JS -->
 <script src="<?php echo base_url() ?>/assets/js/vendor/popper.min.js"></script>
 <!-- Bootstrap JS -->

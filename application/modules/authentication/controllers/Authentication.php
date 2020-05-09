@@ -12,12 +12,11 @@ class Authentication extends CI_Controller {
 
 
     public function index() {
-    // echo print_r($this->session->userdata());exit;
-      // if(check()){
-      //   redirect(base_url(), 'refresh');
-      // }
+      // echo print_r($this->session->userdata());exit;
+      if(check()){
+        redirect(base_url(), 'refresh');
+      }
       if($_POST){
-      //  pre($_POST);exit;
         $temp = $this->auth->login($_POST);
         if($temp['status']){
           redirect(base_url(), 'refresh');

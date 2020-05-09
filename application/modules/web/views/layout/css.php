@@ -16,10 +16,10 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900" rel="stylesheet"> -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/vendor/bootstrap.min.css">
-    <!-- Pe-icon-7-stroke CSS -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/vendor/pe-icon-7-stroke.css">
     <!-- Font-awesome CSS -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/vendor/font-awesome.min.css">
+    <!-- Pe-icon-7-stroke CSS -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/vendor/pe-icon-7-stroke.css">
     <!-- Slick slider css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/plugins/slick.min.css">
     <!-- animate css -->
@@ -28,12 +28,10 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/plugins/nice-select.css">
     <!-- jquery UI css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/plugins/jqueryui.min.css">
-    <!-- Line CSS
-   ============================================ -->
+    <!-- Line CSS-->
+    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/icons.css">
 
-   <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/icons.css">
-   <!-- <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/font-awesome.min.css"> -->
-   <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/line-awesome.css">
+<!-- ============================================  -->
     <!-- main style css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/style.css">
 

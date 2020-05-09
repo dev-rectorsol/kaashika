@@ -44,33 +44,17 @@
 																					</li>
 																					<li class="position-static"><a href="#">Colection <i class="fa fa-angle-down"></i></a>
 																							<ul class="megamenu dropdown">
-																									<!-- <li class="mega-title"><span>column 01</span>
-																											<ul>
-																													<li><a href="<?php echo base_url('web/shop')?>">shop grid left
-																																	sidebar</a></li>
-																													<li><a href="#">shop grid right
-																																	sidebar</a></li>
-																													<li><a href="<?php echo base_url('web/shop/shop_list_left')?>">shop list left sidebar</a></li>
-																													<li><a href="#">shop list right sidebar</a></li>
-																											</ul>
-																									</li> -->
+
 																									<li class="mega-title"><span>column 01</span>
 																											<ul>
-																													<li><a href="<?php echo base_url('web/Product')?>">product details</a></li>
-																													<li><a href="#">product	details affiliate</a></li>
-																													<li><a href="<?php echo base_url('web/Product/product_variable')?>">product details variable</a></li>
-																													<li><a href="#">product details group</a></li>
-																											</ul>
-																									</li>
-																									<li class="mega-title"><span>column 02</span>
-																											<ul>
+																												  <li><a href="<?php echo base_url('web/Product')?>">product details</a></li>
 																													<li><a href="<?php echo base_url('web/Collection/cart')?>">cart</a></li>
 																													<li><a href="<?php echo base_url('web/Collection/checkout')?>">checkout</a></li>
 																													<li><a href="<?php echo base_url('web/Collection/compare')?>">compare</a></li>
 																													<li><a href="<?php echo base_url('web/Collection/wishlist')?>">wishlist</a></li>
 																											</ul>
 																									</li>
-																									<li class="mega-title"><span>column 03</span>
+																									<li class="mega-title"><span>column 02</span>
 																											<ul>
 																													<li><a href="<?php echo base_url('web/Home/my_account')?>">my-account</a></li>
 																													<li><a href="<?php echo base_url('login')?>">login-register</a></li>
@@ -78,7 +62,7 @@
 																													<li><a href="<?php echo base_url('web/Home/contact')?>">contact us</a></li>
 																											</ul>
 																									</li>
-																									<li class="megamenu-banners d-none d-lg-block">
+																									<!-- <li class="megamenu-banners d-none d-lg-block">
 																											<a href="product-details.html">
 																													<img src="<?php echo base_url() ?>/assets/img/banner/img1-static-menu.jpg" alt="">
 																											</a>
@@ -87,7 +71,7 @@
 																											<a href="product-details.html">
 																													<img src="<?php echo base_url() ?>/assets/img/banner/img2-static-menu.jpg" alt="">
 																											</a>
-																									</li>
+																									</li> -->
 																							</ul>
 																					</li>
 
@@ -126,7 +110,7 @@
 																						</ul>
 																			</li>
 																			<li>
-																					<a href="wishlist.html">
+																					<a href="<?php echo base_url('web/collection/wishlist')?>">
 																							<i class="pe-7s-like"></i>
 																							<div class="notification">0</div>
 																					</a>
@@ -229,21 +213,18 @@
 																			<li class="mega-title menu-item-has-children"><a href="#">column 02</a>
 																					<ul class="dropdown">
 																							<li><a href="#">product details</a></li>
-																							<li><a href="#">product
-																											details
-																											affiliate</a></li>
-																							<li><a href="#">product details
-																											variable</a></li>
-																							<li><a href="#">product details
-																											group</a></li>
+																							<li><a href="#">product details affiliate</a></li>
+																							<li><a href="#">product details variable</a></li>
+																							<li><a href="#">product details group</a></li>
+
 																					</ul>
 																			</li>
 																			<li class="mega-title menu-item-has-children"><a href="#">column 03</a>
 																					<ul class="dropdown">
-																							<li><a href="cart.html">cart</a></li>
-																							<li><a href="checkout.html">checkout</a></li>
-																							<li><a href="compare.html">compare</a></li>
-																							<li><a href="wishlist.html">wishlist</a></li>
+																							<li><a href="<?php echo base_url('web/collection/cart')?>">cart</a></li>
+																							<li><a href="<?php echo base_url('web/collection/checkout')?>">checkout</a></li>
+																							<li><a href="<?php echo base_url('web/collection/compare')?>">compare</a></li>
+																							<li><a href="<?php echo base_url('web/collection/wishlist')?>">wishlist</a></li>
 																					</ul>
 																			</li>
 																			<li class="mega-title menu-item-has-children"><a href="#">column 04</a>
@@ -276,9 +257,9 @@
 																			<li class="menu-item-has-children"><a href="#">products details</a>
 																					<ul class="dropdown">
 																							<li><a href="#">product details</a></li>
-																							<li><a href="#">product details affiliate</a></li>
+																							<!-- <li><a href="#">product details affiliate</a></li> -->
 																							<li><a href="#">product details variable</a></li>
-																							<li><a href="#">product details group</a></li>
+																							<!-- <li><a href="#">product details group</a></li> -->
 																					</ul>
 																			</li>
 																	</ul>
@@ -648,8 +629,8 @@
 									</div>
 
 									<div class="minicart-button">
-											<a href="cart.html"><i class="fa fa-shopping-cart"></i> View Cart</a>
-											<a href="cart.html"><i class="fa fa-share"></i> Checkout</a>
+											<a href="<?php echo base_url('web/collection/cart')?>"><i class="fa fa-shopping-cart"></i> View Cart</a>
+											<a href="<?php echo base_url('web/collection/wishlist')?>"><i class="fa fa-share"></i> Checkout</a>
 									</div>
 							</div>
 					</div>
