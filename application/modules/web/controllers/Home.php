@@ -32,7 +32,8 @@ class Home extends CI_Controller {
 				$data['logo'] = json_decode($logo, true);
 
 				$data['category']=  $this->Common_model->select('category');
-        $data['article_data']=  $this->article_model->select_article_data('article');
+        $data['article_data']=  $this->article_model->select_article_data();
+				// print_r($data['article_data']);exit;
         $data['product']=  $this->Common_model->select('products');
 				$data['testimonial']=  $this->Common_model->select('testimonial');
 				$data['product_data']=  $this->Common_model->select_limit_value('products');
@@ -45,6 +46,15 @@ class Home extends CI_Controller {
         $data['page'] = 'About Us';
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
+				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
+				$data['title'] = json_decode($title_value, true);
+
+				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
+				$data['logo'] = json_decode($logo, true);
+
+				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
+				$data['contact'] = json_decode($contact_value, true);
+				$data['category']=  $this->Common_model->select('category');
         $data['main_content'] = $this->load->view('about_us', $data, true);
         $this->load->view('index', $data);
     }
@@ -75,6 +85,17 @@ class Home extends CI_Controller {
         $data['page'] = 'contact';
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
+
+				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
+				$data['title'] = json_decode($title_value, true);
+
+				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
+				$data['logo'] = json_decode($logo, true);
+
+				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
+				$data['contact'] = json_decode($contact_value, true);
+
+				$data['category']=  $this->Common_model->select('category');
         $data['main_content'] = $this->load->view('contact', $data, true);
         $this->load->view('index', $data);
     }

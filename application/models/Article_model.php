@@ -29,6 +29,7 @@ class Article_model extends CI_Model {
               $this->db->where('is_publish','1');
               $this->db->order_by('created_at','ASC');
               $query = $this->db->get();
+            // echo   $this->db->last_query();exit;
               $query = $query->result_array();
               return $query;
           }

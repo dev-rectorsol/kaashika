@@ -52,73 +52,6 @@
 </section>
 <!-- hero slider area end -->
 
-<!-- twitter feed area start -->
-<!-- <div class="twitter-feed">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="twitter-feed-content text-center">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- twitter feed area end -->
-
-<!-- service policy area start -->
-<!-- <div class="service-policy section-padding">
-    <div class="container">
-        <div class="row mtn-30">
-            <div class="col-sm-6 col-lg-3">
-                <div class="policy-item">
-                    <div class="policy-icon">
-                        <i class="pe-7s-plane"></i>
-                    </div>
-                    <div class="policy-content">
-                        <h6>Free Shipping</h6>
-                        <p>Free shipping all order</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="policy-item">
-                    <div class="policy-icon">
-                        <i class="pe-7s-help2"></i>
-                    </div>
-                    <div class="policy-content">
-                        <h6>Support 24/7</h6>
-                        <p>Support 24 hours a day</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="policy-item">
-                    <div class="policy-icon">
-                        <i class="pe-7s-back"></i>
-                    </div>
-                    <div class="policy-content">
-                        <h6>Money Return</h6>
-                        <p>30 days for free return</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="policy-item">
-                    <div class="policy-icon">
-                        <i class="pe-7s-credit"></i>
-                    </div>
-                    <div class="policy-content">
-                        <h6>100% Payment Secure</h6>
-                        <p>We ensure secure payment</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- service policy area end -->
-
 <!-- banner statistics area start -->
 <div class="banner-statistics-area">
     <div class="container">
@@ -726,8 +659,6 @@
                     </div>
                   <?php endforeach;?>
                     <!-- blog post item end -->
-
-
                 </div>
             </div>
         </div>
