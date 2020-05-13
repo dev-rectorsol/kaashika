@@ -64,7 +64,7 @@ class Product extends CI_Controller {
 		// 				 print_r($_FILES);
 		// 				 exit();
 		 if(isset($_FILES['profile']['name'])){
-			$config['upload_path']          = './uploads/product';
+		$config['upload_path']          = './uploads/product';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 11264;
 		$config['max_width']            = 6000;
@@ -112,6 +112,7 @@ class Product extends CI_Controller {
 						if(isset($data1['tag']) && count($data1['tag'])>0 && isset($data1['category']) && count($data1['category'])>0 ){
 								//add tag and category
 							 try {
+
 								 $this->Common_model->indexing($data1, $id);
 							 } catch (\Exception $e) {
 								 echo 'error :  ' .  $e->getMessage();
@@ -146,13 +147,13 @@ class Product extends CI_Controller {
          					 // File upload
          				 if($this->upload->do_upload('file')){
          			   		// Get data about the file
-         				   $uploadData = $this->upload->data();
-          				  $filename = $uploadData['file_name'];
+         			 $uploadData = $this->upload->data();
+          		 $filename = $uploadData['file_name'];
 							 $data = array();
-							// Initialize array
-							$data['product_id'] =$id;
-							$data['image'] = $filename;
-							$this->Common_model->insert($data,'product_images');
+							 // Initialize array
+							 $data['product_id'] =$id;
+							 $data['image'] = $filename;
+							 $this->Common_model->insert($data,'product_images');
           						}
         				}
 
@@ -186,7 +187,7 @@ class Product extends CI_Controller {
         }
     public function update($id)
    	{
-			// echo $id;exit;
+		 //echo $id;exit;
 	   if($_POST){
 		 $data1=$this->security->xss_clean($_POST);
 		//  echo "<pre>";
@@ -215,9 +216,10 @@ class Product extends CI_Controller {
 			'price' => $data1['price'],
 			'quantity' => $data1['quantity'],
 			'discount' => $data1['discount'],
-			 'profile_pic' => $pic,
+			'profile_pic' => $pic,
 		];
-		  $id=$this->Common_model->update($data,'id',$id,'products');
+		  $this->Common_model->update($data,'id',$id,'products');
+
 		}
 		else{
 			$data=[ 'name' => $data1['product'],
@@ -227,10 +229,11 @@ class Product extends CI_Controller {
 			'discount' => $data1['discount'],
 			// 'profile_pic' => $pic,
 		];
-		  $id=$this->Common_model->update($data,'id',$id,'products');
+		  $this->Common_model->update($data,'id',$id,'products');
 		}
 		 //add attributes
 			if($id )
+			//echo $id;exit;
 			{
 				if(isset($data1['attribute']) && count($data1['attribute'])>0)
 				{
@@ -242,6 +245,7 @@ class Product extends CI_Controller {
 
 										];
 									$this->Common_model->insert($data,'product_attributes');
+									// $this->Common_model->update($data,'product_id',$id,'product_attributes');
 								}
 						if(isset($data1['tag']) && count($data1['tag'])>0 && isset($data1['category']) && count($data1['category'])>0 ){
 								//add tag and category
@@ -286,7 +290,9 @@ class Product extends CI_Controller {
 							// Initialize array
 							$data['product_id'] =$id;
 							$data['image'] = $filename;
-							$this->Common_model->insert($data,'product_images');
+							 $this->Common_model->insert($data,'product_images');
+							// $this->Common_model->update($data,'product_id',$id,'product_images');
+
           						}
         				}
 

@@ -28,47 +28,31 @@
                         <div class="product-details-inner">
                             <div class="row">
                                 <div class="col-lg-5">
+
                                     <div class="product-large-slider">
                                         <div class="pro-large-img img-zoom">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img1.jpg" alt="product-details" />
+                                            <img src="<?php echo base_url('/uploads/product/').$product_details['profile_pic'] ?>" alt="product-details" />
                                         </div>
-                                        <div class="pro-large-img img-zoom">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img2.jpg" alt="product-details" />
-                                        </div>
-                                        <div class="pro-large-img img-zoom">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img3.jpg" alt="product-details" />
-                                        </div>
-                                        <div class="pro-large-img img-zoom">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img4.jpg" alt="product-details" />
-                                        </div>
-                                        <div class="pro-large-img img-zoom">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img5.jpg" alt="product-details" />
-                                        </div>
+
                                     </div>
+
                                     <div class="pro-nav slick-row-10 slick-arrow-style">
+                                      <?php foreach($pics as $value):?>
                                         <div class="pro-nav-thumb">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img1.jpg" alt="product-details" />
+                                          <img src="<?php echo base_url('/uploads/product/').$value['image'] ?>" alt="product-details" height="100px;" />
                                         </div>
-                                        <div class="pro-nav-thumb">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img2.jpg" alt="product-details" />
-                                        </div>
-                                        <div class="pro-nav-thumb">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img3.jpg" alt="product-details" />
-                                        </div>
-                                        <div class="pro-nav-thumb">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img4.jpg" alt="product-details" />
-                                        </div>
-                                        <div class="pro-nav-thumb">
-                                            <img src="<?php echo base_url()?>/assets/img/product/product-details-img5.jpg" alt="product-details" />
-                                        </div>
+                                     <?php endforeach;?>
                                     </div>
+
                                 </div>
                                 <div class="col-lg-7">
+
                                     <div class="product-details-des">
+
                                         <div class="manufacturer-name">
-                                            <a href="product-details.html">HasTech</a>
+                                            <a href="<?php echo base_url('web/shop/product_details')?>">HasTech</a>
                                         </div>
-                                        <h3 class="product-name">Handmade Golden Necklace Full Family Package</h3>
+                                        <h3 class="product-name"><?php echo $product_details['name'] ?></h3>
                                         <div class="ratings d-flex">
                                             <span><i class="fa fa-star-o"></i></span>
                                             <span><i class="fa fa-star-o"></i></span>
@@ -80,19 +64,22 @@
                                             </div>
                                         </div>
                                         <div class="price-box">
-                                            <span class="price-regular">$70.00</span>
-                                            <span class="price-old"><del>$90.00</del></span>
+                                          <?php
+                                          $total=$product_details['price'];
+                                          $dis=$product_details['discount'];
+                                        $dis_pri=  $product_details['price']*($product_details['discount']/100);
+                                        $regular=$total-$dis_pri;
+                                          ?>
+                                            <span class="price-regular">Rs <?php echo $regular?></span>
+                                            <span class="price-old"><del>Rs <?php echo $product_details['price']?></del></span>
                                         </div>
                                         <h5 class="offer-text"><strong>Hurry up</strong>! offer ends in:</h5>
-                                        <div class="product-countdown" data-countdown="2019/12/20"></div>
+                                        <div class="product-countdown" data-countdown="2020/12/20"></div>
                                         <div class="availability">
                                             <i class="fa fa-check-circle"></i>
                                             <span>200 in stock</span>
                                         </div>
-                                        <p class="pro-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                                            voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac
-                                            habitasse platea dictumst.</p>
+                                        <p class="pro-desc"><?php echo $product_details['description']?></p>
                                         <div class="quantity-cart-box d-flex align-items-center">
                                             <h6 class="option-title">qty:</h6>
                                             <div class="quantity">
@@ -141,6 +128,7 @@
                                             <a class="google" href="#"><i class="fa fa-google-plus"></i>share</a>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -165,29 +153,20 @@
                                         <div class="tab-content reviews-tab">
                                             <div class="tab-pane fade show active" id="tab_one">
                                                 <div class="tab-one">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                        fringilla augue nec est tristique auctor. Ipsum metus feugiat
-                                                        sem, quis fermentum turpis eros eget velit. Donec ac tempus
-                                                        ante. Fusce ultricies massa massa. Fusce aliquam, purus eget
-                                                        sagittis vulputate, sapien libero hendrerit est, sed commodo
-                                                        augue nisi non neque.Cras neque metus, consequat et blandit et,
-                                                        luctus a nunc. Etiam gravida vehicula tellus, in imperdiet
-                                                        ligula euismod eget. Pellentesque habitant morbi tristique
-                                                        senectus et netus et malesuada fames ac turpis egestas. Nam
-                                                        erat mi, rutrum at sollicitudin rhoncus</p>
+
+                                                    <p> <?php echo $product_details['description'];?> </p>
+
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="tab_two">
                                                 <table class="table table-bordered">
                                                     <tbody>
+                                                    <?php foreach($attribute as $value):?>
                                                         <tr>
-                                                            <td>color</td>
-                                                            <td>black, blue, red</td>
+                                                            <td><?php echo $value['name']?></td>
+                                                            <td><?php echo $value['value']?></td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>size</td>
-                                                            <td>L, M, S</td>
-                                                        </tr>
+                                                    <?php endforeach;?>
                                                     </tbody>
                                                 </table>
                                             </div>

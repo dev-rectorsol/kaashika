@@ -6,9 +6,9 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-
 			$this->load->model('Common_model');
 			$this->load->model('article_model');
+			$this->load->model('product_model');
 		//Do your magic here
 	}
 
@@ -33,7 +33,16 @@ class Home extends CI_Controller {
 
 				$data['category']=  $this->Common_model->select('category');
         $data['article_data']=  $this->article_model->select_article_data();
-				// print_r($data['article_data']);exit;
+
+				$data['all_product_data']=  $this->product_model->select_all_product('products');
+
+				// foreach($data['all_product_data'] as $value){
+				// 	$data['attribute']=  $this->product_model->select_attribute('attribute',$value['attribute_id']);
+				// 		 print_r($data['all_product_data']);exit;
+				// 	$data['all_product_data']= $value;
+				// }
+			  	// echo "<pre>";
+				 // print_r($data['all_product_data']);exit;
         $data['product']=  $this->Common_model->select('products');
 				$data['testimonial']=  $this->Common_model->select('testimonial');
 				$data['product_data']=  $this->Common_model->select_limit_value('products');
@@ -46,6 +55,7 @@ class Home extends CI_Controller {
         $data['page'] = 'About Us';
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
+
 				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
 				$data['title'] = json_decode($title_value, true);
 
@@ -54,7 +64,9 @@ class Home extends CI_Controller {
 
 				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
 				$data['contact'] = json_decode($contact_value, true);
+
 				$data['category']=  $this->Common_model->select('category');
+				$data['testimonial']=  $this->Common_model->select('testimonial');
         $data['main_content'] = $this->load->view('about_us', $data, true);
         $this->load->view('index', $data);
     }
@@ -99,6 +111,7 @@ class Home extends CI_Controller {
         $data['main_content'] = $this->load->view('contact', $data, true);
         $this->load->view('index', $data);
     }
+
 		public function Add_contact()
 		{
 			if($_POST){
@@ -133,7 +146,7 @@ class Home extends CI_Controller {
 				$this->load->view('index', $data);
 		}
 
-    public function faq(){
+        public function faq(){
         $data = array();
         $data['page'] = 'faq';
         $data['main_content'] = $this->load->view('faq', $data, true);

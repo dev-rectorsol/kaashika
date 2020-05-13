@@ -112,7 +112,7 @@
                                 <div class="product-item">
                                     <figure class="product-thumb">
                                         <a href="product-details.html">
-                                            <img class="pri-img" src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="product">
+                                             <img class="pri-img" src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="product">
                                              <img class="sec-img" src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="product">
                                         </a>
                                         <div class="product-badge">
@@ -157,8 +157,8 @@
                                           <?php
                                           $total=$value['price'];
                                           $dis=$value['discount'];
-                                        $dis_pri=  $value['price']*($value['discount']/100);
-                                        $regular=$total-$dis_pri;
+                                          $dis_pri=  $value['price']*($value['discount']/100);
+                                          $regular=$total-$dis_pri;
                                           ?>
                                             <span class="price-regular">$<?php echo $regular?></span>
                                             <span class="price-old"><del>$<?php echo $value['price']?></del></span>
@@ -199,7 +199,7 @@
                                   </figure>
                                   <div class="product-caption text-center">
                                       <div class="product-identity">
-                                          <p class="manufacturer-name"><a href="product-details.html">Gold</a></p>
+                                        <p class="manufacturer-name"><a href="product-details.html">Gold</a></p>
                                       </div>
                                       <ul class="color-categories">
                                           <li>
@@ -220,10 +220,10 @@
                                       </h6>
                                       <div class="price-box">
                                         <?php
-                                        $total=$value['price'];
-                                        $dis=$value['discount'];
-                                      $dis_pri=  $value['price']*($value['discount']/100);
-                                      $regular=$total-$dis_pri;
+                                            $total=$value['price'];
+                                            $dis=$value['discount'];
+                                            $dis_pri=  $value['price']*($value['discount']/100);
+                                            $regular=$total-$dis_pri;
                                         ?>
                                           <span class="price-regular">$<?php echo $regular?></span>
                                           <span class="price-old"><del>$<?php echo $value['price']?></del></span>
@@ -285,8 +285,8 @@
                                         <?php
                                         $total=$value['price'];
                                         $dis=$value['discount'];
-                                      $dis_pri=  $value['price']*($value['discount']/100);
-                                      $regular=$total-$dis_pri;
+                                        $dis_pri=  $value['price']*($value['discount']/100);
+                                        $regular=$total-$dis_pri;
                                         ?>
                                           <span class="price-regular">$<?php echo $regular?></span>
                                           <span class="price-old"><del>$<?php echo $value['price']?></del></span>
@@ -348,8 +348,8 @@
                                         <?php
                                         $total=$value['price'];
                                         $dis=$value['discount'];
-                                      $dis_pri=  $value['price']*($value['discount']/100);
-                                      $regular=$total-$dis_pri;
+                                        $dis_pri=  $value['price']*($value['discount']/100);
+                                        $regular=$total-$dis_pri;
                                         ?>
                                           <span class="price-regular">$<?php echo $regular?></span>
                                           <span class="price-old"><del>$<?php echo $value['price']?></del></span>

@@ -29,12 +29,12 @@
 																			<ul>
 																					<li class="active"><a href="<?php echo base_url('web/home')?>">Home</a></li>
 	                                        <li><a href="<?php echo base_url('web/home/about')?>">About Us</a></li>
-																					<li><a href="<?php echo base_url('web/shop')?>">shop <i class="fa fa-angle-down"></i></a>
+																					<li><a href="">shop <i class="fa fa-angle-down"></i></a>
 																							<ul class="dropdown">
 																									<li><a href="#">shop grid layout <i class="fa fa-angle-right"></i></a>
 																											<ul class="dropdown">
 																												<?php foreach ($category as $value) {?>
-																													<li><a href="#"><?php echo $value['name']?></a></li>
+																													<li><a href="<?php echo base_url('web/shop/shop_by_category/').$value['id']?>"><?php echo $value['name']?></a></li>
 
 																													<?php
 																												}?>

@@ -79,11 +79,31 @@ class Product_model extends CI_Model{
     }
     function select_attr($id,$table){
       //echo $id;
-          $this->db->select('attribute.name,product_attributes.product_attribute_id as id,product_attributes.value as value');
+        $this->db->select('attribute.name,product_attributes.product_attribute_id as id,product_attributes.value as value');
         $this->db->from($table);
         $this->db->where('product_id',$id);
-        
         $this->db->join('attribute','attribute.id=product_attributes.attribute_id','inner');
+        $query = $this->db->get();
+        //echo $this->db->last_query($query);exit;
+        $query = $query->result_array();
+        return $query;
+    }
+    function select_all_product($table){
+      //echo $id;
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join('product_attributes','product_attributes.product_id = products.id');
+        $query = $this->db->get();
+        //echo $this->db->last_query($query);exit;
+        $query = $query->result_array();
+        return $query;
+    }
+
+    function select_attribute($table,$attribute_id){
+      //echo $id;
+        $this->db->select('name');
+        $this->db->from($table);
+        $this->db->where('id',$attribute_id);
         $query = $this->db->get();
         //echo $this->db->last_query($query);exit;
         $query = $query->result_array();

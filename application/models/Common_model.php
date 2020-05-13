@@ -280,6 +280,8 @@ function getMaxUserId(){
   }
 
     public function indexing($data, $rootid) {
+      // echo $data;
+    //  echo $rootid;exit;
       $temp = array();
       $table = 'indexing';
       if (is_array($data['tag'])) {
