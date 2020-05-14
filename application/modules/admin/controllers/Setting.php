@@ -36,6 +36,7 @@ class setting extends CI_Controller {
 				'buttonUrl' => $slider['url'],
 				'source' => $slider['featureImage']
 			];
+
 			$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '[]';
 	//echo print_r($slider_value);exit;
 			$arr_data = json_decode($slider_value, true);

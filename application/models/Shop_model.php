@@ -43,12 +43,12 @@ class Shop_model extends CI_Model{
     }
 
     function select_product_details($id,$table){
-      //echo $id;
+      echo $id;
         $this->db->select();
         $this->db->from($table);
         $this->db->where('products.id',$id);
-        $this->db->join('product_images','products.id= product_images.product_id','inner');
-        $this->db->join('product_attributes','products.id= product_attributes.product_id','inner');
+         $this->db->join('indexing','products.id=indexing.root','inner');
+        // $this->db->join('product_attributes','products.id= product_attributes.product_id','inner');
         $query = $this->db->get();
         //echo $this->db->last_query($query);exit;
         $query = $query->result_array();

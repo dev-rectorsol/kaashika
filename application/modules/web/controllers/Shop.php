@@ -52,8 +52,8 @@ class Shop extends CI_Controller {
 					 $data['contact'] = json_decode($contact_value, true);
 
 	         $data['product_by_category']=  $this->Shop_model->select($id,'category','indexing');
-					 // echo "<pre>";
-           // echo print_r($data['product_by_category']);exit;
+					 $data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
+					
 					$data['category']=  $this->Common_model->select('category');
 	        $data['main_content'] = $this->load->view('shop/shop', $data, true);
 	        $this->load->view('index', $data);
@@ -72,17 +72,18 @@ class Shop extends CI_Controller {
 
 						$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
 						$data['contact'] = json_decode($contact_value, true);
+
             $data['product_details']=  $this->Shop_model->select_product_details($id,'products');
 						foreach($data['product_details'] as $value){
-						// $data['attribute_name']=  $this->Common_model->select_option($value['attribute_id'],'id','attribute');
 						$data['product_details']= $value;
 						}
-						   // print_r($data['product_details']);
+						  // print_r($data['product_details']['port']);exit;
+						$data['related_Product']=  $this->Shop_model->select($data['product_details']['port'],'category','indexing');
+            // echo "<pre>";
+						// print_r($data['related_Product']);exit;
 						$data['category']=  $this->Common_model->select('category');
 						$data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
 						$data['pics']=  $this->Product_model->select($id,'product_images');
-						//$data['product_by_category']=  $this->Shop_model->select($id,'category','indexing');
-						//print_r($data['product_by_category']);exit;
 		        $data['main_content'] = $this->load->view('product/product_details', $data, true);
 		        $this->load->view('index', $data);
 		    }

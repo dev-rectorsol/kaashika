@@ -9,6 +9,8 @@ class Home extends CI_Controller {
 			$this->load->model('Common_model');
 			$this->load->model('article_model');
 			$this->load->model('product_model');
+			$this->load->model('Shop_model');
+
 		//Do your magic here
 	}
 
@@ -33,22 +35,32 @@ class Home extends CI_Controller {
 
 				$data['category']=  $this->Common_model->select('category');
         $data['article_data']=  $this->article_model->select_article_data();
+				//print_r($data['article_data']);exit;
 
-				$data['all_product_data']=  $this->product_model->select_all_product('products');
-
-				// foreach($data['all_product_data'] as $value){
-				// 	$data['attribute']=  $this->product_model->select_attribute('attribute',$value['attribute_id']);
-				// 		 print_r($data['all_product_data']);exit;
-				// 	$data['all_product_data']= $value;
-				// }
-			  	// echo "<pre>";
-				 // print_r($data['all_product_data']);exit;
+				// $data['all_product_data']=  $this->product_model->select_all_product('products');
+        // print_r($data['article_data']);exit;
         $data['product']=  $this->Common_model->select('products');
 				$data['testimonial']=  $this->Common_model->select('testimonial');
 				$data['product_data']=  $this->Common_model->select_limit_value('products');
         $data['main_content'] = $this->load->view('home', $data, true);
         $this->load->view('index', $data);
     }
+
+						public function arivel_slider()
+							{
+										$data=array();
+										if ($_POST) {
+										// $data['name']='Fabric Design List';
+
+									 $data['product_by_category']=  $this->Shop_model->select($_POST['id'],'category','indexing');
+
+										$data['attribute']=  $this->product_model->select_attr($_POST['id'],'product_attributes');
+										$data['data'] = $this->load->view('new_arivel_slider', $data, true);
+					   	      $this->load->view('arive_slider', $data);
+									}
+					  	}
+
+
 
     public function about(){
         $data = array();

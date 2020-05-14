@@ -26,7 +26,7 @@
 					<div class="modal-content">
 
             <form action="<?php echo base_url('admin/Category/Add')?>" method="POST">
-              <div class="modal-header header-color-modal bg-color-1 ">
+              <div class="modal-header header-color-modal bg-color-1 sliderForm ">
               <h4>Add Category </h4>
               <div class="modal-close-area modal-close-df">
                 <a class="close" data-dismiss="modal" href="#"><i
@@ -41,12 +41,7 @@
                     <input name="name" type="text" class="form-control" placeholder="Name">
                  </div>
               </div>
-              <!-- <div class="form-group row">
-                <label class="control-label col-sm-3">Parent</label>
-                <div class="col-sm-9">
-                  <input name="parent" type="text" class="form-control" placeholder="Parent">
-                </div>
-             </div> -->
+
               <div class="form-group row">
                 <label class="control-label col-sm-3">Parent</label>
                 <div class="col-sm-9">
@@ -58,12 +53,18 @@
                   </select>
                </div>
               </div>
+							  <div class="form-group row">
+									<div class="col-sm-12">
+										<span id="addfeaturepreview">
+										</span>
+										<button id="removepreview" type="button" class="btn btn-link hide" style="color:#667add;">remove</button>
+										<button id="addfeatureimage" type="button" class="btn btn-link" name="button" style="color:#667add;">Add related image</button>
+						     </div>
+					     </div>
               <div class="modal-footer">
-                <input type="hidden"
-                  name="<?php echo $this->security->get_csrf_token_name();?>"
-                  value="<?php echo $this->security->get_csrf_hash();?>">
-	                <input type="submit" value="Submit" class="btn btn-primary">
-	                <a data-dismiss="modal" class="btn" href="#">Cancel</a>
+								<span id="msg" style="color: red;"></span>
+								<input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">
+								<input type="submit" value="Save" class="btn btn-primary">
               </div>
             </div>
           </div>
@@ -115,9 +116,8 @@
 									 class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 									 <div class="modal-dialog" role="document ">
 										 <div class="modal-content">
-                       <form class="form-horizontal" method="post"
-                         action="<?php echo base_url('admin/Category/Edit/').$row['id'] ?>"
-                         name="basic_validate" id="basic_validate" novalidate="novalidate">
+                       <form class="form-horizontal sliderForm"  method="post"
+                         action="<?php echo base_url('admin/Category/Edit/').$row['id'] ?>">
                          <div class="modal-header header-color-modal bg-color-1 ">
                            <h4 class="modal-title">Edit Category</h4>
                            <div class="modal-close-area modal-close-df">
@@ -145,15 +145,21 @@
  							                  </select>
 															 </div>
 														 </div>
+														 <div class="form-group row">
+						 									<div class="col-sm-12">
+						 										<span id="addfeaturepreview"></span>
+
+						 										<button id="removepreview" type="button" class="btn btn-link hide" style="color:#667add;">remove</button>
+						 										<button id="addfeatureimage" type="button" class="btn btn-link" name="button" style="color:#667add;">Add related image</button>
+						 						     </div>
+						 					     </div>
 
                            </div>
 
                          <div class="modal-footer">
-                           <input type="hidden"
-                             name="<?php echo $this->security->get_csrf_token_name();?>"
-                             value="<?php echo $this->security->get_csrf_hash();?>">
-                           <input type="submit" value="Update" class="btn btn-primary">
-                           <a data-dismiss="modal" class="btn" href="#">Cancel</a>
+													 <span id="msg" style="color: red;"></span>
+													 <input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">
+													 <input type="submit" value="Upadte" class="btn btn-primary">
                          </div>
                          </div>
                        </form>
@@ -190,4 +196,12 @@
 
       }
     }
+		$('.sliderForm').on('submit', function(event){
+    event.preventDefault();
+    if($('input[name=featureImage]').length){
+      $(this)[0].submit();
+    }else{
+      $('#msg').html('Select Image file After Click Save');
+    }
+  })
   </script>
