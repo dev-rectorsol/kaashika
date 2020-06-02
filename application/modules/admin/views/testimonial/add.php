@@ -1,30 +1,29 @@
-<div class="breadcome-area">
-			<div class="container-fluid">
-				 <div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex no-block align-items-center">
-								<br/>
-              <h6 class="page-title"><?php echo isset($page_name) ? $page_name : 'Dashbord';  ?></h6>
-								<div class=" text-right">
-
-										<a href="#">Home</a> <span class="bread-slash">/</span><span class="bread-blod active"><?php echo	$page ?></span>
-
-								</div><br>
-								<div class="container-fluid">
-									<div class="row-fluid">
-										<div class="span4 text-right">
-										   <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
-										</div>
-									</div>
-							</div>
-							</div>
-
-						</div>
-					</div>
-       </div>
-
-
 <div class="container-fluid">
-	<hr class="light-grey-hr" />
+
+	<!-- Title -->
+	<div class="row heading-bg">
+		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+			<h5 class="txt-dark">Dashboard</h5>
+		</div>
+		<!-- Breadcrumb -->
+		<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+			<ol class="breadcrumb">
+			<li><a href="<?php echo base_url('admin/Dashboard')?>">Dashboard</a></li>
+			<li  class="active"><span><?php echo $page?></span></li>
+			<!-- <li class="active"><span>data-table</span></li> -->
+			</ol>
+
+		</div>
+
+
+		<!-- /Breadcrumb -->
+	</div>
+	<div class="span4 text-right">
+		 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
+ </div><br>
+<hr class="light-grey-hr" />
+
+
 
 	<div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 		<div class="modal-dialog" role="document ">
@@ -81,7 +80,7 @@
 		 </div>
 	</div>
 
-		<div class="row">
+		 <div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="card">
 								<div class="card-body">
@@ -95,7 +94,7 @@
 										<th>Name</th>
 										<th>Content</th>
 										<th>image</th>
-										<th>Setting</th>
+										<th>Action</th>
 									</tr>
 									<?php $i=1; foreach($testimonial_data as $row){?>
 									<tr>
@@ -104,23 +103,25 @@
 										<td><?php echo $row['name'] ?></td>
 										<td><?php echo $row['discription'] ?></td>
 										<td><img src="<?php echo base_url('uploads/testimonial/').$row['image']?>"></td>
-										<td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
-												data-toggle="modal" data-original-title="Edit"><i
-													class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-											<a title="Trash" class="pd-setting-ed"
-												onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
-													aria-hidden="true"></i></a></td>
+										<td>  <a data-target="<?php echo '#'.$row['id']; ?>" class="pd-setting-ed btn btn-primary text-center tip"
+											 data-toggle="modal" data-original-title="Edit"><i
+												 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+										 <a title="Trash" class="pd-setting-ed btn btn-danger"
+											 onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
+												 aria-hidden="true"></i></a>
+												</td>
 									</tr>
 
 									<div id="<?php echo $row['id'] ; ?>"
 										class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 										<div class="modal-dialog" role="document ">
 											<div class="modal-content">
-												<form class="form-horizontal" method="post"
-													action="<?php echo base_url('admin/Category/Edit/').$row['id'] ?>"
-													name="basic_validate" id="basic_validate" novalidate="novalidate">
+												<form  method="post"
+													action="<?php echo base_url('admin/Testimonial/Edit/').$row['id'] ?>" enctype="multipart/form-data">
+
 													<div class="modal-header header-color-modal bg-color-1 ">
-														<h4 class="modal-title">Edit Aim</h4>
+														<h4 class="modal-title">Edit Testimonial</h4>
 														<div class="modal-close-area modal-close-df">
 															<a class="close" data-dismiss="modal" href="#"><i
 																	class="fa fa-close"></i></a>
@@ -128,13 +129,30 @@
 													</div>
 													<div class="modal-body">
 														<div class="widget-content nopadding">
+
 															<div class="form-group row">
 																<label class="control-label col-sm-3">Name</label>
 																<div class="col-sm-9">
 																	<input type="text" class="form-control" name="name"
-																		value="<?php echo $row['title'] ?>" id="required">
+																		value="<?php echo $row['name'] ?>" id="required">
 																</div>
 															</div>
+
+															<div class="form-group row">
+																	<label class="control-label col-sm-3">Add Discription</label>
+																	<div class="col-sm-9">
+																		<textarea name="discription"  coll="50" row="10" width="100%" required><?php echo $row['discription']?></textarea>
+																	</div>
+															</div>
+
+															<div class="form-group row">
+																<label class="col-sm-3 control-label " for="example-input-small">
+						 											Add Image</label>
+						 										<div class="col-sm-9">
+						 											<input type="file" name="profile" class="form-control dropify input-sm" placeholder="image">
+																	<img src="<?php echo base_url('uploads/testimonial/').$row['image']?>" >
+								                </div>
+														 </div>
 
 														</div>
 
@@ -142,8 +160,8 @@
 														<input type="hidden"
 															name="<?php echo $this->security->get_csrf_token_name();?>"
 															value="<?php echo $this->security->get_csrf_hash();?>">
-														<input type="submit" value="Update" class="btn btn-primary">
-														<a data-dismiss="modal" class="btn" href="#">Cancel</a>
+															<input type="submit" value="Update" class="btn btn-primary">
+															<a data-dismiss="modal" class="btn" href="#">Cancel</a>
 													</div>
 													</div>
 												</form>
@@ -162,9 +180,8 @@
 		     </div>
 		 </div>
 		</div>
-	</div>
-</div>
-</div>
+
+
 		<script>
 			function delete_detail(id) {
 				var del = confirm("Do you want to Delete");

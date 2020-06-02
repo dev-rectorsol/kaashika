@@ -153,6 +153,7 @@ class Product extends CI_Controller {
 							 // Initialize array
 							 $data['product_id'] =$id;
 							 $data['image'] = $filename;
+							 $data['color'] = $_POST['color'][$i];
 							 $this->Common_model->insert($data,'product_images');
           						}
         				}
@@ -164,14 +165,12 @@ class Product extends CI_Controller {
 		}
 	}
 }
-
-
       public function Delete($id)
        	{
             $data1=['id'=> $id];
-            $this->Common_model->delete($data1,'category');
+            $this->Common_model->delete($data1,'products');
             redirect(base_url() . 'admin/Product', 'refresh');
-		}
+	     	}
 
       public function Delete_tag()
        	{
@@ -284,13 +283,13 @@ class Product extends CI_Controller {
          					 // File upload
          				 if($this->upload->do_upload('file')){
          			   		// Get data about the file
-         				   $uploadData = $this->upload->data();
+         				    $uploadData = $this->upload->data();
           				  $filename = $uploadData['file_name'];
-							 $data = array();
+							      $data = array();
 							// Initialize array
-							$data['product_id'] =$id;
-							$data['image'] = $filename;
-							 $this->Common_model->insert($data,'product_images');
+										$data['product_id'] =$id;
+										$data['image'] = $filename;
+										$this->Common_model->insert($data,'product_images');
 							// $this->Common_model->update($data,'product_id',$id,'product_images');
 
           						}
@@ -303,5 +302,41 @@ class Product extends CI_Controller {
 			     redirect(base_url() . 'admin/Product', 'refresh');
 	    }
 	}
+
+
+	      public function update_status1($id)
+	       	{
+
+							$data['product_data']=  $this->Product_model->select_product($id,'products');
+					   	foreach($data['product_data'] as $value){
+							$data['product_data']=$value;
+						  }
+							// echo $data['product_data']['status'];exit;
+							if($data['product_data']['status']=='On_Sell')
+							{
+								$data1=[
+								'status'=>'Best_Sell'
+							];
+							}
+	           $this->Common_model->update($data1,'id',$id,'products');
+	            redirect(base_url() . 'admin/Product', 'refresh');
+		     	}
+					public function update_status2($id)
+		       	{
+            $data=array();
+								$data['product_data']=  $this->Product_model->select_product($id,'products');
+						   	foreach($data['product_data'] as $value){
+								$data['product_data']=$value;
+							  }
+								// echo $data['product_data']['status'];exit;
+									if($data['product_data']['status']=='Best_Sell')
+									{
+										$data1=[
+										'status'=>'On_Sell'
+									];
+									}
+						$this->Common_model->update($data1,'id',$id,'products');
+		            redirect(base_url() . 'admin/Product', 'refresh');
+			     	}
 
 }

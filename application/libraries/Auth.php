@@ -140,29 +140,30 @@ class Auth
     {
         $this->userID = $this->user->logid;
 
-        $this->CI->session->set_userdata(array(
+      $data=  $this->CI->session->set_userdata(array(
             "userID" => $this->user->logid,
             "username" => $this->get_userName(),
             "email" => $this->user->email,
             "phone" => $this->user->phone,
             "roles" => $this->getUserRoles(),
-            "thumb" => $this->get_userProfileImage(),
-            "image" => $this->get_userProfileImage(),
+            // "thumb" => $this->get_userProfileImage(),
+            // "image" => $this->get_userProfileImage(),
             "loginStatus" => 1
         ));
+        //print_r($data);exit;
         $this->error['status'] = 1;
         return $this->error;
     }
 
     protected function get_userName(){
-      return $this->CI->db->get_where("user_details", array("user_id" => $this->user->logid))->row(0)->name;
+    return $this->CI->db->get_where("user_details", array("user_id" => $this->user->logid))->row(0)->name;
     }
-    protected function get_userProfileImage(){
-      return $this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->image;
-    }
-    protected function get_userProfileThumb(){
-      return $this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->thumb;
-    }
+    // protected function get_userProfileImage(){
+    //     print_r($this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->image);exit;
+    // }
+    // protected function get_userProfileThumb(){
+    //    print_r($this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->thumb);exit;
+    // }
 
     /**
      * Get the error message for failed login
@@ -469,6 +470,7 @@ class Auth
     {
         $this->CI->session->unset_userdata(array("userID", "username", "loginStatus"));
         $this->CI->session->sess_destroy();
+
         return true;
     }
 }

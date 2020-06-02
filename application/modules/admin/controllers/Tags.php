@@ -50,8 +50,8 @@ class Tags extends CI_Controller {
  public function Delete($id)
 	{
             $data1=['id'=> $id];
-            $this->Common_model->delete($data1,'category');
-            redirect(base_url() . 'admin/category', 'refresh');
+            $this->Common_model->delete($data1,'tags');
+            redirect(base_url() . 'admin/tags', 'refresh');
     }
     public function Edit($id)
 	{

@@ -51,15 +51,17 @@ class Article extends CI_Controller {
 					];
 				}
 				$id =  $this->common_model->insert($article,'article');
+				// echo $id;exit;
 				if ($id) {
-				  $this->common_model->indexing($_POST, $article['postid']);
-					if ( isset($_POST['featureImage']) ) {
+				  $this->common_model->indexing($_POST, $id);
+					if ( isset($_POST['featureImage'])){
 						// if added feature images
-						$this->common_model->addThumb($_POST['featureImage'], $article['postid']);
+						$this->common_model->addThumb($_POST['featureImage'], $id);
 					}
 				 	$this->session->set_flashdata(array('error' => 0, 'msg' => 'Article add Done'));
-				 	redirect(base_url('admin/article/edit/').$article['postid'], 'refresh');
-			 }  else {
+				 	redirect(base_url('admin/article/View/'), 'refresh');
+			 }
+			  else {
 				 $this->session->set_flashdata(array('error' => 1, 'msg' => 'Article Creation Failed'));
 				 redirect($_SERVER['HTTP_REFERER'], 'refresh');
 			 }
@@ -82,10 +84,15 @@ class Article extends CI_Controller {
 		public function edit($id){
 			$data = array();
 			$data['page'] = 'Edit Article';
+
 			$data['tag']=  $this->common_model->select('tags');
 			$data['category']=  $this->common_model->select('category');
 			$data['article'] = $this->article_model->select_by_id($id);
-			$data['image'] = $this->common_model->getThumByRoot($id);
+			// echo "<pre>";
+			// print_r($data['article']);exit;
+			$data['image'] = $this->common_model->getThumByRootvale($id);
+			// echo "<pre>";
+			// print_r($data['image']);exit;
 			$data['indexcategory'] = $this->common_model->getIndexCategorys($id);
 			$data['indextags'] = $this->common_model->getIndexTags($id);
 			$data['main_content'] = $this->load->view('article/edit-view',$data, true);
@@ -95,6 +102,7 @@ class Article extends CI_Controller {
 		public function update(){
 			if($_POST){
 				$data=$_POST;
+
 				if($data['submit']=='save') {
 					$article=[
 						'title' => $data['name'],
@@ -119,7 +127,7 @@ class Article extends CI_Controller {
 						'slug' => $data['slug'],
 					];
 				}
-				if ( $this->common_model->update($article, 'postid', $data['postid'], 'article') ) {
+				if ( $this->common_model->update($article, 'id', $data['postid'], 'article') ) {
 				  $this->common_model->updateIndexing($_POST, $data['postid']);
 
 					if ( isset($_POST['featureImage']) ) {
@@ -129,7 +137,7 @@ class Article extends CI_Controller {
 
 
 				 	$this->session->set_flashdata(array('error' => 0, 'msg' => 'Article Update Done'));
-				 	redirect(base_url('admin/article/edit/').$data['postid'], 'refresh');
+				 	redirect(base_url('admin/article/view/'), 'refresh');
 			 }  else {
 				 $this->session->set_flashdata(array('error' => 1, 'msg' => 'Update Failed'));
 				 redirect($_SERVER['HTTP_REFERER'], 'refresh');
@@ -162,8 +170,8 @@ class Article extends CI_Controller {
            $article=[
              'is_publish' => '0',
             'deleted' => 1,];
-            $this->common_model->update($article,'postid',$id,'article');
-            redirect(base_url() . 'admin/article', 'refresh');
+            $this->common_model->update($article,'id',$id,'article');
+            redirect(base_url() . 'admin/article/view', 'refresh');
   }
 
 

@@ -38,83 +38,35 @@
 								 </caption>
 								 <tr>
 									 <th>S.No</th>
-									 <th>Product</th>
-									 <th>Source</th>
-									 <th>Price</th>
-									 <th>Descount</th>
-
+									 <th>Customer Name</th>
+									 <th>Phone</th>
+									
+									 <th>Order Date</th>
+									 <th>Status</th>
+                   <th>Invoice</th>
 									 <th>Action</th>
 								 </tr>
-								 <?php $i=1; foreach($product_data as $row){?>
+								 <?php $i=1; foreach($order_data as $row){?>
 								 <tr>
 									 <td> <?php echo $i ?></td>
-									 <td><?php echo $row['product'] ?></td>
-									 <td><?php echo $row['source'] ?></td>
-									 <td><?php echo $row['price'] ?></td>
-									  <td><?php echo $row['discount'] ?></td>
-									 <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
-											 data-toggle="modal" data-original-title="Edit"><i
-												 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-										 <a title="Trash" class="pd-setting-ed"
-											 onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
-												 aria-hidden="true"></i></a></td>
+									 <td><?php echo $row['customer_name'] ?></td>
+									 <td><?php echo $row['phone'] ?></td>
+
+									 <td><?php echo my_date_show($row['created']) ?></td>
+
+								<td>	 <?php if($row['status']==1){?>
+									<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:red;font-weight: bold; " class="text-center tip ">New</a>
+							  	<?php	}?></td>
+									<td><a href="<?php echo base_url('admin/order/invoice/').$row['id']?>" class="btn btn-primary "><i class="fa fa-print" aria-hidden="true"></i></a></td>
+
+									 <td> <a title="Trash" class="btn btn-danger" onclick="delete_detail(<?php echo $row['id'] ;?>)">
+											<i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+
+
+
 								 </tr>
 
-								 <div id="<?php echo $row['id'] ; ?>"
-									 class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
-									 <div class="modal-dialog" role="document ">
-										 <div class="modal-content">
-											 <form class="form-horizontal" method="post"
-												 action="<?php echo base_url('admin/Product/Edit/').$row['id'] ?>"
-												 name="basic_validate" id="basic_validate" novalidate="novalidate">
-												 <div class="modal-header header-color-modal bg-color-1 ">
-													 <h4 class="modal-title">Edit Aim</h4>
-													 <div class="modal-close-area modal-close-df">
-														 <a class="close" data-dismiss="modal" href="#"><i
-																 class="fa fa-close"></i></a>
-													 </div>
-												 </div>
-												 <div class="modal-body">
-													 <div class="widget-content nopadding">
-														 <div class="form-group row">
-															 <label class="control-label col-sm-3">Product</label>
-															 <div class="col-sm-9">
-																 <input type="text" class="form-control" name="product"
-																	 value="<?php echo $row['product'] ?>" id="required">
-															 </div>
-														 </div>
-														 <div class="form-group row">
-															 <label class="control-label col-sm-3">Source</label>
-															 <div class="col-sm-9">
-																 <input type="text" class="form-control" name="source"
-																	 value="<?php echo $row['source'] ?>" id="required">
-															 </div>
-														 </div>
-														 <div class="form-group row">
-															<label class="control-label col-sm-3">Price</label>
-															<div class="col-sm-9">
-																<input type="text" class="form-control" name="price"
-																	value="<?php echo $row['price'] ?>" id="required">
-															</div>
-														</div>
-														<div class="form-group row">
-														 <label class="control-label col-sm-3">Discount</label>
-														 <div class="col-sm-9">
-															 <input type="text" class="form-control" name="discount"
-																 value="<?php echo $row['discount'] ?>" id="required">
-														 </div>
-													 </div>
-													 </div>
-												 <div class="modal-footer">
-													 <input type="hidden"  value="<?php echo $this->security->get_csrf_hash();?>">
-													 <input type="submit" value="Update" class="btn btn-primary">
-													 <a data-dismiss="modal" class="btn" href="#">Cancel</a>
-												 </div>
-												 </div>
-											 </form>
-										 </div>
-									 </div>
-								 </div>
+
 								 <?php $i++ ;	}?>
 							 </table>
 									</div>
@@ -129,6 +81,17 @@
 
 		</div>
 
+		<script>
+		function delete_detail(id) {
+			var del = confirm("Do you want to Delete");
+			if (del == true) {
+				var sureDel = confirm("Are you sure want to delete");
+				if (sureDel == true) {
+					window.location = "<?php echo base_url()?>admin/order/Delete/" + id;
+				}
 
+			}
+		}
+		</script>
 
 	<!-- /Main Content -->

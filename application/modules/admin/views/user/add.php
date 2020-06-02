@@ -20,10 +20,7 @@
 
 				<!-- /Breadcrumb -->
 			</div>
-			<div class="span4 text-right">
-				 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
-		 </div><br>
-<hr class="light-grey-hr" />
+      <hr class="light-grey-hr" />
 			<!-- /Title -->
 			<div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 				<div class="modal-dialog" role="document ">
@@ -52,19 +49,7 @@
 										  </div>
 									 </div>
 										<div class="form-group row">
-											<label class="control-label col-sm-3">Category</label>
-											<div class="col-sm-9">
-												<select name="icon" id="icon" class="form-control">
-												<option value="">Select icon</option>
-												<option value="book">Book</option>
-												<option value="assignment">assignment</option>
-												<option value="computer">Computer</option>
-												<option value="school">School</option>
-												<option value="alarm">Alarm</option>
-												<option value="bookmarks">Bookmarks</option>
-												<option value="settings">Settings</option>
-												</select>
-										 </div>
+
 										</div>
 										<div class="modal-footer">
 											<input type="hidden"
@@ -113,12 +98,14 @@
 									 <td><?php echo $row['name'] ?></td>
 									 <td><?php echo $row['mobile'] ?></td>
 									  <td><?php echo $row['details'] ?></td>
-									 <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
-											 data-toggle="modal" data-original-title="Edit"><i
-												 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-										 <a title="Trash" class="pd-setting-ed"
-											 onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
-												 aria-hidden="true"></i></a></td>
+									 <td>
+										 <a data-target="<?php echo '#'.$row['id']; ?>" title="Edit" class="pd-setting-ed btn btn-primary" data-toggle="modal" data-original-title="Edit">
+
+												<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+										  		 <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
+
+												 </td>
 								 </tr>
 
 								 <div id="<?php echo $row['id'] ; ?>"
@@ -126,10 +113,10 @@
 									 <div class="modal-dialog" role="document ">
 										 <div class="modal-content">
 											 <form class="form-horizontal" method="post"
-												 action="<?php echo base_url('admin/Category/Edit/').$row['id'] ?>"
+												 action="<?php echo base_url('admin/user/Edit/').$row['id'] ?>"
 												 name="basic_validate" id="basic_validate" novalidate="novalidate">
 												 <div class="modal-header header-color-modal bg-color-1 ">
-													 <h4 class="modal-title">Edit Aim</h4>
+													 <h4 class="modal-title">Edit user Details</h4>
 													 <div class="modal-close-area modal-close-df">
 														 <a class="close" data-dismiss="modal" href="#"><i
 																 class="fa fa-close"></i></a>
@@ -141,20 +128,20 @@
 															 <label class="control-label col-sm-3">Name</label>
 															 <div class="col-sm-9">
 																 <input type="text" class="form-control" name="name"
-																	 value="<?php echo $row['name'] ?>" id="required">
+																	 value="<?php echo $row['name'] ?>" id="required" readonly>
 															 </div>
 														 </div>
 														 <div class="form-group row">
 															 <label class="control-label col-sm-3">Mobile</label>
 															 <div class="col-sm-9">
-																 <input type="text" class="form-control" name="name"
+																 <input type="text" class="form-control" name="mobile"
 																	 value="<?php echo $row['mobile'] ?>" id="required">
 															 </div>
 														 </div>
 														 <div class="form-group row">
 															<label class="control-label col-sm-3">Details</label>
 															<div class="col-sm-9">
-																<input type="text" class="form-control" name="name"
+																<input type="text" class="form-control" name="details"
 																	value="<?php echo $row['details'] ?>" id="required">
 															</div>
 														</div>
@@ -186,6 +173,16 @@
 
 		</div>
 
+<script>
+		function delete_detail(id) {
+			var del = confirm("Do you want to Delete");
+			if (del == true) {
+				var sureDel = confirm("Are you sure want to delete");
+				if (sureDel == true) {
+					window.location = "<?php echo base_url()?>admin/user/Delete/" + id;
+				}
 
-
+			}
+		}
+	</script>
 	<!-- /Main Content -->

@@ -6,8 +6,8 @@
                        <div class="breadcrumb-wrap">
                            <nav aria-label="breadcrumb">
                                <ul class="breadcrumb">
-                                   <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                   <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
+                                   <li class="breadcrumb-item"><a href="<?php echo base_url('web/home')?>"><i class="fa fa-home"></i></a></li>
+
                                    <li class="breadcrumb-item active" aria-current="page"><?php echo $page?></li>
                                </ul>
                            </nav>
@@ -25,7 +25,7 @@
                    <div class="row">
                        <div class="col-lg-12">
                            <!-- Cart Table Area -->
-                           <div class="cart-table table-responsive">
+                           <div class="cart-table table-responsive " >
                                <table class="table table-bordered">
                                    <thead>
                                        <tr>
@@ -37,51 +37,25 @@
                                            <th class="pro-remove">Remove</th>
                                        </tr>
                                    </thead>
-                                   <tbody>
+                                   <tbody id="detail_cart">
+                                     <?php if($this->cart->total_items() > 0){ foreach($cartIvalue as $item){    ?>
                                        <tr>
-                                           <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="<?php echo base_url()?>/assets/img/product/product-1.jpg" alt="Product" /></a></td>
-                                           <td class="pro-title"><a href="#">Diamond Exclusive Ornament</a></td>
-                                           <td class="pro-price"><span>$295.00</span></td>
-                                           <td class="pro-quantity">
-                                               <div class="pro-qty"><input type="text" value="1"></div>
+                                           <td>
+                                               <?php $imageURL = !empty($item["image"])?base_url('uploads/product/'.$item["image"]):base_url('/assets/img/product/product-1.jpg'); ?>
+                                               <img src="<?php echo $imageURL; ?>" width="50"/>
                                            </td>
-                                           <td class="pro-subtotal"><span>$295.00</span></td>
-                                           <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                       </tr>
-                                       <tr>
-                                           <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="<?php echo base_url()?>/assets/img/product/product-2.jpg" alt="Product" /></a></td>
-                                           <td class="pro-title"><a href="#">Perfect Diamond Jewelry</a></td>
-                                           <td class="pro-price"><span>$275.00</span></td>
-                                           <td class="pro-quantity">
-                                               <div class="pro-qty"><input type="text" value="2"></div>
+                                           <td><?php echo $item["name"]; ?></td>
+                                           <td><?php echo '₹'.$item["price"]; ?></td>
+                                           <td><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td> 
+                                           <td><?php echo '₹'.$item["subtotal"]; ?></td>
+                                           <td class="pro-remove">
+                                               <a href="<?php echo base_url('web/collection/removeItem/'.$item["rowid"]); ?>"  onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></a>
                                            </td>
-                                           <td class="pro-subtotal"><span>$550.00</span></td>
-                                           <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
                                        </tr>
-                                       <tr>
-                                           <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="<?php echo base_url()?>/assets/img/product/product-3.jpg" alt="Product" /></a></td>
-                                           <td class="pro-title"><a href="#">Handmade Golden Necklace</a></td>
-                                           <td class="pro-price"><span>$295.00</span></td>
-                                           <td class="pro-quantity">
-                                               <div class="pro-qty">
-                                                   <input type="text" value="1" />
-                                               </div>
-                                           </td>
-                                           <td class="pro-subtotal"><span>$295.00</span></td>
-                                           <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                       </tr>
-                                       <tr>
-                                           <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="<?php echo base_url()?>/assets/img/product/product-4.jpg" alt="Product" /></a></td>
-                                           <td class="pro-title"><a href="#">Diamond Exclusive Ornament</a></td>
-                                           <td class="pro-price"><span>$110.00</span></td>
-                                           <td class="pro-quantity">
-                                               <div class="pro-qty">
-                                                   <input type="text" value="3" />
-                                               </div>
-                                           </td>
-                                           <td class="pro-subtotal"><span>$110.00</span></td>
-                                           <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                       </tr>
+                             <?php } }else{ ?>
+                           <tr><td colspan="6"><p>Your cart is empty.....</p></td>
+                           <?php } ?>
+
                                    </tbody>
                                </table>
                            </div>
@@ -93,9 +67,9 @@
                                        <button class="btn btn-sqr">Apply Coupon</button>
                                    </form>
                                </div>
-                               <div class="cart-update">
+                               <!-- <div class="cart-update">
                                    <a href="#" class="btn btn-sqr">Update Cart</a>
-                               </div>
+                               </div> -->
                            </div>
                        </div>
                    </div>
@@ -107,18 +81,46 @@
                                    <h6>Cart Totals</h6>
                                    <div class="table-responsive">
                                        <table class="table">
+
+                                         <?php if($this->cart->total_items() > 0){
+                		                        $sub_total=0;
+                													  foreach($cartIvalue as $item){
+
+                                             $data['cartIvalue']=$item;
+                														 $sub_total=($sub_total+$item['subtotal']);
+                													 } ?>
                                            <tr>
                                                <td>Sub Total</td>
-                                               <td>$230</td>
+                                               <td><?php echo '₹'.$sub_total;?></td>
                                            </tr>
                                            <tr>
-                                               <td>Shipping</td>
-                                               <td>$70</td>
+                                               <td>Tax(10%)</td>
+                                               <td>₹10</td>
                                            </tr>
                                            <tr class="total">
                                                <td>Total</td>
-                                               <td class="total-amount">$300</td>
+                                               <?php $total=0; $total=$sub_total+10?>
+                                               <td class="total-amount"><?php echo '₹'.$total;?></td>
                                            </tr>
+                                         <?php }else{?>
+                                             <tr>
+                                                 <td>Sub Total</td>
+                                                 <td>0</td>
+                                             </tr>
+
+                                             <tr>
+                                                 <td>Tax(0%)</td>
+                                                 <td>₹0</td>
+                                             </tr>
+
+                                             <tr class="total">
+                                                 <td>Total</td>
+                                                 <td class="total-amount">0</td>
+                                             </tr>
+
+
+                                        <?php   }
+                															 ?>
                                        </table>
                                    </div>
                                </div>
@@ -130,3 +132,8 @@
            </div>
        </div>
        <!-- cart main wrapper end -->
+<!-- <script>
+       function updateCartItem(id) {
+   					window.location = "<?php echo base_url()?>web/collection/updateItemQty/" + id;
+   	    	}
+</script> -->

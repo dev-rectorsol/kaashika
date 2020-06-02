@@ -56,8 +56,9 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="review-content-section text-center">
                     <div class="image-grid-row">
-                      <section id="load" class="__file-media"></section>
-                      <button type="button" name="image" class="btn btn-outline-info" id="loadmore"><i class="fa fa-refresh" aria-hidden="true"></i> Load More</button>
+                        <section id="load" class="__file-media"></section>
+                        <br>
+                        <button type="button" name="image" class=" btn btn-primary" id="loadmore"><i class="fa fa-refresh" aria-hidden="true"></i> Load More</button>
                     </div>
                   </div>
                 </div>
@@ -79,15 +80,17 @@
   filter: blur(0);
 }
 </style>
+
 <script src="<?php echo base_url('optimum/dist/js/google.lazy.load/lazysizes.min.js') ?>" charset="utf-8"></script>
 <script type="text/javascript">
-
 var load = $("#load");
+
 var refresh = $('button[name=refresh]');
 var counter = 0;
 var flickerAPI = "<?php echo base_url(FILE_JSON_INFO) ?>";
 var refraceAPI = "<?php echo base_url('admin/media/get_file_refrace') ?>";
-var video = ['mp4', 'mkv'];
+var image = ['png', 'jpg', 'jpeg'];
+
 var file = (function(){
     var result = null;
     function load(){
@@ -95,7 +98,9 @@ var file = (function(){
               async: false,
               url: flickerAPI,
               dataType: "json",
-              success : function(data) { result = data; }
+              success : function(data)
+
+              { result = data; }
             });
     }
     return {
@@ -111,60 +116,41 @@ var file = (function(){
 })();
    // file.getHtml();
 (function(){
-  counter = go_loop(counter);
+  go_loop(0);
   $('#loadmore').on('click', function(){
-    counter =  go_loop(counter);
+    go_loop(counter + 10);
+    counter = counter + 10;
   })
   refresh.on('click', function(){
     $(this).attr('disabled', 'true');
     get_refrace();
   });
-
   $("select[name=mediatype]").on('change', function(){
     var type = $(this).val();
     if(type === 'image'){
-      window.location = "<?php echo base_url('admin/media') ?>"
-    }else if (type === 'video'){
 
+    }else if (type === 'video'){
+      window.location = "<?php echo base_url('admin/media/videos') ?>"
     }
   });
-
 })();
 function go_loop(counter) {
-  var element = 0;
   var data = file.getHtml();
-  // console.log(counter);
+
   for(i = counter; i < data.length; i++) {
-      if(jQuery.inArray(data[i].extension, video) != -1) {
-        if (element < 3 ) {
-          // console.log(data[i]);
-          var url = "<?php echo base_url() ?>" + data[i].dirname + '/' + data[i].basename;
-          var path = "" + data[i].dirname + '/' + data[i].basename;
-          var name = "" + data[i].basename;
-          var extension = data[i].extension;
-          $(`<div class="col-sm-4 mix `+name+`">
-                      <div class="hpanel widget-int-shape responsive-mg-b-30 title">
-                        <div class="panel-body">
-                          <div class="text-center content-box __video-file"
-                          data-src="`+url+`"
-                          data-path="`+path+`"
-                          data-name="`+name+`">
-                          <div class="m icon-box">
-                            <video class="lazyloaded" width="250" height="180">
-                              <source type="video/`+extension+`" src="`+url+`" />
-                            </video>
-                          </div>
-                          <p class="small mg-t-box">
-                            <h5 class="m-b-xs">`+name+`</h5>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>`)
-            .appendTo( load );
-            element++;
+      if(jQuery.inArray(data[i].extension, image) != -1) {
+        if (i <= (counter + 10)) {
+        var url = "<?php echo base_url() ?>" + data[i].dirname + '/' + data[i].basename;
+          $( "<img>" )
+          .attr({
+            "data-sizes": "auto",
+            "data-src": url,
+            // "data-srcset":  url + " 30w," + url + " 600w, " + url + " 900w",
+            "class": "lazyload blur-up",
+          })
+          .appendTo( load );
       } else {
-        return i;
+          break;
       }
     }else{
 
@@ -176,6 +162,7 @@ function get_refrace(){
      async: true,
      url: refraceAPI,
      success : function() {
+
        window.location.reload();
      }
    });

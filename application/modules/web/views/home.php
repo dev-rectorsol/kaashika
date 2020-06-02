@@ -1,10 +1,32 @@
 
    <section class="slider-area">
+     <?php if(isset($slider)):?>
           <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
               <!-- single slider item start -->
                 <?php foreach ($slider as $value):?>
               <div class="hero-single-slide hero-overlay">
                   <div class="hero-slider-item bg-img" data-bg="<?php echo base_url($value['source']); ?>">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="hero-slider-content slide-1">
+                                      <h2 class="slide-title"><?php echo $value['heading']?></h2>
+                                      <h4 class="slide-desc"><?php echo $value['details']?></h4>
+                                      <a href="<?php echo base_url($value['buttonUrl']); ?>" class="btn btn-hero">Read More</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <?php endforeach;?>
+          </div>
+        <?php else:?>
+          <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
+              <!-- single slider item start -->
+
+              <div class="hero-single-slide hero-overlay">
+                  <div class="hero-slider-item bg-img" data-bg="assets/img/slider/home1-slide2.jpg">
                       <div class="container">
                           <div class="row">
                               <div class="col-md-12">
@@ -18,8 +40,9 @@
                       </div>
                   </div>
               </div>
-            <?php endforeach;?>
+
           </div>
+        <?php endif;?>
       </section>
 
 <br><br><br>
@@ -63,7 +86,6 @@
             <div class="col-12">
                 <div class="product-container">
                     <!-- product tab menu start -->
-
                     <div class="product-tab-menu">
                         <ul class="nav justify-content-center">
                           <?php foreach($category as $value):?>
@@ -74,15 +96,14 @@
                     <!-- product tab menu end -->
 
                     <!-- product tab content start -->
-                    <div class="tab-content">
-
-                        <div class="tab-pane fade show active" id="<?php echo $value['id']?>">
-                            <div class="product-carousel-4 slick-row-10 slick-arrow-style data_body">
+                    <div class="tab-content data_body">
+                        <div class="tab-pane fade show active">
+                            <div class="product-carousel-4 slick-row-10 slick-arrow-style">
                                 <!-- product item start -->
                                 <?php foreach($product as $value):?>
                                 <div class="product-item">
                                     <figure class="product-thumb">
-                                        <a href="product-details.html">
+                                        <a href="<?php echo base_url('web/shop/product_details/').$value['id']?>">
                                              <img class="pri-img" src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="product">
                                              <img class="sec-img" src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="product">
                                         </a>
@@ -95,53 +116,38 @@
                                             </div>
                                         </div>
                                         <div class="button-group">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                            <a href="compare.html" data-toggle="tooltip" data-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                            <a  href="<?php echo base_url('web/Collection/wishlist/').$value['id']?>"  class="wishlist" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like wish"></i></a>
+
+                                            <a id="<?php echo $value['id']?>" class="wishlist"><i class="pe-7s-search"></i></a>
                                         </div>
                                         <div class="cart-hover">
-                                            <button class="btn btn-cart">add to cart</button>
+                                            <a  href="<?php echo base_url('web/Collection/addtocard/').$value['id']?>"  class="btn btn-cart" data-toggle="tooltip" data-placement="left"> Add To Cart</a>
                                         </div>
                                     </figure>
                                     <div class="product-caption text-center">
                                         <div class="product-identity">
-                                            <p class="manufacturer-name"><a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>">Gold</a></p>
+
                                         </div>
-                                        <ul class="color-categories">
-                                            <li>
-                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-darktan" href="#" title="Darktan"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-grey" href="#" title="Grey"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-brown" href="#" title="Brown"></a>
-                                            </li>
-                                        </ul>
+
                                         <h6 class="product-name">
                                             <a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>"><?php echo $value['name']?></a>
                                         </h6>
                                         <div class="price-box">
                                           <?php
-                                          $total=$value['price'];
-                                          $dis=$value['discount'];
-                                          $dis_pri=  $value['price']*($value['discount']/100);
-                                          $regular=$total-$dis_pri;
+                                            $total=$value['price'];
+                                            $dis=$value['discount'];
+                                            $dis_pri=  $value['price']*($value['discount']/100);
+                                            $regular=$total-$dis_pri;
                                           ?>
-                                            <span class="price-regular">$<?php echo $regular?></span>
-                                            <span class="price-old"><del>$<?php echo $value['price']?></del></span>
+                                            <span class="price-regular">₹<?php echo $regular?></span>
+                                            <span class="price-old"><del>₹<?php echo $value['price']?></del></span>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- product item end -->
                                  <?php endforeach;?>
-
                             </div>
                         </div>
-
                     </div>
                     <!-- product tab content end -->
                 </div>
@@ -171,7 +177,7 @@
                 <?php foreach($product as $value):?>
                   <div class="product-item">
                       <figure class="product-thumb">
-                          <a href="product-details.html">
+                          <a href="<?php echo base_url('web/shop/product_details/').$value['id']?>">
                               <img class="pri-img" src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="product">
                                <img class="sec-img" src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="product">
                           </a>
@@ -184,32 +190,21 @@
                               </div>
                           </div>
                           <div class="button-group">
-                              <a href="wishlist.html" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                              <a href="compare.html" data-toggle="tooltip" data-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                              <a href="#" data-toggle="modal" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                              <a href="<?php echo base_url('web/Collection/wishlist/').$value['id']?>"  data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like wish"></i></a>
+
+                              <a id="<?php echo $value['id']?>" data-toggle="modal"  class="wishlist" data-target="#quick_view"><span data-toggle="tooltip"   data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
                           </div>
                           <div class="cart-hover">
-                              <button class="btn btn-cart">add to cart</button>
+                              <!-- <button class="btn btn-cart">add to cart</button> -->
+                              <a  href="<?php echo base_url('web/Collection/addtocard/').$value['id']?>"  class="btn btn-cart" data-toggle="tooltip" data-placement="left" >Add To Cart</a>
+
                           </div>
                       </figure>
                       <div class="product-caption text-center">
                           <div class="product-identity">
-                              <p class="manufacturer-name"><a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>">Gold</a></p>
+
                           </div>
-                          <ul class="color-categories">
-                              <li>
-                                  <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                              </li>
-                              <li>
-                                  <a class="c-darktan" href="#" title="Darktan"></a>
-                              </li>
-                              <li>
-                                  <a class="c-grey" href="#" title="Grey"></a>
-                              </li>
-                              <li>
-                                  <a class="c-brown" href="#" title="Brown"></a>
-                              </li>
-                          </ul>
+
                           <h6 class="product-name">
                               <a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>"><?php echo $value['name']?></a>
                           </h6>
@@ -217,11 +212,11 @@
                             <?php
                             $total=$value['price'];
                             $dis=$value['discount'];
-                          $dis_pri=  $value['price']*($value['discount']/100);
-                          $regular=$total-$dis_pri;
+                            $dis_pri=  $value['price']*($value['discount']/100);
+                            $regular=$total-$dis_pri;
                             ?>
-                              <span class="price-regular">$<?php echo $regular?></span>
-                              <span class="price-old"><del>$<?php echo $value['price']?></del></span>
+                              <span class="price-regular">₹<?php echo $regular?></span>
+                              <span class="price-old"><del>₹<?php echo $value['price']?></del></span>
                           </div>
                       </div>
                   </div>
@@ -279,9 +274,6 @@
                              }
                            }
                             ?>
-
-
-
                             </div>
                             <h5 class="testimonial-author"><?php echo $value['name']?></h5>
                         </div>
@@ -300,18 +292,20 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
+              <?php foreach($category_data as $value):?>
                 <div class="group-product-banner">
                     <figure class="banner-statistics">
                         <a href="#">
-                            <img src="<?php echo base_url() ?>/uploads/product/download_(1).jpg" alt="product banner">
+                            <img src="<?php echo base_url($value['source'])?>" alt="product banner" height="530px;">
                         </a>
                         <div class="banner-content banner-content_style3 text-center">
-                            <h6 class="banner-text1">BEAUTIFUL</h6>
-                            <h2 class="banner-text2">LEHENGA WE LOVE</h2>
-                            <a href="<?php echo base_url('web/home/shop')?>" class="btn btn-text">Shop Now</a>
+                            <h6 class="banner-text1 text-center">BEAUTIFUL</h6>
+                            <h2 class="banner-text2 text-center"><?php echo $value['name']?></h2>
+                            <a href="<?php echo base_url('web/shop/shop_by_category/').$value['id']?>" class="btn btn-text">Shop Now</a>
                         </div>
                     </figure>
                 </div>
+              <?php endforeach;?>
             </div>
             <div class="col-lg-3">
                 <div class="categories-group-wrapper">
@@ -326,16 +320,16 @@
                     <div class="group-list-item-wrapper">
                         <div class="group-list-carousel">
                             <!-- group list item start -->
-                              <?php foreach($product as $value):?>
+                              <?php foreach($Best_Sell_product as $value):?>
                             <div class="group-slide-item">
                                 <div class="group-item">
                                     <div class="group-item-thumb">
-                                        <a href="product-details.html">
+                                        <a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>">
                                             <img src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="">
                                         </a>
                                     </div>
                                     <div class="group-item-desc">
-                                        <h5 class="group-product-name"><a href="product-details.html"><?php echo $value['name']?></a></h5>
+                                        <h5 class="group-product-name"><a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>"><?php echo $value['name']?></a></h5>
                                         <div class="price-box">
                                           <?php
                                           $total=$value['price'];
@@ -343,8 +337,8 @@
                                           $dis_pri=  $value['price']*($value['discount']/100);
                                           $regular=$total-$dis_pri;
                                           ?>
-                                            <span class="price-regular">$<?php echo $regular?></span>
-                                            <span class="price-old"><del>$<?php echo $value['price']?></del></span>
+                                            <span class="price-regular">₹<?php echo $regular?></span>
+                                            <span class="price-old"><del>₹<?php echo $value['price']?></del></span>
                                         </div>
                                     </div>
                                 </div>
@@ -371,16 +365,16 @@
                     <div class="group-list-item-wrapper">
                         <div class="group-list-carousel">
                             <!-- group list item start -->
-                            <?php foreach($product as $value):?>
+                            <?php foreach($on_Sell_product as $value):?>
                           <div class="group-slide-item">
                               <div class="group-item">
                                   <div class="group-item-thumb">
-                                      <a href="product-details.html">
+                                      <a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>">
                                           <img src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="">
                                       </a>
                                   </div>
                                   <div class="group-item-desc">
-                                      <h5 class="group-product-name"><a href="product-details.html"><?php echo $value['name']?></a></h5>
+                                      <h5 class="group-product-name"><a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>"><?php echo $value['name']?></a></h5>
                                       <div class="price-box">
                                         <?php
                                         $total=$value['price'];
@@ -388,8 +382,8 @@
                                       $dis_pri=  $value['price']*($value['discount']/100);
                                       $regular=$total-$dis_pri;
                                         ?>
-                                          <span class="price-regular">$<?php echo $regular?></span>
-                                          <span class="price-old"><del>$<?php echo $value['price']?></del></span>
+                                          <span class="price-regular">₹<?php echo $regular?></span>
+                                          <span class="price-old"><del>₹<?php echo $value['price']?></del></span>
                                       </div>
                                   </div>
                               </div>

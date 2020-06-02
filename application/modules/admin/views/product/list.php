@@ -18,8 +18,7 @@
 
 				<!-- /Breadcrumb -->
 			</div>
-
-
+			
 			<!-- Row -->
 			<div class="row">
 				<div class="col-sm-12">
@@ -45,6 +44,7 @@
 													 <th>Name</th>
 													 <th>Price</th>
 													 <th>Quantity</th>
+													 <th>Status</th>
 													 <th>Action</th>
 												 </tr>
 								       <?php $i=1; foreach($product_data as $row){?>
@@ -55,8 +55,20 @@
 													 <td class="get_data" ><?php echo $row['name'] ?></td>
 													 <td class="get_data" ><?php echo $row['price'] ?></td>
 													 <td class="get_data" ><?php echo $row['quantity'] ?></td>
+
+
+												  <td class="get_data">
+                            <?php if($row['status']=='On_Sell'){?>
+													<a href="<?php echo base_url('admin/product/update_status1/').$row['id'] ?>" class="text-center tip btn btn-success"><?php echo $row['status'] ?></a>
+
+													<?php	}else{	?>
+														<a href="<?php echo base_url('admin/product/update_status2/').$row['id'] ?>" class="text-center tip btn btn-info"><?php echo $row['status'] ?></a>
+											     <?php		}?>
+													</td>
+
+
 													 <td>
-														 <a  class="text-center tip btn btn-primary" onclick="Edit_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
+														 <a class="text-center tip btn btn-primary" onclick="Edit_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
 														 <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
 													 </td>
 												 </tr>
@@ -99,8 +111,6 @@
 				if (sureDel == true) {
 					window.location = "<?php echo base_url()?>admin/Product/product_details/" + id;
 				}
-
-
 		}
 	</script>
 	<?php include('product_js.php');?>

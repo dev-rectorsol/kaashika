@@ -46,9 +46,13 @@
 
 <!-- Bootstrap Switches CSS -->
 		<link href="<?php echo base_url(); ?>vendors/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<!-- media file css -->
+<link rel="stylesheet" href="<?php echo base_url('optimum')?>/dist/css/__media.css">
+
 	<!-- Custom CSS -->
 	<link href="<?php echo base_url('optimum'); ?>/dist/css/style.css" rel="stylesheet" type="text/css">
   <script src="<?php echo base_url(); ?>vendors/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="<?php echo base_url('optimum/dist/js/google.lazy.load/lazysizes.min.js') ?>"></script>
 </head>
 
 <body>

@@ -55,10 +55,10 @@
               </div>
 							  <div class="form-group row">
 									<div class="col-sm-12">
-										<span id="addfeaturepreview">
-										</span>
+										<span id="addfeaturepreview"></span>
+
 										<button id="removepreview" type="button" class="btn btn-link hide" style="color:#667add;">remove</button>
-										<button id="addfeatureimage" type="button" class="btn btn-link" name="button" style="color:#667add;">Add related image</button>
+										<button id="" type="button" class="addfeatureimage btn btn-link" name="button" style="color:#667add;">Add related image</button>
 						     </div>
 					     </div>
               <div class="modal-footer">
@@ -104,10 +104,10 @@
                      <td><?php echo $row['id'] ?></td>
                      <td><?php echo $row['name'] ?></td>
                      <td><?php echo $row['parent'] ?></td>
-                     <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
+                     <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="pd-setting-ed btn btn-primary text-center tip"
                          data-toggle="modal" data-original-title="Edit"><i
                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                       <a title="Trash" class="pd-setting-ed"
+                       <a title="Trash" class="pd-setting-ed btn btn-danger"
                          onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
                            aria-hidden="true"></i></a></td>
                    </tr>
@@ -146,12 +146,12 @@
 															 </div>
 														 </div>
 														 <div class="form-group row">
-						 									<div class="col-sm-12">
-						 										<span id="addfeaturepreview"></span>
+															 <div class="col-sm-12">
+	 															<span id="addfeaturepreview"></span>
 
-						 										<button id="removepreview" type="button" class="btn btn-link hide" style="color:#667add;">remove</button>
-						 										<button id="addfeatureimage" type="button" class="btn btn-link" name="button" style="color:#667add;">Add related image</button>
-						 						     </div>
+	 															<button id="removepreview" type="button" class=" btn btn-link hide" style="color:#667add;">remove</button>
+	 															<button id="" type="button" class="addfeatureimage btn btn-link" name="button" style="color:#667add;">Add related image</button>
+	 											     </div>
 						 					     </div>
 
                            </div>

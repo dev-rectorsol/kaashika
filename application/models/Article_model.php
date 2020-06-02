@@ -45,10 +45,11 @@ class Article_model extends CI_Model {
          function select_by_id($id){
                    $this->db->select("*");
                    $this->db->from('article');
-                   $this->db->where('postid', $id);
+                   $this->db->where('id', $id);
                    $query = $this->db->get();
                    return $query->row();
                }
+
         public  function select_deleted(){
              $this->db->select();
              $this->db->from('article');

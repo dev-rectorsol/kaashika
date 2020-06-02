@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2020 at 06:13 AM
+-- Generation Time: Jun 02, 2020 at 12:40 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 5.6.37
 
@@ -87,11 +87,19 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id`, `postid`, `title`, `slug`, `created_by`, `content`, `public_at`, `is_publish`, `deleted`, `created_at`) VALUES
-(9, '85eb1dda799e48', 'prinka singh yadav', 'hello', 'AKIASZ001', 'Add a content here', '2020-05-06 03:41:59', 1, 0, '2020-05-05 22:11:59'),
-(10, '95eb229a03b99f', 'arti singh patel', 'hello', 'AKIASZ001', '<h4>Add a content here</h4>', '2020-05-06 09:06:08', 1, 0, '2020-05-06 03:36:08'),
-(11, '105eb22dfc460e4', 'pinki', 'pink', 'AKIASZ001', '<h2>Add a content here</h2>', '2020-05-06 09:24:44', 1, 0, '2020-05-06 03:54:44'),
-(12, '115eb22e3904e5d', 'arti', 'hello', 'AKIASZ001', '<h3>Add a content here</h3>', '2020-05-06 09:25:45', 1, 0, '2020-05-06 03:55:45'),
-(13, '125eb22e7175b56', 'prinka singh yadav', 'hello', 'AKIASZ001', '<h4>Add a content here</h4>', '2020-05-06 09:26:41', 1, 0, '2020-05-06 03:56:41');
+(14, '5eb7e2b69d95e', 'priyanka singh yadav', 'dgdfg', 'AKIASZ001', '<p>Add a content here</p><p><span style=\"color: rgb(85, 85, 85); font-family: Lato, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center;\">There are latest blog posts</span><br></p>', '2020-05-10 17:17:10', 0, 1, '2020-05-10 11:47:10'),
+(15, '145eb7e300aa928', 'ME0000003878', 'hello', 'AKIASZ001', '<p>Add a content here</p><p><span style=\"color: rgb(85, 85, 85); font-family: Lato, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center;\">There are latest blog posts</span></p><p><span style=\"color: rgb(85, 85, 85); font-family: Lato, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center;\">There are latest blog posts</span><span style=\"color: rgb(85, 85, 85); font-family: Lato, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center;\"><br></span><br></p>', '2020-05-10 17:18:24', 0, 1, '2020-05-10 11:48:24'),
+(16, '155eb7e32a600ad', 'singh', 'dgdfg', 'AKIASZ001', 'Add a content here', '2020-05-10 17:19:06', 0, 1, '2020-05-10 11:49:06'),
+(17, '165eb7e3556098e', 'arti singh patel', 'dgdfg', 'AKIASZ001', 'Add a content here', '2020-05-10 17:19:49', 0, 1, '2020-05-10 11:49:49'),
+(18, '175eb7e3a210c5f', 'arti singh patel', 'hello', 'AKIASZ001', 'Add a content here', '2020-05-10 17:21:06', 0, 1, '2020-05-10 11:51:06'),
+(19, 'post19', 'arti', 'hello', 'AKIASZ001', 'Add a content here', '2020-06-01 12:15:50', 0, 1, '2020-06-01 06:45:50'),
+(20, 'post20', 'hello', 'dgdfg', 'AKIASZ001', 'Add a content here', '2020-06-01 12:55:57', 0, 1, '2020-06-01 07:25:57'),
+(21, 'post21', 'hello', 'dgdfg', 'AKIASZ001', 'Add a content here', '2020-06-01 12:57:39', 0, 1, '2020-06-01 07:27:39'),
+(22, 'post22', 'arti', 'dgdfg', 'AKIASZ001', 'Add a content here', '0000-00-00 00:00:00', 0, 0, '2020-06-01 07:32:55'),
+(23, 'post23', 'arti singh patel', 'hello', 'AKIASZ001', 'Add a content here', '2020-06-01 14:35:54', 1, 0, '2020-06-01 09:05:54'),
+(24, 'post24', 'priya', 'hello', 'AKIASZ001', 'Add a content here', '2020-06-01 14:43:56', 1, 0, '2020-06-01 09:13:56'),
+(25, 'post25', 'pinki', 'pink', 'AKIASZ001', 'Add a content here', '2020-06-01 14:44:42', 1, 0, '2020-06-01 09:14:42'),
+(26, 'post26', 'ruchi singh', 'ruchi', 'AKIASZ001', 'Add a content here', '2020-06-01 14:45:19', 1, 0, '2020-06-01 09:15:19');
 
 -- --------------------------------------------------------
 
@@ -110,7 +118,6 @@ CREATE TABLE `attribute` (
 --
 
 INSERT INTO `attribute` (`id`, `name`, `created_at`) VALUES
-(19, 'Size', '2020-04-24 15:09:49'),
 (20, 'Color', '2020-04-24 15:10:00'),
 (21, 'Fabric', '2020-04-24 15:10:16'),
 (22, 'Stitch', '2020-04-24 15:10:27'),
@@ -125,18 +132,19 @@ INSERT INTO `attribute` (`id`, `name`, `created_at`) VALUES
 CREATE TABLE `category` (
   `id` int(5) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `parent` varchar(32) NOT NULL
+  `parent` varchar(32) NOT NULL,
+  `source` varchar(262) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `parent`) VALUES
-(4, 'shree', 'none'),
-(5, 'Lahanga', 'none'),
-(7, 'Sute', 'none'),
-(8, 'Dupatta', 'none');
+INSERT INTO `category` (`id`, `name`, `parent`, `source`) VALUES
+(7, 'Sute', 'none', 'uploads/product/DSC_0500-copy-1-330x413.jpg'),
+(8, 'Dupatta', 'none', 'uploads/product/002-330x413.jpg'),
+(9, 'Lehenga', 'none', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg'),
+(10, 'Sarees', 'none', 'uploads/product/DSC_0621-copy-330x413.jpg');
 
 -- --------------------------------------------------------
 
@@ -151,6 +159,7 @@ CREATE TABLE `contact` (
   `email` varchar(32) NOT NULL,
   `subject` varchar(32) NOT NULL,
   `message` longtext NOT NULL,
+  `status` enum('New','Done') NOT NULL DEFAULT 'New',
   `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -158,9 +167,38 @@ CREATE TABLE `contact` (
 -- Dumping data for table `contact`
 --
 
-INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `subject`, `message`, `added_date`) VALUES
-(1, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '2020-04-16 06:31:18'),
-(2, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '2020-04-16 06:31:50');
+INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `subject`, `message`, `status`, `added_date`) VALUES
+(1, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '', '2020-04-16 06:31:18'),
+(2, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '', '2020-04-16 06:31:50'),
+(4, 'ruchi singh', '8040729016', 'a@gmail.com', 'something', 'hello', 'Done', '2020-06-01 10:42:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `customer_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `postcode` int(6) DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT '1=Active | 0=Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `customer_name`, `email`, `phone`, `postcode`, `address`, `created`, `modified`, `status`) VALUES
+(21, 'pooja singh', 'pooja@gmail.com', '8840729016', 123455, ' sunderpur lanka varanasi up', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(30, 'arti singh patel', 'singhseema4581@gmail.com', '08840729016', 123455, 'sikiya', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(31, 'golu', 'g@gmail.com', '01231312323', 123455, 'vns', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(32, 'ruchi singh', 'ruchisingh.vns1211@gmail.com', '9876543210', 221005, 'A/12 sector A lanka road sunderpur (up)', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- --------------------------------------------------------
 
@@ -208,8 +246,8 @@ INSERT INTO `gallery` (`id`, `image`, `added`) VALUES
 
 CREATE TABLE `indexing` (
   `id` int(11) NOT NULL,
-  `root` varchar(32) NOT NULL,
-  `port` varchar(6) NOT NULL,
+  `root` int(11) NOT NULL,
+  `port` int(11) NOT NULL,
   `type` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -218,44 +256,52 @@ CREATE TABLE `indexing` (
 --
 
 INSERT INTO `indexing` (`id`, `root`, `port`, `type`) VALUES
-(47, '23', '1', 'tag'),
-(48, '23', '4', 'category'),
-(49, '24', '2', 'tag'),
-(50, '24', '5', 'category'),
-(51, '25', '3', 'tag'),
-(52, '25', '8', 'category'),
-(53, '26', '4', 'tag'),
-(54, '26', '7', 'category'),
-(55, '27', '4', 'tag'),
-(56, '27', '5', 'category'),
-(57, '28', '5', 'tag'),
-(58, '28', '5', 'category'),
-(59, '5eb1c862bbd49', 'ias', 'tag'),
-(60, '5eb1c862bbd49', 'Lahang', 'category'),
-(61, '15eb1ca21ced46', 'SSC', 'tag'),
-(62, '15eb1ca21ced46', 'Lahang', 'category'),
-(63, '25eb1d2e7b29c9', 'NCRT', 'tag'),
-(64, '25eb1d2e7b29c9', 'Dupatt', 'category'),
-(65, '35eb1d34163fcd', 'NCRT', 'tag'),
-(66, '35eb1d34163fcd', 'Dupatt', 'category'),
-(67, '45eb1d3bdc9901', 'NCRT', 'tag'),
-(68, '45eb1d3bdc9901', 'Dupatt', 'category'),
-(69, '55eb1d4494d1af', 'NCRT', 'tag'),
-(70, '55eb1d4494d1af', 'Dupatt', 'category'),
-(71, '5eb1dc69ae376', 'NCRT', 'tag'),
-(72, '5eb1dc69ae376', 'Dupatt', 'category'),
-(73, '75eb1dd28bf8cd', 'NCRT', 'tag'),
-(74, '75eb1dd28bf8cd', 'Sute', 'category'),
-(75, '85eb1dda799e48', 'NCRT', 'tag'),
-(76, '85eb1dda799e48', 'Lahang', 'category'),
-(77, '95eb229a03b99f', 'NCRT', 'tag'),
-(78, '95eb229a03b99f', 'Lahang', 'category'),
-(79, '105eb22dfc460e4', 'UPSC', 'tag'),
-(80, '105eb22dfc460e4', 'Sute', 'category'),
-(81, '115eb22e3904e5d', 'SSC', 'tag'),
-(82, '115eb22e3904e5d', 'Dupatt', 'category'),
-(83, '125eb22e7175b56', 'NCRT', 'tag'),
-(84, '125eb22e7175b56', 'shree', 'category');
+(47, 23, 1, 'tag'),
+(48, 23, 4, 'category'),
+(49, 24, 2, 'tag'),
+(50, 24, 5, 'category'),
+(51, 25, 3, 'tag'),
+(52, 25, 8, 'category'),
+(53, 26, 4, 'tag'),
+(54, 26, 7, 'category'),
+(55, 27, 4, 'tag'),
+(56, 27, 5, 'category'),
+(105, 39, 2, 'tag'),
+(106, 39, 4, 'category'),
+(107, 40, 4, 'tag'),
+(108, 40, 4, 'category'),
+(109, 41, 2, 'tag'),
+(110, 41, 4, 'category'),
+(111, 42, 2, 'tag'),
+(112, 42, 5, 'category'),
+(113, 43, 2, 'tag'),
+(114, 43, 7, 'category'),
+(115, 30, 2, 'tag'),
+(116, 30, 7, 'category'),
+(117, 29, 5, 'tag'),
+(118, 29, 5, 'category'),
+(119, 28, 5, 'tag'),
+(120, 28, 5, 'category'),
+(121, 44, 2, 'tag'),
+(122, 44, 5, 'category'),
+(123, 45, 3, 'tag'),
+(124, 45, 7, 'category'),
+(125, 0, 0, 'tag'),
+(126, 0, 0, 'category'),
+(127, 21, 0, 'tag'),
+(128, 21, 0, 'category'),
+(129, 23, 0, 'tag'),
+(130, 23, 0, 'category'),
+(131, 24, 0, 'tag'),
+(132, 24, 0, 'category'),
+(133, 25, 0, 'tag'),
+(134, 25, 0, 'category'),
+(135, 26, 0, 'tag'),
+(136, 26, 0, 'category'),
+(137, 46, 2, 'tag'),
+(138, 46, 9, 'category'),
+(139, 47, 3, 'tag'),
+(140, 47, 10, 'category');
 
 -- --------------------------------------------------------
 
@@ -369,6 +415,7 @@ INSERT INTO `log` (`id`, `user_id`, `ip`, `lastlog`) VALUES
 --
 
 CREATE TABLE `logme` (
+  `id` int(11) NOT NULL,
   `logid` char(9) NOT NULL,
   `phone` varchar(10) DEFAULT NULL,
   `email` varchar(32) DEFAULT NULL,
@@ -377,16 +424,22 @@ CREATE TABLE `logme` (
   `role` char(5) NOT NULL,
   `status` enum('active','deactive') NOT NULL,
   `joindate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `logme`
 --
 
-INSERT INTO `logme` (`logid`, `phone`, `email`, `password`, `language`, `role`, `status`, `joindate`, `updated_at`) VALUES
-('AKIASZ001', '7905004391', 'omie@gmail.com', '$2y$10$RiAZ5AQUiLJBlSyNagz/yOHVYzhhWv3t5LfADRTGI4TQaiAV3DUmK', 'english', 'a', 'active', '2020-03-13 00:00:00', '2020-03-18 11:43:03'),
-('EDO100100', NULL, 'b@gmail.com', '$2y$10$WZZDwTr70g3zSDXtDDflZeOPMy9veO9ZneKEL0n0R184xj46v8nTS', NULL, 's', 'active', '2020-03-30 11:03:19', '2020-03-30 15:10:19');
+INSERT INTO `logme` (`id`, `logid`, `phone`, `email`, `password`, `language`, `role`, `status`, `joindate`, `updated_at`, `deleted_at`, `deleted`) VALUES
+(100101, 'AKIASZ001', '7905004391', 'omie@gmail.com', '$2y$10$RiAZ5AQUiLJBlSyNagz/yOHVYzhhWv3t5LfADRTGI4TQaiAV3DUmK', 'english', 'a', 'active', '2020-03-13 00:00:00', '2020-03-18 11:43:03', '0000-00-00 00:00:00', 0),
+(100132, 'EDO100102', NULL, 'shera@gmail.com', '$2y$10$29mO1RFUPax4cgCXSGEfQebnp7j3EoA/Xugu/N/OYodc.FjkUnnWa', NULL, 's', 'active', '2020-04-29 13:03:39', '2020-04-29 12:33:39', NULL, 0),
+(100133, 'EDO100133', NULL, 'uttem@gmail.com', '$2y$10$Jggmu9s9XzFCzKy7c0yYjORhIEvd/Ak8SJycx26Hr2ZXgYFW1Crji', NULL, 's', 'active', '2020-04-29 13:11:34', '2020-04-29 12:41:34', NULL, 0),
+(100134, 'EDO100134', NULL, 'arti@gmail.com', '$2y$10$umEY.Ssn7FPD6qWD9AUutO2mkNShGnwrIVo7TRhePuDIlyX1MSsZS', NULL, 's', 'active', '2020-05-31 16:20:11', '2020-05-31 15:50:11', NULL, 0),
+(100135, 'EDO100135', NULL, 'artisinghh11@gmail.com', '$2y$10$UkzIg/Si/EKMshfh5SgAb.7VV99AIW8flMjowuQRBHj9qXc5qaze6', NULL, 's', 'active', '2020-05-31 16:30:09', '2020-05-31 16:00:09', NULL, 0),
+(100136, 'EDO100136', '8840729016', NULL, '$2y$10$WBpaoePyZUmjmn7JV3p7cOj5pBIjANqKiDel2uDje0RLk1g.8FwxW', NULL, 's', 'active', '2020-05-31 16:40:01', '2020-05-31 16:10:01', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -527,12 +580,50 @@ INSERT INTO `message` (`id`, `key`, `code`, `time`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `orderid` int(6) NOT NULL,
-  `userid` char(32) NOT NULL,
-  `totalprice` double(5,2) NOT NULL,
-  `discount` double(5,2) NOT NULL,
-  `modeid` char(6) NOT NULL
+  `id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `grand_total` float(10,2) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT '1=Active | 0=Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `grand_total`, `created`, `modified`, `status`) VALUES
+(24, 29, 9000.00, '2020-06-02 10:18:03', '2020-06-02 10:18:03', '1'),
+(25, 30, 9990.00, '2020-06-02 10:22:02', '2020-06-02 10:22:02', '1'),
+(26, 31, 9200.00, '2020-06-02 10:45:54', '2020-06-02 10:45:54', '1'),
+(27, 32, 10190.00, '2020-06-02 13:52:29', '2020-06-02 13:52:29', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `quantity` int(5) DEFAULT NULL,
+  `sub_total` float(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `sub_total`) VALUES
+(23, 25, 24, 1, 9000.00),
+(24, 25, 29, 1, 990.00),
+(25, 26, 28, 1, 9000.00),
+(26, 26, 25, 1, 200.00),
+(27, 27, 41, 1, 200.00),
+(28, 27, 24, 1, 9000.00),
+(29, 27, 29, 1, 990.00);
 
 -- --------------------------------------------------------
 
@@ -559,9 +650,24 @@ CREATE TABLE `payments` (
   `transaction` varchar(64) NOT NULL,
   `userid` char(32) NOT NULL,
   `orderid` varchar(32) NOT NULL,
-  `created_date` datetime NOT NULL,
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` enum('1','2','3','4') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`payment`, `transaction`, `userid`, `orderid`, `created_date`, `status`) VALUES
+('pay_EuvTScVxiN210h', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
+('pay_EuvUboJPxWwPX2', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
+('pay_EuvVl95QH0fZAV', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
+('pay_Eux7QkYVumuU6f', '20000', '17', '13', '0000-00-00 00:00:00', '1'),
+('pay_EuxB1X9gfZkvQY', '20000', '17', '13', '0000-00-00 00:00:00', '1'),
+('pay_EuxRcKlmfsqMH3', '90000', '18', '14', '0000-00-00 00:00:00', '1'),
+('pay_ExbzgVRcPGDQEa', '2110000', '21', '16', '0000-00-00 00:00:00', '1'),
+('pay_ExdYAo3Q2bdeAm', '920000', '31', '26', '0000-00-00 00:00:00', '1'),
+('pay_ExgjRiOepm3NjL', '1019000', '32', '27', '2020-06-02 13:52:50', '1');
 
 -- --------------------------------------------------------
 
@@ -605,6 +711,7 @@ CREATE TABLE `products` (
   `profile_pic` text NOT NULL,
   `discount` int(5) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `status` enum('On_Sell','Best_Sell') DEFAULT 'On_Sell',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -613,13 +720,17 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `profile_pic`, `discount`, `quantity`, `created_at`, `updated_at`) VALUES
-(23, 'Shree', '<p>beautiful</p>', 2000, 'DSC_0146-copy-330x413.jpg', 10, 1, '2020-05-04 20:30:33', NULL),
-(24, 'Lehenga', '<p>lehenga images<br></p>', 9000, '5085_11.jpg', 0, 2, '2020-05-04 20:34:27', NULL),
-(25, 'Dupatta', '<p>nice</p>', 200, '002-330x413.jpg', 12, 2, '2020-05-04 20:36:22', NULL),
-(26, 'sute', '<p>fgdfgf fg</p>', 900, 'DSC_0500-copy-1-330x4131.jpg', 12, 2, '2020-05-04 20:37:43', NULL),
-(27, 'Lehenga', '<p>marrege party wear</p>', 10000, '1562871246794_0_.jpg', 12, 2, '2020-05-05 18:09:36', NULL),
-(28, 'lehenga', '<p>party wear henga</p>', 9000, 'download_(1).jpg', 12, 5, '2020-05-05 18:33:27', NULL);
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `profile_pic`, `discount`, `quantity`, `status`, `created_at`, `updated_at`) VALUES
+(23, 'Shree', '<p>beautiful</p>', 2000, 'DSC_0146-copy-330x413.jpg', 10, 1, 'Best_Sell', '2020-05-04 20:30:33', NULL),
+(25, 'Dupatta', '<p>nice</p>', 200, '002-330x413.jpg', 12, 2, 'Best_Sell', '2020-05-04 20:36:22', NULL),
+(27, 'Lehenga', '<p>marrege party wear</p>', 10000, '1562871246794_0_.jpg', 12, 2, 'Best_Sell', '2020-05-05 18:09:36', NULL),
+(28, 'lehenga', '<p>party wear henga</p>', 9000, 'download_(1).jpg', 12, 5, 'Best_Sell', '2020-05-05 18:33:27', NULL),
+(31, 'saree', '<p>df dhf ssudhf igdsvv uyvsv cvydv mvgsh</p>', 200, 'DSC_0381-330x4131.jpg', 20, 1, 'On_Sell', '2020-05-13 14:23:37', NULL),
+(41, 'cotoon saree', '<p>xcvbnmc dfghm fghjk fdfghj, dfh</p>', 200, 'DSC_0146-copy-330x4131.jpg', 0, 3, 'On_Sell', '2020-05-15 16:45:38', NULL),
+(42, 'product1', '<p>vn</p>', 200, '1562871246794_0_1.jpg', 0, 8, 'On_Sell', '2020-05-18 22:01:45', NULL),
+(45, 'Salwar kameez', '<p>beautifuly dress</p>', 900, 'cream-cotton-salwar-kameez-137927-800x1100.jpg', 10, 2, 'On_Sell', '2020-05-30 06:13:24', NULL),
+(46, 'Lehenga', '<p><span xss=removed>A </span><b xss=removed>Lehenga</b><span xss=removed> is a form of skirt from the Indian subcontinent which is long and embroidered usually paired with a dupatta. </span><br></p>', 5000, '1979lg25-n228.jpg', 20, 1, 'On_Sell', '2020-06-02 15:48:09', NULL),
+(47, 'Saree', '<p><span xss=removed>A wedding sari is the traditional wedding dress of Indian women. The sari is traditionally a combination of red and green, with golden brocade.</span><br></p>', 10000, '0621119_admirable-mehendi-silk-sarees.jpeg', 12, 2, 'On_Sell', '2020-06-02 15:52:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -652,25 +763,58 @@ INSERT INTO `product_attributes` (`product_attribute_id`, `product_id`, `attribu
 (31, 20, 20, 'red'),
 (32, 21, 0, ''),
 (33, 22, 21, 'blue'),
-(34, 1, 0, ''),
-(35, 1, 0, ''),
-(36, 1, 0, ''),
+(34, 1, 47, 'skyblue'),
+(35, 1, 47, 'skyblue'),
+(36, 1, 47, 'skyblue'),
 (37, 14, 0, ''),
-(38, 1, 0, ''),
-(39, 1, 0, ''),
-(40, 1, 0, ''),
-(41, 1, 0, ''),
-(42, 1, 21, 'red'),
-(43, 1, 33, 'blue'),
-(44, 1, 20, 'red'),
+(38, 1, 47, 'skyblue'),
+(39, 1, 47, 'skyblue'),
+(40, 1, 47, 'skyblue'),
+(41, 1, 47, 'skyblue'),
+(42, 1, 47, 'skyblue'),
+(43, 1, 47, 'skyblue'),
+(44, 1, 47, 'skyblue'),
 (45, 23, 20, 'blue'),
 (46, 23, 22, '12'),
 (47, 24, 20, 'red'),
 (48, 25, 20, 'pink'),
 (49, 26, 20, 'pink'),
 (50, 27, 20, 'maroon'),
-(51, 1, 0, ''),
-(52, 28, 20, 'white');
+(51, 1, 47, 'skyblue'),
+(52, 28, 20, 'white'),
+(53, 29, 19, '45'),
+(54, 29, 20, 'white'),
+(55, 29, 23, 'dri wash'),
+(56, 30, 19, 'long'),
+(57, 30, 20, 'black'),
+(58, 30, 23, 'dry wash'),
+(90, 31, 20, 'yellow'),
+(60, 31, 19, '5m'),
+(61, 32, 21, '12'),
+(62, 32, 20, 'blue'),
+(63, 33, 20, 'black'),
+(79, 41, 20, 'yello'),
+(78, 40, 23, 'dyrwash'),
+(77, 40, 20, 'blue'),
+(76, 40, 19, '5m'),
+(75, 24, 0, ''),
+(71, 1, 47, 'skyblue'),
+(74, 24, 19, 'Xl'),
+(80, 42, 19, 'blue'),
+(81, 43, 20, 'blue'),
+(82, 30, 0, ''),
+(83, 29, 0, ''),
+(84, 28, 0, ''),
+(85, 44, 20, 'red'),
+(86, 44, 19, 'long'),
+(87, 44, 23, 'drywash'),
+(88, 45, 20, 'pink'),
+(89, 45, 23, 'drywash'),
+(91, 39, 20, 'purple'),
+(92, 41, 20, 'maroon'),
+(93, 46, 20, 'purple'),
+(94, 46, 23, 'dye'),
+(95, 47, 20, 'pink');
 
 -- --------------------------------------------------------
 
@@ -681,24 +825,47 @@ INSERT INTO `product_attributes` (`product_attribute_id`, `product_id`, `attribu
 CREATE TABLE `product_images` (
   `product_images_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `image` text NOT NULL
+  `image` text NOT NULL,
+  `color` varchar(32) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `product_images`
 --
 
-INSERT INTO `product_images` (`product_images_id`, `product_id`, `image`) VALUES
-(1, 19, 'Ed_Sheeran1.png'),
-(2, 19, 'educationaduca.png'),
-(3, 20, 'slid4.jpg'),
-(4, 23, 'DSC_0381-330x413.jpg'),
-(5, 23, 'DSC_0621-copy-330x413.jpg'),
-(6, 24, 'download.jpg'),
-(7, 25, 'DSC_0507-copy-330x413.jpg'),
-(8, 25, 'DSC_0500-copy-1-330x413.jpg'),
-(9, 27, '5085_12.jpg'),
-(10, 28, 'download_(3).jpg');
+INSERT INTO `product_images` (`product_images_id`, `product_id`, `image`, `color`) VALUES
+(1, 19, 'Ed_Sheeran1.png', '#F37A60'),
+(2, 19, 'educationaduca.png', '#F37A60'),
+(3, 20, 'slid4.jpg', '#F1182B'),
+(4, 23, 'DSC_0381-330x413.jpg', '#0EF923'),
+(5, 23, 'DSC_0621-copy-330x413.jpg', '#0EF923'),
+(6, 24, 'download.jpg', '#FFC300'),
+(7, 25, 'DSC_0507-copy-330x413.jpg', '#C70039'),
+(8, 25, 'DSC_0500-copy-1-330x413.jpg', '#F9F20E '),
+(9, 27, '5085_12.jpg', '#E811D4'),
+(10, 28, 'download_(3).jpg', '#C70039'),
+(11, 29, 'download_(3)2.jpg', '#F37A60'),
+(14, 1, 'download_(2)1.jpg', '#56E628 '),
+(15, 1, 'download_(2)1.jpg', '#F1182B'),
+(16, 1, 'download_(2)1.jpg', '#09B4C5 '),
+(17, 1, 'download_(2)1.jpg', '#18F073 '),
+(18, 24, 'download_(1)3.jpg', '#18F073 '),
+(19, 24, 'download3.jpg', '#0EF923'),
+(20, 24, 'download_(3)5.jpg', '#18F073 '),
+(21, 40, 'DSC_0381-330x4134.jpg', '#F9F20E '),
+(22, 42, '1562871246794_0_2.jpg', '#56E628 '),
+(24, 44, 'download_(3)6.jpg', '#faf4f4'),
+(26, 45, 'skcit19_enlarge.jpg', '#fd8bee'),
+(25, 45, '2635sl06-59224.jpg', '#57e5e2'),
+(27, 45, 'Cotton-Patiala-Salwar-Kameez.jpg', '#ab0da5'),
+(28, 45, 'Salwar-Kameez-Designs-2018-1.jpeg', '#5e5a5a'),
+(29, 46, 'download_(2)2.jpg', '#c69faf'),
+(30, 46, 'PRN4847-Red-color-Net-Lehenga-Choli_LC1387.jpg', '#db1a27'),
+(31, 46, 'download.jpg', '#871212'),
+(32, 47, '91nycgf7mbL__UY550_.jpg', '#d33c69'),
+(33, 47, 'dulhan-saree-500x500.jpg', '#f33551'),
+(34, 47, '27c1872b18649839dbc682ff3d4bf0e2--traditional-sarees-traditional-outfits.jpg', '#114b15'),
+(35, 47, '0621119_admirable-mehendi-silk-sarees1.jpeg', '#73990a');
 
 -- --------------------------------------------------------
 
@@ -758,7 +925,10 @@ CREATE TABLE `roles_users` (
 
 INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
 ('AKIASZ001', 1),
-('EDO100100', 2);
+('EDO100100', 2),
+('EDO100134', 2),
+('EDO100135', 2),
+('EDO100136', 2);
 
 -- --------------------------------------------------------
 
@@ -779,9 +949,11 @@ CREATE TABLE `setting` (
 
 INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`, `autoload`) VALUES
 (1, 'application_name', 'Online Education Board', 'yes'),
-(2, 'application_title', 'Online Education Board', 'yes'),
-(3, 'home_slider', '{\"4\":{\"heading\":\"Hedding6\",\"details\":\"hgh\",\"buttonUrl\":\"\",\"source\":\"uploads\\/images\\\\\\/medium\\/slid2_medium-1400x500.jpg\"},\"6\":{\"heading\":\"Hedding6\",\"details\":\"Hi, How are You \",\"buttonUrl\":\"\",\"source\":null}}', 'yes'),
-(4, 'social_icon', '[{\"link\":\"https:\\/\\/www.facebook.com\\/\",\"icon\":\"icon-line-awesome-facebook\"},{\"link\":\"https:\\/\\/twitter.com\\/Twitter\",\"icon\":\"icon-line-awesome-twitter-square\"},{\"link\":\"https:\\/\\/www.youtube.com\\/\",\"icon\":\"icon-line-awesome-youtube\"}]', 'yes');
+(2, 'application_title', '{\"3\":{\"title\":\"BEST SALWAR SUIT SITE\",\"source\":\"uploads\\/images\\\\\\/thumbnail\\/download_thumb-175x200.png\"}}', 'yes'),
+(3, 'home_slider', '{\"7\":{\"heading\":\"Hedding3\",\"details\":\"fhdsfh shfsd mhfs fmshfsmnv\",\"buttonUrl\":\"\",\"source\":\"uploads\\/images\\\\\\/medium\\/slid5_medium-376x134.jpg\"}}', 'yes'),
+(4, 'social_icon', '[{\"link\":\"https:\\/\\/www.facebook.com\\/\",\"icon\":\"icon-line-awesome-facebook\"},{\"link\":\"https:\\/\\/twitter.com\\/Twitter\",\"icon\":\"icon-line-awesome-twitter-square\"},{\"link\":\"https:\\/\\/www.youtube.com\\/\",\"icon\":\"icon-line-awesome-youtube\"}]', 'yes'),
+(5, 'contact_us', '{\"3\":{\"address\":\"12\\/A sector 3 varanasi up India\",\"email\":\"onlinekashika@gmail.com\",\"phone\":\"9876543210\"}}', 'yes'),
+(6, 'application_logo', '[{\"discription\":\"Hello , What are you Say this site?\",\"source\":\"uploads\\/images\\\\\\/medium\\/logo-maker-02_medium-450x387.png\"}]', 'yes');
 
 -- --------------------------------------------------------
 
@@ -800,8 +972,7 @@ CREATE TABLE `tags` (
 
 INSERT INTO `tags` (`id`, `title`) VALUES
 (4, 'BIOLOGY'),
-(1, 'ias'),
-(5, 'NCRT'),
+(1, 'repbulic'),
 (3, 'SSC'),
 (2, 'UPSC');
 
@@ -825,11 +996,10 @@ CREATE TABLE `testimonial` (
 --
 
 INSERT INTO `testimonial` (`id`, `name`, `discription`, `image`, `ratting`, `created_at`) VALUES
-(2, 'pinki', 'Aug 15, 2017 - Some Content About Content. by Evan Williams. Content was invented in 2007 by Steven Ross, a principal at a boutique communications ...\r\n', 'arti.jpg', 4, '2020-05-06 14:56:51'),
 (3, 'arti', 'Add a content here', 'images.png', 3, '2020-05-06 14:57:55'),
 (4, 'arti singh patel', 'Add a content here', 'download_(1).png', 5, '2020-05-06 17:02:54'),
-(5, 'singh', 'Add a content here', 'images2.png', 5, '2020-05-07 06:56:01'),
-(6, 'arti', 'Add a content here', 'download.png', 4, '2020-05-07 06:56:24');
+(5, 'singh arti', 'Add a content here', 'images2.png', 5, '2020-05-07 06:56:01'),
+(6, 'arti singh', 'Add a content here', 'download.png', 4, '2020-05-07 06:56:24');
 
 -- --------------------------------------------------------
 
@@ -865,11 +1035,16 @@ CREATE TABLE `thumbnail` (
 --
 
 INSERT INTO `thumbnail` (`id`, `root`, `thumb`, `image`) VALUES
-(7, '85eb1dda799e48', 'uploads/images\\/thumbnail/slid5_thumb-200x71.jpg', 'uploads/images\\/thumbnail/slid5_thumb-200x71.jpg'),
-(8, '95eb229a03b99f', 'uploads/images\\/thumbnail/download_(1)_thumb-168x200.png', 'uploads/images\\/thumbnail/download_(1)_thumb-168x200.png'),
-(9, '105eb22dfc460e4', 'uploads/images\\/medium/download_medium-210x240.png', 'uploads/images\\/medium/download_medium-210x240.png'),
-(10, '115eb22e3904e5d', 'uploads/images\\/thumbnail/download_thumb-175x200.png', 'uploads/images\\/thumbnail/download_thumb-175x200.png'),
-(11, '125eb22e7175b56', 'uploads/images\\/thumbnail/download_(1)_thumb-168x200.png', 'uploads/images\\/thumbnail/download_(1)_thumb-168x200.png');
+(16, 'EDO100134', NULL, NULL),
+(17, 'EDO100135', NULL, NULL),
+(18, 'EDO100136', NULL, NULL),
+(19, 'post19', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
+(20, 'post20', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
+(21, '20', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
+(22, '23', 'uploads/images\\/thumbnail/16704_thumb-200x143.jpg', 'uploads/images\\/thumbnail/16704_thumb-200x143.jpg'),
+(23, '24', 'uploads/product/1562871246794_0_2.jpg', 'uploads/product/1562871246794_0_2.jpg'),
+(24, '25', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
+(25, '26', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg');
 
 -- --------------------------------------------------------
 
@@ -912,7 +1087,9 @@ CREATE TABLE `user_details` (
 
 INSERT INTO `user_details` (`id`, `user_id`, `name`, `mobile`, `details`, `updated_at`) VALUES
 (2, 'AKIASZ001', 'Kali', '4684655654', 'njkskdsd\nnsdksknvvnxvn\nxncvxvnmxv,cxvmxnvx,m,xcv,mx', '2020-03-18 11:42:15'),
-(24, 'EDO100100', 'bhawana', NULL, NULL, '2020-03-30 15:10:19');
+(24, 'EDO100100', 'bhawana', NULL, NULL, '2020-03-30 15:10:19'),
+(25, 'EDO100134', 'art', NULL, NULL, '2020-05-31 15:50:11'),
+(26, 'EDO100135', 'artisingh ', '8840729016', 'hello', '2020-05-31 16:00:09');
 
 -- --------------------------------------------------------
 
@@ -977,6 +1154,12 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `docfile`
 --
 ALTER TABLE `docfile`
@@ -1014,7 +1197,7 @@ ALTER TABLE `log`
 -- Indexes for table `logme`
 --
 ALTER TABLE `logme`
-  ADD PRIMARY KEY (`logid`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `role` (`role`);
 
 --
@@ -1033,8 +1216,14 @@ ALTER TABLE `message`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`orderid`),
-  ADD KEY `userid` (`userid`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_id` (`customer_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `order_meta`
@@ -1172,7 +1361,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `attribute`
@@ -1184,13 +1373,19 @@ ALTER TABLE `attribute`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `gallery`
@@ -1202,7 +1397,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `indexing`
 --
 ALTER TABLE `indexing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `keys`
@@ -1215,6 +1410,12 @@ ALTER TABLE `keys`
 --
 ALTER TABLE `log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+
+--
+-- AUTO_INCREMENT for table `logme`
+--
+ALTER TABLE `logme`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100137;
 
 --
 -- AUTO_INCREMENT for table `logs`
@@ -1232,7 +1433,13 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderid` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `order_meta`
@@ -1250,19 +1457,19 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  MODIFY `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `product_images_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `product_images_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `results`
@@ -1280,13 +1487,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `setting`
 --
 ALTER TABLE `setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `testimonial`
@@ -1298,7 +1505,7 @@ ALTER TABLE `testimonial`
 -- AUTO_INCREMENT for table `thumbnail`
 --
 ALTER TABLE `thumbnail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user_aim`
@@ -1310,7 +1517,7 @@ ALTER TABLE `user_aim`
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

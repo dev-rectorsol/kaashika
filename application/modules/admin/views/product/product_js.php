@@ -23,7 +23,9 @@ $(document).ready(function() {
 $('#add_image').on('click', function() {
 element ="<tr ><td>";
 element +="product image</td>	<td>";
-element +="<input type='file' class='dropify form-control' name='pics[]' /></td><td>";
+element +="<input type='file' class='dropify form-control' name='pics[]' /></td></tr><tr><td>";
+element +="product color</td><td>";
+element +="<input type='color'  name='color[]' value='' /></td>";
 element +="	<button type='button'   class='btn btn-danger remove_image'>-</button>	</td>	</tr>";
 
 

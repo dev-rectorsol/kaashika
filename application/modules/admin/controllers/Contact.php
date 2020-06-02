@@ -13,6 +13,7 @@ class Contact extends CI_Controller {
 				 	redirect(base_url(), 'refresh');
 			}
 			$this->load->model('Common_model');
+			$this->load->model('Product_model');
 	}
 	public function index()
 	{
@@ -44,4 +45,24 @@ class Contact extends CI_Controller {
 			redirect(base_url() . 'admin/category', 'refresh');
 	}
 	}
+
+	public function update_status1($id)
+		{
+
+				$data['contact_data']=  $this->Product_model->select_product($id,'contact');
+				foreach($data['contact_data'] as $value){
+				$data['contact_data']=$value;
+				}
+				// echo $data['product_data']['status'];exit;
+				if($data['contact_data']['status']=='New')
+				{
+					$data1=[
+					'status'=>'Done'
+				];
+				}
+			 $this->Common_model->update($data1,'id',$id,'contact');
+				redirect(base_url() . 'admin/contact', 'refresh');
+		}
+
+
 }

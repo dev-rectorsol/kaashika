@@ -9,6 +9,7 @@ class Product extends CI_Controller {
 		parent::__construct();
 
 			$this->load->model('Common_model');
+				$this->load->library('cart');
 		//Do your magic here
 	}
 

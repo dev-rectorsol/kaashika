@@ -63,8 +63,8 @@
 													<td><?php echo my_date_show($value['created_at']) ?></td>
 
 													<td>
-													 	<a  class="text-center tip btn btn-primary" onclick="Edit_detail(<?php echo $value['postid'] ;?>)"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
-														 <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $value['postid'] ;?>)"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
+													 	 <a class="text-center tip btn btn-primary" onclick="Edit_detail(<?php echo $value['id'] ;?>)"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
+														 <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $value['id'] ;?>)"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
 													</td>
 												</tr>
 											<?php endforeach; ?>
@@ -98,5 +98,11 @@
 
 			}
 		}
+		function Edit_detail(id) {
 
+				var sureDel = confirm("Are you sure want to Edit");
+				if (sureDel == true) {
+					window.location = "<?php echo base_url()?>admin/article/edit/" + id;
+				}
+		}
 		</script>

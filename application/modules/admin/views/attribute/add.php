@@ -41,7 +41,7 @@
                     <input name="name" type="text" class="form-control" placeholder="Name">
                  </div>
               </div>
-             
+
               <div class="modal-footer">
                 <input type="hidden"
                   name="<?php echo $this->security->get_csrf_token_name();?>"
@@ -87,10 +87,10 @@
                      <td><?php echo $row['id'] ?></td>
                      <td><?php echo $row['name'] ?></td>
                      <td><?php echo $row['created_at'] ?></td>
-                     <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
+                     <td> <a data-target="<?php echo '#'.$row['id'];  ?>" title="Edit" class="pd-setting-ed btn btn-primary text-center tip"
                          data-toggle="modal" data-original-title="Edit"><i
                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                       <a title="Trash" class="pd-setting-ed"
+                       <a title="Trash"  class="pd-setting-ed btn btn-danger"
                          onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
                            aria-hidden="true"></i></a></td>
                    </tr>
@@ -117,7 +117,7 @@
                                  <input type="text" class="form-control" name="name"
                                    value="<?php echo $row['name'] ?>" id="required">
                                </div>
-                            
+
                          </div> </div>
                          <div class="modal-footer">
                            <input type="hidden"

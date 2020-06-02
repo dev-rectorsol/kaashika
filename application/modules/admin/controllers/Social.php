@@ -84,8 +84,8 @@ class Social extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
 		}
 	}
-	public function deleteslider($id){
-		$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '[]';
+	public function deletesocial($id){
+		$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '[]';
 
 		$arr_data = json_decode($slider_value, true);
 
@@ -96,12 +96,14 @@ class Social extends CI_Controller {
 		$data = [
 			"setting_value" => $jsondata,
 		];
-		$this->common_model->update($data, 'setting_name', 'home_slider', 'setting');
+		$this->common_model->update($data, 'setting_name', 'social_icon', 'setting');
 
-		$this->session->set_flashdata(array('error' => 0, 'msg' => 'Slider Deleted Done'));
+		$this->session->set_flashdata(array('error' => 0, 'msg' => 'Social Deleted Done'));
 
 		redirect($_SERVER['HTTP_REFERER'], 'refresh');
 	}
+
+
 	public function icons(){
 		header('Content-Type: text/html; charset=UTF-8');
 		echo $this->load->view('setting/icons');

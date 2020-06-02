@@ -51,7 +51,7 @@
 		              <span id="addfeaturepreview">
 		              </span>
 		              <button id="removepreview" type="button" class="btn btn-link hide" style="color:#667add;">remove</button>
-		              <button id="addfeatureimage" type="button" class="btn btn-link" name="button" style="color:#667add;">Add feature image</button>
+		              <button type="button" class="addfeatureimage btn btn-link" name="button" style="color:#667add;">Add feature image</button>
 		              <div class="form-group">
 		                <label class="login2">Slug</label>
 		                <input name="slug" type="text" class="form-control" placeholder="slug">

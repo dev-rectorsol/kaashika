@@ -42,13 +42,42 @@ class Shop_model extends CI_Model{
         return $query;
     }
 
-    function select_product_details($id,$table){
-      echo $id;
+
+
+    function select_attr_color($id,$name,$type,$table){
+      //echo $id;
         $this->db->select();
         $this->db->from($table);
+        $this->db->where('port',$id);
+        $this->db->where('type',$type);
+        $this->db->join('products','products.id=indexing.root','inner');
+        $this->db->join(' product_attributes as p', 'indexing.root=p.product_id', 'inner');
+        $this->db->where('p.value', $name);
+        $query = $this->db->get();
+        //echo $this->db->last_query($query);exit;
+       $query = $query->result_array();
+       return $query;
+
+    }
+
+
+    function select_product_details($id,$table){
+      //echo $id;
+        $this->db->select('products.id,products.quantity,products.name,products.price,products.profile_pic,');
+        $this->db->from($table);
         $this->db->where('products.id',$id);
-         $this->db->join('indexing','products.id=indexing.root','inner');
-        // $this->db->join('product_attributes','products.id= product_attributes.product_id','inner');
+        $this->db->join('indexing','products.id=indexing.root','left');
+        $query = $this->db->get();
+        //echo $this->db->last_query($query);exit;
+        $query = $query->result_array();
+        return $query;
+    }
+    function select_product_details_byid($id,$table){
+      //echo $id;
+        $this->db->select('products.id,products.quantity,products.discount,products.description,products.name,products.price,products.profile_pic,indexing.port');
+        $this->db->from($table);
+        $this->db->where('products.id',$id);
+        $this->db->join('indexing','products.id=indexing.root','left');
         $query = $this->db->get();
         //echo $this->db->last_query($query);exit;
         $query = $query->result_array();

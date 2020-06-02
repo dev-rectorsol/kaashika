@@ -48,14 +48,14 @@
 												</div>
 											<?php endif; ?>
 											<?php endif; ?>
-                      <form action="<?php echo base_url('authentication/register/Signup')?>" method="post">
+                      <form action="<?php echo base_url('authentication/Register/Signup')?>" method="post">
                         <div class="form-group">
                           <label class="control-label mb-10" for="exampleInputName_1">Username</label>
                           <input type="text" class="form-control" required="" name="fullname" placeholder="Full name">
                         </div>
                         <div class="form-group">
                           <label class="control-label mb-10" for="exampleInputEmail_2">Email or Phone</label>
-                          <input type="text" class="form-control" required="" id="username" name="username" placeholder= "Email or Mobile">
+                          <input class="uk-input" type="text" id="username" name="username" placeholder= "Email or Mobile">
                         </div>
                         <div class="form-group">
                           <label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>

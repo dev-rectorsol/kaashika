@@ -27,9 +27,6 @@ class Testimonial extends CI_Controller {
 		{
 			if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
-			  // echo "<pre>";
-			 	// 			 print_r($_FILES);
-			 	// 			 exit();
 			 if(isset($_FILES['profile']['name'])){
 				$config['upload_path']          = './uploads/testimonial';
 				$config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -40,7 +37,7 @@ class Testimonial extends CI_Controller {
 			$this->load->library('upload', $config);
 
 			if($this->upload->do_upload('profile')){
-					$img=$this->upload->data();
+				$img=$this->upload->data();
 							 // echo "<pre>";
 							 // print_r($img);
 							 // exit();
@@ -67,33 +64,61 @@ class Testimonial extends CI_Controller {
 			}
 		}
 
-      public function AddTag()
-			{
-				if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-		         $tag=[
-		            'title' => $data1['name'],
-		        ];
-            $this->Common_model->insert($tag,'tags');
-			redirect(base_url() . 'admin/category', 'refresh');
-				}
-			}
- public function Delete($id)
-	{
-            $data1=['id'=> $id];
-            $this->Common_model->delete($data1,'testimonial');
-            redirect(base_url() . 'admin/Testimonial', 'refresh');
-    }
+
+			public function Delete($id)
+			 {
+			    $data1=['id'=> $id];
+			    $this->Common_model->delete($data1,'testimonial');
+			    redirect(base_url() . 'admin/Testimonial', 'refresh');
+			  }
+
     public function Edit($id)
-	{
+   	{
 		if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-             $aim=[
-            'name' => $data1['name'],
-            'parent' => $data1['parent'],
-        ];
-           $this->Common_model->update($aim,'id',$id,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
+
+			$data1=$this->security->xss_clean($_POST);
+
+			if(isset($_FILES['profile']['name'])){
+			 $config['upload_path']          = './uploads/testimonial';
+			 $config['allowed_types']        = 'gif|jpg|png|jpeg';
+			 $config['max_size']             = 11264;
+			 $config['max_width']            = 6000;
+			 $config['max_height']           = 6000;
+
+		 $this->load->library('upload', $config);
+
+		 if($this->upload->do_upload('profile')){
+				 $img=$this->upload->data();
+							// echo "<pre>";
+							// print_r($img);
+							// exit();
+			 $pic=$img['file_name'];
+		 
+		 }else{
+			 echo "file not uploaded"; echo $this->upload->display_errors();exit;
+		 }
+
+			}else{
+				$pic="";
+				$data=[
+				'name' => $data1['name'],
+				'discription' => $data1['discription'],
+
+				];
+				 $this->Common_model->update($data,'id',$id,'testimonial');
+				 	redirect(base_url() . 'admin/Testimonial', 'refresh');
+			}
+
+			 $data=[
+			 'name' => $data1['name'],
+			 'discription' => $data1['discription'],
+			 'image' => $pic,
+
+			 ];
+
+       $this->Common_model->update($data,'id',$id,'testimonial');
+			redirect(base_url() . 'admin/Testimonial', 'refresh');
 	}
 	}
+
 }

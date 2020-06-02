@@ -41,8 +41,8 @@
 				<div class="panel-body">
 
 					<div class="pills-struct mt-40">
-						<form action="<?php echo base_url('admin/Product/Add_attribute')?>" method="POST"
-							enctype="multipart/form-data">
+						<form action="<?php echo base_url('admin/Product/Add_attribute')?>" method="POST" enctype="multipart/form-data">
+
 							<div class="tab-content" id="myTabContent_6">
 								<div id="home" class="tab-pane fade active in" role="tabpanel">
 									<div class="form-group row">

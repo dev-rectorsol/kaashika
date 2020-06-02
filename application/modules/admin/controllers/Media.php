@@ -30,9 +30,11 @@ class Media extends CI_Controller {
 	public function index()
 	{
 			$fileData['file'] = readJSON();
+      //echo print_r($fileData['file'] );exit;
 			$data['main_content'] = $this->load->view('media/lazy-loading', $fileData, TRUE);
 			$this->load->view('index', $data);
 	}
+
 	public function videos()
 	{
 			$fileData['file'] = readJSON();
@@ -52,6 +54,7 @@ class Media extends CI_Controller {
       echo base_url('admin/media/get_file_refrace');
     }
  }
+
 	public function get_load()
 	{
 			if ($_POST) {
@@ -65,8 +68,7 @@ class Media extends CI_Controller {
 
 
 	public function add(){
-    $data= array();
-    $data['page']='Add New Gallery';
+    $data['page']='upload gallery';
 		$data['main_content'] = $this->load->view('media/add-view', $data, TRUE);
 		$this->load->view('index', $data);
 	}

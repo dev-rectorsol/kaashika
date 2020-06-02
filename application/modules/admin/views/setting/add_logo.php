@@ -41,7 +41,7 @@
                     <span id="addfeaturepreview" ></span>
 
                     <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
-                    <button id="addfeatureimage" type="button" class="btn btn-link" style="color:blue" name="button">Add Slider image</button>
+                    <button class="" type="button" class="addfeatureimage btn btn-link" style="color:blue" name="button">Add Slider image</button>
                     <div class="modal-footer">
                       <span id="msg" style="color: red;"></span>
                         <input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">
@@ -119,7 +119,7 @@
 
 															 <span id="addfeaturepreview" ></span>
 															 <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
-															 <button id="addfeatureimage" type="button" class="btn btn-link" style="color:blue" name="button">Add Slider image</button>
+															 <button id="" type="button" class=" addfeatureimage btn btn-link" style="color:blue" name="button">Add Slider image</button>
 
 			                         <div class="modal-footer">
 																   <span id="msg" style="color: red;"></span>

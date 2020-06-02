@@ -9,6 +9,7 @@ class Shop extends CI_Controller {
 			$this->load->model('Common_model');
 			$this->load->model('Shop_model');
 			$this->load->model('Product_model');
+			$this->load->library('cart');
 		//Do your magic here
 	}
 
@@ -36,9 +37,11 @@ class Shop extends CI_Controller {
     }
 
 		public function shop_by_category($id){
-		//	echo $id;exit;
-	        $data = array();
-	        $data['page'] = 'Cart';
+	         $data = array();
+					 $data['id']=$id;
+
+					// echo $id1;exit;
+	        $data['page'] = 'Category wishe product';
 					$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 					$data['social'] = json_decode($social_value, true);
 
@@ -52,12 +55,28 @@ class Shop extends CI_Controller {
 					 $data['contact'] = json_decode($contact_value, true);
 
 	         $data['product_by_category']=  $this->Shop_model->select($id,'category','indexing');
+					 $data['count'] =count($data['product_by_category']);
+					 $data['count'];
 					 $data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
-					
-					$data['category']=  $this->Common_model->select('category');
-	        $data['main_content'] = $this->load->view('shop/shop', $data, true);
-	        $this->load->view('index', $data);
+					 // echo "<pre>";
+					 // print_r($data['attribute']);exit;
+
+					 $data['category']=  $this->Common_model->select('category');
+	         $data['main_content'] = $this->load->view('shop/shop', $data, true);
+	         $this->load->view('index', $data);
 	    }
+
+			function color()
+			 {
+      // echo $id;exit;
+				$data=array();
+				$name=$this->input->post('name');
+				$id=$this->input->post('id');
+			  $data['items']=  $this->Shop_model->select_attr_color($id,$name,'category','indexing');
+
+				$data['data'] = $this->load->view('shop/color_pro', $data, true);
+				$this->load->view('shop/index', $data);
+			}
 
 			public function product_details($id){
 		        $data = array();
@@ -73,11 +92,12 @@ class Shop extends CI_Controller {
 						$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
 						$data['contact'] = json_decode($contact_value, true);
 
-            $data['product_details']=  $this->Shop_model->select_product_details($id,'products');
+            $data['product_details']=  $this->Shop_model->select_product_details_byid($id,'products');
 						foreach($data['product_details'] as $value){
 						$data['product_details']= $value;
 						}
-						  // print_r($data['product_details']['port']);exit;
+						// echo "<pre>";
+						//    print_r($data['product_details']);exit;
 						$data['related_Product']=  $this->Shop_model->select($data['product_details']['port'],'category','indexing');
             // echo "<pre>";
 						// print_r($data['related_Product']);exit;
@@ -87,6 +107,8 @@ class Shop extends CI_Controller {
 		        $data['main_content'] = $this->load->view('product/product_details', $data, true);
 		        $this->load->view('index', $data);
 		    }
+
+
 
 		public function shop_list_left(){
 				$data = array();

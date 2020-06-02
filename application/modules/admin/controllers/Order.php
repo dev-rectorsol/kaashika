@@ -13,57 +13,63 @@ class Order extends CI_Controller {
 				 	redirect(base_url(), 'refresh');
 			}
 			$this->load->model('Common_model');
+			$this->load->model('Product_model');
 	}
+
 	public function index()
-	{
-		$data= array();
+	   {
+		    $data= array();
         $data['page'] ='order';
         $data['tag']=  $this->Common_model->select('tags');
-        $data['product_data']=  $this->Common_model->select('products');
-		$data['main_content']= $this->load->view('order/order_list',$data, true);
-		$this->load->view('index',$data);
-	}
-    public function Add()
-		{
-			if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-			$aim=[
-			'name' => $data1['name'],
-			'parent' => $data1['parent'],
-			'icon' => $data1['icon'],
-			];
-			$this->Common_model->insert($aim,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
-			}
-		}
+        $data['order_data']=  $this->Product_model->getAllOrder();
+				// echo "<pre>";
+				// print_r($data['order_data']);exit;
+		    $data['main_content']= $this->load->view('order/order_list',$data, true);
+		    $this->load->view('index',$data);
+	  }
 
-      public function AddTag()
-			{
-				if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-		         $tag=[
-		            'title' => $data1['name'],
-		        ];
-            $this->Common_model->insert($tag,'tags');
-			redirect(base_url() . 'admin/category', 'refresh');
+	public function invoice($id)
+	{
+		    $data= array();
+        $data['page'] ='invoice';
+        $data['order_data']=  $this->Product_model->invoice($id);
+				foreach($data['order_data'] as $value){
+				$data['order_data']=$value;
 				}
-			}
- public function Delete($id)
-	{
+				// echo "<pre>";
+				// print_r($data['order_data']);exit;
+				$data['allorder_data']=  $this->Product_model->invoiceOrder($id);
+
+				$data['main_content']= $this->load->view('order/invoice',$data, true);
+ 	      $this->load->view('index',$data);
+	}
+
+
+    public function Delete($id)
+      	{
             $data1=['id'=> $id];
-            $this->Common_model->delete($data1,'category');
-            redirect(base_url() . 'admin/category', 'refresh');
-    }
-    public function Edit($id)
-	{
-		if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-             $aim=[
-            'name' => $data1['name'],
-            'parent' => $data1['parent'],
-        ];
-           $this->Common_model->update($aim,'id',$id,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
-	}
-	}
+            $this->Common_model->delete($data1,'orders');
+            redirect(base_url() . 'admin/order', 'refresh');
+       }
+
+
+		public function update_status1($id)
+			{
+
+					$data['order_data']=  $this->Product_model->select_product($id,'orders');
+					foreach($data['order_data'] as $value){
+					$data['order_data']=$value;
+					}
+					// echo $data['product_data']['status'];exit;
+					if($data['order_data']['status']==1)
+					{
+						$data1=[
+						'status'=>'0'
+					];
+					}
+				 $this->Common_model->update($data1,'id',$id,'orders');
+					redirect(base_url() . 'admin/order', 'refresh');
+			}
+
+
 }

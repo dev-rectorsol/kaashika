@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['login'] = 'authentication';
+// $route['login'] = 'authentication';
 $route['auth'] = 'authentication';
 $route['auth/logout'] = 'authentication/logout';
 $route['join'] = 'authentication/register';
@@ -77,4 +77,4 @@ $route['admin'] = 'admin/dashboard';
 
 // Board Routing vie User
 
-$route['app'] = 'web/dashboard';
+// $route['app'] = 'web/dashboard';

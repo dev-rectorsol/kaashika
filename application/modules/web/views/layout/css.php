@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/plugins/jqueryui.min.css">
     <!-- Line CSS-->
     <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/icons.css">
-
+    <script src="<?php echo base_url() ?>/assets/js/vendor/jquery-3.3.1.min.js"></script>
 <!-- ============================================  -->
     <!-- main style css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/style.css">

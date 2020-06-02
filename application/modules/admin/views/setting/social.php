@@ -177,7 +177,7 @@
       if (del == true) {
         var sureDel = confirm("Are you sure want to delete");
         if (sureDel == true) {
-          window.location = "<?php echo base_url()?>admin/setting/deleteslider/" + id;
+          window.location = "<?php echo base_url()?>admin/social/deletesocial/" + id;
         }
 
       }

@@ -14,7 +14,7 @@
               </div>
               <div class="form-group">
                 <label class="login2">Article content</label>
-                <textarea name="content" id="summernote1" col="50" rows="10" required><?php echo $article->content; ?></textarea>
+                <textarea name="content" id="summernote1" col="100" rows="20" required><?php echo $article->content; ?></textarea>
               </div>
             </div>
           </div>
@@ -25,7 +25,7 @@
                 <input type="hidden" name="featureImage" value="<?php echo $image->thumb; ?>">
               </span>
               <button id="removepreview" type="button" class="btn btn-link" style="color:#667add">remove</button>
-              <button id="addfeatureimage" type="button" class="btn btn-link" name="button" style="color:#667add">change feature image</button>
+              <button Class="addfeatureimage" type="button" class="btn btn-link" name="button" style="color:#667add">change feature image</button>
               <div class="form-group">
                 <label class="login2">Slug</label>
                 <input name="slug" type="text" class="form-control" placeholder="slug" value="<?php echo $article->slug; ?>">
@@ -68,8 +68,8 @@
               </div>
               <div class="payment-adress">
                 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
-                <input type="hidden" name="postid" value="<?php echo $article->postid; ?>">
 
+                <input type="hidden" name="postid" value="<?php echo $article->id; ?>">
                 <?php if ($article->is_publish): ?>
                   <button type="submit" name='submit' value="save" class="btn btn-primary pull-left ">Draft</button>&nbsp;&nbsp;&nbsp;
                 <?php else: ?>

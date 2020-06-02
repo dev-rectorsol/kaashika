@@ -144,6 +144,7 @@ function select_user_option($id){
         $this->db->from($table);
         $this->db->order_by('id','ASC');
         $query = $this->db->get();
+
         $query = $query->result_array();
         return $query;
     }
@@ -151,7 +152,7 @@ function select_user_option($id){
         $this->db->select();
         $this->db->from($table);
         $this->db->order_by('id','ASC');
-        $this->db->limit(4);
+        $this->db->limit(1);
         $query = $this->db->get();
         $query = $query->result_array();
         return $query;
@@ -347,6 +348,16 @@ function getMaxUserId(){
       $this->db->select('thumb', 'image');
       return $this->db->get_where("thumbnail", array('root' => $id))->row();
     }
+    public function getThumByRootvale($id){
+    $this->db->from('thumbnail');
+    $this->db->where('root',$id);
+    $query = $this->db->get();
+    //echo $this->db->last_query($query);exit;
+    return $query->row();
+
+  }
+
+
     public function getIndexCategorys($root){
     $data = array();
     $this->db->select('port');

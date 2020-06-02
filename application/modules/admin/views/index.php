@@ -183,13 +183,13 @@
 					</li>
 				</ul>
 			</li>
-			<li>
+			<!-- <li>
 				<a href="<?php echo base_url('admin/Gallery')?>">
 					<div class="pull-left"><i class="zmdi zmdi-collection-folder-image mr-20"></i><span class="right-nav-text">Gallery</span></div>
 					<div class="pull-right"><span class="label label-success">8</span></div>
 					<div class="clearfix"></div>
 				</a>
-			</li>
+			</li> -->
 
 			<li>
 				<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr">
@@ -255,7 +255,7 @@
 
 			</li>
 			<li>
-				<a href="Order">
+				<a href="<?php echo base_url('admin/order')?>">
 					<div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Order List</span></div>
 					<div class="clearfix"></div>
 				</a>

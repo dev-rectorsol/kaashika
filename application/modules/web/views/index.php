@@ -1,6 +1,7 @@
 
 <?php include 'layout/css.php'; ?>
 	<!-- Start Header Area -->
+
 	<header class="header-area header-wide">
 			<!-- main header start -->
 			<div class="main-header d-none d-lg-block">
@@ -12,7 +13,7 @@
 											<div class="col-lg-2">
 													<div class="logo">
 														<?php foreach($logo as $value):?>
-															<a href="index.html">
+															<a href="<?php echo base_url('web/home')?>">
 																	<img src="<?php echo base_url($value['source']) ?>" alt="Brand Logo" height="70px;">
 															</a>
 														<?php endforeach;?>
@@ -30,51 +31,17 @@
 																					<li class="active"><a href="<?php echo base_url('web/home')?>">Home</a></li>
 	                                        <li><a href="<?php echo base_url('web/home/about')?>">About Us</a></li>
 																					<li><a href="">shop <i class="fa fa-angle-down"></i></a>
-																							<ul class="dropdown">
-																									<li><a href="#">shop grid layout <i class="fa fa-angle-right"></i></a>
+																							<!-- <ul class="dropdown">
+																									<li><a href="#">shop grid layout <i class="fa fa-angle-right"></i></a> -->
 																											<ul class="dropdown">
 																												<?php foreach ($category as $value) {?>
 																													<li><a href="<?php echo base_url('web/shop/shop_by_category/').$value['id']?>"><?php echo $value['name']?></a></li>
-
 																													<?php
 																												}?>
-
 																											</ul>
-																									</li>
+																									<!-- </li>
 
-																							</ul>
-																					</li>
-																					<li class="position-static"><a href="#">Colection <i class="fa fa-angle-down"></i></a>
-																							<ul class="megamenu dropdown">
-
-																									<li class="mega-title"><span>column 01</span>
-																											<ul>
-																												  <li><a href="<?php echo base_url('web/Product')?>">product details</a></li>
-																													<li><a href="<?php echo base_url('web/Collection/cart')?>">cart</a></li>
-																													<li><a href="<?php echo base_url('web/Collection/checkout')?>">checkout</a></li>
-																													<li><a href="<?php echo base_url('web/Collection/compare')?>">compare</a></li>
-																													<li><a href="<?php echo base_url('web/Collection/wishlist')?>">wishlist</a></li>
-																											</ul>
-																									</li>
-																									<li class="mega-title"><span>column 02</span>
-																											<ul>
-																													<li><a href="<?php echo base_url('web/Home/my_account')?>">my-account</a></li>
-																													<li><a href="<?php echo base_url('login')?>">login-register</a></li>
-																													<li><a href="<?php echo base_url('web/Home/about')?>">about us</a></li>
-																													<li><a href="<?php echo base_url('web/Home/contact')?>">contact us</a></li>
-																											</ul>
-																									</li>
-																									<!-- <li class="megamenu-banners d-none d-lg-block">
-																											<a href="product-details.html">
-																													<img src="<?php echo base_url() ?>/assets/img/banner/img1-static-menu.jpg" alt="">
-																											</a>
-																									</li>
-																									<li class="megamenu-banners d-none d-lg-block">
-																											<a href="product-details.html">
-																													<img src="<?php echo base_url() ?>/assets/img/banner/img2-static-menu.jpg" alt="">
-																											</a>
-																									</li> -->
-																							</ul>
+																							</ul> -->
 																					</li>
 
 																					<li><a href="<?php echo base_url('web/Home/contact')?>">Contact us</a></li>
@@ -105,22 +72,22 @@
 																							<i class="pe-7s-user"></i>
 																					</a>
 																					<ul class="dropdown-list">
-																								<li><a href="<?php echo base_url('login')?>">login</a></li>
+																								<li><a href="<?php echo base_url('auth')?>">login</a></li>
 																								<li><a href="<?php echo base_url('join')?>">Register</a></li>
-																								<li><a href="my-account.html">my account</a></li>
+																								
 																								<li><a href="<?php echo base_url('Authentication/logout')?>">Logout</a></li>
 																						</ul>
 																			</li>
-																			<li>
-																					<a href="<?php echo base_url('web/collection/wishlist')?>">
+																			<!-- <li>
+																					<a href="<?php echo base_url('web/Collection/')?>">
 																							<i class="pe-7s-like"></i>
-																							<div class="notification">0</div>
+																							<div class="notification"><?php echo $this->cart->total_items(); ?></div>
 																					</a>
-																			</li>
+																			</li> -->
 																			<li>
 																					<a href="#" class="minicart-btn">
 																							<i class="pe-7s-shopbag"></i>
-																							<div class="notification">2</div>
+																							<div class="notification"><?php echo $this->cart->total_items(); ?></div>
 																					</a>
 																			</li>
 																	</ul>
@@ -146,7 +113,7 @@
 											<div class="mobile-main-header">
 													<div class="mobile-logo">
 														<?php foreach($logo as $value):?>
-															<a href="index.html">
+															<a href="<?php echo base_url('web/home')?>">
 																	<img src="<?php echo base_url($value['source']) ?>" alt="Brand Logo">
 															</a>
 														<?php endforeach;?>
@@ -155,7 +122,7 @@
 															<div class="mini-cart-wrap">
 																	<a href="cart.html">
 																			<i class="pe-7s-shopbag"></i>
-																			<div class="notification">0</div>
+																			<div class="notification"><?php echo $this->cart->total_items(); ?></div>
 																	</a>
 															</div>
 															<button class="mobile-menu-btn">
@@ -198,79 +165,30 @@
 											<!-- mobile menu navigation start -->
 											<nav>
 													<ul class="mobile-menu">
-															<li class=""><a href="index.html">Home</a>
-															</li>
-															<li class="#"><a href="about-us.html">About </a>
-															</li>
-															<li class="menu-item-has-children"><a href="#">Shop</a>
-																	<ul class="megamenu dropdown">
-																			<li class="mega-title menu-item-has-children"><a href="#">column 01</a>
-																					<ul class="dropdown">
-																							<li><a href="shop.html">shop grid left
-																											sidebar</a></li>
-																							<li><a href="#">shop grid right
-																											sidebar</a></li>
-																							<li><a href="#">shop list left sidebar</a></li>
-																							<li><a href="#">shop list right sidebar</a></li>
-																					</ul>
-																			</li>
-																			<li class="mega-title menu-item-has-children"><a href="#">column 02</a>
-																					<ul class="dropdown">
-																							<li><a href="#">product details</a></li>
-																							<li><a href="#">product details affiliate</a></li>
-																							<li><a href="#">product details variable</a></li>
-																							<li><a href="#">product details group</a></li>
 
-																					</ul>
-																			</li>
-																			<li class="mega-title menu-item-has-children"><a href="#">column 03</a>
-																					<ul class="dropdown">
-																							<li><a href="<?php echo base_url('web/collection/cart')?>">cart</a></li>
-																							<li><a href="<?php echo base_url('web/collection/checkout')?>">checkout</a></li>
-																							<li><a href="<?php echo base_url('web/collection/compare')?>">compare</a></li>
-																							<li><a href="<?php echo base_url('web/collection/wishlist')?>">wishlist</a></li>
-																					</ul>
-																			</li>
-																			<li class="mega-title menu-item-has-children"><a href="#">column 04</a>
-																					<ul class="dropdown">
-																							<li><a href="my-account.html">my-account</a></li>
-																							<li><a href="login-register.html">login-register</a></li>
-																							<li><a href="about-us.html">about us</a></li>
-																							<li><a href="contact-us.html">contact us</a></li>
-																					</ul>
-																			</li>
-																	</ul>
-															</li>
-															<li class="menu-item-has-children "><a href="#">shop</a>
-																	<ul class="dropdown">
-																			<li class="menu-item-has-children"><a href="#">shop grid layout</a>
-																					<ul class="dropdown">
-																							<li><a href="shop.html">shop grid left sidebar</a></li>
-																							<li><a href="#">shop grid right sidebar</a></li>
-																							<li><a href="#">shop grid full 3 col</a></li>
-																							<li><a href="#">shop grid full 4 col</a></li>
-																					</ul>
-																			</li>
-																			<li class="menu-item-has-children"><a href="#">shop list layout</a>
-																					<ul class="dropdown">
-																							<li><a href="#">shop list left sidebar</a></li>
-																							<li><a href="#">shop list right sidebar</a></li>
-																							<li><a href="#">shop list full width</a></li>
-																					</ul>
-																			</li>
-																			<li class="menu-item-has-children"><a href="#">products details</a>
-																					<ul class="dropdown">
-																							<li><a href="#">product details</a></li>
-																							<!-- <li><a href="#">product details affiliate</a></li> -->
-																							<li><a href="#">product details variable</a></li>
-																							<!-- <li><a href="#">product details group</a></li> -->
-																					</ul>
-																			</li>
-																	</ul>
-															</li>
-															<li class="#"><a href="#">Blog</a>
-															</li>
-															<li><a href="contact-us.html">Contact us</a></li>
+																<li class="active"><a href="<?php echo base_url('web/home')?>">Home</a></li>
+																<li><a href="<?php echo base_url('web/home/about')?>">About Us</a></li>
+
+																<li class="menu-item-has-children "><a href="#">shop</a>
+                                    <ul class="dropdown">
+																			<?php foreach ($category as $value) {?>
+																				<li><a href="<?php echo base_url('web/shop/shop_by_category/').$value['id']?>"><?php echo $value['name']?></a></li>
+																				<?php
+																			}?>
+
+                                    </ul>
+                                </li>
+																<!-- <li><a href="">shop <i class="fa fa-angle-down"></i></a>
+																		<ul class="dropdown">
+																			<?php foreach ($category as $value) {?>
+																				<li><a href="<?php echo base_url('web/shop/shop_by_category/').$value['id']?>"><?php echo $value['name']?></a></li>
+																				<?php
+																			}?>
+																		</ul>
+																</li> -->
+
+																<li><a href="<?php echo base_url('web/Home/contact')?>">Contact us</a></li>
+
 													</ul>
 											</nav>
 											<!-- mobile menu navigation end -->
@@ -361,7 +279,7 @@
 
 													<div class="widget-title">
 															<div class="widget-logo">
-																	<a href="index.html">
+																	<a href="<?php echo base_url('web/home')?>">
 																			<img src="<?php echo base_url($value['source']) ?>" alt="brand logo" height="80px">
 																	</a>
 															</div>
@@ -463,110 +381,7 @@
 	</footer>
 	<!-- footer area end -->
 
-	<!-- Quick view modal start -->
-	<div class="modal" id="quick_view">
-			<div class="modal-dialog modal-lg modal-dialog-centered">
-					<div class="modal-content">
-							<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-							</div>
-							<div class="modal-body">
-									<!-- product details inner end -->
-									<div class="product-details-inner">
-											<div class="row">
-													<div class="col-lg-5">
-															<div class="product-large-slider">
-																	<div class="pro-large-img img-zoom">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img1.jpg" alt="product-details" />
-																	</div>
-																	<div class="pro-large-img img-zoom">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img2.jpg" alt="product-details" />
-																	</div>
-																	<div class="pro-large-img img-zoom">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img3.jpg" alt="product-details" />
-																	</div>
-																	<div class="pro-large-img img-zoom">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img4.jpg" alt="product-details" />
-																	</div>
-																	<div class="pro-large-img img-zoom">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img5.jpg" alt="product-details" />
-																	</div>
-															</div>
-															<div class="pro-nav slick-row-10 slick-arrow-style">
-																	<div class="pro-nav-thumb">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img1.jpg" alt="product-details" />
-																	</div>
-																	<div class="pro-nav-thumb">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img2.jpg" alt="product-details" />
-																	</div>
-																	<div class="pro-nav-thumb">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img3.jpg" alt="product-details" />
-																	</div>
-																	<div class="pro-nav-thumb">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img4.jpg" alt="product-details" />
-																	</div>
-																	<div class="pro-nav-thumb">
-																			<img src="<?php echo base_url() ?>/assets/img/product/product-details-img5.jpg" alt="product-details" />
-																	</div>
-															</div>
-													</div>
-													<div class="col-lg-7">
-															<div class="product-details-des">
-																	<div class="manufacturer-name">
-																			<a href="product-details.html">HasTech</a>
-																	</div>
-																	<h3 class="product-name">Handmade Golden Necklace</h3>
-																	<div class="ratings d-flex">
-																			<span><i class="fa fa-star-o"></i></span>
-																			<span><i class="fa fa-star-o"></i></span>
-																			<span><i class="fa fa-star-o"></i></span>
-																			<span><i class="fa fa-star-o"></i></span>
-																			<span><i class="fa fa-star-o"></i></span>
-																			<div class="pro-review">
-																					<span>1 Reviews</span>
-																			</div>
-																	</div>
-																	<div class="price-box">
-																			<span class="price-regular">$70.00</span>
-																			<span class="price-old"><del>$90.00</del></span>
-																	</div>
-																	<h5 class="offer-text"><strong>Hurry up</strong>! offer ends in:</h5>
-																	<div class="product-countdown" data-countdown="2022/02/20"></div>
-																	<div class="availability">
-																			<i class="fa fa-check-circle"></i>
-																			<span>200 in stock</span>
-																	</div>
-																	<p class="pro-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-																			eirmod tempor invidunt ut labore et dolore magna.</p>
-																	<div class="quantity-cart-box d-flex align-items-center">
-																			<h6 class="option-title">qty:</h6>
-																			<div class="quantity">
-																					<div class="pro-qty"><input type="text" value="1"></div>
-																			</div>
-																			<div class="action_link">
-																					<a class="btn btn-cart2" href="#">Add to cart</a>
-																			</div>
-																	</div>
-																	<div class="useful-links">
-																			<a href="#" data-toggle="tooltip" title="Compare"><i
-																					class="pe-7s-refresh-2"></i>compare</a>
-																			<a href="#" data-toggle="tooltip" title="Wishlist"><i
-																					class="pe-7s-like"></i>wishlist</a>
-																	</div>
-																	<div class="like-icon">
-																			<a class="facebook" href="#"><i class="fa fa-facebook"></i>like</a>
-																			<a class="twitter" href="#"><i class="fa fa-twitter"></i>tweet</a>
-																			<a class="pinterest" href="#"><i class="fa fa-pinterest"></i>save</a>
-																			<a class="google" href="#"><i class="fa fa-google-plus"></i>share</a>
-																	</div>
-															</div>
-													</div>
-											</div>
-									</div> <!-- product details inner end -->
-							</div>
-					</div>
-			</div>
-	</div>
+
 	<!-- Quick view modal end -->
 
 	<!-- offcanvas mini cart start -->
@@ -579,73 +394,104 @@
 							</div>
 							<div class="minicart-content-box">
 									<div class="minicart-item-wrapper">
-											<ul>
+										<ul>
+                     <?php if($this->cart->total_items() > 0){ foreach($cartIvalue as $item){ ?>
 													<li class="minicart-item">
-															<div class="minicart-thumb">
-																	<a href="product-details.html">
-																			<img src="<?php echo base_url() ?>/assets/img/cart/cart-1.jpg" alt="product">
-																	</a>
-															</div>
-															<div class="minicart-content">
-																	<h3 class="product-name">
-																			<a href="product-details.html">Dozen White Botanical Linen Dinner Napkins</a>
-																	</h3>
-																	<p>
-																			<span class="cart-quantity">1 <strong>&times;</strong></span>
-																			<span class="cart-price">$100.00</span>
-																	</p>
-															</div>
-															<button class="minicart-remove"><i class="pe-7s-close"></i></button>
-													</li>
-													<li class="minicart-item">
-															<div class="minicart-thumb">
-																	<a href="product-details.html">
-																			<img src="<?php echo base_url() ?>/assets/img/cart/cart-2.jpg" alt="product">
-																	</a>
-															</div>
-															<div class="minicart-content">
-																	<h3 class="product-name">
-																			<a href="product-details.html">Dozen White Botanical Linen Dinner Napkins</a>
-																	</h3>
-																	<p>
-																			<span class="cart-quantity">1 <strong>&times;</strong></span>
-																			<span class="cart-price">$80.00</span>
-																	</p>
-															</div>
-															<button class="minicart-remove"><i class="pe-7s-close"></i></button>
-													</li>
-											</ul>
+	                           <div class="minicart-thumb">
+	                               <a href="product-details.html">
+																	 <?php $imageURL = !empty($item["image"])?base_url('uploads/product/'.$item["image"]):base_url('/assets/img/product/product-1.jpg'); ?>
+																	 <img src="<?php echo $imageURL; ?>"/>
+	                               </a>
+	                           </div>
+	                           <div class="minicart-content">
+	                               <h3 class="product-name">
+	                                   <a href="product-details.html"><?php echo $item["name"]; ?></a>
+	                               </h3>
+	                               <p>
+	                                   <span class="cart-quantity"><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></span>
+	                                   <span class="cart-price"><?php echo '₹'.$item["subtotal"]; ?></span>
+	                               </p>
+	                           </div>
+														 <div><br>
+	                             <a href="<?php echo base_url('web/collection/removeItem/'.$item["rowid"]); ?>" class="minicart-remove"> <i class="pe-7s-close"></i></a>
+													  </div>
+	                       </li>
+											 <?php } }else{ ?>
+											 <tr><td colspan="6"><p>Your cart is empty.....</p></td>
+											 <?php } ?>
+
+										</ul>
 									</div>
 
 									<div class="minicart-pricing-box">
 											<ul>
+												 <?php if($this->cart->total_items() > 0){
+		                        $sub_total=0;
+													  foreach($cartIvalue as $item){
+
+                             $data['cartIvalue']=$item;
+														 $sub_total=($sub_total+$item['subtotal']);
+													 }  ?>
 													<li>
 															<span>sub-total</span>
-															<span><strong>$300.00</strong></span>
+															<span><strong><?php echo '₹'.$sub_total;?></strong></span>
 													</li>
 													<li>
-															<span>Eco Tax (-2.00)</span>
-															<span><strong>$10.00</strong></span>
+															<span>Tax (10%)</span>
+
+															<span><strong>₹10</strong></span>
 													</li>
-													<li>
-															<span>VAT (20%)</span>
-															<span><strong>$60.00</strong></span>
-													</li>
+
 													<li class="total">
 															<span>total</span>
-															<span><strong>$370.00</strong></span>
+															<?php $total=0; $total=$sub_total+10?>
+
+															<span><strong><?php echo '₹'.$total;?></strong></span>
 													</li>
+												<?php }else{?>
+													<li>
+															<span>sub-total</span>
+															<span><strong>0</strong></span>
+													</li>
+													<li>
+															<span>Tax (10%)</span>
+
+															<span><strong>₹10</strong></span>
+													</li>
+
+													<li class="total">
+															<span>total</span>
+
+															<span><strong>0</strong></span>
+													</li>
+
+												<?php }?>
 											</ul>
 									</div>
 
 									<div class="minicart-button">
 											<a href="<?php echo base_url('web/collection/cart')?>"><i class="fa fa-shopping-cart"></i> View Cart</a>
-											<a href="<?php echo base_url('web/collection/wishlist')?>"><i class="fa fa-share"></i> Checkout</a>
+											<a href="<?php echo base_url('web/collection/checkout')?>"><i class="fa fa-share"></i> Checkout</a>
 									</div>
 							</div>
 					</div>
 			</div>
 	</div>
-	<!-- offcanvas mini cart end -->
 
+	<!-- offcanvas mini cart end -->
+	<script>
+ /* Update item quantity */
+ function updateCartItem(obj, rowid){
+ $.get("<?php echo base_url('web/Collection/updatecart/'); ?>",
+ {rowid:rowid, qty:obj.value},
+ function(resp){
+
+ if(resp){
+ location.reload();
+ }else{
+ alert('Cart update failed, please try again.');
+ }
+ });
+ }
+ </script>
 <?php include 'layout/footer.php';?>
