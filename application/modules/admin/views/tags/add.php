@@ -90,10 +90,12 @@
 									 <td> <?php echo $i ?></td>
 									 <td><?php echo $row['title'] ?></td>
 
-									 <td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
+									 <td>
+										 <a data-target="<?php echo '#'.$row['id']; ?>" class="pd-setting-ed btn btn-primary text-center tip"
 											 data-toggle="modal" data-original-title="Edit"><i
 												 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-										 <a title="Trash" class="pd-setting-ed"
+
+										 <a title="Trash" class="pd-setting-ed btn btn-danger"
 											 onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
 												 aria-hidden="true"></i></a></td>
 								 </tr>
@@ -149,6 +151,17 @@
 
 		</div>
 
+<script>
+function delete_detail(id) {
+	var del = confirm("Do you want to Delete");
+	if (del == true) {
+		var sureDel = confirm("Are you sure want to delete");
+		if (sureDel == true) {
+			window.location = "<?php echo base_url()?>admin/tags/Delete/" + id;
+		}
 
+	}
+}
+</script>
 
 	<!-- /Main Content -->

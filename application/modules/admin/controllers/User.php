@@ -16,13 +16,14 @@ class User extends CI_Controller {
 	}
 	public function index()
 	{
-		$data= array();
+		    $data= array();
         $data['page'] ='User';
         $data['tag']=  $this->Common_model->select('tags');
         $data['aim']=  $this->Common_model->select('user_details');
-		$data['main_content']= $this->load->view('user/add',$data, true);
-		$this->load->view('index',$data);
+	    	$data['main_content']= $this->load->view('user/add',$data, true);
+	    	$this->load->view('index',$data);
 	}
+
     public function Add()
 		{
 			if($_POST){
@@ -37,33 +38,35 @@ class User extends CI_Controller {
 			}
 		}
 
-      public function AddTag()
-			{
-				if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-		         $tag=[
-		            'title' => $data1['name'],
-		        ];
-            $this->Common_model->insert($tag,'tags');
-			redirect(base_url() . 'admin/category', 'refresh');
+  public function AddTag()
+				{
+					if($_POST){
+				       $data1=$this->security->xss_clean($_POST);
+			         $tag=[
+			            'title' => $data1['name'],
+			        ];
+	            $this->Common_model->insert($tag,'tags');
+				      redirect(base_url() . 'admin/category', 'refresh');
+					}
 				}
-			}
- public function Delete($id)
-	{
-            $data1=['id'=> $id];
-            $this->Common_model->delete($data1,'category');
-            redirect(base_url() . 'admin/category', 'refresh');
-    }
+   public function Delete($id)
+			{
+		      $data1=['id'=> $id];
+		      $this->Common_model->delete($data1,'user_details');
+		      redirect(base_url() . 'admin/user/', 'refresh');
+		    }
+
     public function Edit($id)
-	{
-		if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
-             $aim=[
-            'name' => $data1['name'],
-            'parent' => $data1['parent'],
-        ];
-           $this->Common_model->update($aim,'id',$id,'category');
-			redirect(base_url() . 'admin/category', 'refresh');
-	}
-	}
+			{
+					if($_POST){
+						       $data1=$this->security->xss_clean($_POST);
+			             $aim=[
+			            'mobile' => $data1['mobile'],
+			            'details' => $data1['details'],
+			        ];
+							//print_r($aim);exit;
+			           $this->Common_model->update($aim,'id',$id,'user_details');
+						redirect(base_url() . 'admin/user', 'refresh');
+			     	}
+			}
 }

@@ -16,13 +16,13 @@ class Category extends CI_Controller {
 	}
 	public function index()
 	{
-		$data= array();
+		    $data= array();
         $data['page'] ='category';
         $data['tag']=  $this->Common_model->select('tags');
 				$data['category']=  $this->Common_model->select('category');
         $data['aim']=  $this->Common_model->select('category');
-		$data['main_content']= $this->load->view('category/add',$data, true);
-		$this->load->view('index',$data);
+				$data['main_content']= $this->load->view('category/add',$data, true);
+				$this->load->view('index',$data);
 	}
     public function Add()
 		{
@@ -31,8 +31,10 @@ class Category extends CI_Controller {
 			$aim=[
 			'name' => $data1['name'],
 			'parent' => $data1['parent'],
+			'source'=> $data1['featureImage']
 			// 'icon' => $data1['icon'],
 			];
+			//print_r($aim);exit;
 			$this->Common_model->insert($aim,'category');
 			redirect(base_url() . 'admin/category', 'refresh');
 			}
@@ -59,10 +61,14 @@ class Category extends CI_Controller {
 	{
 		if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
+			// echo print_r( $data1);exit;
              $aim=[
             'name' => $data1['name'],
             'parent' => $data1['parent'],
+						'source'=> $data1['featureImage']
         ];
+				print_r($aim);exit;
+
            $this->Common_model->update($aim,'id',$id,'category');
 			redirect(base_url() . 'admin/category', 'refresh');
 	}

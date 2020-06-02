@@ -1,6 +1,4 @@
 
-
-
         <!-- breadcrumb area start -->
         <div class="breadcrumb-area">
             <div class="container">
@@ -9,7 +7,7 @@
                         <div class="breadcrumb-wrap">
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="<?php echo base_url('web/home')?>"><i class="fa fa-home"></i></a></li>
                                     <li class="breadcrumb-item active" aria-current="page">contact us</li>
                                 </ul>
                             </nav>
@@ -20,11 +18,6 @@
         </div><br><br><br>
         <!-- breadcrumb area end -->
 
-        <!-- google map start -->
-        <!-- <div class="map-area section-padding">
-            <div id="google-map"></div>
-        </div> -->
-        <!-- google map end -->
 
         <!-- contact area start -->
         <div class="contact-area section-padding pt-0">
@@ -72,9 +65,11 @@
                                 est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum
                                 formas human.</p>
                             <ul>
-                                <li><i class="fa fa-fax"></i> Address : No 40 Baria Sreet 133/2 NewYork City</li>
-                                <li><i class="fa fa-phone"></i> E-mail: info@yourdomain.com</li>
-                                <li><i class="fa fa-envelope-o"></i> +88013245657</li>
+                              <?php foreach($contact as $value):?>
+                                <li><i class="fa fa-fax"></i> <?php echo $value['address']?></li>
+                                <li><i class="fa fa-phone"></i> <?php echo $value['email']?></li>
+                                <li><i class="fa fa-envelope-o"></i> <?php echo $value['phone']?></li>
+                              <?php endforeach;?>
                             </ul>
                             <div class="working-time">
                                 <h6>Working Hours</h6>

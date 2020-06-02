@@ -14,10 +14,7 @@ class File_upload extends CI_Controller {
         $allow = array("jpg", "png", "jpeg", "gif");
         if (in_array($extension , $allow)) {
           $path = $this->common_model->upload_image($_FILES['file']['size']);
-        
-          //echo json_encode($path);
-         $this->common_model->insert($path,'gallery');
-        redirect(base_url() . 'admin/Gallery', 'refresh');
+          echo json_encode($path);
         }else{
           echo json_encode(array('status' => 0, 'msg' => 'not allow  to upload '.$extension.' file type.'));
         }

@@ -178,15 +178,18 @@
 					<li>
 						<a href="<?php echo base_url('admin/Product')?>">Product List</a>
 					</li>
+					<li>
+						<a href="<?php echo base_url('admin/Attribute')?>">Attribute </a>
+					</li>
 				</ul>
 			</li>
-			<li>
+			<!-- <li>
 				<a href="<?php echo base_url('admin/Gallery')?>">
 					<div class="pull-left"><i class="zmdi zmdi-collection-folder-image mr-20"></i><span class="right-nav-text">Gallery</span></div>
 					<div class="pull-right"><span class="label label-success">8</span></div>
 					<div class="clearfix"></div>
 				</a>
-			</li>
+			</li> -->
 
 			<li>
 				<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr">
@@ -196,7 +199,7 @@
 				</a>
 				<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
 					<li>
-						<a href="<?php echo base_url('admin/Media/add')?>">Video/Audio</a>
+						<a href="<?php echo base_url('admin/Media/add')?>">Add New</a>
 					</li>
 					<li>
 						<a href="<?php echo base_url('admin/Media')?>">View List</a>
@@ -237,8 +240,8 @@
 				</ul>
 			</li>
 			<li>
-				<a href="<?php echo base_url('admin/News')?>" data-toggle="collapse" data-target="#maps_dr">
-					<div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">News</span></div>
+				<a href="<?php echo base_url('admin/Testimonial')?>" data-toggle="collapse" data-target="#maps_dr">
+					<div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Testimonial</span></div>
 					<div class="clearfix"></div>
 				</a>
 
@@ -252,14 +255,35 @@
 
 			</li>
 			<li>
-				<a href="Order">
+				<a href="<?php echo base_url('admin/order')?>">
 					<div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Order List</span></div>
 					<div class="clearfix"></div>
 				</a>
 			</li>
 			<li>
+				<a href="javascript:void(0)" data-toggle="collapse" data-target="#setting">
+					<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Setting</span></div>
+					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+					<div class="clearfix"></div>
+				</a>
+				<ul id="setting" class="collapse collapse-level-1 two-col-list">
+					<li>
+						<a href="<?php echo base_url('admin/setting/slider')?>">Add Slider</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/Social')?>">Add Social icon</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/setting/contact')?>">Add Contact</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/setting/title')?>">Add Application Title</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/setting/logo')?>">Add Application Logo</a>
+					</li>
 
-
+				</ul>
 			</li>
 		</ul>
 	</div>

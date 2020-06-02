@@ -1,5 +1,4 @@
 
-
 		<div class="container-fluid">
 
 			<!-- Title -->
@@ -17,150 +16,69 @@
 
 				</div>
 
-
 				<!-- /Breadcrumb -->
 			</div>
 
-<hr class="light-grey-hr" />
-			<!-- /Title -->
-
 
 			<!-- Row -->
-			<div class="product-status mg-b-15">
-			  <div class="container-fluid">
-			    <div class="row">
-			      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			        <div class="product-status-wrap drp-lst">
-			          <h4>Departments List</h4>
-			          <div class="add-product">
-			            <a href="add-department.html">Add Departments</a>
-			          </div>
-			          <div class="asset-inner">
-			            <table>
-			              <tbody>
-			                <tr>
-			                  <th>No</th>
-			                  <th>Thumb</th>
-			                  <th>Title</th>
-			                  <th>Status</th>
-			                  <th>Head</th>
-			                  <th>Email</th>
-			                  <th>Phone</th>
-			                  <th>No. of Students</th>
-			                  <th>Setting</th>
-			                </tr>
-			                <tr>
-			                  <td>1</td>
-			                  <td><img src="img/product/book-1.jpg" alt=""></td>
-			                  <td>Computer</td>
-			                  <td>
-			                    <button class="pd-setting">Active</button>
-			                  </td>
-			                  <td>John Alva</td>
-			                  <td>admin@gmail.com</td>
-			                  <td>01962067309</td>
-			                  <td>1500</td>
-			                  <td>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>2</td>
-			                  <td>Mechanical</td>
-			                  <td>
-			                    <button class="ps-setting">Paused</button>
-			                  </td>
-			                  <td>John Alva</td>
-			                  <td>admin@gmail.com</td>
-			                  <td>01962067309</td>
-			                  <td>1700</td>
-			                  <td>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>3</td>
-			                  <td>MBA</td>
-			                  <td>
-			                    <button class="ds-setting">Disabled</button>
-			                  </td>
-			                  <td>John Alva</td>
-			                  <td>admin@gmail.com</td>
-			                  <td>01962067309</td>
-			                  <td>1500</td>
-			                  <td>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>4</td>
-			                  <td>BBA</td>
-			                  <td>
-			                    <button class="pd-setting">Active</button>
-			                  </td>
-			                  <td>John Alva</td>
-			                  <td>admin@gmail.com</td>
-			                  <td>01962067309</td>
-			                  <td>1200</td>
-			                  <td>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>5</td>
-			                  <td>CSE</td>
-			                  <td>
-			                    <button class="pd-setting">Active</button>
-			                  </td>
-			                  <td>John Alva</td>
-			                  <td>admin@gmail.com</td>
-			                  <td>01962067309</td>
-			                  <td>1800</td>
-			                  <td>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>6</td>
-			                  <td>MBA</td>
-			                  <td>
-			                    <button class="ps-setting">Paused</button>
-			                  </td>
-			                  <td>John Alva</td>
-			                  <td>admin@gmail.com</td>
-			                  <td>01962067309</td>
-			                  <td>1000</td>
-			                  <td>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-			                    <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-			                  </td>
-			                </tr>
-			              </tbody>
-			            </table>
-			          </div>
-			          <div class="custom-pagination">
-			            <nav aria-label="Page navigation example">
-			              <ul class="pagination">
-			                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-			                <li class="page-item"><a class="page-link" href="#">1</a></li>
-			                <li class="page-item"><a class="page-link" href="#">2</a></li>
-			                <li class="page-item"><a class="page-link" href="#">3</a></li>
-			                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-			              </ul>
-			            </nav>
-			          </div>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">Article List</h6>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										<table class="table table-striped table-bordered">
+											 <caption>
+												 <!-- <h4> User  List</h4> -->
+											 </caption>
+											 <tr>
+													<!-- <th data-field="state" data-checkbox="true"></th> -->
+													<th>Title</th>
+													<th>Category</th>
+													<th>Status</th>
+													<th>Created</th>
+													<th>Date</th>
+													<th data-field="action">Action</th>
+										 	</tr>
+											<?php foreach ($articles as $value): ?>
+												<tr>
+													<!-- <td></td> -->
+													<td><?php echo $value['title'] ?></td>
+													<td><?php ?></td>
+													<td>
+														<?php if ($value['is_publish']): ?>
+															<span>Publish</span>
+														<?php else: ?>
+															<button class="btn btn-default">Draft</button>
+														<?php endif ?>
+													</td>
+													<td><?php echo $value['created_by'] ?></td>
+													<td><?php echo my_date_show($value['created_at']) ?></td>
+
+													<td>
+													 	 <a class="text-center tip btn btn-primary" onclick="Edit_detail(<?php echo $value['id'] ;?>)"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
+														 <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $value['id'] ;?>)"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
+													</td>
+												</tr>
+											<?php endforeach; ?>
+
+							 </table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 			</div>
-
-
 			<!-- /Row -->
 
 
@@ -175,9 +93,16 @@
 			if (del == true) {
 				var sureDel = confirm("Are you sure want to delete");
 				if (sureDel == true) {
-					window.location = "<?php echo base_url()?>admin/Article/Delete/" + id;
+					window.location = "<?php echo base_url()?>admin/article/Delete/" + id;
 				}
 
 			}
 		}
-	</script>
+		function Edit_detail(id) {
+
+				var sureDel = confirm("Are you sure want to Edit");
+				if (sureDel == true) {
+					window.location = "<?php echo base_url()?>admin/article/edit/" + id;
+				}
+		}
+		</script>

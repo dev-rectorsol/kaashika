@@ -51,6 +51,7 @@
 									 <th>Email</th>
                    <th>Subject</th>
 									 <th>Message</th>
+									 <th>Status</th>
 									 <th>Action</th>
 								 </tr>
 								 <?php $i=1; foreach($contact_data as $row){?>
@@ -62,7 +63,16 @@
 									 <td><?php echo $row['subject'] ?></td>
 									 <td><?php echo $row['message'] ?></td>
 									 <td>
-									<a title="Trash" class="pd-setting-ed" onclick="delete_detail(<?php echo $row['id'] ;?>)">
+									 	<?php if($row['status']=='New'){?>
+									 <a href="<?php echo base_url('admin/Contact/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:red;font-weight: bold; " class="text-center tip "><?php echo $row['status'] ?></a>
+
+									 <?php	}else{	?>
+
+									  <?php		}?>
+									 </td>
+
+									 <td>
+									<a title="Trash" class="btn btn-danger" onclick="delete_detail(<?php echo $row['id'] ;?>)">
 										<i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 								 </tr>
 

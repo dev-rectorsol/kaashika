@@ -74,6 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
+	// 'dsn'	=> 'mysql:host=localhost;dbname=mcfojotc_kashika',
+	// 'hostname' => 'localhost',
+	// 'username' => 'mcfojotc_kashika',
+	// 'password' => '.+MFHKKzchQt',
+	// 'database' => 'mcfojotc_kashika',
 	'dsn'	=> 'mysql:host=localhost;dbname=ecom',
 	'hostname' => 'localhost',
 	'username' => 'root',

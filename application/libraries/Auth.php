@@ -77,15 +77,11 @@ class Auth
      */
     public function login($request)
     {
-      //pre($request);exit;
 
         if ($this->validate($request)) {
-        //  echo $this->userName;exit;
             $this->user = $this->credentials($this->userName, $this->password);
-          //  pre($this->user);exit;
             if ($this->user) {
                 return $this->setUser();
-
             } else {
                 return $this->failedLogin($request);
             }
@@ -105,8 +101,6 @@ class Auth
         $this->CI->form_validation->set_rules('username', 'User Name', 'required');
         $this->CI->form_validation->set_rules('password', 'Password', 'required');
         if ($this->CI->form_validation->run() == TRUE) {
-            /*$this->userName = $request["username"];
-            $this->password = $request["password"];*/
             $this->userName = $this->CI->input->post("username", TRUE);
             $this->password = $this->CI->input->post("password", TRUE);
             return true;
@@ -124,14 +118,14 @@ class Auth
      */
     protected function credentials($username, $password)
     {
+
         $user = $this->CI->db->select("*")
         ->where("phone", $username)
         ->or_where("email", $username)
-        ->where("status", 1)
+        ->where("status", 'active')
         // ->where("deleted_at/, null)
         ->get('logme')
         ->row(0);
-
         if($user && password_verify($password, $user->password)) {
             return $user;
         }
@@ -144,32 +138,32 @@ class Auth
      */
     protected function setUser()
     {
-    //  pre($this->user);exit;
         $this->userID = $this->user->logid;
-        $this->CI->session->set_userdata(array(
+
+      $data=  $this->CI->session->set_userdata(array(
             "userID" => $this->user->logid,
             "username" => $this->get_userName(),
             "email" => $this->user->email,
             "phone" => $this->user->phone,
             "roles" => $this->getUserRoles(),
-            "thumb" => $this->get_userProfileImage(),
-            "image" => $this->get_userProfileImage(),
+            // "thumb" => $this->get_userProfileImage(),
+            // "image" => $this->get_userProfileImage(),
             "loginStatus" => 1
         ));
+        //print_r($data);exit;
         $this->error['status'] = 1;
         return $this->error;
     }
 
     protected function get_userName(){
-      return $this->CI->db->get_where("user_details", array("user_id" => $this->user->logid))->row(0)->name;
+    return $this->CI->db->get_where("user_details", array("user_id" => $this->user->logid))->row(0)->name;
     }
-
-    protected function get_userProfileImage(){
-      return $this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->image;
-    }
-    protected function get_userProfileThumb(){
-      return $this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->thumb;
-    }
+    // protected function get_userProfileImage(){
+    //     print_r($this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->image);exit;
+    // }
+    // protected function get_userProfileThumb(){
+    //    print_r($this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->thumb);exit;
+    // }
 
     /**
      * Get the error message for failed login
@@ -379,9 +373,11 @@ class Auth
     public function route_access()
     {
         $this->check();
+
         $routeName = (is_null($this->CI->uri->segment(2)) ? "index" : $this->CI->uri->segment(2)) . "-" . $this->CI->uri->segment(1);
+
         if ($this->CI->uri->segment(1) == 'home')
-        return true;
+            return true;
 
         if($this->can($routeName))
             return true;
@@ -474,6 +470,7 @@ class Auth
     {
         $this->CI->session->unset_userdata(array("userID", "username", "loginStatus"));
         $this->CI->session->sess_destroy();
+
         return true;
     }
 }

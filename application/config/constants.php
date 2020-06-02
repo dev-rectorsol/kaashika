@@ -86,7 +86,8 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 // custom by omie date: 26/03/2020
-
 defined('ROLE_ADMIN')      OR define('ROLE_ADMIN', 1); // Admin role id
 defined('ROLE_STUDENT')      OR define('ROLE_STUDENT', 2); // student role id
 defined('UPLOAD_FILE')      OR define('UPLOAD_FILE', 'uploads'); // Upload folder path
+ defined('HOST_UPLOAD_FILE')      OR define('HOST_UPLOAD_FILE', 'http://kaashika.live/uploads/'); // Upload folder path
+defined('FILE_JSON_INFO')      OR define('FILE_JSON_INFO', 'file-data.json'); // Upload folder path
