@@ -59,6 +59,22 @@ class Shop_model extends CI_Model{
        return $query;
 
     }
+    function select_attr_price($id,$min,$max,$type,$table){
+      //echo $id;
+        $this->db->select();
+        $this->db->from($table);
+        $this->db->where('port',$id);
+        $this->db->where('type',$type);
+        $this->db->join('products','products.id=indexing.root','inner');
+        // $this->db->join(' product_attributes as p', 'indexing.root=p.product_id', 'inner');
+        $this->db->where('products.price >=',$min );
+        $this->db->where('products.price <=', $max);
+        $query = $this->db->get();
+        //echo $this->db->last_query($query);exit;
+       $query = $query->result_array();
+       return $query;
+
+    }
 
 
     function select_product_details($id,$table){

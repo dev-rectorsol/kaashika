@@ -14,11 +14,18 @@ class Dashboard extends CI_Controller {
 				 	redirect(base_url(), 'refresh');
 			}
 			$this->load->model('Common_model');
+			$this->load->model('Product_model');
+			$this->load->model('Contact_model');
   }
 	public function index()
 	{
 		$data= array();
 		$data['page'] ='Dashboard';
+		$data['newOrder']=  $this->Product_model->newAllOrder();
+		$data['new_contact']=  $this->Contact_model->newcontact('contact','status','New');
+		$data['new_customer']=  $this->Contact_model->newcustomer('customers');
+		$data['orderlimit']= $this->Product_model->getLimitOrder();
+	  $data['contact_data']= $this->Contact_model->contact_list('contact');
 		$data['main_content']= $this->load->view('home',$data, true);
 		$this->load->view('index',$data);
 	}

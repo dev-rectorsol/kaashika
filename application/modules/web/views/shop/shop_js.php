@@ -42,16 +42,31 @@
     		slide: function (event, ui) {
     		amount.val(ui.values[0] + " - " + ui.values[1]);
     		}
-    // data1=amount.val(ui.values[0]);
-
     	});
 
-
     $("#rang").click(function(){
-    var a =$("#amount").val();
-    alert(a);
-    var res = a.split(" ").length;
+    var myString =$("#amount").val();
+    // alert(a);
+    array = myString.split('-');
+    var min = (array[0]);
+    var max = (array[1]);
+    var id = $('#color_id').val();
 
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url('web/shop/price') ?>",
+      data: {
+        'min': min,'max':max,'id': id,
+        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php  echo $this->security->get_csrf_hash(); ?>'
+      },
+      datatype: 'json',
+      success: function(data) {
+        $("#details").html(data);
+      }
+
+    });
+// alert(min);
+// alert(max);
      //alert(res);
     });
 
