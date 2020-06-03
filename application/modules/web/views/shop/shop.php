@@ -45,12 +45,13 @@
                                 <h5 class="sidebar-title">price</h5>
                                 <div class="sidebar-body">
                                     <div class="price-range-wrap" id="rang">
-                                        <div class="price-range" data-min="1" data-max="1000"></div>
+                                        <div class="price-range" data-min="100" data-max="5000"></div>
                                         <div class="range-slider" >
                                             <form action="#" >
                                                 <div class="price-input">
                                                     <label for="amount">Price: </label>
                                                     <input type="text" id="amount">
+                                                    <input type="hidden" value="<?php echo $id;?>" id="color_id">
                                                 </div>
                                                 <button class="filter-btn">filter</button>
                                             </form>

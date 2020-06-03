@@ -21,8 +21,8 @@ class Contact extends CI_Controller {
         $data['page'] ='category';
         $data['tag']=  $this->Common_model->select('tags');
         $data['contact_data']=  $this->Common_model->select('contact');
-		$data['main_content']= $this->load->view('contact/contact_list',$data, true);
-		$this->load->view('index',$data);
+		    $data['main_content']= $this->load->view('contact/contact_list',$data, true);
+		    $this->load->view('index',$data);
 	}
 
 

@@ -7,7 +7,7 @@ class Contact_model extends CI_Model{
                 $this->load->database();
         }
     public function putdata($data){
-        
+
         $this->db->insert('details', $data);
 
     }
@@ -32,5 +32,29 @@ class Contact_model extends CI_Model{
         $this->db->where('id',$id);
         $query= $this->db->get('details');
         return $query->result_array();
+    }
+    public function newcontact($table,$id,$value){
+      $this->db->select('status');
+      $this->db->from($table);
+      $this->db->where($id,$value);
+      $id = $this->db->get()->num_rows();
+      return $id;
+    }
+    public function newcustomer($table){
+      $this->db->select('email');
+      $this->db->from($table);
+      $id = $this->db->get()->num_rows();
+      return $id;
+    }
+
+    function contact_list($table){
+        $this->db->select();
+        $this->db->from($table);
+        $this->db->where('status','New');
+        $this->db->order_by('id','decs');
+        $this->db->limit(10);
+        $query = $this->db->get();
+        $query = $query->result_array();
+        return $query;
     }
 }

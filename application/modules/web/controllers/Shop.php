@@ -77,6 +77,20 @@ class Shop extends CI_Controller {
 				$data['data'] = $this->load->view('shop/color_pro', $data, true);
 				$this->load->view('shop/index', $data);
 			}
+			function price()
+			 {
+			// echo $id;exit;
+				$data=array();
+				$min=$this->input->post('min');
+
+				$max=$this->input->post('max');
+				$id=$this->input->post('id');
+				// echo $min.$max.$id;exit;
+				$data['items']=  $this->Shop_model->select_attr_price($id,$min,$max,'category','indexing');
+      // print_r($data['items']);exit;
+				$data['data'] = $this->load->view('shop/color_pro', $data, true);
+				$this->load->view('shop/index', $data);
+			}
 
 			public function product_details($id){
 		        $data = array();

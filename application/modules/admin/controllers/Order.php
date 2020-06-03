@@ -22,8 +22,6 @@ class Order extends CI_Controller {
         $data['page'] ='order';
         $data['tag']=  $this->Common_model->select('tags');
         $data['order_data']=  $this->Product_model->getAllOrder();
-				// echo "<pre>";
-				// print_r($data['order_data']);exit;
 		    $data['main_content']= $this->load->view('order/order_list',$data, true);
 		    $this->load->view('index',$data);
 	  }
@@ -36,10 +34,7 @@ class Order extends CI_Controller {
 				foreach($data['order_data'] as $value){
 				$data['order_data']=$value;
 				}
-				// echo "<pre>";
-				// print_r($data['order_data']);exit;
 				$data['allorder_data']=  $this->Product_model->invoiceOrder($id);
-
 				$data['main_content']= $this->load->view('order/invoice',$data, true);
  	      $this->load->view('index',$data);
 	}

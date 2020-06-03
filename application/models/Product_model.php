@@ -159,6 +159,18 @@ class Product_model extends CI_Model{
     $query = $query->result_array();
     return $query;
 }
+public function getLimitOrder(){
+  $this->db->select('c.customer_name, c.email, c.phone,c.postcode,c.address,o.id,o.created,o.status');
+  $this->db->from('orders as o');
+  $this->db->join('customers as c', 'c.id =o.customer_id', 'inner');
+  $this->db->where('o.status',1);
+  $this->db->limit(10);
+  $query = $this->db->get();
+//  echo $this->db->last_query($query);exit;
+  $query = $query->result_array();
+  return $query;
+}
+
 public function invoice($id){
   $this->db->select('c.customer_name, c.email, c.phone,c.postcode,c.address,o.id,o.created,payments.payment,payments.transaction,payments.created_date');
   $this->db->from('orders as o');
@@ -181,6 +193,14 @@ public function invoiceOrder($id){
 //  echo $this->db->last_query($query);exit;
   $query = $query->result_array();
   return $query;
+}
+public function newAllOrder(){
+  $this->db->select('status');
+  $this->db->from('orders');
+  $this->db->where('status',1);
+  $id = $this->db->get()->num_rows();
+
+  return $id;
 }
 
 }

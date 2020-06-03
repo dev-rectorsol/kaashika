@@ -50,7 +50,7 @@
                                     <div class="product-details-des">
 
                                         <div class="manufacturer-name">
-                                            <a href="<?php echo base_url('web/shop/product_details')?>">kashika</a>
+                                            <a href="<?php echo base_url('web/home')?>">kashika</a>
                                         </div>
                                         <h3 class="product-name"><?php echo $product_details['name'] ?></h3>
                                         <div class="ratings d-flex">
