@@ -183,4 +183,12 @@ public function invoiceOrder($id){
   return $query;
 }
 
+public function getProductList(){
+  $sql = "SELECT products.*, category.name AS category_name FROM products
+          INNER JOIN indexing ON products.id = indexing.root AND indexing.type = 'category'
+          LEFT JOIN category ON indexing.port = category.id
+          GROUP BY products.id";
+    return $this->db->query($sql)->result_array();
+}
+
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 25, 2020 at 03:24 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.14
+-- Host: localhost
+-- Generation Time: Jun 03, 2020 at 04:02 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.2.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kalka`
+-- Database: `ecom`
 --
 
 -- --------------------------------------------------------
@@ -28,9 +28,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `address`
 --
 
-DROP TABLE IF EXISTS `address`;
-CREATE TABLE IF NOT EXISTS `address` (
-  `address_id` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `address` (
+  `address_id` int(5) NOT NULL,
   `user_id` varchar(10) DEFAULT NULL,
   `house` varchar(32) DEFAULT NULL,
   `post` varchar(32) DEFAULT NULL,
@@ -38,9 +37,8 @@ CREATE TABLE IF NOT EXISTS `address` (
   `state` varchar(12) DEFAULT NULL,
   `city` varchar(12) DEFAULT NULL,
   `country` varchar(6) DEFAULT NULL,
-  `pincode` varchar(6) DEFAULT NULL,
-  PRIMARY KEY (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `pincode` varchar(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `address`
@@ -58,14 +56,11 @@ INSERT INTO `address` (`address_id`, `user_id`, `house`, `post`, `dist`, `state`
 -- Table structure for table `answers`
 --
 
-DROP TABLE IF EXISTS `answers`;
-CREATE TABLE IF NOT EXISTS `answers` (
+CREATE TABLE `answers` (
   `ansid` char(32) NOT NULL,
   `question` char(32) NOT NULL,
   `answers` text NOT NULL,
-  `userid` char(32) NOT NULL,
-  PRIMARY KEY (`ansid`),
-  KEY `question` (`question`)
+  `userid` char(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -74,18 +69,37 @@ CREATE TABLE IF NOT EXISTS `answers` (
 -- Table structure for table `article`
 --
 
-DROP TABLE IF EXISTS `article`;
-CREATE TABLE IF NOT EXISTS `article` (
-  `postid` char(6) NOT NULL,
+CREATE TABLE `article` (
+  `id` int(11) NOT NULL,
+  `postid` char(32) NOT NULL,
   `title` text NOT NULL,
   `slug` varchar(128) NOT NULL,
+  `created_by` varchar(32) NOT NULL,
   `content` text NOT NULL,
   `public_at` datetime NOT NULL,
   `is_publish` tinyint(1) NOT NULL,
   `deleted` tinyint(1) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`postid`)
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`id`, `postid`, `title`, `slug`, `created_by`, `content`, `public_at`, `is_publish`, `deleted`, `created_at`) VALUES
+(14, '5eb7e2b69d95e', 'priyanka singh yadav', 'dgdfg', 'AKIASZ001', '<p>Add a content here</p><p><span style=\"color: rgb(85, 85, 85); font-family: Lato, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center;\">There are latest blog posts</span><br></p>', '2020-05-10 17:17:10', 0, 1, '2020-05-10 11:47:10'),
+(15, '145eb7e300aa928', 'ME0000003878', 'hello', 'AKIASZ001', '<p>Add a content here</p><p><span style=\"color: rgb(85, 85, 85); font-family: Lato, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center;\">There are latest blog posts</span></p><p><span style=\"color: rgb(85, 85, 85); font-family: Lato, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center;\">There are latest blog posts</span><span style=\"color: rgb(85, 85, 85); font-family: Lato, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center;\"><br></span><br></p>', '2020-05-10 17:18:24', 0, 1, '2020-05-10 11:48:24'),
+(16, '155eb7e32a600ad', 'singh', 'dgdfg', 'AKIASZ001', 'Add a content here', '2020-05-10 17:19:06', 0, 1, '2020-05-10 11:49:06'),
+(17, '165eb7e3556098e', 'arti singh patel', 'dgdfg', 'AKIASZ001', 'Add a content here', '2020-05-10 17:19:49', 0, 1, '2020-05-10 11:49:49'),
+(18, '175eb7e3a210c5f', 'arti singh patel', 'hello', 'AKIASZ001', 'Add a content here', '2020-05-10 17:21:06', 0, 1, '2020-05-10 11:51:06'),
+(19, 'post19', 'arti', 'hello', 'AKIASZ001', 'Add a content here', '2020-06-01 12:15:50', 0, 1, '2020-06-01 06:45:50'),
+(20, 'post20', 'hello', 'dgdfg', 'AKIASZ001', 'Add a content here', '2020-06-01 12:55:57', 0, 1, '2020-06-01 07:25:57'),
+(21, 'post21', 'hello', 'dgdfg', 'AKIASZ001', 'Add a content here', '2020-06-01 12:57:39', 0, 1, '2020-06-01 07:27:39'),
+(22, 'post22', 'arti', 'dgdfg', 'AKIASZ001', 'Add a content here', '0000-00-00 00:00:00', 0, 0, '2020-06-01 07:32:55'),
+(23, 'post23', 'arti singh patel', 'hello', 'AKIASZ001', 'Add a content here', '2020-06-01 14:35:54', 1, 0, '2020-06-01 09:05:54'),
+(24, 'post24', 'priya', 'hello', 'AKIASZ001', 'Add a content here', '2020-06-01 14:43:56', 1, 0, '2020-06-01 09:13:56'),
+(25, 'post25', 'pinki', 'pink', 'AKIASZ001', 'Add a content here', '2020-06-01 14:44:42', 1, 0, '2020-06-01 09:14:42'),
+(26, 'post26', 'ruchi singh', 'ruchi', 'AKIASZ001', 'Add a content here', '2020-06-01 14:45:19', 1, 0, '2020-06-01 09:15:19');
 
 -- --------------------------------------------------------
 
@@ -93,20 +107,17 @@ CREATE TABLE IF NOT EXISTS `article` (
 -- Table structure for table `attribute`
 --
 
-DROP TABLE IF EXISTS `attribute`;
-CREATE TABLE IF NOT EXISTS `attribute` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `attribute` (
+  `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `attribute`
 --
 
 INSERT INTO `attribute` (`id`, `name`, `created_at`) VALUES
-(19, 'Size', '2020-04-24 15:09:49'),
 (20, 'Color', '2020-04-24 15:10:00'),
 (21, 'Fabric', '2020-04-24 15:10:16'),
 (22, 'Stitch', '2020-04-24 15:10:27'),
@@ -118,22 +129,22 @@ INSERT INTO `attribute` (`id`, `name`, `created_at`) VALUES
 -- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category` (
+  `id` int(5) NOT NULL,
   `name` varchar(32) NOT NULL,
   `parent` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `source` varchar(262) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `parent`) VALUES
-(1, 'Category1', 'none'),
-(2, 'category2', 'Category1'),
-(3, 'category3', 'category2');
+INSERT INTO `category` (`id`, `name`, `parent`, `source`) VALUES
+(7, 'Sute', 'none', 'uploads/product/DSC_0500-copy-1-330x413.jpg'),
+(8, 'Dupatta', 'none', 'uploads/product/002-330x413.jpg'),
+(9, 'Lehenga', 'none', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg'),
+(10, 'Sarees', 'none', 'uploads/product/DSC_0621-copy-330x413.jpg');
 
 -- --------------------------------------------------------
 
@@ -141,25 +152,53 @@ INSERT INTO `category` (`id`, `name`, `parent`) VALUES
 -- Table structure for table `contact`
 --
 
-DROP TABLE IF EXISTS `contact`;
-CREATE TABLE IF NOT EXISTS `contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
   `name` varchar(62) NOT NULL,
   `phone` varchar(32) NOT NULL,
   `email` varchar(32) NOT NULL,
   `subject` varchar(32) NOT NULL,
   `message` longtext NOT NULL,
-  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `status` enum('New','Done') NOT NULL DEFAULT 'New',
+  `added_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `contact`
 --
 
-INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `subject`, `message`, `added_date`) VALUES
-(1, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '2020-04-16 06:31:18'),
-(2, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '2020-04-16 06:31:50');
+INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `subject`, `message`, `status`, `added_date`) VALUES
+(1, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '', '2020-04-16 06:31:18'),
+(2, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '', '2020-04-16 06:31:50'),
+(4, 'ruchi singh', '8040729016', 'a@gmail.com', 'something', 'hello', 'Done', '2020-06-01 10:42:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `customer_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `postcode` int(6) DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT '1=Active | 0=Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `customer_name`, `email`, `phone`, `postcode`, `address`, `created`, `modified`, `status`) VALUES
+(21, 'pooja singh', 'pooja@gmail.com', '8840729016', 123455, ' sunderpur lanka varanasi up', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(30, 'arti singh patel', 'singhseema4581@gmail.com', '08840729016', 123455, 'sikiya', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(31, 'golu', 'g@gmail.com', '01231312323', 123455, 'vns', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(32, 'ruchi singh', 'ruchisingh.vns1211@gmail.com', '9876543210', 221005, 'A/12 sector A lanka road sunderpur (up)', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- --------------------------------------------------------
 
@@ -167,8 +206,7 @@ INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `subject`, `message`, `ad
 -- Table structure for table `docfile`
 --
 
-DROP TABLE IF EXISTS `docfile`;
-CREATE TABLE IF NOT EXISTS `docfile` (
+CREATE TABLE `docfile` (
   `docid` char(32) NOT NULL,
   `nodeid` char(32) NOT NULL,
   `type` enum('free','paid') NOT NULL,
@@ -176,9 +214,7 @@ CREATE TABLE IF NOT EXISTS `docfile` (
   `url` text NOT NULL,
   `size` varchar(32) NOT NULL,
   `doctype` varchar(32) NOT NULL,
-  `download` tinyint(1) NOT NULL,
-  PRIMARY KEY (`docid`),
-  KEY `nodeid` (`nodeid`)
+  `download` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -187,13 +223,11 @@ CREATE TABLE IF NOT EXISTS `docfile` (
 -- Table structure for table `gallery`
 --
 
-DROP TABLE IF EXISTS `gallery`;
-CREATE TABLE IF NOT EXISTS `gallery` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `gallery` (
+  `id` int(11) NOT NULL,
   `image` varchar(132) DEFAULT NULL,
-  `added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `added` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gallery`
@@ -210,51 +244,64 @@ INSERT INTO `gallery` (`id`, `image`, `added`) VALUES
 -- Table structure for table `indexing`
 --
 
-DROP TABLE IF EXISTS `indexing`;
-CREATE TABLE IF NOT EXISTS `indexing` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `root` varchar(32) NOT NULL,
-  `port` varchar(6) NOT NULL,
-  `type` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `root` (`root`),
-  KEY `port` (`port`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+CREATE TABLE `indexing` (
+  `id` int(11) NOT NULL,
+  `root` int(11) NOT NULL,
+  `port` int(11) NOT NULL,
+  `type` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `indexing`
 --
 
 INSERT INTO `indexing` (`id`, `root`, `port`, `type`) VALUES
-(5, '6', '1', 'tag'),
-(6, '6', '5', 'tag'),
-(7, '6', '1', 'category'),
-(8, '6', '2', 'category'),
-(9, '12', '2', 'tag'),
-(10, '12', '5', 'tag'),
-(11, '12', '1', 'category'),
-(12, '12', '2', 'category'),
-(13, '13', '2', 'tag'),
-(14, '13', '2', 'category'),
-(15, '14', '2', 'tag'),
-(16, '14', '2', 'category'),
-(17, '15', '2', 'tag'),
-(18, '15', '2', 'category'),
-(19, '16', '2', 'tag'),
-(20, '16', '4', 'tag'),
-(21, '16', '5', 'tag'),
-(22, '16', '1', 'category'),
-(23, '16', '2', 'category'),
-(24, '17', '2', 'tag'),
-(25, '17', '5', 'tag'),
-(26, '17', '1', 'category'),
-(27, '17', '3', 'category'),
-(30, '18', '2', 'category'),
-(31, '18', '3', 'category'),
-(32, '19', '2', 'tag'),
-(33, '19', '5', 'tag'),
-(34, '19', '2', 'category'),
-(35, '19', '3', 'category');
+(47, 23, 1, 'tag'),
+(48, 23, 4, 'category'),
+(49, 24, 2, 'tag'),
+(50, 24, 5, 'category'),
+(51, 25, 3, 'tag'),
+(52, 25, 8, 'category'),
+(53, 26, 4, 'tag'),
+(54, 26, 7, 'category'),
+(55, 27, 4, 'tag'),
+(56, 27, 5, 'category'),
+(105, 39, 2, 'tag'),
+(106, 39, 4, 'category'),
+(107, 40, 4, 'tag'),
+(108, 40, 4, 'category'),
+(109, 41, 2, 'tag'),
+(110, 41, 4, 'category'),
+(111, 42, 2, 'tag'),
+(112, 42, 5, 'category'),
+(113, 43, 2, 'tag'),
+(114, 43, 7, 'category'),
+(115, 30, 2, 'tag'),
+(116, 30, 7, 'category'),
+(117, 29, 5, 'tag'),
+(118, 29, 5, 'category'),
+(119, 28, 5, 'tag'),
+(120, 28, 5, 'category'),
+(121, 44, 2, 'tag'),
+(122, 44, 5, 'category'),
+(123, 45, 3, 'tag'),
+(124, 45, 7, 'category'),
+(125, 0, 0, 'tag'),
+(126, 0, 0, 'category'),
+(127, 21, 0, 'tag'),
+(128, 21, 0, 'category'),
+(129, 23, 0, 'tag'),
+(130, 23, 0, 'category'),
+(131, 24, 0, 'tag'),
+(132, 24, 0, 'category'),
+(133, 25, 0, 'tag'),
+(134, 25, 0, 'category'),
+(135, 26, 0, 'tag'),
+(136, 26, 0, 'category'),
+(137, 46, 2, 'tag'),
+(138, 46, 9, 'category'),
+(139, 47, 3, 'tag'),
+(140, 47, 10, 'category');
 
 -- --------------------------------------------------------
 
@@ -262,17 +309,15 @@ INSERT INTO `indexing` (`id`, `root`, `port`, `type`) VALUES
 -- Table structure for table `keys`
 --
 
-DROP TABLE IF EXISTS `keys`;
-CREATE TABLE IF NOT EXISTS `keys` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `keys` (
+  `id` int(11) NOT NULL,
   `key` varchar(40) NOT NULL,
   `level` int(2) NOT NULL,
-  `ignore_limits` tinyint(1) NOT NULL DEFAULT '0',
-  `is_private_key` tinyint(1) NOT NULL DEFAULT '0',
-  `ip_addresses` text,
-  `date_created` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `ignore_limits` tinyint(1) NOT NULL DEFAULT 0,
+  `is_private_key` tinyint(1) NOT NULL DEFAULT 0,
+  `ip_addresses` text DEFAULT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `keys`
@@ -287,15 +332,12 @@ INSERT INTO `keys` (`id`, `key`, `level`, `ignore_limits`, `is_private_key`, `ip
 -- Table structure for table `log`
 --
 
-DROP TABLE IF EXISTS `log`;
-CREATE TABLE IF NOT EXISTS `log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `log` (
+  `id` int(11) NOT NULL,
   `user_id` char(32) NOT NULL,
   `ip` varchar(24) NOT NULL,
-  `lastlog` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=latin1;
+  `lastlog` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `log`
@@ -372,8 +414,8 @@ INSERT INTO `log` (`id`, `user_id`, `ip`, `lastlog`) VALUES
 -- Table structure for table `logme`
 --
 
-DROP TABLE IF EXISTS `logme`;
-CREATE TABLE IF NOT EXISTS `logme` (
+CREATE TABLE `logme` (
+  `id` int(11) NOT NULL,
   `logid` char(9) NOT NULL,
   `phone` varchar(10) DEFAULT NULL,
   `email` varchar(32) DEFAULT NULL,
@@ -381,19 +423,23 @@ CREATE TABLE IF NOT EXISTS `logme` (
   `language` enum('english','hindi') DEFAULT NULL,
   `role` char(5) NOT NULL,
   `status` enum('active','deactive') NOT NULL,
-  `joindate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`logid`),
-  KEY `role` (`role`)
+  `joindate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `logme`
 --
 
-INSERT INTO `logme` (`logid`, `phone`, `email`, `password`, `language`, `role`, `status`, `joindate`, `updated_at`) VALUES
-('AKIASZ001', '7905004391', 'omie@gmail.com', '$2y$10$RiAZ5AQUiLJBlSyNagz/yOHVYzhhWv3t5LfADRTGI4TQaiAV3DUmK', 'english', 'a', 'active', '2020-03-13 00:00:00', '2020-03-18 11:43:03'),
-('EDO100100', NULL, 'b@gmail.com', '$2y$10$WZZDwTr70g3zSDXtDDflZeOPMy9veO9ZneKEL0n0R184xj46v8nTS', NULL, 's', 'active', '2020-03-30 11:03:19', '2020-03-30 15:10:19');
+INSERT INTO `logme` (`id`, `logid`, `phone`, `email`, `password`, `language`, `role`, `status`, `joindate`, `updated_at`, `deleted_at`, `deleted`) VALUES
+(100101, 'AKIASZ001', '7905004391', 'omie@gmail.com', '$2y$10$RiAZ5AQUiLJBlSyNagz/yOHVYzhhWv3t5LfADRTGI4TQaiAV3DUmK', 'english', 'a', 'active', '2020-03-13 00:00:00', '2020-03-18 11:43:03', '0000-00-00 00:00:00', 0),
+(100132, 'EDO100102', NULL, 'shera@gmail.com', '$2y$10$29mO1RFUPax4cgCXSGEfQebnp7j3EoA/Xugu/N/OYodc.FjkUnnWa', NULL, 's', 'active', '2020-04-29 13:03:39', '2020-04-29 12:33:39', NULL, 0),
+(100133, 'EDO100133', NULL, 'uttem@gmail.com', '$2y$10$Jggmu9s9XzFCzKy7c0yYjORhIEvd/Ak8SJycx26Hr2ZXgYFW1Crji', NULL, 's', 'active', '2020-04-29 13:11:34', '2020-04-29 12:41:34', NULL, 0),
+(100134, 'EDO100134', NULL, 'arti@gmail.com', '$2y$10$umEY.Ssn7FPD6qWD9AUutO2mkNShGnwrIVo7TRhePuDIlyX1MSsZS', NULL, 's', 'active', '2020-05-31 16:20:11', '2020-05-31 15:50:11', NULL, 0),
+(100135, 'EDO100135', NULL, 'artisinghh11@gmail.com', '$2y$10$UkzIg/Si/EKMshfh5SgAb.7VV99AIW8flMjowuQRBHj9qXc5qaze6', NULL, 's', 'active', '2020-05-31 16:30:09', '2020-05-31 16:00:09', NULL, 0),
+(100136, 'EDO100136', '8840729016', NULL, '$2y$10$WBpaoePyZUmjmn7JV3p7cOj5pBIjANqKiDel2uDje0RLk1g.8FwxW', NULL, 's', 'active', '2020-05-31 16:40:01', '2020-05-31 16:10:01', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -401,20 +447,18 @@ INSERT INTO `logme` (`logid`, `phone`, `email`, `password`, `language`, `role`, 
 -- Table structure for table `logs`
 --
 
-DROP TABLE IF EXISTS `logs`;
-CREATE TABLE IF NOT EXISTS `logs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL,
   `uri` varchar(255) NOT NULL,
   `method` varchar(6) NOT NULL,
-  `params` text,
+  `params` text DEFAULT NULL,
   `api_key` varchar(40) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
   `time` int(11) NOT NULL,
   `rtime` float DEFAULT NULL,
   `authorized` varchar(1) NOT NULL,
-  `response_code` smallint(3) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+  `response_code` smallint(3) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `logs`
@@ -510,14 +554,12 @@ INSERT INTO `logs` (`id`, `uri`, `method`, `params`, `api_key`, `ip_address`, `t
 -- Table structure for table `message`
 --
 
-DROP TABLE IF EXISTS `message`;
-CREATE TABLE IF NOT EXISTS `message` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
   `code` varchar(6) NOT NULL,
-  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+  `time` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message`
@@ -537,16 +579,51 @@ INSERT INTO `message` (`id`, `key`, `code`, `time`) VALUES
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE IF NOT EXISTS `orders` (
-  `orderid` int(6) NOT NULL AUTO_INCREMENT,
-  `userid` char(32) NOT NULL,
-  `totalprice` double(5,2) NOT NULL,
-  `discount` double(5,2) NOT NULL,
-  `modeid` char(6) NOT NULL,
-  PRIMARY KEY (`orderid`),
-  KEY `userid` (`userid`)
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `grand_total` float(10,2) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT '1=Active | 0=Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `grand_total`, `created`, `modified`, `status`) VALUES
+(24, 29, 9000.00, '2020-06-02 10:18:03', '2020-06-02 10:18:03', '1'),
+(25, 30, 9990.00, '2020-06-02 10:22:02', '2020-06-02 10:22:02', '1'),
+(26, 31, 9200.00, '2020-06-02 10:45:54', '2020-06-02 10:45:54', '1'),
+(27, 32, 10190.00, '2020-06-02 13:52:29', '2020-06-02 13:52:29', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `quantity` int(5) DEFAULT NULL,
+  `sub_total` float(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `sub_total`) VALUES
+(23, 25, 24, 1, 9000.00),
+(24, 25, 29, 1, 990.00),
+(25, 26, 28, 1, 9000.00),
+(26, 26, 25, 1, 200.00),
+(27, 27, 41, 1, 200.00),
+(28, 27, 24, 1, 9000.00),
+(29, 27, 29, 1, 990.00);
 
 -- --------------------------------------------------------
 
@@ -554,16 +631,12 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- Table structure for table `order_meta`
 --
 
-DROP TABLE IF EXISTS `order_meta`;
-CREATE TABLE IF NOT EXISTS `order_meta` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order_meta` (
+  `id` int(11) NOT NULL,
   `product_id` char(6) NOT NULL,
   `order_id` char(32) NOT NULL,
   `price` double(5,2) NOT NULL,
-  `discount_price` double(5,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `product_id` (`product_id`),
-  KEY `order_id` (`order_id`)
+  `discount_price` double(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -572,18 +645,29 @@ CREATE TABLE IF NOT EXISTS `order_meta` (
 -- Table structure for table `payments`
 --
 
-DROP TABLE IF EXISTS `payments`;
-CREATE TABLE IF NOT EXISTS `payments` (
+CREATE TABLE `payments` (
   `payment` char(32) NOT NULL,
   `transaction` varchar(64) NOT NULL,
   `userid` char(32) NOT NULL,
   `orderid` varchar(32) NOT NULL,
-  `created_date` datetime NOT NULL,
-  `status` enum('1','2','3','4') NOT NULL,
-  PRIMARY KEY (`payment`),
-  KEY `userid` (`userid`),
-  KEY `orderid` (`orderid`)
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` enum('1','2','3','4') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`payment`, `transaction`, `userid`, `orderid`, `created_date`, `status`) VALUES
+('pay_EuvTScVxiN210h', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
+('pay_EuvUboJPxWwPX2', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
+('pay_EuvVl95QH0fZAV', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
+('pay_Eux7QkYVumuU6f', '20000', '17', '13', '0000-00-00 00:00:00', '1'),
+('pay_EuxB1X9gfZkvQY', '20000', '17', '13', '0000-00-00 00:00:00', '1'),
+('pay_EuxRcKlmfsqMH3', '90000', '18', '14', '0000-00-00 00:00:00', '1'),
+('pay_ExbzgVRcPGDQEa', '2110000', '21', '16', '0000-00-00 00:00:00', '1'),
+('pay_ExdYAo3Q2bdeAm', '920000', '31', '26', '0000-00-00 00:00:00', '1'),
+('pay_ExgjRiOepm3NjL', '1019000', '32', '27', '2020-06-02 13:52:50', '1');
 
 -- --------------------------------------------------------
 
@@ -591,18 +675,15 @@ CREATE TABLE IF NOT EXISTS `payments` (
 -- Table structure for table `permissions`
 --
 
-DROP TABLE IF EXISTS `permissions`;
-CREATE TABLE IF NOT EXISTS `permissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `permissions` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `display_name` varchar(100) DEFAULT NULL,
-  `description` tinytext,
-  `status` tinyint(1) DEFAULT '1',
+  `description` tinytext DEFAULT NULL,
+  `status` tinyint(1) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -611,11 +692,9 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 -- Table structure for table `permission_roles`
 --
 
-DROP TABLE IF EXISTS `permission_roles`;
-CREATE TABLE IF NOT EXISTS `permission_roles` (
+CREATE TABLE `permission_roles` (
   `role_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL,
-  PRIMARY KEY (`role_id`,`permission_id`)
+  `permission_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -624,32 +703,35 @@ CREATE TABLE IF NOT EXISTS `permission_roles` (
 -- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `pbc` varchar(24) DEFAULT NULL COMMENT 'Releted to id',
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `price` int(5) NOT NULL,
   `profile_pic` text NOT NULL,
   `discount` int(5) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `product` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+  `status` varchar(64) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `profile_pic`, `discount`, `quantity`, `created_at`, `updated_at`) VALUES
-(6, 'product1', '<p>description1</p>', 100, '0', 0, 100, '2020-04-25 12:06:55', NULL),
-(14, 'product2', '<p>zxcxczczczc</p>', 100, 'day4.png', 0, 1000, '2020-04-25 15:37:25', NULL),
-(15, 'product3', '<p>zxczxczcz</p>', 100, 'day5.png', 0, 120, '2020-04-25 15:47:07', NULL),
-(16, 'product e', '<p>zzczczczc</p>', 1000, 'Ed_Sheeran.png', 0, 100, '2020-04-25 17:17:29', NULL),
-(17, 'product 222', '<p>zxczxczcczaszxzczcc</p>', 1000, 'img2.jpg', 0, 100, '2020-04-25 19:15:19', NULL),
-(19, 'product 21', '<p>zzjhvhjvjhvb zcjlz chj chjz c bj jhc</p>', 1000, 'day1.png', 0, 121, '2020-04-25 19:27:34', NULL);
+INSERT INTO `products` (`id`, `pbc`, `name`, `description`, `price`, `profile_pic`, `discount`, `quantity`, `status`, `created_at`, `updated_at`) VALUES
+(23, NULL, 'Shree', '<p>beautiful</p>', 2000, 'DSC_0146-copy-330x413.jpg', 10, 1, 'On_Sell', '2020-05-04 20:30:33', NULL),
+(25, NULL, 'Dupatta', '<p>nice</p>', 200, '002-330x413.jpg', 12, 2, 'On_Sell', '2020-05-04 20:36:22', NULL),
+(27, NULL, 'Lehenga', '<p>marrege party wear</p>', 10000, '1562871246794_0_.jpg', 12, 2, 'Best_Sell', '2020-05-05 18:09:36', NULL),
+(28, NULL, 'lehenga', '<p>party wear henga</p>', 9000, 'download_(1).jpg', 12, 5, 'On_Sell', '2020-05-05 18:33:27', NULL),
+(31, NULL, 'saree', '<p>df dhf ssudhf igdsvv uyvsv cvydv mvgsh</p>', 200, 'DSC_0381-330x4131.jpg', 20, 1, 'On_Sell', '2020-05-13 14:23:37', NULL),
+(41, NULL, 'cotoon saree', '<p>xcvbnmc dfghm fghjk fdfghj, dfh</p>', 200, 'DSC_0146-copy-330x4131.jpg', 0, 3, 'On_Sell', '2020-05-15 16:45:38', NULL),
+(42, NULL, 'product1', '<p>vn</p>', 200, '1562871246794_0_1.jpg', 0, 8, 'Best_Sell', '2020-05-18 22:01:45', NULL),
+(45, NULL, 'Salwar kameez', '<p>beautifuly dress</p>', 900, 'cream-cotton-salwar-kameez-137927-800x1100.jpg', 10, 2, 'Best_Sell', '2020-05-30 06:13:24', NULL),
+(46, NULL, 'Lehenga', '<p><span xss=removed>A </span><b xss=removed>Lehenga</b><span xss=removed> is a form of skirt from the Indian subcontinent which is long and embroidered usually paired with a dupatta. </span><br></p>', 5000, '1979lg25-n228.jpg', 20, 1, 'On_Sell', '2020-06-02 15:48:09', NULL),
+(47, NULL, 'Saree', '<p><span xss=removed>A wedding sari is the traditional wedding dress of Indian women. The sari is traditionally a combination of red and green, with golden brocade.</span><br></p>', 10000, '0621119_admirable-mehendi-silk-sarees.jpeg', 12, 2, 'On_Sell', '2020-06-02 15:52:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -657,14 +739,12 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `profile_pic`, `di
 -- Table structure for table `product_attributes`
 --
 
-DROP TABLE IF EXISTS `product_attributes`;
-CREATE TABLE IF NOT EXISTS `product_attributes` (
-  `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_attributes` (
+  `product_attribute_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
-  `value` text NOT NULL,
-  PRIMARY KEY (`product_attribute_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+  `value` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `product_attributes`
@@ -679,7 +759,63 @@ INSERT INTO `product_attributes` (`product_attribute_id`, `product_id`, `attribu
 (24, 17, 19, '14'),
 (25, 17, 20, 'Yellow'),
 (28, 19, 19, '12'),
-(29, 19, 20, 'Blue');
+(29, 19, 20, 'Blue'),
+(30, 20, 19, '12'),
+(31, 20, 20, 'red'),
+(32, 21, 0, ''),
+(33, 22, 21, 'blue'),
+(34, 1, 47, 'skyblue'),
+(35, 1, 47, 'skyblue'),
+(36, 1, 47, 'skyblue'),
+(37, 14, 0, ''),
+(38, 1, 47, 'skyblue'),
+(39, 1, 47, 'skyblue'),
+(40, 1, 47, 'skyblue'),
+(41, 1, 47, 'skyblue'),
+(42, 1, 47, 'skyblue'),
+(43, 1, 47, 'skyblue'),
+(44, 1, 47, 'skyblue'),
+(45, 23, 20, 'blue'),
+(46, 23, 22, '12'),
+(47, 24, 20, 'red'),
+(48, 25, 20, 'pink'),
+(49, 26, 20, 'pink'),
+(50, 27, 20, 'maroon'),
+(51, 1, 47, 'skyblue'),
+(52, 28, 20, 'white'),
+(53, 29, 19, '45'),
+(54, 29, 20, 'white'),
+(55, 29, 23, 'dri wash'),
+(56, 30, 19, 'long'),
+(57, 30, 20, 'black'),
+(58, 30, 23, 'dry wash'),
+(90, 31, 20, 'yellow'),
+(60, 31, 19, '5m'),
+(61, 32, 21, '12'),
+(62, 32, 20, 'blue'),
+(63, 33, 20, 'black'),
+(79, 41, 20, 'yello'),
+(78, 40, 23, 'dyrwash'),
+(77, 40, 20, 'blue'),
+(76, 40, 19, '5m'),
+(75, 24, 0, ''),
+(71, 1, 47, 'skyblue'),
+(74, 24, 19, 'Xl'),
+(80, 42, 19, 'blue'),
+(81, 43, 20, 'blue'),
+(82, 30, 0, ''),
+(83, 29, 0, ''),
+(84, 28, 0, ''),
+(85, 44, 20, 'red'),
+(86, 44, 19, 'long'),
+(87, 44, 23, 'drywash'),
+(88, 45, 20, 'pink'),
+(89, 45, 23, 'drywash'),
+(91, 39, 20, 'purple'),
+(92, 41, 20, 'maroon'),
+(93, 46, 20, 'purple'),
+(94, 46, 23, 'dye'),
+(95, 47, 20, 'pink');
 
 -- --------------------------------------------------------
 
@@ -687,21 +823,50 @@ INSERT INTO `product_attributes` (`product_attribute_id`, `product_id`, `attribu
 -- Table structure for table `product_images`
 --
 
-DROP TABLE IF EXISTS `product_images`;
-CREATE TABLE IF NOT EXISTS `product_images` (
-  `product_images_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_images` (
+  `product_images_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `image` text NOT NULL,
-  PRIMARY KEY (`product_images_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `color` varchar(32) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `product_images`
 --
 
-INSERT INTO `product_images` (`product_images_id`, `product_id`, `image`) VALUES
-(1, 19, 'Ed_Sheeran1.png'),
-(2, 19, 'educationaduca.png');
+INSERT INTO `product_images` (`product_images_id`, `product_id`, `image`, `color`) VALUES
+(1, 19, 'Ed_Sheeran1.png', '#F37A60'),
+(2, 19, 'educationaduca.png', '#F37A60'),
+(3, 20, 'slid4.jpg', '#F1182B'),
+(4, 23, 'DSC_0381-330x413.jpg', '#0EF923'),
+(5, 23, 'DSC_0621-copy-330x413.jpg', '#0EF923'),
+(6, 24, 'download.jpg', '#FFC300'),
+(7, 25, 'DSC_0507-copy-330x413.jpg', '#C70039'),
+(8, 25, 'DSC_0500-copy-1-330x413.jpg', '#F9F20E '),
+(9, 27, '5085_12.jpg', '#E811D4'),
+(10, 28, 'download_(3).jpg', '#C70039'),
+(11, 29, 'download_(3)2.jpg', '#F37A60'),
+(14, 1, 'download_(2)1.jpg', '#56E628 '),
+(15, 1, 'download_(2)1.jpg', '#F1182B'),
+(16, 1, 'download_(2)1.jpg', '#09B4C5 '),
+(17, 1, 'download_(2)1.jpg', '#18F073 '),
+(18, 24, 'download_(1)3.jpg', '#18F073 '),
+(19, 24, 'download3.jpg', '#0EF923'),
+(20, 24, 'download_(3)5.jpg', '#18F073 '),
+(21, 40, 'DSC_0381-330x4134.jpg', '#F9F20E '),
+(22, 42, '1562871246794_0_2.jpg', '#56E628 '),
+(24, 44, 'download_(3)6.jpg', '#faf4f4'),
+(26, 45, 'skcit19_enlarge.jpg', '#fd8bee'),
+(25, 45, '2635sl06-59224.jpg', '#57e5e2'),
+(27, 45, 'Cotton-Patiala-Salwar-Kameez.jpg', '#ab0da5'),
+(28, 45, 'Salwar-Kameez-Designs-2018-1.jpeg', '#5e5a5a'),
+(29, 46, 'download_(2)2.jpg', '#c69faf'),
+(30, 46, 'PRN4847-Red-color-Net-Lehenga-Choli_LC1387.jpg', '#db1a27'),
+(31, 46, 'download.jpg', '#871212'),
+(32, 47, '91nycgf7mbL__UY550_.jpg', '#d33c69'),
+(33, 47, 'dulhan-saree-500x500.jpg', '#f33551'),
+(34, 47, '27c1872b18649839dbc682ff3d4bf0e2--traditional-sarees-traditional-outfits.jpg', '#114b15'),
+(35, 47, '0621119_admirable-mehendi-silk-sarees1.jpeg', '#73990a');
 
 -- --------------------------------------------------------
 
@@ -709,18 +874,14 @@ INSERT INTO `product_images` (`product_images_id`, `product_id`, `image`) VALUES
 -- Table structure for table `results`
 --
 
-DROP TABLE IF EXISTS `results`;
-CREATE TABLE IF NOT EXISTS `results` (
-  `result_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `results` (
+  `result_id` int(11) NOT NULL,
   `test_id` char(32) NOT NULL,
   `user_id` char(32) NOT NULL,
   `obtained` int(6) NOT NULL,
   `attemptq` int(6) NOT NULL,
   `correctq` int(6) NOT NULL,
-  `wrongq` int(6) NOT NULL,
-  PRIMARY KEY (`result_id`),
-  KEY `test_id` (`test_id`),
-  KEY `user_id` (`user_id`)
+  `wrongq` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -729,19 +890,16 @@ CREATE TABLE IF NOT EXISTS `results` (
 -- Table structure for table `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
-  `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `roles` (
+  `id` smallint(5) UNSIGNED NOT NULL,
   `name` varchar(200) NOT NULL,
   `display_name` varchar(30) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1',
+  `status` tinyint(1) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_user_roles_role_Name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `roles`
@@ -757,11 +915,9 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `status`, `cre
 -- Table structure for table `roles_users`
 --
 
-DROP TABLE IF EXISTS `roles_users`;
-CREATE TABLE IF NOT EXISTS `roles_users` (
+CREATE TABLE `roles_users` (
   `user_id` char(9) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`,`role_id`)
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -770,7 +926,10 @@ CREATE TABLE IF NOT EXISTS `roles_users` (
 
 INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
 ('AKIASZ001', 1),
-('EDO100100', 2);
+('EDO100100', 2),
+('EDO100134', 2),
+('EDO100135', 2),
+('EDO100136', 2);
 
 -- --------------------------------------------------------
 
@@ -778,15 +937,12 @@ INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
 -- Table structure for table `setting`
 --
 
-DROP TABLE IF EXISTS `setting`;
-CREATE TABLE IF NOT EXISTS `setting` (
-  `setting_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `setting` (
+  `setting_id` int(11) NOT NULL,
   `setting_name` varchar(128) NOT NULL,
   `setting_value` longtext NOT NULL,
-  `autoload` varchar(8) NOT NULL DEFAULT 'yes',
-  PRIMARY KEY (`setting_id`),
-  KEY `setting_name` (`setting_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+  `autoload` varchar(8) NOT NULL DEFAULT 'yes'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `setting`
@@ -794,7 +950,11 @@ CREATE TABLE IF NOT EXISTS `setting` (
 
 INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`, `autoload`) VALUES
 (1, 'application_name', 'Online Education Board', 'yes'),
-(2, 'application_title', 'Online Education Board', 'yes');
+(2, 'application_title', '{\"3\":{\"title\":\"BEST SALWAR SUIT SITE\",\"source\":\"uploads\\/images\\\\\\/thumbnail\\/download_thumb-175x200.png\"}}', 'yes'),
+(3, 'home_slider', '{\"7\":{\"heading\":\"Hedding3\",\"details\":\"fhdsfh shfsd mhfs fmshfsmnv\",\"buttonUrl\":\"\",\"source\":\"uploads\\/images\\\\\\/medium\\/slid5_medium-376x134.jpg\"}}', 'yes'),
+(4, 'social_icon', '[{\"link\":\"https:\\/\\/www.facebook.com\\/\",\"icon\":\"icon-line-awesome-facebook\"},{\"link\":\"https:\\/\\/twitter.com\\/Twitter\",\"icon\":\"icon-line-awesome-twitter-square\"},{\"link\":\"https:\\/\\/www.youtube.com\\/\",\"icon\":\"icon-line-awesome-youtube\"}]', 'yes'),
+(5, 'contact_us', '{\"3\":{\"address\":\"12\\/A sector 3 varanasi up India\",\"email\":\"onlinekashika@gmail.com\",\"phone\":\"9876543210\"}}', 'yes'),
+(6, 'application_logo', '[{\"discription\":\"Hello , What are you Say this site?\",\"source\":\"uploads\\/images\\\\\\/medium\\/logo-maker-02_medium-450x387.png\"}]', 'yes');
 
 -- --------------------------------------------------------
 
@@ -802,13 +962,10 @@ INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`, `autoload`
 -- Table structure for table `tags`
 --
 
-DROP TABLE IF EXISTS `tags`;
-CREATE TABLE IF NOT EXISTS `tags` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `title` varchar(128) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tag` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+CREATE TABLE `tags` (
+  `id` int(5) NOT NULL,
+  `title` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tags`
@@ -816,10 +973,34 @@ CREATE TABLE IF NOT EXISTS `tags` (
 
 INSERT INTO `tags` (`id`, `title`) VALUES
 (4, 'BIOLOGY'),
-(1, 'ias'),
-(5, 'NCRT'),
+(1, 'repbulic'),
 (3, 'SSC'),
 (2, 'UPSC');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testimonial`
+--
+
+CREATE TABLE `testimonial` (
+  `id` int(11) NOT NULL,
+  `name` varchar(62) DEFAULT NULL,
+  `discription` text DEFAULT NULL,
+  `image` varchar(62) DEFAULT NULL,
+  `ratting` int(5) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testimonial`
+--
+
+INSERT INTO `testimonial` (`id`, `name`, `discription`, `image`, `ratting`, `created_at`) VALUES
+(3, 'arti', 'Add a content here', 'images.png', 3, '2020-05-06 14:57:55'),
+(4, 'arti singh patel', 'Add a content here', 'download_(1).png', 5, '2020-05-06 17:02:54'),
+(5, 'singh arti', 'Add a content here', 'images2.png', 5, '2020-05-07 06:56:01'),
+(6, 'arti singh', 'Add a content here', 'download.png', 4, '2020-05-07 06:56:24');
 
 -- --------------------------------------------------------
 
@@ -827,16 +1008,14 @@ INSERT INTO `tags` (`id`, `title`) VALUES
 -- Table structure for table `tests`
 --
 
-DROP TABLE IF EXISTS `tests`;
-CREATE TABLE IF NOT EXISTS `tests` (
+CREATE TABLE `tests` (
   `testid` char(32) NOT NULL,
   `nodeid` char(32) NOT NULL,
   `title` text NOT NULL,
   `duration` varchar(12) NOT NULL,
   `nofqus` int(6) NOT NULL,
   `totalno` int(6) NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY (`testid`)
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -845,23 +1024,28 @@ CREATE TABLE IF NOT EXISTS `tests` (
 -- Table structure for table `thumbnail`
 --
 
-DROP TABLE IF EXISTS `thumbnail`;
-CREATE TABLE IF NOT EXISTS `thumbnail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `thumbnail` (
+  `id` int(11) NOT NULL,
   `root` char(32) NOT NULL,
-  `thumb` text,
-  `image` text,
-  PRIMARY KEY (`id`),
-  KEY `root` (`root`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `thumb` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `thumbnail`
 --
 
 INSERT INTO `thumbnail` (`id`, `root`, `thumb`, `image`) VALUES
-(1, 'EDO100100', 'uploads/thumb/avatar-1.jpg', 'uploads/image/avatar-1.jpg'),
-(2, 'AKIASZ001', NULL, NULL);
+(16, 'EDO100134', NULL, NULL),
+(17, 'EDO100135', NULL, NULL),
+(18, 'EDO100136', NULL, NULL),
+(19, 'post19', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
+(20, 'post20', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
+(21, '20', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
+(22, '23', 'uploads/images\\/thumbnail/16704_thumb-200x143.jpg', 'uploads/images\\/thumbnail/16704_thumb-200x143.jpg'),
+(23, '24', 'uploads/product/1562871246794_0_2.jpg', 'uploads/product/1562871246794_0_2.jpg'),
+(24, '25', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
+(25, '26', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg');
 
 -- --------------------------------------------------------
 
@@ -869,13 +1053,11 @@ INSERT INTO `thumbnail` (`id`, `root`, `thumb`, `image`) VALUES
 -- Table structure for table `user_aim`
 --
 
-DROP TABLE IF EXISTS `user_aim`;
-CREATE TABLE IF NOT EXISTS `user_aim` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_aim` (
+  `id` int(11) NOT NULL,
   `user_id` varchar(10) NOT NULL,
-  `aim_id` int(2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `aim_id` int(2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_aim`
@@ -891,17 +1073,14 @@ INSERT INTO `user_aim` (`id`, `user_id`, `aim_id`) VALUES
 -- Table structure for table `user_details`
 --
 
-DROP TABLE IF EXISTS `user_details`;
-CREATE TABLE IF NOT EXISTS `user_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_details` (
+  `id` int(11) NOT NULL,
   `user_id` varchar(10) NOT NULL,
   `name` varchar(32) NOT NULL,
   `mobile` varchar(13) DEFAULT NULL,
-  `details` text,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+  `details` text DEFAULT NULL,
+  `updated_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_details`
@@ -909,7 +1088,9 @@ CREATE TABLE IF NOT EXISTS `user_details` (
 
 INSERT INTO `user_details` (`id`, `user_id`, `name`, `mobile`, `details`, `updated_at`) VALUES
 (2, 'AKIASZ001', 'Kali', '4684655654', 'njkskdsd\nnsdksknvvnxvn\nxncvxvnmxv,cxvmxnvx,m,xcv,mx', '2020-03-18 11:42:15'),
-(24, 'EDO100100', 'bhawana', NULL, NULL, '2020-03-30 15:10:19');
+(24, 'EDO100100', 'bhawana', NULL, NULL, '2020-03-30 15:10:19'),
+(25, 'EDO100134', 'art', NULL, NULL, '2020-05-31 15:50:11'),
+(26, 'EDO100135', 'artisingh ', '8840729016', 'hello', '2020-05-31 16:00:09');
 
 -- --------------------------------------------------------
 
@@ -917,8 +1098,7 @@ INSERT INTO `user_details` (`id`, `user_id`, `name`, `mobile`, `details`, `updat
 -- Table structure for table `videos`
 --
 
-DROP TABLE IF EXISTS `videos`;
-CREATE TABLE IF NOT EXISTS `videos` (
+CREATE TABLE `videos` (
   `videoid` char(32) NOT NULL,
   `nodeid` char(32) NOT NULL,
   `type` enum('free','paid') NOT NULL,
@@ -930,10 +1110,416 @@ CREATE TABLE IF NOT EXISTS `videos` (
   `rating` int(5) NOT NULL,
   `rate_count` int(11) NOT NULL,
   `download` tinyint(1) NOT NULL,
-  `time` varchar(32) NOT NULL,
-  PRIMARY KEY (`videoid`),
-  KEY `nodeid` (`nodeid`)
+  `time` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`address_id`);
+
+--
+-- Indexes for table `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`ansid`),
+  ADD KEY `question` (`question`);
+
+--
+-- Indexes for table `article`
+--
+ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `attribute`
+--
+ALTER TABLE `attribute`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `docfile`
+--
+ALTER TABLE `docfile`
+  ADD PRIMARY KEY (`docid`),
+  ADD KEY `nodeid` (`nodeid`);
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `indexing`
+--
+ALTER TABLE `indexing`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `root` (`root`),
+  ADD KEY `port` (`port`);
+
+--
+-- Indexes for table `keys`
+--
+ALTER TABLE `keys`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`user_id`);
+
+--
+-- Indexes for table `logme`
+--
+ALTER TABLE `logme`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `role` (`role`);
+
+--
+-- Indexes for table `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_id` (`customer_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_meta`
+--
+ALTER TABLE `order_meta`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`payment`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `orderid` (`orderid`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indexes for table `permission_roles`
+--
+ALTER TABLE `permission_roles`
+  ADD PRIMARY KEY (`role_id`,`permission_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pbc` (`pbc`),
+  ADD KEY `product` (`name`);
+
+--
+-- Indexes for table `product_attributes`
+--
+ALTER TABLE `product_attributes`
+  ADD PRIMARY KEY (`product_attribute_id`);
+
+--
+-- Indexes for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD PRIMARY KEY (`product_images_id`);
+
+--
+-- Indexes for table `results`
+--
+ALTER TABLE `results`
+  ADD PRIMARY KEY (`result_id`),
+  ADD KEY `test_id` (`test_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UK_user_roles_role_Name` (`name`);
+
+--
+-- Indexes for table `roles_users`
+--
+ALTER TABLE `roles_users`
+  ADD PRIMARY KEY (`user_id`,`role_id`);
+
+--
+-- Indexes for table `setting`
+--
+ALTER TABLE `setting`
+  ADD PRIMARY KEY (`setting_id`),
+  ADD KEY `setting_name` (`setting_name`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tag` (`title`);
+
+--
+-- Indexes for table `testimonial`
+--
+ALTER TABLE `testimonial`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tests`
+--
+ALTER TABLE `tests`
+  ADD PRIMARY KEY (`testid`);
+
+--
+-- Indexes for table `thumbnail`
+--
+ALTER TABLE `thumbnail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `root` (`root`);
+
+--
+-- Indexes for table `user_aim`
+--
+ALTER TABLE `user_aim`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_details`
+--
+ALTER TABLE `user_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`videoid`),
+  ADD KEY `nodeid` (`nodeid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `address`
+--
+ALTER TABLE `address`
+  MODIFY `address_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `attribute`
+--
+ALTER TABLE `attribute`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `indexing`
+--
+ALTER TABLE `indexing`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+
+--
+-- AUTO_INCREMENT for table `keys`
+--
+ALTER TABLE `keys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `log`
+--
+ALTER TABLE `log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+
+--
+-- AUTO_INCREMENT for table `logme`
+--
+ALTER TABLE `logme`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100137;
+
+--
+-- AUTO_INCREMENT for table `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `order_meta`
+--
+ALTER TABLE `order_meta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `product_attributes`
+--
+ALTER TABLE `product_attributes`
+  MODIFY `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+
+--
+-- AUTO_INCREMENT for table `product_images`
+--
+ALTER TABLE `product_images`
+  MODIFY `product_images_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `results`
+--
+ALTER TABLE `results`
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `setting`
+--
+ALTER TABLE `setting`
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `testimonial`
+--
+ALTER TABLE `testimonial`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `thumbnail`
+--
+ALTER TABLE `thumbnail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `user_aim`
+--
+ALTER TABLE `user_aim`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_details`
+--
+ALTER TABLE `user_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

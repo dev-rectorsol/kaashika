@@ -109,7 +109,7 @@ class Product extends CI_Controller {
 										];
 									$this->Common_model->insert($data,'product_attributes');
 								}
-						if(isset($data1['tag']) && count($data1['tag'])>0 && isset($data1['category']) && count($data1['category'])>0 ){
+						if(isset($data1['tag']) && count($data1['tag'])>0 && isset($data1['category']) && count($data1['category'])>0 ) {
 								//add tag and category
 							 try {
 
