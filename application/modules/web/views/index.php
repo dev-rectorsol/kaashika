@@ -45,8 +45,6 @@
 																					</li>
 
 																					<li><a href="<?php echo base_url('web/Home/contact')?>">Contact us</a></li>
-
-
 																			</ul>
 																	</nav>
 																	<!-- main menu navbar end -->
