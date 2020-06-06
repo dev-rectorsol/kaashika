@@ -12,9 +12,11 @@ class Collection extends CI_Controller {
 			$this->load->model('Product_model');
 			$this->load->model('article_model');
 			$this->load->library('cart');
+			$this->load->library(['auth', 'session']);
 
 		//Do your magic here
 	}
+
 
 	public function index(){
 		$data = array();
@@ -109,14 +111,14 @@ class Collection extends CI_Controller {
 		public function addtocard($id){
 
 				$data['product_details']=  $this->Shop_model->select_product_details($id,'products');
-			
+
 				foreach($data['product_details'] as $value){
 
 					$carddata = array(
 					 'id'    => $value['id'],
 					 'qty'    => 1,
-					 'price'    => $value['price'],
-					 'name'    => $value['name'],
+					 'price'  => $value['price'],
+					 'name'  => $value['name'],
 					 'image' => $value['profile_pic']
 			 );
 		   $this->cart->insert($carddata);
@@ -154,6 +156,19 @@ class Collection extends CI_Controller {
     public function checkout(){
         $data = array();
         $data['page'] = 'Checkout';
+		    $email=$this->session->userdata('email');
+				$phone=$this->session->userdata('phone');
+			  $username=$this->session->userdata('username');
+				$userid=$this->session->userdata('userID');
+
+				if(check()) {
+					// echo print_r($check);exit;
+        $data['email']=$email;
+		  	$data['phone']=$phone;
+			  $data['username']=$username;
+				$data['userid']=$userid;
+			//	echo $data['userid'];exit;
+
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
 				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
@@ -165,12 +180,16 @@ class Collection extends CI_Controller {
 				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
 				$data['contact'] = json_decode($contact_value, true);
 
-				 $data['cartIvalue'] = $this->cart->contents();
+				$data['cartIvalue'] = $this->cart->contents();
         $data['product_data']=  $this->Common_model->select('products');
         $data['user_data']=  $this->Common_model->select('user_details');
 				$data['category']=  $this->Common_model->select('category');
-        $data['main_content'] = $this->load->view('collection/checkout', $data, true);
+        $data['main_content'] = $this->load->view('collection/checkout',$data, true);
         $this->load->view('index', $data);
+			}
+			else{
+				 $this->load->view('authentication/login');
+			}
     }
 
 

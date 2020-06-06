@@ -19,7 +19,7 @@ class User extends CI_Controller {
 		    $data= array();
         $data['page'] ='User';
         $data['tag']=  $this->Common_model->select('tags');
-        $data['aim']=  $this->Common_model->select('user_details');
+        $data['aim']=  $this->Common_model->select('customers');
 	    	$data['main_content']= $this->load->view('user/add',$data, true);
 	    	$this->load->view('index',$data);
 	}
@@ -58,15 +58,15 @@ class User extends CI_Controller {
 
     public function Edit($id)
 			{
-					if($_POST){
-						       $data1=$this->security->xss_clean($_POST);
-			             $aim=[
-			            'mobile' => $data1['mobile'],
-			            'details' => $data1['details'],
-			        ];
-							//print_r($aim);exit;
-			           $this->Common_model->update($aim,'id',$id,'user_details');
-						redirect(base_url() . 'admin/user', 'refresh');
-			     	}
+				if($_POST){
+					       $data1=$this->security->xss_clean($_POST);
+		             $aim=[
+		            'mobile' => $data1['mobile'],
+		            'details' => $data1['details'],
+		        ];
+						//print_r($aim);exit;
+		           $this->Common_model->update($aim,'id',$id,'user_details');
+					redirect(base_url() . 'admin/user', 'refresh');
+		     	}
 			}
 }

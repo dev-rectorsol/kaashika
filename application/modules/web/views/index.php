@@ -74,7 +74,10 @@
 																					<ul class="dropdown-list">
 																								<li><a href="<?php echo base_url('auth')?>">login</a></li>
 																								<li><a href="<?php echo base_url('join')?>">Register</a></li>
-																								
+																								<?php if(check()) {
+																					   	if($this->session->userdata('email')){?>
+                                                <li><a href="<?php echo base_url('admin/yourorder')?>">Your Order</a></li>
+																								<?php }}?>
 																								<li><a href="<?php echo base_url('Authentication/logout')?>">Logout</a></li>
 																						</ul>
 																			</li>
@@ -471,6 +474,7 @@
 
 									<div class="minicart-button">
 											<a href="<?php echo base_url('web/collection/cart')?>"><i class="fa fa-shopping-cart"></i> View Cart</a>
+
 											<a href="<?php echo base_url('web/collection/checkout')?>"><i class="fa fa-share"></i> Checkout</a>
 									</div>
 							</div>

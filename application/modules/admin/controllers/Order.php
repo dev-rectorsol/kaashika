@@ -22,6 +22,8 @@ class Order extends CI_Controller {
         $data['page'] ='order';
         $data['tag']=  $this->Common_model->select('tags');
         $data['order_data']=  $this->Product_model->getAllOrder();
+				// echo "<pre>";
+				// print_r($data['order_data']);exit;
 		    $data['main_content']= $this->load->view('order/order_list',$data, true);
 		    $this->load->view('index',$data);
 	  }
@@ -50,7 +52,6 @@ class Order extends CI_Controller {
 
 		public function update_status1($id)
 			{
-
 					$data['order_data']=  $this->Product_model->select_product($id,'orders');
 					foreach($data['order_data'] as $value){
 					$data['order_data']=$value;
@@ -59,12 +60,45 @@ class Order extends CI_Controller {
 					if($data['order_data']['status']==1)
 					{
 						$data1=[
-						'status'=>'0'
+						'status'=>'2'
 					];
 					}
 				 $this->Common_model->update($data1,'id',$id,'orders');
 					redirect(base_url() . 'admin/order', 'refresh');
 			}
+			public function update_status2($id)
+				{
+						$data['order_data']=  $this->Product_model->select_product($id,'orders');
+						foreach($data['order_data'] as $value){
+						$data['order_data']=$value;
+						}
+						// echo $data['product_data']['status'];exit;
+						if($data['order_data']['status']==2)
+						{
+							$data1=[
+							'status'=>'3'
+						];
+						}
+					 $this->Common_model->update($data1,'id',$id,'orders');
+						redirect(base_url() . 'admin/order', 'refresh');
+				}
+				public function update_status3($id)
+					{
+
+							$data['order_data']=  $this->Product_model->select_product($id,'orders');
+							foreach($data['order_data'] as $value){
+							$data['order_data']=$value;
+							}
+							// echo $data['product_data']['status'];exit;
+							if($data['order_data']['status']==3)
+							{
+								$data1=[
+								'status'=>'4'
+							];
+							}
+						 $this->Common_model->update($data1,'id',$id,'orders');
+							redirect(base_url() . 'admin/order', 'refresh');
+					}
 
 
 }

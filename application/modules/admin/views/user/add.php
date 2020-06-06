@@ -11,7 +11,7 @@
 				<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 					<ol class="breadcrumb">
 					<li><a href="<?php echo base_url('admin/Dashboard')?>">Dashboard</a></li>
-					<li  class="active"><span>table</span></li>
+					<li  class="active"><span><?php echo $page;?></span></li>
 					<!-- <li class="active"><span>data-table</span></li> -->
 					</ol>
 
@@ -81,27 +81,24 @@
 									<div class="table-responsive">
 										<table class="table table-striped table-bordered">
 								 <caption>
-									 <h4> User  List</h4>
+
 								 </caption>
 								 <tr>
 									 <th>S.No</th>
 									 <th>Id</th>
 									 <th>Name</th>
 									 <th>Mobile</th>
-									 <th>Details</th>
+									 <th>address</th>
 									 <th>Action</th>
 								 </tr>
 								 <?php $i=1; foreach($aim as $row){?>
 								 <tr>
 									 <td> <?php echo $i ?></td>
 									 <td><?php echo $row['user_id'] ?></td>
-									 <td><?php echo $row['name'] ?></td>
-									 <td><?php echo $row['mobile'] ?></td>
-									  <td><?php echo $row['details'] ?></td>
+									 <td><?php echo $row['customer_name'] ?></td>
+									 <td><?php echo $row['phone'] ?></td>
+									 <td><?php echo $row['address'] ?></td>
 									 <td>
-										 <a data-target="<?php echo '#'.$row['id']; ?>" title="Edit" class="pd-setting-ed btn btn-primary" data-toggle="modal" data-original-title="Edit">
-
-												<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
 										  		 <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
 

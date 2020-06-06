@@ -1,3 +1,4 @@
+
 <!-- breadcrumb area start -->
        <div class="breadcrumb-area">
            <div class="container">
@@ -25,7 +26,7 @@
                    <div class="col-12">
                        <!-- Checkout Login Coupon Accordion Start -->
                        <div class="checkoutaccordion" id="checkOutAccordion">
-                           <!-- <div class="card">
+                           <div class="card">
                                <h6>Returning Customer? <span data-toggle="collapse" data-target="#logInaccordion">Click
                                            Here To Login</span></h6>
                                <div id="logInaccordion" class="collapse" data-parent="#checkOutAccordion">
@@ -74,9 +75,9 @@
                                        </div>
                                    </div>
                                </div>
-                           </div> -->
+                           </div>
 
-                           <div class="card">
+                           <!-- <div class="card">
                                <h6>Have A Coupon? <span data-toggle="collapse" data-target="#couponaccordion">Click
                                            Here To Enter Your Code</span></h6>
                                <div id="couponaccordion" class="collapse" data-parent="#checkOutAccordion">
@@ -91,7 +92,7 @@
                                        </div>
                                    </div>
                                </div>
-                           </div>
+                           </div> -->
                        </div>
                        <!-- Checkout Login Coupon Accordion End -->
                    </div>
@@ -104,19 +105,19 @@
                            <div class="billing-form-wrap">
                                <form action="<?php echo base_url('web/checkout/'); ?>" Method="post">
 
-                                           <div class="single-input-item">
-                                               <label for="f_name" class="required">First Name</label>
-                                               <input type="text" id="name"  name="name" placeholder=" Name" required />
-
-                                       </div>
-
-
+                                   <div class="single-input-item">
+                                       <label for="f_name" class="required">First Name</label>
+                                       <input type="text" id="name" readonly value="<?php echo $username;?>" name="name" placeholder=" Name" required />
+                                  </div>
 
                                    <div class="single-input-item">
                                        <label for="email" class="required">Email Address</label>
-                                       <input type="email" id="email" name="email" placeholder="Email Address" required />
+                                       <input type="email" id="email" readonly value="<?php echo $email;?>" name="email" placeholder="Email Address" required />
                                    </div>
-
+                                   <div class="single-input-item">
+                                       <label for="email" class="required">Mobile</label>
+                                       <input type="text" id="phone" value="<?php echo $phone;?>" name="phone" placeholder="Email Address" required />
+                                   </div>
 
                                    <div class="single-input-item">
                                        <label for="street-address" class="required mt-20">Street address</label>
@@ -128,10 +129,6 @@
                                        <input type="text" id="postcode"  name="postcode" placeholder="Postcode / ZIP" required />
                                    </div>
 
-                                   <div class="single-input-item">
-                                       <label for="phone">Phone</label>
-                                       <input type="text" id="phone" name="phone" placeholder="Phone" />
-                                   </div>
                                    <br><br>
                                     <button type="submit" name="placeOrder" class="btn btn-sqr">Place Order</button>
 
@@ -183,7 +180,7 @@
                                                        <li>
                                                            <div class="custom-control custom-radio">
                                                                <input type="radio" id="flatrate" name="shipping" class="custom-control-input" checked />
-                                                               <label class="custom-control-label" for="flatrate">Flat
+                                                               <label class="custom-control-label" for="flatrate">
                                                                    Rate: ₹70.00</label>
                                                            </div>
                                                        </li>
@@ -233,7 +230,7 @@
                                    </table>
                                </div>
                                <!-- Order Payment Method -->
-                               <div class="order-payment-method">
+                               <!-- <div class="order-payment-method">
                                    <div class="single-payment-method show">
                                        <div class="payment-method-name">
                                            <div class="custom-control custom-radio">
@@ -245,10 +242,7 @@
                                            <p>Pay with cash upon delivery.</p>
                                        </div>
                                    </div>
-
-
-
-                               </div>
+                               </div> -->
                            </div>
                        </div>
                    </div>

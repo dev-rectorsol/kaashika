@@ -40,7 +40,6 @@
 									 <th>S.No</th>
 									 <th>Customer Name</th>
 									 <th>Phone</th>
-									
 									 <th>Order Date</th>
 									 <th>Status</th>
                    <th>Invoice</th>
@@ -51,12 +50,18 @@
 									 <td> <?php echo $i ?></td>
 									 <td><?php echo $row['customer_name'] ?></td>
 									 <td><?php echo $row['phone'] ?></td>
-
 									 <td><?php echo my_date_show($row['created']) ?></td>
 
-								<td>	 <?php if($row['status']==1){?>
-									<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:red;font-weight: bold; " class="text-center tip ">New</a>
-							  	<?php	}?></td>
+								  <td><?php if($row['status']==1){?>
+										<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>"  class=" btn btn-primary">Created</a>
+									   <?php	}elseif($row['status']==2){?>
+										<a href="<?php echo base_url('admin/order/update_status2/').$row['id'] ?>"  class=" btn btn-success">Accepted</a>
+
+									<?php }else{?>
+										<a href="#"  class="btn btn-danger">Cancle</a>
+
+							<?php		} ?>
+							 </td>
 									<td><a href="<?php echo base_url('admin/order/invoice/').$row['id']?>" class="btn btn-primary "><i class="fa fa-print" aria-hidden="true"></i></a></td>
 
 									 <td> <a title="Trash" class="btn btn-danger" onclick="delete_detail(<?php echo $row['id'] ;?>)">

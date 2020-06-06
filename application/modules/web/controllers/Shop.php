@@ -39,7 +39,6 @@ class Shop extends CI_Controller {
 		public function shop_by_category($id){
 	         $data = array();
 					 $data['id']=$id;
-
 					// echo $id1;exit;
 	        $data['page'] = 'Category wishe product';
 					$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
@@ -77,6 +76,7 @@ class Shop extends CI_Controller {
 				$data['data'] = $this->load->view('shop/color_pro', $data, true);
 				$this->load->view('shop/index', $data);
 			}
+
 			function price()
 			 {
 			// echo $id;exit;

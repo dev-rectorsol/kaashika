@@ -24,6 +24,7 @@ public function __construct()
             return false;
             }
         }
+
     public function Login_check_mobile($data){
         $condition = "phone =" . "'" . $data['mobile']."'AND role='s'" ;
             $this->db->select('*');
@@ -53,6 +54,21 @@ public function __construct()
               return false;
             }
         }
+        public function last_update($table){
+
+           $this->db->select('id');
+           $this->db->from($table);
+            $this->db->order_by('modified','desc');
+           $this->db->limit(1);
+           $query = $this->db->get();
+          //echo $this->db->last_query();exit;
+          if ($query->num_rows() == 1) {
+          return $query->row();
+          } else {
+          return false;
+          }
+
+       }
         public function get_otp($data){
 
             $this->db->select('*');
@@ -81,7 +97,7 @@ public function check_otp($data){
             }
         }
     //-- edit function
-    function edit_option($action, $id, $table){
+     function edit_option($action, $id, $table){
         $this->db->where('id',$id);
         $this->db->update($table,$action);
         return;

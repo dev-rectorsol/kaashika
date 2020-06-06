@@ -82,7 +82,8 @@ class Auth
             $this->user = $this->credentials($this->userName, $this->password);
             if ($this->user) {
                 return $this->setUser();
-            } else {
+            }
+            else {
                 return $this->failedLogin($request);
             }
         }
@@ -118,7 +119,6 @@ class Auth
      */
     protected function credentials($username, $password)
     {
-
         $user = $this->CI->db->select("*")
         ->where("phone", $username)
         ->or_where("email", $username)
@@ -156,7 +156,7 @@ class Auth
     }
 
     protected function get_userName(){
-    return $this->CI->db->get_where("user_details", array("user_id" => $this->user->logid))->row(0)->name;
+    return $this->CI->db->get_where("customers", array("user_id" => $this->user->logid))->row(0)->customer_name;
     }
     // protected function get_userProfileImage(){
     //     print_r($this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->image);exit;
@@ -195,11 +195,10 @@ class Auth
      * @return bool
      */
     public function authenticate()
-    {
+     {
         if (!$this->loginStatus()) {
             return redirect('login');
         }
-
         return true;
     }
 
