@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2020 at 12:40 PM
+-- Generation Time: Jun 07, 2020 at 08:05 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 5.6.37
 
@@ -168,8 +168,8 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `subject`, `message`, `status`, `added_date`) VALUES
-(1, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '', '2020-04-16 06:31:18'),
-(2, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', '', '2020-04-16 06:31:50'),
+(1, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', 'New', '2020-04-16 06:31:18'),
+(2, 'ruchi singh', '01231312323', 'artisinghh11@gmail.com', 'SM Consultancy', 'bf  fghf bgf  hf  gfn  g  h c bgfn g  f  h f b h', 'New', '2020-04-16 06:31:50'),
 (4, 'ruchi singh', '8040729016', 'a@gmail.com', 'something', 'hello', 'Done', '2020-06-01 10:42:09');
 
 -- --------------------------------------------------------
@@ -180,13 +180,14 @@ INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `subject`, `message`, `st
 
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
+  `user_id` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `customer_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `postcode` int(6) DEFAULT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT '1=Active | 0=Inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -194,11 +195,14 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `customer_name`, `email`, `phone`, `postcode`, `address`, `created`, `modified`, `status`) VALUES
-(21, 'pooja singh', 'pooja@gmail.com', '8840729016', 123455, ' sunderpur lanka varanasi up', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
-(30, 'arti singh patel', 'singhseema4581@gmail.com', '08840729016', 123455, 'sikiya', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
-(31, 'golu', 'g@gmail.com', '01231312323', 123455, 'vns', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
-(32, 'ruchi singh', 'ruchisingh.vns1211@gmail.com', '9876543210', 221005, 'A/12 sector A lanka road sunderpur (up)', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `customers` (`id`, `user_id`, `customer_name`, `email`, `phone`, `postcode`, `address`, `created`, `modified`, `status`) VALUES
+(21, 'AKIASZ001', 'pooja singh', 'singhseema4581@gmail.com', '01231312323', 123455, 'sikiya narapur', '0000-00-00 00:00:00', '2020-06-05 23:43:18', '1'),
+(30, NULL, 'arti singh patel', 'singhseema4581@gmail.com', '08840729016', 123455, 'sikiya', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(31, NULL, 'golu', 'g@gmail.com', '01231312323', 123455, 'vns', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(32, 'EDO100135', 'ruchi singh', 'ruchisingh.vns1211@gmail.com', '9876543210', 221005, 'A/12 sector A lanka road sunderpur (up)', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(33, 'EDO100138', 'adity', '', '', NULL, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'),
+(36, 'EDO100139', 'payal', 'payal@gmail.com', '08840729016', 123455, 'vns', '2020-06-05 23:17:03', '2020-06-07 09:48:59', '1'),
+(37, 'EDO100140', 'singharti ', 'a@gmail.com', '01231312323', 123455, 'sikiya', '2020-06-06 16:15:30', '2020-06-07 10:49:32', '1');
 
 -- --------------------------------------------------------
 
@@ -301,7 +305,9 @@ INSERT INTO `indexing` (`id`, `root`, `port`, `type`) VALUES
 (137, 46, 2, 'tag'),
 (138, 46, 9, 'category'),
 (139, 47, 3, 'tag'),
-(140, 47, 10, 'category');
+(140, 47, 10, 'category'),
+(141, 48, 2, 'tag'),
+(142, 48, 9, 'category');
 
 -- --------------------------------------------------------
 
@@ -435,11 +441,10 @@ CREATE TABLE `logme` (
 
 INSERT INTO `logme` (`id`, `logid`, `phone`, `email`, `password`, `language`, `role`, `status`, `joindate`, `updated_at`, `deleted_at`, `deleted`) VALUES
 (100101, 'AKIASZ001', '7905004391', 'omie@gmail.com', '$2y$10$RiAZ5AQUiLJBlSyNagz/yOHVYzhhWv3t5LfADRTGI4TQaiAV3DUmK', 'english', 'a', 'active', '2020-03-13 00:00:00', '2020-03-18 11:43:03', '0000-00-00 00:00:00', 0),
-(100132, 'EDO100102', NULL, 'shera@gmail.com', '$2y$10$29mO1RFUPax4cgCXSGEfQebnp7j3EoA/Xugu/N/OYodc.FjkUnnWa', NULL, 's', 'active', '2020-04-29 13:03:39', '2020-04-29 12:33:39', NULL, 0),
-(100133, 'EDO100133', NULL, 'uttem@gmail.com', '$2y$10$Jggmu9s9XzFCzKy7c0yYjORhIEvd/Ak8SJycx26Hr2ZXgYFW1Crji', NULL, 's', 'active', '2020-04-29 13:11:34', '2020-04-29 12:41:34', NULL, 0),
-(100134, 'EDO100134', NULL, 'arti@gmail.com', '$2y$10$umEY.Ssn7FPD6qWD9AUutO2mkNShGnwrIVo7TRhePuDIlyX1MSsZS', NULL, 's', 'active', '2020-05-31 16:20:11', '2020-05-31 15:50:11', NULL, 0),
-(100135, 'EDO100135', NULL, 'artisinghh11@gmail.com', '$2y$10$UkzIg/Si/EKMshfh5SgAb.7VV99AIW8flMjowuQRBHj9qXc5qaze6', NULL, 's', 'active', '2020-05-31 16:30:09', '2020-05-31 16:00:09', NULL, 0),
-(100136, 'EDO100136', '8840729016', NULL, '$2y$10$WBpaoePyZUmjmn7JV3p7cOj5pBIjANqKiDel2uDje0RLk1g.8FwxW', NULL, 's', 'active', '2020-05-31 16:40:01', '2020-05-31 16:10:01', NULL, 0);
+(100137, 'EDO100137', NULL, 'ruchisingh@gmail.com', '$2y$10$eX5DTDyoAVVgWA8unK4DBuAYZZuU08JnQ5OltMf.IA6NtRLt6nA8K', NULL, 'u', 'active', '2020-06-05 13:26:53', '2020-06-05 12:56:53', NULL, 0),
+(100138, 'EDO100138', NULL, 'adity@gmail.com', '$2y$10$zE506nolSXAtTaVqRiLMmeazcRDdXpE7nN0BwzNoIuC7ry3F6C32K', NULL, 'u', 'active', '2020-06-05 19:06:30', '2020-06-05 18:36:30', NULL, 0),
+(100139, 'EDO100139', NULL, 'payal@gmail.com', '$2y$10$ZMXDLttly5l6RkhUW5Po6ukT9/TMo5gbP.jqJEOIjtZSlc39Zx5Bm', NULL, 'u', 'active', '2020-06-05 23:47:02', '2020-06-05 23:17:02', NULL, 0),
+(100140, 'EDO100140', NULL, 'a@gmail.com', '$2y$10$egAl8xBx2zO6PkqjqaNaDu3axldaF3IC9qTadspX7da7fYDdkvrai', NULL, 'u', 'active', '2020-06-06 16:45:30', '2020-06-06 16:15:30', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -581,22 +586,21 @@ INSERT INTO `message` (`id`, `key`, `code`, `time`) VALUES
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
+  `user_id` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
   `grand_total` float(10,2) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT '1=Active | 0=Inactive'
+  `status` enum('1','2','3','4') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `customer_id`, `grand_total`, `created`, `modified`, `status`) VALUES
-(24, 29, 9000.00, '2020-06-02 10:18:03', '2020-06-02 10:18:03', '1'),
-(25, 30, 9990.00, '2020-06-02 10:22:02', '2020-06-02 10:22:02', '1'),
-(26, 31, 9200.00, '2020-06-02 10:45:54', '2020-06-02 10:45:54', '1'),
-(27, 32, 10190.00, '2020-06-02 13:52:29', '2020-06-02 13:52:29', '1');
+INSERT INTO `orders` (`id`, `user_id`, `customer_id`, `grand_total`, `created`, `modified`, `status`) VALUES
+(45, 'EDO100140', 37, 10200.00, '2020-06-07 10:18:02', '2020-06-07 10:18:02', '4'),
+(46, 'EDO100140', 37, 10000.00, '2020-06-07 10:19:32', '2020-06-07 10:19:32', '2');
 
 -- --------------------------------------------------------
 
@@ -606,6 +610,7 @@ INSERT INTO `orders` (`id`, `customer_id`, `grand_total`, `created`, `modified`,
 
 CREATE TABLE `order_items` (
   `id` int(11) NOT NULL,
+  `user_id` varchar(32) DEFAULT NULL,
   `order_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` int(5) DEFAULT NULL,
@@ -616,14 +621,10 @@ CREATE TABLE `order_items` (
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `sub_total`) VALUES
-(23, 25, 24, 1, 9000.00),
-(24, 25, 29, 1, 990.00),
-(25, 26, 28, 1, 9000.00),
-(26, 26, 25, 1, 200.00),
-(27, 27, 41, 1, 200.00),
-(28, 27, 24, 1, 9000.00),
-(29, 27, 29, 1, 990.00);
+INSERT INTO `order_items` (`id`, `user_id`, `order_id`, `product_id`, `quantity`, `sub_total`) VALUES
+(47, 'EDO100140', 45, 46, 2, 10000.00),
+(48, 'EDO100140', 45, 31, 1, 200.00),
+(49, 'EDO100140', 46, 47, 1, 10000.00);
 
 -- --------------------------------------------------------
 
@@ -659,15 +660,8 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`payment`, `transaction`, `userid`, `orderid`, `created_date`, `status`) VALUES
-('pay_EuvTScVxiN210h', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
-('pay_EuvUboJPxWwPX2', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
-('pay_EuvVl95QH0fZAV', '20000', '16', '12', '0000-00-00 00:00:00', '1'),
-('pay_Eux7QkYVumuU6f', '20000', '17', '13', '0000-00-00 00:00:00', '1'),
-('pay_EuxB1X9gfZkvQY', '20000', '17', '13', '0000-00-00 00:00:00', '1'),
-('pay_EuxRcKlmfsqMH3', '90000', '18', '14', '0000-00-00 00:00:00', '1'),
-('pay_ExbzgVRcPGDQEa', '2110000', '21', '16', '0000-00-00 00:00:00', '1'),
-('pay_ExdYAo3Q2bdeAm', '920000', '31', '26', '0000-00-00 00:00:00', '1'),
-('pay_ExgjRiOepm3NjL', '1019000', '32', '27', '2020-06-02 13:52:50', '1');
+('pay_EzbkNzrUKVOJd3', '1020000', '37', '45', '2020-06-07 10:18:19', '1'),
+('pay_EzblwruyHgygNd', '1000000', '37', '46', '2020-06-07 10:19:45', '1');
 
 -- --------------------------------------------------------
 
@@ -730,7 +724,8 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `profile_pic`, `di
 (42, 'product1', '<p>vn</p>', 200, '1562871246794_0_1.jpg', 0, 8, 'On_Sell', '2020-05-18 22:01:45', NULL),
 (45, 'Salwar kameez', '<p>beautifuly dress</p>', 900, 'cream-cotton-salwar-kameez-137927-800x1100.jpg', 10, 2, 'On_Sell', '2020-05-30 06:13:24', NULL),
 (46, 'Lehenga', '<p><span xss=removed>A </span><b xss=removed>Lehenga</b><span xss=removed> is a form of skirt from the Indian subcontinent which is long and embroidered usually paired with a dupatta. </span><br></p>', 5000, '1979lg25-n228.jpg', 20, 1, 'On_Sell', '2020-06-02 15:48:09', NULL),
-(47, 'Saree', '<p><span xss=removed>A wedding sari is the traditional wedding dress of Indian women. The sari is traditionally a combination of red and green, with golden brocade.</span><br></p>', 10000, '0621119_admirable-mehendi-silk-sarees.jpeg', 12, 2, 'On_Sell', '2020-06-02 15:52:16', NULL);
+(47, 'Saree', '<p><span xss=removed>A wedding sari is the traditional wedding dress of Indian women. The sari is traditionally a combination of red and green, with golden brocade.</span><br></p>', 10000, '0621119_admirable-mehendi-silk-sarees.jpeg', 12, 2, 'On_Sell', '2020-06-02 15:52:16', NULL),
+(48, 'latest lehenga', '<p>bv cgcb bdf bc cdf d</p>', 1000, '5085_11.jpg', 10, 1, 'Best_Sell', '2020-06-03 12:25:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -814,7 +809,11 @@ INSERT INTO `product_attributes` (`product_attribute_id`, `product_id`, `attribu
 (92, 41, 20, 'maroon'),
 (93, 46, 20, 'purple'),
 (94, 46, 23, 'dye'),
-(95, 47, 20, 'pink');
+(95, 47, 20, 'pink'),
+(96, 48, 20, 'red'),
+(97, 48, 21, '#878'),
+(98, 48, 22, 'ya'),
+(99, 48, 23, 'dye');
 
 -- --------------------------------------------------------
 
@@ -865,7 +864,11 @@ INSERT INTO `product_images` (`product_images_id`, `product_id`, `image`, `color
 (32, 47, '91nycgf7mbL__UY550_.jpg', '#d33c69'),
 (33, 47, 'dulhan-saree-500x500.jpg', '#f33551'),
 (34, 47, '27c1872b18649839dbc682ff3d4bf0e2--traditional-sarees-traditional-outfits.jpg', '#114b15'),
-(35, 47, '0621119_admirable-mehendi-silk-sarees1.jpeg', '#73990a');
+(35, 47, '0621119_admirable-mehendi-silk-sarees1.jpeg', '#73990a'),
+(36, 48, '1562871246794_0_2.jpg', '#000000'),
+(37, 48, 'download_(3).jpg', '#000000'),
+(38, 48, 'images.jpg', '#000000'),
+(39, 48, 'download_(2)3.jpg', '#000000');
 
 -- --------------------------------------------------------
 
@@ -928,7 +931,11 @@ INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
 ('EDO100100', 2),
 ('EDO100134', 2),
 ('EDO100135', 2),
-('EDO100136', 2);
+('EDO100136', 2),
+('EDO100137', 2),
+('EDO100138', 2),
+('EDO100139', 2),
+('EDO100140', 2);
 
 -- --------------------------------------------------------
 
@@ -1044,7 +1051,11 @@ INSERT INTO `thumbnail` (`id`, `root`, `thumb`, `image`) VALUES
 (22, '23', 'uploads/images\\/thumbnail/16704_thumb-200x143.jpg', 'uploads/images\\/thumbnail/16704_thumb-200x143.jpg'),
 (23, '24', 'uploads/product/1562871246794_0_2.jpg', 'uploads/product/1562871246794_0_2.jpg'),
 (24, '25', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg', 'uploads/images\\/thumbnail/Cotton-Patiala-Salwar-Kameez_thumb-120x200.jpg'),
-(25, '26', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg');
+(25, '26', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg', 'uploads/images\\/thumbnail/5085_1_thumb-142x200.jpg'),
+(26, 'EDO100137', NULL, NULL),
+(27, 'EDO100138', NULL, NULL),
+(28, 'EDO100139', NULL, NULL),
+(29, 'EDO100140', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1385,7 +1396,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `gallery`
@@ -1397,7 +1408,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `indexing`
 --
 ALTER TABLE `indexing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `keys`
@@ -1415,7 +1426,7 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT for table `logme`
 --
 ALTER TABLE `logme`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100137;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100141;
 
 --
 -- AUTO_INCREMENT for table `logs`
@@ -1433,13 +1444,13 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `order_meta`
@@ -1457,19 +1468,19 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  MODIFY `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `product_images_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `product_images_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `results`
@@ -1505,7 +1516,7 @@ ALTER TABLE `testimonial`
 -- AUTO_INCREMENT for table `thumbnail`
 --
 ALTER TABLE `thumbnail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `user_aim`
