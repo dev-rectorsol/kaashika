@@ -13,17 +13,17 @@ class Yourorder extends CI_Controller {
 
 	public function index()
 	   {
-		    $data= array();
+		     $data= array();
          $data['page'] = 'Your order';
          $data['order_data']=  $this->Yourorder_model->getuserorder();
          if($data['order_data']){
-          foreach($data['order_data'] as $value){
-              $data['order_data']=$value;
-            }
+         foreach($data['order_data'] as $value){
+         $data['order_data']=$value;
+         }
+       // print_r($data['order_data']);exit;
+          $data['order_item']=  $this->Yourorder_model->orderItems();
 
-            $data['order_item']=  $this->Yourorder_model->orderItems($data['order_data']['id']);
-
-      }
+          }
 		      $data['main_content']= $this->load->view('yourorder/yourOrder',$data, true);
 		      $this->load->view('index',$data);
 	  }

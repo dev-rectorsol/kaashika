@@ -1,12 +1,7 @@
 
 <div class="order-payment-method">
     <div class="single-payment-method show">
-        <!-- <div class="payment-method-name">
-            <div class="custom-control custom-radio">
-              <input type="radio" id="cashon" name="paymentmethod" value="cash" class="custom-control-input" checked />
-              <label class="custom-control-label" for="cashon">Cash On Delivery</label>
-            </div>
-        </div> -->
+
         <br>
         <div class="payment-method-details" data-method="cash">
           <button id="rzp-button1">Pay with Razorpay</button>

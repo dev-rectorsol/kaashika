@@ -9,9 +9,14 @@ class Home extends CI_Controller {
       if(check()){
         if(isAdmin($this->session->userdata('roles')))
           redirect(base_url() . 'admin', 'refresh' );
-        else
+         elseif($this->session->userdata('username'))
+        {
+           redirect(base_url() . 'web/collection/checkout', 'refresh' );
+        }
+        else{
            redirect(base_url() . 'admin/yourorder', 'refresh' );
       }
+    }
       else {
         redirect(base_url() . 'web/home', 'refresh' );
       }

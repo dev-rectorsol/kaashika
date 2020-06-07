@@ -61,6 +61,7 @@ public function __construct()
         // Insert order data
         // echo $custID;exit;
         $ordData = array(
+            'user_id' =>$this->session->userdata('userID'),
             'customer_id' => $custID,
             'grand_total' => $this->cart->total()
         );
@@ -73,26 +74,24 @@ public function __construct()
             // Cart items
 
 
-            foreach($cartItems as $item){
+                foreach($cartItems as $item){
                 $ordItemData = array(
+                  'user_id' =>$this->session->userdata('userID'),
                   'order_id'  => $insertOrder,
                   'product_id'  => $item['id'],
                   'quantity'   => $item['qty'],
                   'sub_total'   => $item["subtotal"]
-
                 );
+
                 if(!empty($ordItemData)){
                     // Insert order items
                     $insertOrderItems = $this->Common_model->insert($ordItemData,'order_items');
                 }
-
-
             }
 
             if($insertOrderItems){
                 // Remove items from the cart
                 $this->cart->destroy();
-
                 // Return order ID
                 return $insertOrder;
             }
@@ -118,7 +117,7 @@ public function __construct()
         $data['logo']=$value;
       }
 
-      //echo $data['logo']['source'];exit;
+      // echo $data['logo']['source'];exit;
         // Load order details view
         $this->load->view('collection/razorpay', $data);
 

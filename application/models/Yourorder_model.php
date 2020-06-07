@@ -45,10 +45,10 @@ public function invoice($id){
   $query = $query->result_array();
   return $query;
 }
-public function orderItems($id){
-  $this->db->select('o.grand_total,payments.payment,o.created,p.name,p.price,p.profile_pic,order_items.quantity,order_items.sub_total');
+public function orderItems(){
+  $this->db->select('o.grand_total,payments.payment,o.created,o.id,o.status,p.name,p.price,p.profile_pic,order_items.quantity,order_items.sub_total');
   $this->db->from('orders as o');
-  $this->db->where('o.id',$id);
+  $this->db->where('o.user_id',$this->session->userdata('userID'));
   $this->db->join('order_items', 'order_items.order_id =o.id', 'left');
   $this->db->join('products as p', 'p.id=order_items.product_id','left');
   $this->db->join('payments', 'payments.orderid=o.id','left');

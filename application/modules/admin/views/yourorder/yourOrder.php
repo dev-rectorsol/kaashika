@@ -67,9 +67,18 @@
                             <td><?php echo $value['quantity']?></td>
                             <td><?php echo $value['sub_total']?></td>
                             <td><?php echo my_date_show($value['created']);?></td>
-                            <td>
-                              <span class="label label-success font-weight-100">Paid</span>
-                            </td>
+                            <td><?php if($value['status']==1){?>
+                              <a href=""  class=" btn btn-primary">Send Order</a>
+                               <?php	}elseif($value['status']==2){?>
+                              <a href=""  class=" btn btn-success">Accepted</a>
+                            <?php	}elseif($value['status']==3){?>
+                            <a href=""  class=" btn btn-warning">On going</a>
+
+                            <?php }else{?>
+                              <a href="#"  class="btn btn-danger">Cancle</a>
+
+                        <?php		} ?>
+                         </td>
                             <!-- <td><a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="zmdi zmdi-delete txt-danger"></i></a></td> -->
                           </tr>
                         <?php endforeach;?>

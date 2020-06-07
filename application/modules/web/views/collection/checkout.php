@@ -116,7 +116,7 @@
                                    </div>
                                    <div class="single-input-item">
                                        <label for="email" class="required">Mobile</label>
-                                       <input type="text" id="phone" value="<?php echo $phone;?>" name="phone" placeholder="Email Address" required />
+                                       <input type="text" id="phone" value="<?php echo $phone;?>" name="phone" placeholder="mobile" required />
                                    </div>
 
                                    <div class="single-input-item">

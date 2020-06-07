@@ -56,6 +56,8 @@
 										<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>"  class=" btn btn-primary">Created</a>
 									   <?php	}elseif($row['status']==2){?>
 										<a href="<?php echo base_url('admin/order/update_status2/').$row['id'] ?>"  class=" btn btn-success">Accepted</a>
+									<?php	}elseif($row['status']==3){?>
+									<a href="<?php echo base_url('admin/order/update_status3/').$row['id'] ?>"  class=" btn btn-warning">pending</a>
 
 									<?php }else{?>
 										<a href="#"  class="btn btn-danger">Cancle</a>
