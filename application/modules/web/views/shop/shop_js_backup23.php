@@ -5,17 +5,18 @@
 
     $(".color").change(function(event) {
        // alert('ok');
-      var colorname = $(this).val();
+      var name = $(this).val();
       var id = $('#c_id').val();
-      var type = $('#clr').val();
-      var searchtype = $('.search').val();
+      //console.log(id);
+       // alert(id);
+       // alert(name);
       var csrf_name = $("#get_csrf_hash").attr('name');
       var csrf_val = $("#get_csrf_hash").val();
       $.ajax({
         type: "POST",
         url: "<?php echo base_url('web/shop/color') ?>",
         data: {
-          'colorname': colorname,'id': id,'type': type,'searchtype': searchtype,
+          'name': name,'id': id,
           '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php  echo $this->security->get_csrf_hash(); ?>'
         },
         datatype: 'json',
@@ -27,12 +28,10 @@
 
     });
 
-    $("#fabric").change(function(event) {
+$("#fabric").change(function(event) {
        // alert('ok');
-      var fabricname = $(this).val();
+      var name = $(this).val();
       var id = $('#f_id').val();
-      var type = $('#fab').val();
-      var searchtype = $('.search').val();
       //console.log(id);
        // alert(id);
        // alert(name);
@@ -40,9 +39,9 @@
       var csrf_val = $("#get_csrf_hash").val();
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url('web/shop/color') ?>",
+        url: "<?php echo base_url('web/shop/fabric_filter') ?>",
         data: {
-          'fabricname': fabricname,'id': id,'type': type,'searchtype': searchtype,
+          'name': name,'id': id,
           '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php  echo $this->security->get_csrf_hash(); ?>'
         },
         datatype: 'json',
@@ -55,10 +54,8 @@
     });
     $("#patern").change(function(event) {
        // alert('ok');
-      var parternname = $(this).val();
+      var name = $(this).val();
       var id = $('#p_id').val();
-      var type = $('#par').val();
-      var searchtype = $('.search').val();
       //console.log(id);
        // alert(id);
        // alert(name);
@@ -66,9 +63,9 @@
       var csrf_val = $("#get_csrf_hash").val();
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url('web/shop/color') ?>",
+        url: "<?php echo base_url('web/shop/patern_filter') ?>",
         data: {
-          'parternname': parternname,'id': id,'type': type, 'searchtype' : searchtype,
+          'name': name,'id': id,
           '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php  echo $this->security->get_csrf_hash(); ?>'
         },
         datatype: 'json',
@@ -81,10 +78,8 @@
     });
     $("#weaving").change(function(event) {
        // alert('ok');
-      var weavingname = $(this).val();
+      var name = $(this).val();
       var id = $('#w_id').val();
-      var type = $('#weav').val();
-      var searchtype = $('.search').val();
       //console.log(id);
        // alert(id);
        // alert(name);
@@ -92,9 +87,9 @@
       var csrf_val = $("#get_csrf_hash").val();
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url('web/shop/color') ?>",
+        url: "<?php echo base_url('web/shop/weaving_filter') ?>",
         data: {
-          'weavingname': weavingname,'id': id,'type': type,'searchtype': searchtype,
+          'name': name,'id': id,
           '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php  echo $this->security->get_csrf_hash(); ?>'
         },
         datatype: 'json',
@@ -105,7 +100,6 @@
       });
 
     });
-
 
 
     var rangeSlider = $(".price-range"),
@@ -129,15 +123,12 @@
     var min = (array[0]);
     var max = (array[1]);
     var id = $('#color_id').val();
-    var type = $('#price').val();
-    var searchtype = $('.search').val();
-
 
     $.ajax({
       type: "POST",
-      url: "<?php echo base_url('web/shop/color') ?>",
+      url: "<?php echo base_url('web/shop/price') ?>",
       data: {
-        'min': min,'max':max,'id': id,'type': type,'searchtype': searchtype,
+        'min': min,'max':max,'id': id,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php  echo $this->security->get_csrf_hash(); ?>'
       },
       datatype: 'json',

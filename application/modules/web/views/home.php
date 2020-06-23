@@ -88,20 +88,30 @@
                     <!-- product tab menu start -->
                     <div class="product-tab-menu">
                         <ul class="nav justify-content-center">
-                          <?php foreach($category as $value):?>
-                            <li id="<?php echo $value['id']?>" class="category"><a href="#<?php echo $value['id']?>" class="active " data-toggle="tab"><?php echo $value['name']?></a></li>
-                          <?php  endforeach;?>
+                          <?php foreach($category as $key => $value):?>
+                            <?php if ($key < 1): ?>
+                                <li><a href="#<?php echo strtolower($value['name'])?>" class="active" data-toggle="tab"><?php echo $value['name']?></a></li>
+                              <?php else: ?>
+                                <li><a href="#<?php echo strtolower($value['name'])?>" data-toggle="tab"><?php echo $value['name']?></a></li>
+                            <?php endif; ?>
+                          <?php endforeach;?>
                         </ul>
                     </div>
                     <!-- product tab menu end -->
 
                     <!-- product tab content start -->
                     <div class="tab-content data_body">
-                        <div class="tab-pane fade show active">
+                      <?php foreach($category as $key => $catdata):?>
+                        <?php if ($key < 1): ?>
+                          <div class="tab-pane fade show active" id="<?php echo strtolower($catdata['name'])?>">
+                          <?php else: ?>
+                            <div class="tab-pane fade show" id="<?php echo strtolower($catdata['name'])?>">
+                        <?php endif; ?>
                             <div class="product-carousel-4 slick-row-10 slick-arrow-style">
                                 <!-- product item start -->
                                 <?php foreach($product as $value):?>
-                                <div class="product-item">
+                                  <?php if ($catdata['name'] == $value['category_name']): ?>
+                                    <div class="product-item">
                                     <figure class="product-thumb">
                                         <a href="<?php echo base_url('web/shop/product_details/').$value['id']?>">
                                              <img class="pri-img" src="<?php echo base_url('/uploads/product/').$value['profile_pic'] ?>" alt="product">
@@ -144,10 +154,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                  <?php endif; ?>
                                 <!-- product item end -->
                                  <?php endforeach;?>
                             </div>
                         </div>
+                      <?php  endforeach;?>
                     </div>
                     <!-- product tab content end -->
                 </div>

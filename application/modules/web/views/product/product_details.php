@@ -273,7 +273,7 @@
                                     <div class="button-group">
                                         <a href="<?php echo base_url('web/Collection/wishlist/').$value['id']?>" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
 
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                        <a id="<?php echo $value['id']?>" class="wishlist"><i class="pe-7s-search"></i></a>
                                     </div>
                                     <div class="cart-hover">
                                         <a  href="<?php echo base_url('web/Collection/addtocard/').$value['id']?>"  class="btn btn-cart" data-toggle="tooltip" data-placement="left" >Add To Cart</a>

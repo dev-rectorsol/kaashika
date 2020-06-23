@@ -22,13 +22,13 @@
                             </div>
 
                              </div>
-                             <div class="pro-nav slick-row-10 slick-arrow-style">
-                                <?php foreach($pics as $value):?>
-                                   <div class="pro-nav-thumb">
-                                      <img src="<?php echo base_url('/uploads/product/').$value['image'] ?>" alt="product-details" />
-                                   </div>
-                                <?php endforeach;?>
-                            </div>
+                            <!-- <div class="pro-nav slick-row-10 slick-arrow-style">-->
+                            <!--    <?php foreach($pics as $value):?>-->
+                            <!--       <div class="pro-nav-thumb">-->
+                            <!--          <img src="<?php echo base_url('/uploads/product/').$value['image'] ?>" alt="product-details" />-->
+                            <!--       </div>-->
+                            <!--    <?php endforeach;?>-->
+                            <!--</div>-->
                          <div class="col-lg-7">
                              <div class="product-details-des">
                                  <div class="manufacturer-name">

@@ -7,15 +7,16 @@ class Shop_model extends CI_Model{
                 $this->load->database();
         }
 
+
     public function getdata(){
-       $this->db->order_by("id", "desc");
+        $this->db->order_by("id", "desc");
        $query= $this->db->get('details');
       // echo "<pre>"; print_r($query->result_array());exit;
-       return $query->result_array();
+        return $query->result_array();
     }
 
     public function delete($id){
-      $this->db->delete('details',array('id'=>$id));
+        $this->db->delete('details',array('id'=>$id));
     }
 
     public function update($id,$data,$table){
@@ -41,8 +42,10 @@ class Shop_model extends CI_Model{
         return $query;
     }
 
-    function select_attr_color($id,$name,$type,$table){
 
+
+    function select_attr_color($id,$name,$type,$table){
+      //echo $id;
         $this->db->select();
         $this->db->from($table);
         $this->db->where('port',$id);
@@ -52,78 +55,28 @@ class Shop_model extends CI_Model{
         $this->db->where('p.value', $name);
         $query = $this->db->get();
         //echo $this->db->last_query($query);exit;
-        $query = $query->result_array();
-        return $query;
-    }
+       $query = $query->result_array();
+       return $query;
 
-    function select_attr_price($data){
-  //  echo   $data['type'];exit;
-       if(isset($data['type'])){
+    }
+    function select_attr_price($id,$min,$max,$type,$table){
+      //echo $id;
         $this->db->select();
-        $this->db->from('indexing');
-        $this->db->where('port',$data['id']);
-        $this->db->where('type','category');
+        $this->db->from($table);
+        $this->db->where('port',$id);
+        $this->db->where('type',$type);
         $this->db->join('products','products.id=indexing.root','inner');
         // $this->db->join(' product_attributes as p', 'indexing.root=p.product_id', 'inner');
-        $this->db->where('products.price >=',$data['min'] );
-        $this->db->where('products.price <=', $data['max']);
-}else{
-
-      $this->db->select();
-      $this->db->from('indexing');
-      $this->db->where('port',$data['id']);
-      $this->db->where('type','category');
-      $this->db->join('products','products.id=indexing.root','inner');
-      $this->db->join(' product_attributes as p', 'indexing.root=p.product_id', 'inner');
-
-      if($data['type']=='Fabric' ){
-       if(!is_array($data['fabricname'])){
-         if($data['fabricname']!="")
-         {
-           $this->db->where('p.value', $data['fabricname']);
-         }
-     }
-   }
-   elseif($data['type']=='Color'){
-    if(!is_array($data['colorname'])){
-      if($data['colorname']!="")
-      {
-        $this->db->where('p.value', $data['colorname']);
-      }
-  }
-}
-elseif($data['type']=='Pattern'){
- if(!is_array($data['parternname'])){
-   if($data['parternname']!="")
-   {
-     $this->db->where('p.value', $data['parternname']);
-   }
-}
-}
-elseif($data['type']=='Weaving'){
- if(!is_array($data['weavingname'])){
-   if($data['weavingname']!="")
-   {
-     $this->db->where('p.value', $data['weavingname']);
-   }
-}
-}else{
-       $count =count($data['name']);
-       for($i=0;$i<$count;$i++){
-       $this->db->where('p.value', $data['name']);
-     }
-   }
-
-}
-    $query = $this->db->get();
-//echo $this->db->last_query($query);exit;
-    $query = $query->result_array();
-    return $query;
+        $this->db->where('products.price >=',$min );
+        $this->db->where('products.price <=', $max);
+        $query = $this->db->get();
+        //echo $this->db->last_query($query);exit;
+       $query = $query->result_array();
+       return $query;
 
     }
 
-
-    function select_attr_name($table,$name){
+       function select_attr_name($table,$name){
       //echo $id;
         $this->db->select('product_attributes.value as fab_name');
         $this->db->from($table);
@@ -131,10 +84,11 @@ elseif($data['type']=='Weaving'){
         $this->db->join('product_attributes ','product_attributes.attribute_id=attribute.id','inner');
         $query = $this->db->get();
         //echo $this->db->last_query($query);exit;
-        $query = $query->result_array();
+       $query = $query->result_array();
        return $query;
 
     }
+
 
     function select_product_details($id,$table){
       //echo $id;

@@ -465,11 +465,10 @@ class Auth
      *
      * @return bool
      */
-    public function logout()
+     public function logout()
     {
         $this->CI->session->unset_userdata(array("userID", "username", "loginStatus"));
         $this->CI->session->sess_destroy();
-
         return true;
     }
 }

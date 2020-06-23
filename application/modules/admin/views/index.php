@@ -40,7 +40,7 @@
 							<a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
 						</li> -->
 						<li>
-							<a href="<?php echo base_url('Authentication/logout')?>"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
+						<a href="<?php echo base_url('Auth/logout')?>"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
 						</li>
 					</ul>
 				</li>
