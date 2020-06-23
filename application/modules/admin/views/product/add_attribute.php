@@ -79,34 +79,41 @@
 
 											<input type="text" name="quantity" class="form-control input-sm"
 												placeholder="Quantity">
-
 										</div>
-
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 control-label " for="example-input-small">
 											Discount</label>
 										<div class="col-sm-9">
-
 											<input type="text" name="discount" class="form-control input-sm"
 												placeholder="Discount">
-
 										</div>
-
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 control-label " for="example-input-small"> Product
 											image</label>
 										<div class="col-sm-10">
-
 											<div class="mt-40">
 												<input type="file" class="dropify form-control" name='profile' />
 											</div>
-
 										</div>
-
 									</div>
-								</div>
+
+									<div class="form-group row">
+										<label class="col-sm-2 control-label " for="example-input-small"> Handwoven	</label>
+											<div class="col-sm-10">
+													<div class="radio radio-primary">
+														<input type="radio" name="radio" id="radio3" value="option3">
+														<label for="radio3"> Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<input type="radio" name="radio" id="radio4" value="option4">
+														<label for="radio4"> No </label>
+													</div>
+											</div>
+									</div>
+
+							 </div>
 
 								<div id="attributes" class="tab-pane fade" role="tabpanel">
 									<div class="container">

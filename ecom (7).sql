@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2020 at 08:05 AM
+-- Generation Time: Jun 23, 2020 at 07:20 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 5.6.37
 
@@ -121,7 +121,9 @@ INSERT INTO `attribute` (`id`, `name`, `created_at`) VALUES
 (20, 'Color', '2020-04-24 15:10:00'),
 (21, 'Fabric', '2020-04-24 15:10:16'),
 (22, 'Stitch', '2020-04-24 15:10:27'),
-(23, 'Dye', '2020-04-24 15:10:39');
+(23, 'Dye', '2020-04-24 15:10:39'),
+(24, 'Pattern', '2020-06-18 00:11:35'),
+(25, 'Weaving', '2020-06-18 00:12:58');
 
 -- --------------------------------------------------------
 
@@ -245,6 +247,18 @@ INSERT INTO `gallery` (`id`, `image`, `added`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gst`
+--
+
+CREATE TABLE `gst` (
+  `id` int(11) NOT NULL,
+  `gst_name` varchar(20) NOT NULL,
+  `value` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `indexing`
 --
 
@@ -307,7 +321,13 @@ INSERT INTO `indexing` (`id`, `root`, `port`, `type`) VALUES
 (139, 47, 3, 'tag'),
 (140, 47, 10, 'category'),
 (141, 48, 2, 'tag'),
-(142, 48, 9, 'category');
+(142, 48, 9, 'category'),
+(143, 49, 2, 'tag'),
+(144, 49, 8, 'category'),
+(145, 50, 4, 'tag'),
+(146, 50, 8, 'category'),
+(147, 51, 3, 'tag'),
+(148, 51, 10, 'category');
 
 -- --------------------------------------------------------
 
@@ -699,12 +719,14 @@ CREATE TABLE `permission_roles` (
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
+  `pbc` varchar(32) DEFAULT NULL COMMENT 'Releted to id',
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `price` int(5) NOT NULL,
   `profile_pic` text NOT NULL,
   `discount` int(5) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `handwoven` varchar(20) DEFAULT NULL,
   `status` enum('On_Sell','Best_Sell') DEFAULT 'On_Sell',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL
@@ -714,18 +736,21 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `profile_pic`, `discount`, `quantity`, `status`, `created_at`, `updated_at`) VALUES
-(23, 'Shree', '<p>beautiful</p>', 2000, 'DSC_0146-copy-330x413.jpg', 10, 1, 'Best_Sell', '2020-05-04 20:30:33', NULL),
-(25, 'Dupatta', '<p>nice</p>', 200, '002-330x413.jpg', 12, 2, 'Best_Sell', '2020-05-04 20:36:22', NULL),
-(27, 'Lehenga', '<p>marrege party wear</p>', 10000, '1562871246794_0_.jpg', 12, 2, 'Best_Sell', '2020-05-05 18:09:36', NULL),
-(28, 'lehenga', '<p>party wear henga</p>', 9000, 'download_(1).jpg', 12, 5, 'Best_Sell', '2020-05-05 18:33:27', NULL),
-(31, 'saree', '<p>df dhf ssudhf igdsvv uyvsv cvydv mvgsh</p>', 200, 'DSC_0381-330x4131.jpg', 20, 1, 'On_Sell', '2020-05-13 14:23:37', NULL),
-(41, 'cotoon saree', '<p>xcvbnmc dfghm fghjk fdfghj, dfh</p>', 200, 'DSC_0146-copy-330x4131.jpg', 0, 3, 'On_Sell', '2020-05-15 16:45:38', NULL),
-(42, 'product1', '<p>vn</p>', 200, '1562871246794_0_1.jpg', 0, 8, 'On_Sell', '2020-05-18 22:01:45', NULL),
-(45, 'Salwar kameez', '<p>beautifuly dress</p>', 900, 'cream-cotton-salwar-kameez-137927-800x1100.jpg', 10, 2, 'On_Sell', '2020-05-30 06:13:24', NULL),
-(46, 'Lehenga', '<p><span xss=removed>A </span><b xss=removed>Lehenga</b><span xss=removed> is a form of skirt from the Indian subcontinent which is long and embroidered usually paired with a dupatta. </span><br></p>', 5000, '1979lg25-n228.jpg', 20, 1, 'On_Sell', '2020-06-02 15:48:09', NULL),
-(47, 'Saree', '<p><span xss=removed>A wedding sari is the traditional wedding dress of Indian women. The sari is traditionally a combination of red and green, with golden brocade.</span><br></p>', 10000, '0621119_admirable-mehendi-silk-sarees.jpeg', 12, 2, 'On_Sell', '2020-06-02 15:52:16', NULL),
-(48, 'latest lehenga', '<p>bv cgcb bdf bc cdf d</p>', 1000, '5085_11.jpg', 10, 1, 'Best_Sell', '2020-06-03 12:25:36', NULL);
+INSERT INTO `products` (`id`, `pbc`, `name`, `description`, `price`, `profile_pic`, `discount`, `quantity`, `handwoven`, `status`, `created_at`, `updated_at`) VALUES
+(23, NULL, 'Shree', '<p>beautiful</p>', 2000, 'DSC_0146-copy-330x413.jpg', 10, 1, NULL, 'Best_Sell', '2020-05-04 20:30:33', NULL),
+(25, NULL, 'Dupatta', '<p>nice</p>', 200, '002-330x413.jpg', 12, 2, NULL, 'Best_Sell', '2020-05-04 20:36:22', NULL),
+(27, NULL, 'Lehenga', '<p>marrege party wear</p>', 10000, '1562871246794_0_.jpg', 12, 2, NULL, 'Best_Sell', '2020-05-05 18:09:36', NULL),
+(28, NULL, 'lehenga', '<p>party wear henga</p>', 9000, 'download_(1).jpg', 12, 5, NULL, 'Best_Sell', '2020-05-05 18:33:27', NULL),
+(31, NULL, 'saree', '<p>df dhf ssudhf igdsvv uyvsv cvydv mvgsh</p>', 200, 'DSC_0381-330x4131.jpg', 20, 1, NULL, 'On_Sell', '2020-05-13 14:23:37', NULL),
+(41, NULL, 'cotoon saree', '<p>xcvbnmc dfghm fghjk fdfghj, dfh</p>', 200, 'DSC_0146-copy-330x4131.jpg', 0, 3, NULL, 'On_Sell', '2020-05-15 16:45:38', NULL),
+(42, NULL, 'product1', '<p>vn</p>', 200, '1562871246794_0_1.jpg', 0, 8, NULL, 'On_Sell', '2020-05-18 22:01:45', NULL),
+(45, NULL, 'Salwar kameez', '<p>beautifuly dress</p>', 900, 'cream-cotton-salwar-kameez-137927-800x1100.jpg', 10, 2, NULL, 'On_Sell', '2020-05-30 06:13:24', NULL),
+(46, NULL, 'Lehenga', '<p><span xss=removed>A </span><b xss=removed>Lehenga</b><span xss=removed> is a form of skirt from the Indian subcontinent which is long and embroidered usually paired with a dupatta. </span><br></p>', 5000, '1979lg25-n228.jpg', 20, 1, NULL, 'On_Sell', '2020-06-02 15:48:09', NULL),
+(47, NULL, 'Saree', '<p><span xss=removed>A wedding sari is the traditional wedding dress of Indian women. The sari is traditionally a combination of red and green, with golden brocade.</span><br></p>', 10000, '0621119_admirable-mehendi-silk-sarees.jpeg', 12, 2, NULL, 'On_Sell', '2020-06-02 15:52:16', NULL),
+(48, NULL, 'latest lehenga', '<p>bv cgcb bdf bc cdf d</p>', 1000, '5085_11.jpg', 10, 1, NULL, 'Best_Sell', '2020-06-03 12:25:36', NULL),
+(49, NULL, 'Fancy Dupatta', '<p> <span xss=removed>Dupatta, Chunari, Chunariya, Orhni, or Odhani, is a shawl-like scarf, women\'s traditionally essential clothing from the Indian subcontinent.</span><span xss=removed> </span></p>', 800, 'ClassicDupattas1.jpg', 20, 1, NULL, 'On_Sell', '2020-06-17 23:48:34', NULL),
+(50, NULL, 'Rajsthani dupta', '<p>very stylist and beautiful duptta</p>', 700, 's-l400.jpg', 10, 1, NULL, 'On_Sell', '2020-06-18 00:30:11', NULL),
+(51, NULL, 'banarasi saree', '<p> hgjhj jgh jg jgh v</p>', 2500, 'dulhan-saree-500x5001.jpg', 20, 2, NULL, 'On_Sell', '2020-06-18 00:37:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -772,7 +797,7 @@ INSERT INTO `product_attributes` (`product_attribute_id`, `product_id`, `attribu
 (45, 23, 20, 'blue'),
 (46, 23, 22, '12'),
 (47, 24, 20, 'red'),
-(48, 25, 20, 'pink'),
+(109, 25, 20, 'blue'),
 (49, 26, 20, 'pink'),
 (50, 27, 20, 'maroon'),
 (51, 1, 47, 'skyblue'),
@@ -813,7 +838,23 @@ INSERT INTO `product_attributes` (`product_attribute_id`, `product_id`, `attribu
 (96, 48, 20, 'red'),
 (97, 48, 21, '#878'),
 (98, 48, 22, 'ya'),
-(99, 48, 23, 'dye');
+(99, 48, 23, 'dye'),
+(100, 49, 20, 'pink'),
+(101, 49, 21, 'cotton'),
+(102, 49, 22, 'ghg'),
+(103, 49, 23, 'dyewash'),
+(104, 50, 20, 'red'),
+(105, 50, 21, 'polister'),
+(106, 50, 22, 'maroon'),
+(107, 50, 24, 'kadhai'),
+(108, 50, 25, 'Plain Weave'),
+(110, 51, 0, ''),
+(111, 51, 20, 'green'),
+(112, 51, 21, 'banarasi'),
+(113, 51, 22, 'dfghg'),
+(114, 51, 23, 'dyw wash'),
+(115, 51, 24, 'Chiffon: '),
+(116, 51, 25, 'Regular');
 
 -- --------------------------------------------------------
 
@@ -868,7 +909,10 @@ INSERT INTO `product_images` (`product_images_id`, `product_id`, `image`, `color
 (36, 48, '1562871246794_0_2.jpg', '#000000'),
 (37, 48, 'download_(3).jpg', '#000000'),
 (38, 48, 'images.jpg', '#000000'),
-(39, 48, 'download_(2)3.jpg', '#000000');
+(39, 48, 'download_(2)3.jpg', '#000000'),
+(40, 49, 'Dupatta.jpg', '#df3a3a'),
+(41, 50, 's-l300.jpg', '#d63a1f'),
+(42, 51, '27c1872b18649839dbc682ff3d4bf0e2--traditional-sarees-traditional-outfits1.jpg', '#013c0b');
 
 -- --------------------------------------------------------
 
@@ -957,7 +1001,7 @@ CREATE TABLE `setting` (
 INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`, `autoload`) VALUES
 (1, 'application_name', 'Online Education Board', 'yes'),
 (2, 'application_title', '{\"3\":{\"title\":\"BEST SALWAR SUIT SITE\",\"source\":\"uploads\\/images\\\\\\/thumbnail\\/download_thumb-175x200.png\"}}', 'yes'),
-(3, 'home_slider', '{\"7\":{\"heading\":\"Hedding3\",\"details\":\"fhdsfh shfsd mhfs fmshfsmnv\",\"buttonUrl\":\"\",\"source\":\"uploads\\/images\\\\\\/medium\\/slid5_medium-376x134.jpg\"}}', 'yes'),
+(3, 'home_slider', '{\"9\":{\"heading\":\"fancy saree\",\"details\":\"Indian Designer Sarees, Designer Sarees Online, Indian Sarees, Satin Saree, Chiffon Saree,\",\"buttonUrl\":\"\",\"source\":\"uploads\\/images\\\\\\/medium\\/AnmolTrendzFestivalPartyWearSareesBanner_medium-1137x380.jpg\"},\"11\":{\"heading\":\"Bridal Lehenga\",\"details\":\" A Lehenga is generally worn for celebratory occasions like weddings and festivals.\",\"buttonUrl\":\"\",\"source\":\"uploads\\/images\\\\\\/medium\\/bridal-sarees-online_medium-2500x782.jpg\"},\"12\":{\"heading\":\"salwar kameez\",\"details\":\"traditional dress\",\"buttonUrl\":\"\",\"source\":\"uploads\\/images\\\\\\/thumbnail\\/16704_thumb-200x143.jpg\"}}', 'yes'),
 (4, 'social_icon', '[{\"link\":\"https:\\/\\/www.facebook.com\\/\",\"icon\":\"icon-line-awesome-facebook\"},{\"link\":\"https:\\/\\/twitter.com\\/Twitter\",\"icon\":\"icon-line-awesome-twitter-square\"},{\"link\":\"https:\\/\\/www.youtube.com\\/\",\"icon\":\"icon-line-awesome-youtube\"}]', 'yes'),
 (5, 'contact_us', '{\"3\":{\"address\":\"12\\/A sector 3 varanasi up India\",\"email\":\"onlinekashika@gmail.com\",\"phone\":\"9876543210\"}}', 'yes'),
 (6, 'application_logo', '[{\"discription\":\"Hello , What are you Say this site?\",\"source\":\"uploads\\/images\\\\\\/medium\\/logo-maker-02_medium-450x387.png\"}]', 'yes');
@@ -1184,6 +1228,12 @@ ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gst`
+--
+ALTER TABLE `gst`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `indexing`
 --
 ALTER TABLE `indexing`
@@ -1378,7 +1428,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `attribute`
 --
 ALTER TABLE `attribute`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -1405,10 +1455,16 @@ ALTER TABLE `gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `gst`
+--
+ALTER TABLE `gst`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `indexing`
 --
 ALTER TABLE `indexing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `keys`
@@ -1468,19 +1524,19 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  MODIFY `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `product_images_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `product_images_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `results`

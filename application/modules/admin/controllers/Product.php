@@ -92,6 +92,7 @@ class Product extends CI_Controller {
 			'price' => $data1['price'],
 			'quantity' => $data1['quantity'],
 			'discount' => $data1['discount'],
+			'handwoven' => $data1['radio'],
 			'profile_pic' => $pic,
 		];
 		  $id=$this->Common_model->insert($data,'products');

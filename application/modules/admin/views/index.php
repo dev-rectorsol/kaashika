@@ -120,11 +120,17 @@
 			<li>
 				<a href="<?php echo base_url('admin/Tags')?>" data-toggle="collapse" data-target="#table_dr">
 					<div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tags</span></div>
-
 					<div class="clearfix"></div>
 				</a>
-
 			</li>
+
+			<li>
+					<a href="<?php echo base_url('admin/Gst')?>" data-toggle="collapse" data-target="#table_dr">
+						<div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">GST</span></div>
+						<div class="clearfix"></div>
+					</a>
+		 </li>
+
 			<li>
 				<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr1">
 					<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Article</span></div>

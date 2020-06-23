@@ -28,7 +28,7 @@
                        <aside class="sidebar-wrapper">
                            <!-- single sidebar start -->
                            <div class="sidebar-single">
-                               <h5 class="sidebar-title">categories</h5>
+                               <h5 class="sidebar-title">Collection</h5>
                                <div class="sidebar-body">
                                    <ul class="shop-categories">
                                      <?php foreach($category as $value):?>
@@ -52,8 +52,11 @@
                                                     <label for="amount">Price: </label>
                                                     <input type="text" id="amount">
                                                     <input type="hidden" value="<?php echo $id;?>" id="color_id">
+                                                    <input type="hidden" value="price" id="price">
+
+                                                    <input type="hidden" value="search" class="search">
                                                 </div>
-                                                <button class="filter-btn">filter</button>
+
                                             </form>
                                         </div>
                                     </div>
@@ -65,11 +68,11 @@
 
                            <!-- single sidebar start -->
                            <div class="sidebar-single">
-                               <h5 class="sidebar-title">color</h5>
+                               <h5 class="sidebar-title">color filter</h5>
                                <div class="sidebar-body">
                                   <select name="color" class="color">
-                                  <option value="red">all</option>
-                                  <option value="red">Red</option>
+                                  <option value="red">select color</option>
+                                  <option value="red">Red </option>
                                   <option value="green">green</option>
                                   <option value="blue">blue</option>
                                   <option value="yellow">yellow</option>
@@ -79,10 +82,53 @@
                                   <option value="pink">Pink</option>
                                   </select>
                                 <input type="hidden" value="<?php echo $id;?>" id="c_id">
+                                <input type="hidden" value="Color" id="clr">
+                                <input type="hidden" value="search" class="search">
                                </div>
-                           </div>
+                           </div><br><br>
                            <!-- single sidebar end -->
-
+                           <div class="sidebar-single">
+                                <h5 class="sidebar-title">Fabric Filter</h5>
+                                <div class="sidebar-body">
+                                 <select name="fabric" id="fabric">
+                                   <option>--select fabric--</option>
+                                   <?php foreach($fabric as $value):?>
+                                  <option value="<?php echo $value['fab_name'];?>" style = "text-transform:capitalize;"><?php echo $value['fab_name'];?></option>
+                                <?php endforeach;?>
+                                 </select>
+                                 <input type="hidden" value="<?php echo $id;?>" id="f_id">
+                                  <input type="hidden" value="Fabric" id="fab">
+                                  <input type="hidden" value="search" class="search">
+                                </div>
+                            </div><br><br>
+                            <div class="sidebar-single">
+                                 <h5 class="sidebar-title">Pattern Filter</h5>
+                                 <div class="sidebar-body">
+                                  <select name="patern" id="patern">
+                                    <option>--select patern--</option>
+                                    <?php foreach($pattern as $value):?>
+                                   <option value="<?php echo $value['fab_name'];?>" style = "text-transform:capitalize;"><?php echo $value['fab_name'];?></option>
+                                 <?php endforeach;?>
+                                  </select>
+                                  <input type="hidden" value="<?php echo $id;?>" id="p_id">
+                                  <input type="hidden" value="Pattern" id="par">
+                                  <input type="hidden" value="search" class="search">
+                                 </div>
+                             </div><br><br>
+                             <div class="sidebar-single">
+                                  <h5 class="sidebar-title">Weaving Filter</h5>
+                                  <div class="sidebar-body">
+                                   <select name="weaving" id="weaving">
+                                     <option>--select weaving--</option>
+                                     <?php foreach($weaving as $value):?>
+                                    <option value="<?php echo $value['fab_name'];?>" style = "text-transform:capitalize;"><?php echo $value['fab_name'];?></option>
+                                  <?php endforeach;?>
+                                   </select>
+                                   <input type="hidden" value="<?php echo $id;?>" id="w_id">
+                                   <input type="hidden" value="Weaving" id="weav">
+                                   <input type="hidden" value="search" class="search">
+                                  </div>
+                              </div>
 
 
                            <!-- single sidebar start -->
