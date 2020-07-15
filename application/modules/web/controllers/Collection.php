@@ -8,6 +8,7 @@ class Collection extends CI_Controller {
 			$this->load->model('Shop_model');
 			$this->load->model('Product_model');
 			$this->load->model('article_model');
+		$this->load->model('Homepage_model');
 			$this->load->library('cart');
 			$this->load->library(['auth', 'session']);
 
@@ -35,6 +36,12 @@ class Collection extends CI_Controller {
 		// print_r($data['cartItems']);exit;
 		$data['category']=  $this->Common_model->select('category');
 		$data['main_content'] = $this->load->view('collection/wishlist', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
 		$this->load->view('index', $data);
     }
 		public function wishlist($id){
@@ -143,6 +150,12 @@ class Collection extends CI_Controller {
 				$data['user_data']=  $this->Common_model->select('user_details');
 				$data['category']=  $this->Common_model->select('category');
 				$data['main_content'] = $this->load->view('collection/cart', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
 				$this->load->view('index', $data);
 		}
 
@@ -179,7 +192,13 @@ class Collection extends CI_Controller {
         $data['product_data']=  $this->Common_model->select('products');
         $data['user_data']=  $this->Common_model->select('user_details');
 				$data['category']=  $this->Common_model->select('category');
-        $data['main_content'] = $this->load->view('collection/checkout',$data, true);
+		$data['main_content'] = $this->load->view('collection/checkout',$data, true);
+			$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+			$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+			$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+			$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+			$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+			$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
         $this->load->view('index', $data);
 			}
 			else{
@@ -212,7 +231,13 @@ class Collection extends CI_Controller {
         $data['product_data']=  $this->Common_model->select('products');
         $data['user_data']=  $this->Common_model->select('user_details');
 				$data['category']=  $this->Common_model->select('category');
-        $data['main_content'] = $this->load->view('collection/compare', $data, true);
+		$data['main_content'] = $this->load->view('collection/compare', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
         $this->load->view('index', $data);
     }
 

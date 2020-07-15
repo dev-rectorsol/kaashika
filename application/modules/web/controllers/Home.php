@@ -11,6 +11,8 @@ class Home extends CI_Controller {
 			$this->load->model('article_model');
 			$this->load->model('Product_model');
 			$this->load->model('Shop_model');
+		$this->load->model('Homepage_model');
+		
       $this->load->library('cart');
 		//Do your magic here
 	}
@@ -20,17 +22,17 @@ class Home extends CI_Controller {
         $data = array();
         $data['page'] = 'Education Board';
 				$data['homeSlider'] = 1;
-			  $slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '';
-			  $data['slider'] = json_decode($slider_value, true);
+			  	$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '';
+			  	$data['slider'] = json_decode($slider_value, true);
 
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
-			  $data['social'] = json_decode($social_value, true);
+			  	$data['social'] = json_decode($social_value, true);
 
 				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-      	$data['contact'] = json_decode($contact_value, true);
+      			$data['contact'] = json_decode($contact_value, true);
 
 				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-		    $data['title'] = json_decode($title_value, true);
+		    	$data['title'] = json_decode($title_value, true);
 
 				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
 				$data['logo'] = json_decode($logo, true);
@@ -43,13 +45,24 @@ class Home extends CI_Controller {
 				// $data['pics']=  $this->Product_model->select($id,'product_images');
 				$data['cartIvalue'] = $this->cart->contents();
 				$data['category']=  $this->Common_model->select('category');
-        $data['article_data']=  $this->article_model->select_article_data();
-        $data['product']=  $this->Product_model->getProductList();
-        $data['Best_Sell_product']=  $this->Product_model->select_best_product('Best_Sell','products');
+				$data['article_data']=  $this->article_model->select_article_data();
+				$data['product']=  $this->Product_model->getProductList();
+				$data['Best_Sell_product']=  $this->Product_model->select_best_product('Best_Sell','products');
 				$data['on_Sell_product']=  $this->Product_model->select_best_product('On_Sell','products');
 				$data['testimonial']=  $this->Common_model->select('testimonial');
 				$data['category_data']=  $this->Common_model->select_limit_value('category');
-        $data['main_content'] = $this->load->view('home', $data, true);
+		$data['carousel_saree']= $this->Common_model->select_carousel_by_type('saree');
+		$data['carousel_suit'] = $this->Common_model->select_carousel_by_type('suit');
+		$data['carousel_dupatta'] = $this->Common_model->select_carousel_by_type('dupatta');
+		$data['carousel_lehenga'] = $this->Common_model->select_carousel_by_type('lehenga');
+		
+		$data['main_content'] = $this->load->view('home', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');	
         $this->load->view('index', $data);
     }
 
@@ -105,7 +118,13 @@ class Home extends CI_Controller {
         $data['cartItems'] = $this->cart->contents();
 				$data['category']=  $this->Common_model->select('category');
 				$data['testimonial']=  $this->Common_model->select('testimonial');
-        $data['main_content'] = $this->load->view('about_us', $data, true);
+		$data['main_content'] = $this->load->view('about_us', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
         $this->load->view('index', $data);
     }
 
@@ -125,7 +144,13 @@ class Home extends CI_Controller {
 				$data['contact'] = json_decode($contact_value, true);
         $data['cartIvalue'] = $this->cart->contents();
 				$data['category']=  $this->Common_model->select('category');
-        $data['main_content'] = $this->load->view('contact', $data, true);
+		$data['main_content'] = $this->load->view('contact', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
         $this->load->view('index', $data);
     }
 
@@ -152,6 +177,12 @@ class Home extends CI_Controller {
 				$data['product_data']=  $this->Common_model->select('products');
 				$data['user_data']=  $this->Common_model->select('user_details');
 				$data['main_content'] = $this->load->view('my_account', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
 				$this->load->view('index', $data);
 		}
 
@@ -161,4 +192,4 @@ class Home extends CI_Controller {
 }
 
 /* End of file Home.php */
-/* Location: ./application/modules/web/controllers/Home.php */ ?>
+/* Location: ./application/modules/web/controllers/Home.php */

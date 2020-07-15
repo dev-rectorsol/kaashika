@@ -6,9 +6,9 @@
 	<div class="wrapper  pa-0">
 		<header class="sp-header">
 			<div class="sp-logo-wrap pull-left">
-				<a href="index.html">
+				<a href="<?php echo base_url('auth')?>">
 					<img class="brand-img mr-10" src="<?php echo base_url('optimum') ?>/img/logo.png" alt="brand"/>
-					<span class="brand-text">Snoopy</span>
+					<span class="brand-text">Kashika</span>
 				</a>
 			</div>
 			<div class="form-group mb-0 pull-right">
@@ -36,7 +36,7 @@
 							<div class="row">
 								<div class="col-sm-12 col-xs-12">
 									<div class="mb-30">
-										<h3 class="text-center txt-dark mb-10">Sign in to Snoopy</h3>
+										<h3 class="text-center txt-dark mb-10">Sign in to Kashika</h3>
 										<h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
 									</div>
 									<div class="form-wrap">

@@ -30,6 +30,9 @@
 <script src="<?php echo base_url('optimum'); ?>/dist/js/form-file-upload-data.js"></script>
 <!-- Dropzone JavaScript -->
 <script src="<?php echo base_url(); ?>vendors/bower_components/dropzone/dist/dropzone.js"></script>
+<!-- Progressbar Animation JavaScript -->
+<script src="<?php echo base_url('optimum'); ?>/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="<?php echo base_url('optimum'); ?>/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
 
 		<!-- Dropzone Init JavaScript -->
 <script src="<?php echo base_url('optimum'); ?>/dist/js/dropzone-data.js"></script>

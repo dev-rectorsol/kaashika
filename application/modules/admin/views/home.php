@@ -31,7 +31,7 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-													<span class="txt-dark block counter"><?php echo $new_contact;?></span>
+													<span class="txt-dark block counter"><span class="counter-anim"><?php echo $new_contact;?></span></span>
 													<span class="weight-500 uppercase-font block">New Contact</span>
 												</div>
 												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
@@ -158,7 +158,7 @@
  										 <td><?php echo $row['email'] ?></td>
 
 										 <td><?php if($row['status']=='New'){?>
-	 									  <a href="<?php echo base_url('admin/Contact/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:red;font-weight: bold; " class="text-center tip "><?php echo $row['status'] ?></a>
+	 									  <a href="<?php echo base_url('admin/Contact/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:green;font-weight: bold; " class="text-center tip "><?php echo $row['status'] ?></a>
 	 									 <?php }?></td>
 
 										</tr>

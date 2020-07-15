@@ -18,14 +18,7 @@ class Media extends CI_Controller {
   }
 
 
-	// public function index()
-	// {
-	// 			$map = directory_map(UPLOAD_FILE, FALSE, TRUE);
-	// 			$files = self::Concatenate_Filepaths($map);
-	// 			$fileData = self::getFileWithExt($files);
-	// 			$data['main_content'] = $this->load->view('media/list-view', $fileData, TRUE);
-	// 			$this->load->view('index', $data);
-	// }
+	
 
 	public function index()
 	{

@@ -28,18 +28,34 @@ class Shop_model extends CI_Model{
         $query= $this->db->get('details');
         return $query->result_array();
     }
-    function select($id,$type,$table){
+    function select($data,$type,$table){
       //echo $id;
         $this->db->select();
         $this->db->from($table);
-        $this->db->where('port',$id);
+        $this->db->limit($data['per_page'], $data['page']);
+        $this->db->where('port',$data['id']);
         $this->db->where('type',$type);
         $this->db->join('products','products.id=indexing.root','inner');
+         $this->db->order_by($data['groupby'], $data['order']);
         $query = $this->db->get();
         //echo $this->db->last_query($query);exit;
         $query = $query->result_array();
         return $query;
     }
+  function get_count($id, $type, $table)
+  {
+    //echo $id;
+    $this->db->select('*');
+    $this->db->from($table);
+    $this->db->where('port', $id);
+    $this->db->where('type', $type);
+    $this->db->join('products', 'products.id=indexing.root', 'inner');
+    $query = $this->db->get();
+    //print_r($query->num_rows()) ;exit;
+    return $query->num_rows();
+    
+  }
+  
 
     function select_attr_color($id,$name,$type,$table){
 
@@ -58,7 +74,7 @@ class Shop_model extends CI_Model{
 
     function select_attr_price($data){
   //  echo   $data['type'];exit;
-       if(isset($data['type'])){
+       if(!isset($data['type'])){
         $this->db->select();
         $this->db->from('indexing');
         $this->db->where('port',$data['id']);
@@ -67,7 +83,7 @@ class Shop_model extends CI_Model{
         // $this->db->join(' product_attributes as p', 'indexing.root=p.product_id', 'inner');
         $this->db->where('products.price >=',$data['min'] );
         $this->db->where('products.price <=', $data['max']);
-}else{
+    }else{
 
       $this->db->select();
       $this->db->from('indexing');

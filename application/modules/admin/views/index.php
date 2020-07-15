@@ -5,9 +5,9 @@
 		<div class="mobile-only-brand pull-left">
 			<div class="nav-header pull-left">
 				<div class="logo-wrap">
-					<a href="index.html">
+					<a href="<?php echo base_url('admin/dashboard')?>">
 						<img class="brand-img" src="<?php echo base_url('optimum') ?>/img/logo.png" alt="brand" />
-						<span class="brand-text">Snoopy</span>
+						<span class="brand-text">Kashika</span>
 					</a>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
 							<a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
 						</li> -->
 						<li>
-						<a href="<?php echo base_url('Auth/logout')?>"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
+							<a href="<?php echo base_url('auth/logout') ?>"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
 						</li>
 					</ul>
 				</li>
@@ -54,150 +54,171 @@
 	<div class="fixed-sidebar-left">
 		<ul class="nav navbar-nav side-nav nicescroll-bar">
 			<?php
-			if(check()){
-				if(isAdmin($this->session->userdata('roles')))
-				{
-				?>
-
-			<li>
-				<a class="active" href="<?php echo base_url('admin/Dashboard')?>" data-toggle="collapse" data-target="#dashboard_dr">
-					<div class="pull-left"><i class="zmdi zmdi-view-dashboard mr-20"></i><span class="right-nav-text">Dashboard</span></div>
-
-					<div class="clearfix"></div>
-				</a>
-
-			</li>
-			<li>
-				<a href="<?php echo base_url('admin/user') ?>" data-toggle="collapse" data-target="#ecom_dr">
-					<div class="pull-left"><i class="zmdi zmdi-account-o mr-20"></i><span class="right-nav-text">Users</span></div>
-					<div class="clearfix"></div>
-				</a>
-
-			</li>
-			<li>
-				<a href="javascript:void(0)" data-toggle="collapse" data-target="#pro">
-					<div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Products </span></div>
-					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-					<div class="clearfix"></div>
-				</a>
-				<ul id="pro" class="collapse collapse-level-1 two-col-list">
-					<li>
-						<a href="<?php echo base_url('admin/Product/attribute')?>">Add Product</a>
-					</li>
-
-					<li>
-						<a href="<?php echo base_url('admin/Product')?>">Product List</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('admin/Attribute')?>">Attribute </a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr">
-					<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Media</span></div>
-					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-					<div class="clearfix"></div>
-				</a>
-				<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
-					<li>
-						<a href="<?php echo base_url('admin/Media/add')?>">Add New</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('admin/Media')?>">View List</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="<?php echo base_url('admin/Category')?>" data-toggle="collapse" data-target="#form_dr">
-					<div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Category</span></div>
-
-					<div class="clearfix"></div>
-				</a>
-
-			</li>
-
-			<li>
-				<a href="<?php echo base_url('admin/Tags')?>" data-toggle="collapse" data-target="#table_dr">
-					<div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tags</span></div>
-
-					<div class="clearfix"></div>
-				</a>
-
-			</li>
-			<li>
-				<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr1">
-					<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Article</span></div>
-					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-					<div class="clearfix"></div>
-				</a>
-				<ul id="ui_dr1" class="collapse collapse-level-1 two-col-list">
-					<li>
-						<a href="<?php echo base_url('admin/Article')?>">Add Article</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('admin/Article/View')?>">Show List</a>
-					</li>
-
-				</ul>
-			</li>
-
-			<li>
-				<a href="<?php echo base_url('admin/Testimonial')?>" data-toggle="collapse" data-target="#maps_dr">
-					<div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Testimonial</span></div>
-					<div class="clearfix"></div>
-				</a>
-			</li>
-
-			<li>
-				<a href="<?php echo base_url('admin/Contact')?>" data-toggle="collapse" data-target="#pages_dr">
-					<div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Contact List</span></div>
-					<div class="clearfix"></div>
-				</a>
-			</li>
-
-			<li>
-				<a href="<?php echo base_url('admin/order')?>">
-					<div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Order List</span></div>
-					<div class="clearfix"></div>
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0)" data-toggle="collapse" data-target="#setting">
-					<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Setting</span></div>
-					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-					<div class="clearfix"></div>
-				</a>
-				<ul id="setting" class="collapse collapse-level-1 two-col-list">
-					<li>
-						<a href="<?php echo base_url('admin/setting/slider')?>">Add Slider</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('admin/Social')?>">Add Social icon</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('admin/setting/contact')?>">Add Contact</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('admin/setting/title')?>">Add Application Title</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('admin/setting/logo')?>">Add Application Logo</a>
-					</li>
-
-				</ul>
-			</li>
-		<?php }else{
+			if (check()) {
+				if (isAdmin($this->session->userdata('roles'))) {
 			?>
-			<li>
-				<a href="<?php echo base_url('admin/yourorder')?>" data-toggle="collapse" data-target="#ourorder">
-					<div class="pull-left"><i class="zmdi zmdi-view-dashboard mr-20"></i><span class="right-nav-text">Your Order</span></div>
 
-					<div class="clearfix"></div>
-				</a>
+					<li>
+						<a class="active" href="<?php echo base_url('admin/Dashboard') ?>" data-toggle="collapse" data-target="#dashboard_dr">
+							<div class="pull-left"><i class="zmdi zmdi-view-dashboard mr-20"></i><span class="right-nav-text">Dashboard</span></div>
 
-			</li>
-			<?php } } ?>
+							<div class="clearfix"></div>
+						</a>
+
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/user') ?>" data-toggle="collapse" data-target="#ecom_dr">
+							<div class="pull-left"><i class="zmdi zmdi-account-o mr-20"></i><span class="right-nav-text">Users</span></div>
+							<div class="clearfix"></div>
+						</a>
+
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-toggle="collapse" data-target="#pro">
+							<div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Products </span></div>
+							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+							<div class="clearfix"></div>
+						</a>
+						<ul id="pro" class="collapse collapse-level-1 two-col-list">
+							<li>
+								<a href="<?php echo base_url('admin/Product/attribute') ?>">Add Product</a>
+							</li>
+
+							<li>
+								<a href="<?php echo base_url('admin/Product') ?>">Product List</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/Attribute') ?>">Attribute </a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr">
+							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Homepage</span></div>
+							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+							<div class="clearfix"></div>
+						</a>
+						<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+							<li>
+								<a href="<?php echo base_url('admin/Homepage/category') ?>">Carousel</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/Homepage/menu') ?>">Menu</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/Homepage/collection') ?>">Collection</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/Homepage/technique') ?>">Technique</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr">
+							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Media</span></div>
+							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+							<div class="clearfix"></div>
+						</a>
+						<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+							<li>
+								<a href="<?php echo base_url('admin/Media/add') ?>">Add New</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/Media') ?>">View List</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="<?php echo base_url('admin/Category') ?>" data-toggle="collapse" data-target="#form_dr">
+							<div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Category</span></div>
+
+							<div class="clearfix"></div>
+						</a>
+
+					</li>
+
+					<li>
+						<a href="<?php echo base_url('admin/Tags') ?>" data-toggle="collapse" data-target="#table_dr">
+							<div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tags</span></div>
+
+							<div class="clearfix"></div>
+						</a>
+
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr1">
+							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Article</span></div>
+							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+							<div class="clearfix"></div>
+						</a>
+						<ul id="ui_dr1" class="collapse collapse-level-1 two-col-list">
+							<li>
+								<a href="<?php echo base_url('admin/Article') ?>">Add Article</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/Article/View') ?>">Show List</a>
+							</li>
+
+						</ul>
+					</li>
+
+					<li>
+						<a href="<?php echo base_url('admin/Testimonial') ?>" data-toggle="collapse" data-target="#maps_dr">
+							<div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Testimonial</span></div>
+							<div class="clearfix"></div>
+						</a>
+					</li>
+
+					<li>
+						<a href="<?php echo base_url('admin/Contact') ?>" data-toggle="collapse" data-target="#pages_dr">
+							<div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Contact List</span></div>
+							<div class="clearfix"></div>
+						</a>
+					</li>
+
+					<li>
+						<a href="<?php echo base_url('admin/order') ?>">
+							<div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Order List</span></div>
+							<div class="clearfix"></div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-toggle="collapse" data-target="#setting">
+							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Setting</span></div>
+							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+							<div class="clearfix"></div>
+						</a>
+						<ul id="setting" class="collapse collapse-level-1 two-col-list">
+							<li>
+								<a href="<?php echo base_url('admin/setting/slider') ?>">Add Slider</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/Social') ?>">Add Social icon</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/setting/contact') ?>">Add Contact</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/setting/title') ?>">Add Application Title</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/setting/logo') ?>">Add Application Logo</a>
+							</li>
+
+						</ul>
+					</li>
+				<?php } else {
+				?>
+					<li>
+						<a href="<?php echo base_url('admin/yourorder') ?>" data-toggle="collapse" data-target="#ourorder">
+							<div class="pull-left"><i class="zmdi zmdi-view-dashboard mr-20"></i><span class="right-nav-text">Your Order</span></div>
+
+							<div class="clearfix"></div>
+						</a>
+
+					</li>
+			<?php }
+			} ?>
 		</ul>
 	</div>
 
@@ -209,19 +230,19 @@
 
 		<?php echo	$main_content ?>
 
-	  	 <footer class="footer container-fluid pl-30 pr-30">
-			     <div class="footer-bottom">
-		            <div class="container">
-		                <div class="row">
-		                    <div class="col-12">
-		                        <div class="copyright-text text-center">
-		                            <p>Powered By <a href="#">Corano</a>. Store 1 © 2020</p>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-	  	</footer>
+		<footer class="footer container-fluid pl-30 pr-30">
+			<div class="footer-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="copyright-text text-center">
+								<p>Copyright © <?php echo date("Y"); ?>. All rights reserved. Develeped By <a href="https://rectorsol.com/">RectorSol</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 
 	</div>
 	<!-- Footer -->

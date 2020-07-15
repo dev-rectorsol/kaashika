@@ -69,6 +69,7 @@ public function __construct()
           }
 
        }
+  
         public function get_otp($data){
 
             $this->db->select('*');
@@ -164,6 +165,25 @@ function select_user_option($id){
         $query = $query->result_array();
         return $query;
     }
+  function select_carousel_by_type($type)
+  {
+    $this->db->select('*');
+    $this->db->from('carousel');
+    $this->db->where('type', $type);
+    $this->db->join('products', 'products.id=carousel.product_id');
+    $query = $this->db->get();
+    $query = $query->result_array();
+    return $query;
+  }
+  public function get_menu($type)
+  {
+    $this->db->select('*');
+    $this->db->from('megamenu');
+    $this->db->where('type', 'text');
+    $this->db->where('parent', $type);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
     function select_limit_value($table){
         $this->db->select();
         $this->db->from($table);
@@ -199,7 +219,25 @@ function getMaxUserId(){
         $query = $query->result_array();
         return $query;
     }
-
+  function get_collection($id)
+  {
+    $this->db->select();
+    $this->db->from('collection');
+    $this->db->where('collection.collection_id', $id);
+    $query = $this->db->get();
+    $query = $query->result_array();
+    return $query;
+  }
+  function get_collection_product($id)
+  {
+    $this->db->select();
+    $this->db->from('collection_product');
+    $this->db->where('collection_product.collection_id', $id);
+    $this->db->join('products', 'products.id=collection_product.product_id');
+    $query = $this->db->get();
+    $query = $query->result_array();
+    return $query;
+  }
 
     // File Upload
 

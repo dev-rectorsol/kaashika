@@ -10,6 +10,7 @@ class Product extends CI_Controller {
 
 			$this->load->model('Common_model');
 			$this->load->library('cart');
+		$this->load->model('Homepage_model');
 		//Do your magic here
 	}
 
@@ -28,7 +29,13 @@ class Product extends CI_Controller {
 				$data['contact'] = json_decode($contact_value, true);
 
 				$data['category']=  $this->Common_model->select('category');
-        $data['main_content'] = $this->load->view('product/product_details', $data, true);
+		$data['main_content'] = $this->load->view('product/product_details', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
         $this->load->view('index', $data);
     }
 
@@ -50,6 +57,12 @@ class Product extends CI_Controller {
 				$data['category']=  $this->Common_model->select('category');
 				$data['user_data']=  $this->Common_model->select('user_details');
 			  $data['main_content'] = $this->load->view('product/product_variable', $data, true);
+		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
 				$this->load->view('index', $data);
 		}
 
