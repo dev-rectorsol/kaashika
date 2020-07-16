@@ -15,7 +15,7 @@
         <!-- /Breadcrumb -->
     </div>
     <div class="pills-struct mt-40">
-        <ul role="tablist" class="nav nav-pills" id="">
+      <ul role="tablist" class="nav nav-pills" id="">
             <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab" role="tab" href="#shop">ADD New</a></li>
             <li role="presentation" class=""><a data-toggle="tab" role="tab" href="#collect" aria-expanded="false">technique</a></li>
         </ul>
@@ -118,8 +118,8 @@
                                                                     echo "Not added";
                                                                 }  ?></td>
                                                             <td><?php echo $row['created_at'] ?></td>
-                                                            <td> <a data-target="<?php echo '#' . $row['technique_id'];  ?>" title="Edit" class="pd-setting-ed btn btn-primary text-center tip" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $row['technique_id']; ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                            <td> <a data-target="<?php echo '#' . $row['technique_id'];  ?>" title="Edit" class="pd-setting-ed " data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;color:#007bff;"></i></a>
+                                                                &nbsp;<a title="Trash" class="pd-setting-ed" onclick="delete_detail(<?php echo $row['technique_id']; ?>)"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:20px;color:red;"></i></a></td>
                                                         </tr>
 
                                                         <div id="<?php echo $row['technique_id']; ?>" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
@@ -152,7 +152,7 @@
                                                                             <div class="col-sm-3">
                                                                                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
-                                                                                <input name="submit" type="submit" class="form-control btn btn-info">
+                                                                                <input name="submit" type="submit" class="form-control btn btn-primary">
 
                                                                             </div>
                                                                         </div>
@@ -173,16 +173,12 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
     <!-- Row -->
 
     <!-- /Row -->
-
-
 </div>
 
 

@@ -438,7 +438,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="copyright-text text-center">
-						<p>Powered By <a href="#">Corano</a>. Store 1 © 2020</p>
+							<p>Copyright © <?php echo date("Y"); ?>. All rights reserved. Develeped By <a href="https://rectorsol.com/">RectorSol</a></p>
 					</div>
 				</div>
 			</div>

@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 			$this->load->model('Product_model');
 			$this->load->model('Shop_model');
 		$this->load->model('Homepage_model');
-		
+
       $this->load->library('cart');
 		//Do your magic here
 	}
@@ -45,7 +45,8 @@ class Home extends CI_Controller {
 				// $data['pics']=  $this->Product_model->select($id,'product_images');
 				$data['cartIvalue'] = $this->cart->contents();
 				$data['category']=  $this->Common_model->select('category');
-				$data['article_data']=  $this->article_model->select_article_data();
+				$data['article_data'] =  $this->article_model->select_article_data();
+			//	print_r($data['article_data']);exit;
 				$data['product']=  $this->Product_model->getProductList();
 				$data['Best_Sell_product']=  $this->Product_model->select_best_product('Best_Sell','products');
 				$data['on_Sell_product']=  $this->Product_model->select_best_product('On_Sell','products');
@@ -55,14 +56,14 @@ class Home extends CI_Controller {
 		$data['carousel_suit'] = $this->Common_model->select_carousel_by_type('suit');
 		$data['carousel_dupatta'] = $this->Common_model->select_carousel_by_type('dupatta');
 		$data['carousel_lehenga'] = $this->Common_model->select_carousel_by_type('lehenga');
-		
+
 		$data['main_content'] = $this->load->view('home', $data, true);
 		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
 		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
 		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
 		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
 		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
-		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');	
+		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
         $this->load->view('index', $data);
     }
 

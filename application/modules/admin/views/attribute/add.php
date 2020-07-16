@@ -14,10 +14,7 @@
     </div>
     <!-- /Breadcrumb -->
   </div>
-  <div class="span4 text-right">
-    <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
-  </div><br>
-  <hr class="light-grey-hr" />
+
   <!-- /Title -->
   <div id="addnew" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
     <div class="modal-dialog" role="document ">
@@ -59,6 +56,9 @@
           <div class="pull-left">
             <h6 class="panel-title txt-dark">Attribute List</h6>
           </div>
+          <div class="span4 pull-right">
+            <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
+          </div>
           <div class="clearfix"></div>
         </div>
         <div class="panel-wrapper collapse in">
@@ -71,7 +71,7 @@
                   </caption>
                   <tr>
                     <th>S.No</th>
-                    <th>Id</th>
+
                     <th>Name</th>
                     <th>Created at</th>
                     <th>Setting</th>
@@ -80,11 +80,11 @@
                   foreach ($attribute as $row) { ?>
                     <tr>
                       <td> <?php echo $i ?></td>
-                      <td><?php echo $row['id'] ?></td>
+
                       <td><?php echo $row['name'] ?></td>
                       <td><?php echo $row['created_at'] ?></td>
-                      <td> <a data-target="<?php echo '#' . $row['id'];  ?>" title="Edit" class="pd-setting-ed btn btn-primary text-center tip" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $row['id']; ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                      <td> <a data-target="<?php echo '#' . $row['id'];  ?>" title="Edit" class="pd-setting-ed text-center tip" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;color:#007bff;"></i></a>
+                        &nbsp;&nbsp;<a title="Trash" class="pd-setting-ed " onclick="delete_detail(<?php echo $row['id']; ?>)"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:20px;color:red;"></i></a></td>
                     </tr>
 
                     <div id="<?php echo $row['id']; ?>" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">

@@ -10,19 +10,13 @@
     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
       <ol class="breadcrumb">
       <li><a href="<?php echo base_url('admin/Dashboard')?>">Dashboard</a></li>
-      <li  class="active"><span>All Video</span></li>
+      <li  class="active"><span>Image Gallery</span></li>
       <!-- <li class="active"><span>data-table</span></li> -->
       </ol>
-
     </div>
-
-
     <!-- /Breadcrumb -->
   </div>
 
-<hr class="light-grey-hr" />
-<div class="single-pro-review-area mt-t-30 mg-b-15">
-  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="product-payment-inner-st">
@@ -30,7 +24,7 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <ul id="filters" class="col-md-5">
                   <li>
-                    <a href="<?php echo base_url('admin/media/add'); ?>"><button type="button" name="button" class="btn btn-primary">Add New</button></a>
+                    <a href="<?php echo base_url('admin/media/add'); ?>">Add New</a>
                   </li>
                   <li>
                     <select class="form-control" name="mediatype">
@@ -39,12 +33,10 @@
                       <option value="other">Other</option>
                     </select>
                   </li>
-
-
                   <li>
                     <button type="button" name="refresh" class="btn btn-default btn-md" title="Refrash"> <i class="fa fa-refresh" aria-hidden="true"></i> </button>
                   </li>
-                      </ul>
+                </ul>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="breadcome-heading pull-right">
@@ -66,7 +58,7 @@
         </div>
     </div>
   </div>
-</div>
+
 </div>
 <style media="screen">
 .blur-up {

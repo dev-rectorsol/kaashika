@@ -17,7 +17,7 @@ class Social extends CI_Controller {
 	}
   public function index(){
 		$data= array();
-		$data['page'] ='Slider';
+		$data['page'] ='Social Icon';
 		$data['social'] = json_decode($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value, true);
 		$data['main_content']= $this->load->view('setting/social',$data, true);
 		$this->load->view('index',$data);

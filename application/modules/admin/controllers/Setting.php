@@ -111,7 +111,7 @@ class setting extends CI_Controller {
 	// Add contact Us details
 	public function contact(){
 		$data= array();
-		$data['page'] ='Slider';
+		$data['page'] ='Footer contact';
 		$data['contact'] = json_decode($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value, true);
 		$data['main_content']= $this->load->view('setting/contact',$data, true);
 		$this->load->view('index',$data);
@@ -274,7 +274,7 @@ class setting extends CI_Controller {
 		// Add logo
 		public function logo(){
 			$data= array();
-			$data['page'] ='Slider';
+			$data['page'] ='Logo';
 			$data['app_logo'] = json_decode($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value, true);
 			$data['main_content']= $this->load->view('setting/add_logo',$data, true);
 			$this->load->view('index',$data);
@@ -282,7 +282,7 @@ class setting extends CI_Controller {
 		public function addlogo(){
 			if($_POST){
 				$logo=$this->security->xss_clean($_POST);
-				//echo print_r($slider);exit;
+				// echo print_r($logo);exit;
 				$data = [
 					'discription' => $logo['discription'],
 					'source' => $logo['featureImage']
@@ -307,11 +307,11 @@ class setting extends CI_Controller {
 		public function editlogo($id){
 			if($_POST){
 				$pp_title=$this->security->xss_clean($_POST);
-				//echo print_r($slider);exit;
-				$data = [
-					'discription' => $pp_title['discription'],
-					'source' => $pp_title['featureImage']
-				];
+			echo print_r($pp_title);exit;
+			$data = [
+				'discription' => $logo['discription'],
+				'source' => $logo['featureImage']
+			];
 				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '[]';
 				$arr_data = json_decode($contact_value, true);
 				unset($arr_data[$id]);

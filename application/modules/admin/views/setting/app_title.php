@@ -15,10 +15,8 @@
 				</div>
 				<!-- /Breadcrumb -->
 			</div>
-			<div class="span4 text-right">
-				 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
-		 </div><br>
-   <hr class="light-grey-hr" />
+
+
 			<!-- /Title -->
 			 <div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 				<div class="modal-dialog" role="document ">
@@ -60,8 +58,11 @@
 					<div class="panel panel-default card-view">
 						<div class="panel-heading">
 							<div class="pull-left">
-								<h6 class="panel-title txt-dark">product List</h6>
+								<h6 class="panel-title txt-dark">Title</h6>
 							</div>
+							<div class="span4 pull-right">
+								 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
+						 </div>
 							<div class="clearfix"></div>
 						</div>
 						<div class="panel-wrapper collapse in">
@@ -76,7 +77,7 @@
                    <!-- <th data-field="state" data-checkbox="true"></th> -->
                    <th>Title</th>
 
-                   <th class="text-center">Image</th>
+                   <th class="text-center">Favicon Icon</th>
 
                    <th data-field="action">Action</th>
                  </tr>
@@ -90,8 +91,8 @@
                      </td>
 
                      <td>
-                       <a  href="<?php echo '#'.$key; ?>" data-toggle="modal"  data-original-title="Edit"> <button type="button"   class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
-                       <button type="button" class="btn btn-danger" onclick="delete_detail('<?php echo $key; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                       <a  href="<?php echo '#'.$key; ?>" data-toggle="modal"  data-original-title="Edit"> <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;color:#007bff;"></i> </a>
+                       <a onclick="delete_detail('<?php echo $key; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"  style="font-size:20px;color:red;"></i></a>
                      </td>
 
                    </tr>
@@ -104,7 +105,7 @@
                          action="<?php echo base_url('admin/setting/edittitle/').$key?>"
                          name="basic_validate" id="basic_validate" novalidate="novalidate">
                          <div class="modal-header header-color-modal bg-color-1 ">
-                           <h4 class="modal-title">Edit slider</h4>
+                           <h4 class="modal-title">Edit Title</h4>
                            <div class="modal-close-area modal-close-df">
                              <a class="close" data-dismiss="modal" href="#"><i
                                  class="fa fa-close"></i></a>
@@ -119,7 +120,7 @@
 
 															 <span id="addfeaturepreview" ></span>
 															 <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
-															 <button id="addfeatureimage" type="button" class="btn btn-link" style="color:blue" name="button">Add Slider image</button>
+															 <button id="addfeatureimage" type="button" class="btn btn-link" style="color:blue" name="button">Favicon Icon</button>
 
 			                         <div class="modal-footer">
 																   <span id="msg" style="color: red;"></span>

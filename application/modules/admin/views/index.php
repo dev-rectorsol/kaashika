@@ -111,15 +111,18 @@
 							<li>
 								<a href="<?php echo base_url('admin/Homepage/technique') ?>">Technique</a>
 							</li>
+							<li>
+								<a href="<?php echo base_url('admin/setting/slider') ?>">Add Slider</a>
+							</li>
 						</ul>
 					</li>
 					<li>
-						<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr">
+						<a href="javascript:void(0)" data-toggle="collapse" data-target="#media">
 							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Media</span></div>
 							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
 							<div class="clearfix"></div>
 						</a>
-						<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+						<ul id="media" class="collapse collapse-level-1 two-col-list">
 							<li>
 								<a href="<?php echo base_url('admin/Media/add') ?>">Add New</a>
 							</li>
@@ -131,7 +134,6 @@
 					<li>
 						<a href="<?php echo base_url('admin/Category') ?>" data-toggle="collapse" data-target="#form_dr">
 							<div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Category</span></div>
-
 							<div class="clearfix"></div>
 						</a>
 
@@ -140,23 +142,22 @@
 					<li>
 						<a href="<?php echo base_url('admin/Tags') ?>" data-toggle="collapse" data-target="#table_dr">
 							<div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tags</span></div>
-
 							<div class="clearfix"></div>
 						</a>
 
 					</li>
 					<li>
 						<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr1">
-							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Article</span></div>
+							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Blog</span></div>
 							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
 							<div class="clearfix"></div>
 						</a>
 						<ul id="ui_dr1" class="collapse collapse-level-1 two-col-list">
 							<li>
-								<a href="<?php echo base_url('admin/Article') ?>">Add Article</a>
+								<a href="<?php echo base_url('admin/Article') ?>">Add Post</a>
 							</li>
 							<li>
-								<a href="<?php echo base_url('admin/Article/View') ?>">Show List</a>
+								<a href="<?php echo base_url('admin/Article/View') ?>">Show Post List</a>
 							</li>
 
 						</ul>
@@ -189,20 +190,18 @@
 							<div class="clearfix"></div>
 						</a>
 						<ul id="setting" class="collapse collapse-level-1 two-col-list">
+
 							<li>
-								<a href="<?php echo base_url('admin/setting/slider') ?>">Add Slider</a>
+								<a href="<?php echo base_url('admin/Social') ?>">Social icon</a>
 							</li>
 							<li>
-								<a href="<?php echo base_url('admin/Social') ?>">Add Social icon</a>
+								<a href="<?php echo base_url('admin/setting/contact') ?>">Footer Contact</a>
 							</li>
 							<li>
-								<a href="<?php echo base_url('admin/setting/contact') ?>">Add Contact</a>
+								<a href="<?php echo base_url('admin/setting/title') ?>">Application Title</a>
 							</li>
 							<li>
-								<a href="<?php echo base_url('admin/setting/title') ?>">Add Application Title</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('admin/setting/logo') ?>">Add Application Logo</a>
+								<a href="<?php echo base_url('admin/setting/logo') ?>"> Logo</a>
 							</li>
 
 						</ul>

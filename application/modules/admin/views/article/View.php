@@ -26,7 +26,7 @@
 					<div class="panel panel-default card-view">
 						<div class="panel-heading">
 							<div class="pull-left">
-								<h6 class="panel-title txt-dark">Article List</h6>
+								<h6 class="panel-title txt-dark">Blog List</h6>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -40,18 +40,20 @@
 											 </caption>
 											 <tr>
 													<!-- <th data-field="state" data-checkbox="true"></th> -->
+													<th>S.No</th>
 													<th>Title</th>
-													<th>Category</th>
+
 													<th>Status</th>
 													<th>Created</th>
 													<th>Date</th>
 													<th data-field="action">Action</th>
 										 	</tr>
-											<?php foreach ($articles as $value): ?>
+											<?php $i=1; foreach ($articles as $value): ?>
 												<tr>
-													<!-- <td></td> -->
+
+													<td><?php echo $i; ?></td>
 													<td><?php echo $value['title'] ?></td>
-													<td><?php ?></td>
+
 													<td>
 														<?php if ($value['is_publish']): ?>
 															<span>Publish</span>
@@ -63,11 +65,11 @@
 													<td><?php echo my_date_show($value['created_at']) ?></td>
 
 													<td>
-													 	 <a class="text-center tip btn btn-primary" onclick="Edit_detail(<?php echo $value['id'] ;?>)"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
-														 <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $value['id'] ;?>)"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
+													 	 <a class="pd-setting-ed" onclick="Edit_detail(<?php echo $value['id'] ;?>)"><i class="fa fa-pencil-square-o " aria-hidden="true" style="font-size:20px;color:#007bff;"></i></a>
+														 <a title="Trash" class="pd-setting-ed " onclick="delete_detail(<?php echo $value['id'] ;?>)"><i class="fa fa-trash-o " aria-hidden="true" style="font-size:20px;color:red;"></i></a>
 													</td>
 												</tr>
-											<?php endforeach; ?>
+											<?php $i++; endforeach; ?>
 
 							 </table>
 									</div>

@@ -14,15 +14,11 @@
         </div>
         <!-- /Breadcrumb -->
     </div>
-    <div class="span4 text-right">
-        <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
-    </div><br>
-    <hr class="light-grey-hr" />
+
     <!-- /Title -->
     <div id="addnew" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
         <div class="modal-dialog" role="document ">
             <div class="modal-content">
-
                 <form action="<?php echo base_url('admin/Homepage/Add_menu') ?>" method="POST">
                     <div class="modal-header header-color-modal bg-color-1  ">
                         <h4>Add Menu Item </h4>
@@ -74,13 +70,16 @@
                                 <div class="pull-left">
                                     <h6 class="panel-title txt-dark">Menu List</h6>
                                 </div>
+                                <div class="span4 pull-right">
+                                    <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
+                                </div>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-wrapper collapse in">
                                 <div class="panel-body">
                                     <div class="table-wrap">
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-bordered">
+                                            <table id="datable_1" class="table table-hover display  pb-30" >
                                                 <caption>
                                                     <!-- <h4> User  List</h4> -->
                                                 </caption>
@@ -193,9 +192,8 @@
                                             <div id="shop" class="tab-pane fade active in" role="tabpanel">
                                                 <div class="container-fluid">
                                                     <div class="table-wrap">
-
                                                         <div class='table-responsive'>
-                                                            <table class="table  table-bordered ">
+                                                            	<table id="datable_1" class="table table-hover display  pb-30" >
                                                                 <thead>
                                                                     <tr>
                                                                         <th>Title</th>
@@ -411,5 +409,5 @@
 
         }
     }
-   
+
 </script>

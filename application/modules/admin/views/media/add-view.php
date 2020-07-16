@@ -13,14 +13,11 @@
 					<li  class="active"><span><?php echo $page?></span></li>
 					<!-- <li class="active"><span>data-table</span></li> -->
 					</ol>
-
 				</div>
-
-
 				<!-- /Breadcrumb -->
 			</div>
 
-<hr class="light-grey-hr" />
+		<div class="row">
        <div class="col-sm-12 ol-md-12 col-xs-12">
 							<div class="panel panel-default card-view">
 								<div class="panel-heading">
@@ -45,3 +42,4 @@
 							</div>
 						</div>
           </div>
+				</div>

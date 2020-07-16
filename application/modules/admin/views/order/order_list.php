@@ -16,7 +16,7 @@
 				<!-- /Breadcrumb -->
 			</div>
 
-    <hr class="light-grey-hr" />
+
 			<!-- /Title -->
 			<!-- Row -->
 			<div class="row">
@@ -53,21 +53,21 @@
 									 <td><?php echo my_date_show($row['created']) ?></td>
 
 								  <td><?php if($row['status']==1){?>
-										<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>"  class=" btn btn-primary">Created</a>
+										<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>"  class=" " style="color:#007bff;">Created</a>
 									   <?php	}elseif($row['status']==2){?>
-										<a href="<?php echo base_url('admin/order/update_status2/').$row['id'] ?>"  class=" btn btn-success">Accepted</a>
+										<a href="<?php echo base_url('admin/order/update_status2/').$row['id'] ?>"  class=" " style="color:#28a745;">Accepted</a>
 									<?php	}elseif($row['status']==3){?>
-									<a href="<?php echo base_url('admin/order/update_status3/').$row['id'] ?>"  class=" btn btn-warning">pending</a>
+									<a href="<?php echo base_url('admin/order/update_status3/').$row['id'] ?>"  class="" style="color:#ffc107;"> pending</a>
 
 									<?php }else{?>
-										<a href="#"  class="btn btn-danger">Cancle</a>
+										<a href="#"  class="" style="color:#dc3545;">Cancle</a>
 
 							<?php		} ?>
 							 </td>
 									<td><a href="<?php echo base_url('admin/order/invoice/').$row['id']?>" class="btn btn-primary "><i class="fa fa-print" aria-hidden="true"></i></a></td>
 
-									 <td> <a title="Trash" class="btn btn-danger" onclick="delete_detail(<?php echo $row['id'] ;?>)">
-											<i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+									 <td> <a title="Trash" class="" onclick="delete_detail(<?php echo $row['id'] ;?>)">
+											<i class="fa fa-trash-o" aria-hidden="true" style="font-size:20px;color:red;"></i></a></td>
 
 
 

@@ -74,7 +74,7 @@
                                                 <div class="col-sm-3">
                                                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
-                                                    <input name="submit" type="submit" class="form-control btn btn-info">
+                                                    <input name="submit" type="submit" class="form-control btn btn-primary">
 
                                                 </div>
                                             </div>
@@ -129,10 +129,10 @@
                                                                 }  ?></td>
                                                             <td><?php echo $row['created_at'] ?></td>
                                                             <td>
-                                                                <a title="Trash" class="pd-setting-ed btn btn-danger" onclick="delete_detail(<?php echo $row['collection_id']; ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                                <a title="Trash" class="pd-setting-ed " onclick="delete_detail(<?php echo $row['collection_id']; ?>)"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:20px;color:red;"></i></a></td>
                                                         </tr>
 
-                                                      
+
                                                     <?php
                                                         $i++;
                                                     } ?>

@@ -16,12 +16,10 @@
 				</div>
 				<!-- /Breadcrumb -->
 			</div>
-			<div class="span4 text-right">
-				 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
-		 </div><br>
-   <hr class="light-grey-hr" />
+
+
 			<!-- /Title -->
-			 <div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+			 <!-- <div id="addnew"	class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
 				<div class="modal-dialog" role="document ">
 					<div class="modal-content">
 
@@ -54,7 +52,7 @@
         </form>
 						</div>
 				 </div>
-			</div>
+			</div> -->
 
 			<!-- Row -->
 			<div class="row">
@@ -62,8 +60,11 @@
 					<div class="panel panel-default card-view">
 						<div class="panel-heading">
 							<div class="pull-left">
-								<h6 class="panel-title txt-dark">product List</h6>
+								<h6 class="panel-title txt-dark">Footer Contact List</h6>
 							</div>
+							<!-- <div class="span4 text-right">
+								 <a href="#addnew" class="btn btn-primary addNewbtn" data-toggle="modal">Add New</a>
+						 </div> -->
 							<div class="clearfix"></div>
 						</div>
 						<div class="panel-wrapper collapse in">
@@ -90,9 +91,9 @@
                      <td><?php echo $value['phone'] ?></td>
 
                      <td>
-                       <a  href="<?php echo '#'.$key; ?>" data-toggle="modal"  data-original-title="Edit"> <button type="button"   class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
+                       <a  href="<?php echo '#'.$key; ?>" data-toggle="modal"  data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;color:#007bff;"></i> </a>
 
-                       <button type="button" class="btn btn-danger" onclick="delete_detail('<?php echo $key; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                       <a  class="" onclick="delete_detail('<?php echo $key; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:20px;color:red;"></i></a>
                      </td>
                    </tr>
 

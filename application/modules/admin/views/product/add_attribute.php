@@ -16,10 +16,7 @@
 		</div>
 		<!-- /Breadcrumb -->
 	</div>
-
-	<hr class="light-grey-hr" />
-
-
+<div class="row">
 	<div class="col-sm-12">
 		<div class="panel panel-default card-view">
 
@@ -33,10 +30,9 @@
 							href="#attributes" aria-expanded="true">Product Attributes</a></li>
 					<li role="presentation" class=""><a data-toggle="tab" id="profile_tab_6" role="tab" href="#tagstab"
 							aria-expanded="true">Tags & Category</a></li>
-
 				</ul>
-
 			</div>
+
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
 
@@ -218,6 +214,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <!-- /Main Content -->
 <script>

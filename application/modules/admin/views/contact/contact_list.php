@@ -16,12 +16,9 @@
 					</ol>
 
 				</div>
-
-
 				<!-- /Breadcrumb -->
 			</div>
 
-<hr class="light-grey-hr" />
 			<!-- /Title -->
 
 
@@ -64,7 +61,7 @@
 									 <td><?php echo $row['message'] ?></td>
 									 <td>
 									 	<?php if($row['status']=='New'){?>
-									 <a href="<?php echo base_url('admin/Contact/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:red;font-weight: bold; " class="text-center tip "><?php echo $row['status'] ?></a>
+									 <a href="<?php echo base_url('admin/Contact/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:green;font-weight: bold; " class="text-center tip "><?php echo $row['status'] ?></a>
 
 									 <?php	}else{	?>
 
@@ -72,8 +69,8 @@
 									 </td>
 
 									 <td>
-									<a title="Trash" class="btn btn-danger" onclick="delete_detail(<?php echo $row['id'] ;?>)">
-										<i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+									<a title="Trash" class="" onclick="delete_detail(<?php echo $row['id'] ;?>)">
+										<i class="fa fa-trash-o" aria-hidden="true" style="font-size:20px;color:red;"></i></a></td>
 								 </tr>
 
 

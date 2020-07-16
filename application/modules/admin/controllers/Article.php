@@ -18,7 +18,7 @@ class Article extends CI_Controller {
 	public function index()
 	{
 		$data= array();
-    $data['page'] ='article';
+    $data['page'] ='Blog';
     $data['tag']=  $this->common_model->select('tags');
 		$data['category']=  $this->common_model->select('category');
 		$data['main_content']= $this->load->view('article/add',$data, true);
@@ -74,7 +74,7 @@ class Article extends CI_Controller {
 
 		public function View()
 		{
-			$data['page'] ='article';
+			$data['page'] ='Blog';
 			$data['articles']=  $this->article_model->select_published();
 			$data['main_content']= $this->load->view('article/View',$data, true);
 			$this->load->view('index',$data);
@@ -83,7 +83,7 @@ class Article extends CI_Controller {
 
 		public function edit($id){
 			$data = array();
-			$data['page'] = 'Edit Article';
+			$data['page'] = 'Edit Blog';
 
 			$data['tag']=  $this->common_model->select('tags');
 			$data['category']=  $this->common_model->select('category');
@@ -151,7 +151,7 @@ class Article extends CI_Controller {
 
      public function viewDraft()
 	{
-	 $data['page'] ='article';
+	 $data['page'] ='Blog';
 
         $data['article']=  $this->article_model->select_draft();
         $data['main_content']= $this->load->view('article/ViewDraft',$data, true);
