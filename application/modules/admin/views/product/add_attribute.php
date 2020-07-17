@@ -75,21 +75,18 @@
 
 											<input type="text" name="quantity" class="form-control input-sm"
 												placeholder="Quantity">
-
 										</div>
-
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 control-label " for="example-input-small">
 											Discount</label>
 										<div class="col-sm-9">
-
 											<input type="text" name="discount" class="form-control input-sm"
 												placeholder="Discount">
-
 										</div>
-
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 control-label " for="example-input-small"> Product
 											image</label>

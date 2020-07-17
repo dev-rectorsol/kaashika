@@ -45,10 +45,16 @@ class Home extends CI_Controller {
 				// $data['pics']=  $this->Product_model->select($id,'product_images');
 				$data['cartIvalue'] = $this->cart->contents();
 				$data['category']=  $this->Common_model->select('category');
+<<<<<<< HEAD
 				$data['article_data'] =  $this->article_model->select_article_data();
 			//	print_r($data['article_data']);exit;
 				$data['product']=  $this->Product_model->getProductList();
 				$data['Best_Sell_product']=  $this->Product_model->select_best_product('Best_Sell','products');
+=======
+        $data['article_data']=  $this->article_model->select_article_data();
+        $data['product']=  $this->Product_model->getProductList();
+        $data['Best_Sell_product']=  $this->Product_model->select_best_product('Best_Sell','products');
+>>>>>>> a43d7ce1d37f104f8c7f67c95ea3f9860b9295cd
 				$data['on_Sell_product']=  $this->Product_model->select_best_product('On_Sell','products');
 				$data['testimonial']=  $this->Common_model->select('testimonial');
 				$data['category_data']=  $this->Common_model->select_limit_value('category');

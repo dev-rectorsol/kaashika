@@ -53,9 +53,9 @@ class Shop_model extends CI_Model{
     $query = $this->db->get();
     //print_r($query->num_rows()) ;exit;
     return $query->num_rows();
-    
+
   }
-  
+
 
     function select_attr_color($id,$name,$type,$table){
 

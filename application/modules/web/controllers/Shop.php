@@ -11,7 +11,7 @@ class Shop extends CI_Controller {
 			$this->load->model('Product_model');
 		$this->load->model('Homepage_model');
 			$this->load->library('cart');
-		
+
 		$this->load->library("pagination");
 		$this->load->helper('url');
 		//Do your magic here
@@ -58,7 +58,7 @@ class Shop extends CI_Controller {
 							$data1['order'] = 'desc';
 								}else{
 						$data1['groupby'] = 'created_at';
-						$data1['order'] = 'desc';	
+						$data1['order'] = 'desc';
 								}
 					} else {
 						$data1['groupby'] = 'created_at';
@@ -101,7 +101,7 @@ class Shop extends CI_Controller {
 	         		$data['weaving']=  $this->Shop_model->select_attr_name('attribute','Weaving');
 					 $data['category']=  $this->Common_model->select('category');
 					 if($_POST){
-					$this->load->view('shop/list', $data); 
+					$this->load->view('shop/list', $data);
 					 }else{
 			$data['content'] = $this->load->view('shop/list', $data, true);
 			$data['main_content'] = $this->load->view('shop/shop', $data, true);
@@ -113,7 +113,7 @@ class Shop extends CI_Controller {
 			$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
 			$this->load->view('index', $data);
 					 }
-	       
+
 	    }
 
 			function color()
@@ -140,9 +140,9 @@ class Shop extends CI_Controller {
 			if (isset($_POST['max']) && isset($_POST['min']) && $_POST['max'] != ''&& $_POST['min'] != '') {
 				$data['max'] = $this->input->post('max');
 				$data['min'] = $this->input->post('min');
-			}	
-			
-				
+			}
+
+
 				$data['id']=$this->input->post('id');
 
 				if($data['searchtype']=='search')
@@ -227,7 +227,7 @@ class Shop extends CI_Controller {
 
 			public function product_details($id){
 				$data = array();
-		
+
 		// echo $id1;exit;
 		if ($_POST) {
 			if ($_POST['sort'] == 'New') {
@@ -363,9 +363,9 @@ public function pagination_Config($id)
 		$config["uri_segment"] = 5;
 		// $config['use_page_numbers'] = TRUE;
 		$config['num_links'] =5;
-		
+
 		$config['display_pages'] = TRUE;
-		
+
 		$config['next_link']        = 'Next <i class="pe-7s-angle-right"></i>';
 		$config['prev_link']        = 'Prev <i class="pe-7s-angle-left"></i>';
 		$config['first_link']       = 'First';
@@ -386,7 +386,7 @@ public function pagination_Config($id)
 		$config['num_tag_open']     = '<li class="page-item">';
 		$config['num_tag_close']    = '</li>';
 		$this->pagination->initialize($config);
-		
+
 		return $config;
 	}
 
