@@ -11,7 +11,7 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="icon" href="<?php echo base_url('optimum'); ?>/favicon.ico" type="image/x-icon">
-
+ 
 <!-- Summernote css -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>vendors/bower_components/summernote/dist/summernote.css" />
 	<!-- Morris Charts CSS -->

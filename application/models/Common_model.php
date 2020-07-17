@@ -69,7 +69,7 @@ public function __construct()
           }
 
        }
-  
+
         public function get_otp($data){
 
             $this->db->select('*');
@@ -447,4 +447,33 @@ function getMaxUserId(){
           ];
           return $this->db->insert($table, $data);
         }
+        public function get_count($table, $filetype) {
+    $this->db->select("COUNT(*) AS count")->from($table);
+    foreach ($filetype as  $value) {
+      $this->db->or_where('filetype', $value);
+    }
+    $this->db->where('deleted', 0);
+    $result = $this->db->get();
+   return !empty($result->row()) ? $result->row()->count : 0;
+ }
+
+  public function get_table_count($table) {
+    $this->db->select("COUNT(*) AS count")->from($table);
+    $result = $this->db->get();
+   return !empty($result->row()) ? $result->row()->count : 0;
+ }
+
+    public function gallerys($limit, $start) {
+    $this->db->select('id, details');
+    $this->db->from('gallery');
+    // print_r(DOC_EXT);exit;
+    foreach(IMAGE_EXT as  $value) {
+      $this->db->or_where('filetype', $value);
+    }
+    $this->db->order_by('id', 'DESC');
+    $this->db->limit($limit, $start);
+    $query = $this->db->get();
+   return $query->result_array();
+  }
+
 }

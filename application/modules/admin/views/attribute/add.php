@@ -100,8 +100,8 @@
                             <div class="modal-body">
                               <div class="widget-content nopadding">
                                 <div class="form-group row">
-                                  <label class="control-label col-sm-3">Attribute</label>
-                                  <div class="col-sm-9">
+                                
+                                  <div class="col-sm-12">
                                     <input type="text" class="form-control" name="name" value="<?php echo $row['name'] ?>" id="required">
                                   </div>
 

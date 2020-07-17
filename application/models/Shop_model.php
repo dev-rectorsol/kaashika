@@ -58,7 +58,6 @@ class Shop_model extends CI_Model{
 
 
     function select_attr_color($id,$name,$type,$table){
-
         $this->db->select();
         $this->db->from($table);
         $this->db->where('port',$id);
