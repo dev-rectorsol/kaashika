@@ -10,7 +10,7 @@
 				<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 					<ol class="breadcrumb">
 					<li><a href="<?php echo base_url('admin/Dashboard')?>">Dashboard</a></li>
-					<li  class="active"><span><?php echo $page?></span></li>
+					<!-- <li  class="active"><span><?php echo $page?></span></li> -->
 					<!-- <li class="active"><span>data-table</span></li> -->
 					</ol>
 				</div>
@@ -28,7 +28,7 @@
 								</div>
                 <div class="dropzone-pro">
                     <div id="dropzone" class="multi-uploader-cs">
-                        <form action="<?php echo base_url('file_upload') ?>" class="dropzone dropzone-custom needsclick" id="demo-upload" enctype="multipart/form-data">
+                        <form  id="file_upload"  class="dropzone dropzone-custom needsclick" enctype="multipart/form-data">
                             <div class="dz-message needsclick download-custom">
                                 <i class="fa fa-cloud-download" aria-hidden="true"></i>
                                 <h2>Drop files here or click to upload.</h2>

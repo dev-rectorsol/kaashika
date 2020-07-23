@@ -6,7 +6,7 @@
  * @purpose      File Helper
  */
 
-if(! function_exists("getFileInfo")) {
+if(!function_exists("getFileInfo")) {
 
   function getFileInfo($filename = '') {
     if (file_exists($filename)) {

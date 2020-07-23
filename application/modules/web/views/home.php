@@ -72,7 +72,7 @@
                 <div class="product-carousel-4_2 slick-row-10 slick-arrow-style">
                     <!-- product item start -->
                     <?php foreach ($product as $value) : ?>
-                        <div class="product-item" style="height:400px;">
+                        <div class="product-item" >
                             <figure class="product-thumb">
                                 <a href="<?php echo base_url('web/shop/product_details/') . $value['id'] ?>">
                                     <img class="pri-img" src="<?php echo base_url('/uploads/product/') . $value['profile_pic'] ?>" alt="product">

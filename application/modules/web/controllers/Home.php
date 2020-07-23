@@ -11,7 +11,7 @@ class Home extends CI_Controller {
 			$this->load->model('article_model');
 			$this->load->model('Product_model');
 			$this->load->model('Shop_model');
-		$this->load->model('Homepage_model');
+	  	$this->load->model('Homepage_model');
 
       $this->load->library('cart');
 		//Do your magic here
@@ -44,6 +44,7 @@ class Home extends CI_Controller {
 				// $data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
 				// $data['pics']=  $this->Product_model->select($id,'product_images');
 				$data['cartIvalue'] = $this->cart->contents();
+				// pre($data['cartIvalue'] );exit;
 				$data['category']=  $this->Common_model->select('category');
 				$data['article_data'] =  $this->article_model->select_article_data();
 			//	print_r($data['article_data']);exit;

@@ -33,6 +33,7 @@
                                            <th class="pro-thumbnail">Thumbnail</th>
                                            <th class="pro-title">Product</th>
                                            <th class="pro-price">Price</th>
+                                           <th class="pro-price">Tax</th>
                                            <th class="pro-quantity">Quantity</th>
                                            <th class="pro-subtotal">Subtotal</th>
                                            <th class="pro-remove">Remove</th>
@@ -47,6 +48,7 @@
                                   </td>
                                   <td><?php echo $item["name"]; ?></td>
                                   <td><?php echo '₹'.$item["price"]; ?></td>
+                                  <td><?php echo $item["gst"].'%'; ?></td>
                                   <td><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td>
                                   <td><?php echo '₹'.$item["subtotal"]; ?></td>
                                   <td  class="pro-remove">
@@ -74,7 +76,7 @@ function updateCartItem(obj, rowid){
 	$.get("<?php echo base_url('web/Collection/updateItemQty/'); ?>",
   {rowid:rowid, qty:obj.value},
    function(resp){
-    
+
 		if(resp){
 			location.reload();
 		}else{

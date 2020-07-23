@@ -1,3 +1,4 @@
+
 <?php include 'layout/css.php'; ?>
 <!-- Start Header Area -->
 
@@ -18,8 +19,9 @@
 							<?php endforeach; ?>
 						</div>
 					</div>
-					<!-- start logo area -->
 
+
+					<!-- start logo area -->
 					<!-- main menu area start -->
 					<div class="col-lg-6 position-static">
 						<div class="main-menu-area">
@@ -36,6 +38,14 @@
 													<ul><?php foreach ($Menu_shop_text as $row1) { ?>
 															<li><a href="<?php echo $row1['url'] ?>"><?php echo $row1['title'] ?></a></li>
 														<?php } ?>
+													</ul>
+												</li>
+												<li class="mega-title"><span>Clothing</span>
+													<ul><?php foreach ($category as $row) { ?>
+
+															<li><a href="<?php echo base_url('web/shop/shop_by_category/').$row['id'] ?>"><?php echo $row['name'] ?></a></li>
+
+                             <?php } ?>
 													</ul>
 												</li>
 												<?php foreach ($Menu_shop_image as $row) { ?>
@@ -107,7 +117,7 @@
 												<?php } ?>
 											</ul>
 										</li>
-										<li><a href="<?php echo base_url('web/home/about') ?>">Blog</a></li>
+										<!-- <li><a href="<?php echo base_url('web/home/about') ?>">Blog</a></li> -->
 										<li><a href="<?php echo base_url('web/home/about') ?>">About Us</a></li>
 									</ul>
 								</nav>
@@ -498,25 +508,28 @@
 					<ul>
 						<?php if ($this->cart->total_items() > 0) {
 							$sub_total = 0;
+							$gst=0;
 							foreach ($cartIvalue as $item) {
-
 								$data['cartIvalue'] = $item;
+
 								$sub_total = ($sub_total + $item['subtotal']);
+
+								$gst= $gst+ $item['gst'];
 							}  ?>
+
 							<li>
 								<span>sub-total</span>
 								<span><strong><?php echo '₹' . $sub_total; ?></strong></span>
 							</li>
 							<li>
-								<span>Tax (10%)</span>
-
-								<span><strong>₹10</strong></span>
+								<span>Tax </span>
+								<span><strong><?php echo $gst;?>%</strong></span>
 							</li>
 
 							<li class="total">
 								<span>total</span>
 								<?php $total = 0;
-								$total = $sub_total + 10 ?>
+								$total = $sub_total + $gst ?>
 
 								<span><strong><?php echo '₹' . $total; ?></strong></span>
 							</li>
@@ -526,7 +539,7 @@
 								<span><strong>0</strong></span>
 							</li>
 							<li>
-								<span>Tax (10%)</span>
+								<span>Tax </span>
 
 								<span><strong>₹10</strong></span>
 							</li>

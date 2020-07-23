@@ -76,20 +76,7 @@
                     <div class="manufacturer-name">
                         <a href="product-details.html">kashika</a>
                     </div>
-                    <ul class="color-categories">
-                        <li>
-                            <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                        </li>
-                        <li>
-                            <a class="c-darktan" href="#" title="Darktan"></a>
-                        </li>
-                        <li>
-                            <a class="c-grey" href="#" title="Grey"></a>
-                        </li>
-                        <li>
-                            <a class="c-brown" href="#" title="Brown"></a>
-                        </li>
-                    </ul>
+                  
 
                     <h5 class="product-name"><a href="<?php echo base_url('web/shop/product_details/') . $value['id'] ?>"><?php echo $value['name'] ?></a></h5>
                     <div class="price-box">

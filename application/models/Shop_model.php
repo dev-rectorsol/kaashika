@@ -29,7 +29,7 @@ class Shop_model extends CI_Model{
         return $query->result_array();
     }
     function select($data,$type,$table){
-      //echo $id;
+
         $this->db->select();
         $this->db->from($table);
         $this->db->limit($data['per_page'], $data['page']);
@@ -37,6 +37,17 @@ class Shop_model extends CI_Model{
         $this->db->where('type',$type);
         $this->db->join('products','products.id=indexing.root','inner');
          $this->db->order_by($data['groupby'], $data['order']);
+        $query = $this->db->get();
+        //echo $this->db->last_query($query);exit;
+        $query = $query->result_array();
+        return $query;
+    }
+    function select_corosel($port,$type,$table){
+        $this->db->select();
+        $this->db->from($table);
+        $this->db->where('type',$type);
+        $this->db->where('port',$port);
+        $this->db->join('products','products.id=indexing.root','inner');
         $query = $this->db->get();
         //echo $this->db->last_query($query);exit;
         $query = $query->result_array();
@@ -72,16 +83,17 @@ class Shop_model extends CI_Model{
     }
 
     function select_attr_price($data){
-  //  echo   $data['type'];exit;
-       if(!isset($data['type'])){
+       if($data['type']=='price'){
+
         $this->db->select();
         $this->db->from('indexing');
         $this->db->where('port',$data['id']);
         $this->db->where('type','category');
-        $this->db->join('products','products.id=indexing.root','inner');
-        // $this->db->join(' product_attributes as p', 'indexing.root=p.product_id', 'inner');
         $this->db->where('products.price >=',$data['min'] );
         $this->db->where('products.price <=', $data['max']);
+        $this->db->join('products','products.id=indexing.root','inner');
+      //  $this->db->join(' product_attributes as p', 'indexing.root=p.product_id', 'inner');
+
     }else{
 
       $this->db->select();
@@ -122,7 +134,8 @@ elseif($data['type']=='Weaving'){
      $this->db->where('p.value', $data['weavingname']);
    }
 }
-}else{
+}
+else{
        $count =count($data['name']);
        for($i=0;$i<$count;$i++){
        $this->db->where('p.value', $data['name']);
@@ -140,6 +153,7 @@ elseif($data['type']=='Weaving'){
 
     function select_attr_name($table,$name){
       //echo $id;
+        $this->db->distinct();
         $this->db->select('product_attributes.value as fab_name');
         $this->db->from($table);
         $this->db->where('attribute.name',$name);
@@ -153,7 +167,7 @@ elseif($data['type']=='Weaving'){
 
     function select_product_details($id,$table){
       //echo $id;
-        $this->db->select('products.id,products.quantity,products.name,products.price,products.profile_pic,');
+        $this->db->select('products.id,products.quantity,products.name,products.price,products.profile_pic,products.gst,');
         $this->db->from($table);
         $this->db->where('products.id',$id);
         $this->db->join('indexing','products.id=indexing.root','left');

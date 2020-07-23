@@ -53,7 +53,7 @@
                                             <a href="<?php echo base_url('web/home')?>">kashika</a>
                                         </div>
                                         <h3 class="product-name"><?php echo $product_details['name'] ?></h3>
-                                        <div class="ratings d-flex">
+                                        <!-- <div class="ratings d-flex">
                                             <span><i class="fa fa-star-o"></i></span>
                                             <span><i class="fa fa-star-o"></i></span>
                                             <span><i class="fa fa-star-o"></i></span>
@@ -62,7 +62,7 @@
                                             <div class="pro-review">
                                                 <span>1 Reviews</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="price-box">
                                           <?php
                                           $total=$product_details['price'];
@@ -101,12 +101,7 @@
                                           <a  href="<?php echo base_url('web/Collection/wishlist/').$product_details['id']?>"  class="wishlist" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like wish"></i></a>
 
                                         </div>
-                                        <div class="like-icon">
-                                            <a class="facebook" href="#"><i class="fa fa-facebook"></i>like</a>
-                                            <a class="twitter" href="#"><i class="fa fa-twitter"></i>tweet</a>
-                                            <a class="pinterest" href="#"><i class="fa fa-pinterest"></i>save</a>
-                                            <a class="google" href="#"><i class="fa fa-google-plus"></i>share</a>
-                                        </div>
+                                        
                                     </div>
 
                                 </div>

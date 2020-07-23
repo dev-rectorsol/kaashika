@@ -375,12 +375,12 @@ class Cart {
 		foreach ($this->_cart_contents as $key => $val)
 		{
 			// We make sure the array contains the proper indexes
-			if ( ! is_array($val) OR ! isset($val['price']) OR ! isset($val['qty']))
+			if ( ! is_array($val) OR ! isset($val['price']) OR ! isset($val['qty']) OR ! isset($val['gst']))
 			{
 				continue;
 			}
 
-			$total += ($val['price'] * $val['qty']);
+			$total += ($val['price'] * $val['qty'] + $val['gst']);
 			$items += $val['qty'];
 
 			// Set the subtotal

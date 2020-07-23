@@ -43,7 +43,7 @@
                         <h5 class="sidebar-title">price</h5>
                         <div class="sidebar-body">
                             <div class="price-range-wrap" id="rang">
-                                <div class="price-range" data-min="100" data-max="5000"></div>
+                                <div class="price-range" data-min="1000" data-max="50000"></div>
                                 <div class="range-slider">
                                     <form action="#">
                                         <div class="price-input">
@@ -69,15 +69,10 @@
                         <h5 class="sidebar-title">color filter</h5>
                         <div class="sidebar-body">
                             <select name="color" class="color">
-                                <option value="red">select color</option>
-                                <option value="red">Red </option>
-                                <option value="green">green</option>
-                                <option value="blue">blue</option>
-                                <option value="yellow">yellow</option>
-                                <option value="orange">orange</option>
-                                <option value="purple">purple</option>
-                                <option value="maroon">maroon</option>
-                                <option value="pink">Pink</option>
+                                <<option>--select fabric--</option>
+                                <?php foreach ($color as $value) : ?>
+                                    <option value="<?php echo $value['fab_name']; ?>" style="text-transform:capitalize;"><?php echo $value['fab_name']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                             <input type="hidden" value="<?php echo $id; ?>" id="c_id">
                             <input type="hidden" value="Color" id="clr">
@@ -159,7 +154,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 col-md-6 order-1 order-md-2">
+                            <!-- <div class="col-lg-5 col-md-6 order-1 order-md-2">
                                 <div class="top-bar-right">
                                     <div class="product-short">
                                         <p>Sort By : </p>
@@ -174,7 +169,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- shop product top wrap start -->

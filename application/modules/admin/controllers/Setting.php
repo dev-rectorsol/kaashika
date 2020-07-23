@@ -282,11 +282,12 @@ class setting extends CI_Controller {
 		public function addlogo(){
 			if($_POST){
 				$logo=$this->security->xss_clean($_POST);
-				// echo print_r($logo);exit;
+				 // echo print_r($logo);exit;
 				$data = [
 					'discription' => $logo['discription'],
 					'source' => $logo['featureImage']
 				];
+				// pre($data);exit;
 				$logo_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '[]';
 				$arr_data = json_decode($logo_value, true);
 				array_push($arr_data, $data);
@@ -347,6 +348,14 @@ class setting extends CI_Controller {
 			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Title Deleted Done'));
 
 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
+		}
+
+		public function SettingData(){
+			$data= array();
+			$data['page'] ='Setting Data';
+			// $data['app_logo'] = json_decode($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value, true);
+			$data['main_content']= $this->load->view('setting/settingData',$data, true);
+			$this->load->view('index',$data);
 		}
 
 }

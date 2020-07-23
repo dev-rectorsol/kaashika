@@ -20,6 +20,7 @@ class Product extends CI_Controller {
 		$data= array();
     $data['page'] ='Products';
     $data['tag']=  $this->Common_model->select('tags');
+
     $data['product_data']=  $this->Common_model->select('products');
 		$data['attribute']=  $this->Common_model->select('attribute');
     $data['main_content']= $this->load->view('product/list',$data, true);
@@ -36,8 +37,9 @@ class Product extends CI_Controller {
 		$data['category_data']=  $this->Common_model->select('category');
 		$data['tag_data']=  $this->Common_model->select('tags');
 		$data['product_data']=  $this->Product_model->select_product($id,'products');
+		$data['gstValue']=  $this->Common_model->select('GST');
 		// echo "<pre>";
-		// print_r($data['product_data']);exit;
+		// print_r($data['gstValue']);exit;
 		$data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
 		$data['pics']=  $this->Product_model->select($id,'product_images');
 		$data['pro_id'] =$id;
@@ -52,6 +54,7 @@ class Product extends CI_Controller {
 		$data['page'] ='attribute';
 		$data['attribute']=  $this->Common_model->select('attribute');
 		$data['tag']=  $this->Common_model->select('tags');
+		$data['gstValue']=  $this->Common_model->select('GST');
 		$data['category']=  $this->Common_model->select('category');
 		$data['main_content']= $this->load->view('product/add_attribute',$data, true);
 		$this->load->view('index',$data);
@@ -92,6 +95,7 @@ class Product extends CI_Controller {
 			'price' => $data1['price'],
 			'quantity' => $data1['quantity'],
 			'discount' => $data1['discount'],
+			'gst' => $data1['gst'],
 			'handwoven' => $data1['radio'],
 			'profile_pic' => $pic,
 		];
@@ -216,6 +220,7 @@ class Product extends CI_Controller {
 			'price' => $data1['price'],
 			'quantity' => $data1['quantity'],
 			'discount' => $data1['discount'],
+			'gst' => $data1['gst'],
 			'profile_pic' => $pic,
 		];
 		  $this->Common_model->update($data,'id',$id,'products');
@@ -227,6 +232,7 @@ class Product extends CI_Controller {
 			'price' => $data1['price'],
 			'quantity' => $data1['quantity'],
 			'discount' => $data1['discount'],
+				'gst' => $data1['gst'],
 			// 'profile_pic' => $pic,
 		];
 		  $this->Common_model->update($data,'id',$id,'products');
@@ -324,7 +330,7 @@ class Product extends CI_Controller {
 		     	}
 					public function update_status2($id)
 		       	{
-            $data=array();
+                $data=array();
 								$data['product_data']=  $this->Product_model->select_product($id,'products');
 						   	foreach($data['product_data'] as $value){
 								$data['product_data']=$value;
@@ -336,8 +342,32 @@ class Product extends CI_Controller {
 										'status'=>'On_Sell'
 									];
 									}
-						$this->Common_model->update($data1,'id',$id,'products');
+						    $this->Common_model->update($data1,'id',$id,'products');
 		            redirect(base_url() . 'admin/Product', 'refresh');
 			     	}
+
+					public function Gst(){
+						{
+							$data= array();
+					    $data['page'] ='GST';
+						 $data['gstValue']=  $this->Common_model->select('GST');
+					    $data['main_content']= $this->load->view('gst/add',$data, true);
+							$this->load->view('index',$data);
+						}
+					}
+
+					public function EditGst($id)
+					{
+						if($_POST){
+					 $data1=$this->security->xss_clean($_POST);
+								 $gst=[
+										'gstName' => $data1['gstName'],
+										'gstValue' => $data1['gstValue'],
+								];
+
+								$this->Common_model->update($gst,'id',$id,'GST');
+								redirect(base_url() . 'admin/product/Gst', 'refresh');
+						}
+					}
 
 }

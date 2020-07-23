@@ -109,7 +109,7 @@
 	 									 <td><?php echo my_date_show($row['created']) ?></td>
 
 	 							   	<td><?php if($row['status']==1){?>
-	 									<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:red;font-weight: bold; " class="text-center tip ">New</a>
+	 									<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>" width="45px" height="20px" style="color:green;font-weight: bold; " class="text-center tip ">New</a>
 	 							  	<?php	}?></td>
 										</tr>
 										<?php $i++ ;	}?>

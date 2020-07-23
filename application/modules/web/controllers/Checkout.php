@@ -63,6 +63,7 @@ public function __construct()
         $ordData = array(
             'user_id' =>$this->session->userdata('userID'),
             'customer_id' => $custID,
+            'totalPrice'=> strip_tags($this->input->post('total')),
             'grand_total' => $this->cart->total()
         );
         $insertOrder = $this->Common_model->insert($ordData,'orders');
@@ -72,8 +73,6 @@ public function __construct()
             $cartItems = $this->cart->contents();
 
             // Cart items
-
-
                 foreach($cartItems as $item){
                 $ordItemData = array(
                   'user_id' =>$this->session->userdata('userID'),

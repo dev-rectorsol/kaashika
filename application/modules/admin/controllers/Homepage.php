@@ -20,11 +20,12 @@ class Homepage extends CI_Controller
     public function category()
     {
         $data = array();
-        $data['page'] = 'category list'; 
-        $data['saree'] =  $this->Shop_model->select(10, 'category', 'indexing');
-        $data['suit'] =  $this->Shop_model->select(7, 'category', 'indexing');
-        $data['Dupatta'] =  $this->Shop_model->select(8, 'category', 'indexing');
-        $data['Lehenga'] =  $this->Shop_model->select(9, 'category', 'indexing');
+        $data['page'] = 'category list';
+        $data['saree'] =  $this->Shop_model->select_corosel(10, 'category', 'indexing');
+        // pre($data['saree']);exit;
+        $data['suit'] =  $this->Shop_model->select_corosel(7, 'category', 'indexing');
+        $data['Dupatta'] =  $this->Shop_model->select_corosel(8, 'category', 'indexing');
+        $data['Lehenga'] =  $this->Shop_model->select_corosel(9, 'category', 'indexing');
         $data['carousel_saree'] = $this->Homepage_model->select_carousel_by_type('saree');
         $data['carousel_suit'] = $this->Homepage_model->select_carousel_by_type('suit');
         $data['carousel_dupatta'] = $this->Homepage_model->select_carousel_by_type('dupatta');
@@ -65,7 +66,7 @@ class Homepage extends CI_Controller
         $data['main_content'] = $this->load->view('homepage/technique/add', $data, true);
         $this->load->view('index', $data);
     }
-    
+
     public function Collection_Add()
     {
         if ($_POST) {
@@ -75,7 +76,7 @@ class Homepage extends CI_Controller
             $data1['sub_title'] = $data['subtitle'];
             if (isset($data['menu']) == 1) {
                  $data1['menu'] = 1;
-                
+
             } else {
                 $data1['menu'] = 0;
             }
@@ -87,9 +88,9 @@ class Homepage extends CI_Controller
                 $data2['url'] =  'Pages/collection/' . $id;
                 $this->Homepage_model->add_menu($data2);
             }
-            
+
             foreach($data['product'] as $row) {
-               
+
                 $data3['collection_id'] = $id;
                 $data3['product_id'] = $row;
                 $this->Homepage_model->insert($data3, 'collection_product');
@@ -120,7 +121,7 @@ class Homepage extends CI_Controller
                 $this->Homepage_model->add_menu($data2);
             }
 
-           
+
 
             redirect($_SERVER['HTTP_REFERER']);
         }
@@ -128,16 +129,16 @@ class Homepage extends CI_Controller
     public function Add($type)
     {
         if ($_POST) {
+        //  pre($_POST);exit;
             $data = $this->security->xss_clean($_POST);
-            for ($i=0; $i <10 ; $i++) { 
+
                 $data1['type']= $type;
-                $data1['sno']= $data['sno'][$i];
-                $data1['product_id'] = $data['product'][$i];
-                $this->Homepage_model->update_carousel($data1);
-            }
-           
+                // $data1['sno']= $data['sno'][$i];
+                $data1['product_id'] = $data['product'];
+                $this->Homepage_model->insert($data1,'carousel');
+            
             redirect($_SERVER['HTTP_REFERER']);
-        } 
+        }
     }
     public function Add_menu()
     {
@@ -190,10 +191,10 @@ class Homepage extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
-   
 
-    
-   
 
-   
+
+
+
+
 }

@@ -13,7 +13,7 @@
 <script>
 var options = {
     "key": "rzp_test_g4cR1PF0UL3rpl", // Enter the Key ID generated from the Dashboard
-    "amount": '<?php echo $order['grand_total']*100;?>', // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "amount": '<?php echo $order['totalPrice']*100;?>', // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": '<?php echo $title['title'];?>',
     "description": "Test Transaction",
@@ -28,7 +28,7 @@ var options = {
           var payment_id= response.razorpay_payment_id;
           var order_id ='<?php echo $order['id'];?>';
           var user_id ='<?php echo $order['customer_id'];?>';
-          var amount = '<?php echo $order['grand_total']*100;?>';
+          var amount = '<?php echo $order['totalPrice']*100?>';
           var email ='<?php echo $order['email'];?>';
           $.ajax({
               url: "<?php echo base_url('web/checkout/payment_url'); ?>",

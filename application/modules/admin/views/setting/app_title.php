@@ -37,7 +37,6 @@
                   </div>
 
                     <span id="addfeaturepreview" ></span>
-
                     <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
                     <button id="" type="button" class="addfeatureimage btn btn-link" style="color:blue" name="button">Add Slider image</button>
                     <div class="modal-footer">

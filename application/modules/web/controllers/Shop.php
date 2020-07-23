@@ -80,7 +80,7 @@ class Shop extends CI_Controller {
 		$data['result_count'] = "Showing " . $start . " - " . $end . " of " . $config['total_rows'] . " Results";
 
 		$data["links"] = $this->pagination->create_links();
-	        		$data['page'] = 'Category wishe product';
+	        $data['page'] = 'Category wishe product';
 					$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 					$data['social'] = json_decode($social_value, true);
 
@@ -96,9 +96,10 @@ class Shop extends CI_Controller {
 					 $data['count'] =count($data['product_by_category']);
 					 $data['count'];
 					 $data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
-           			$data['fabric']=  $this->Shop_model->select_attr_name('attribute','Fabric');
+           $data['fabric']=  $this->Shop_model->select_attr_name('attribute','Fabric');
+					 $data['color']=  $this->Shop_model->select_attr_name('attribute','Color');
 					 $data['pattern']=  $this->Shop_model->select_attr_name('attribute','Pattern');
-	         		$data['weaving']=  $this->Shop_model->select_attr_name('attribute','Weaving');
+	         $data['weaving']=  $this->Shop_model->select_attr_name('attribute','Weaving');
 					 $data['category']=  $this->Common_model->select('category');
 					 if($_POST){
 					$this->load->view('shop/list', $data);
@@ -287,17 +288,17 @@ class Shop extends CI_Controller {
 						$data['related_Product']=  $this->Shop_model->select($data1,'category','indexing');
             // echo "<pre>";
 						// print_r($data['related_Product']);exit;
-						$data['category']=  $this->Common_model->select('category');
-						$data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
-						$data['pics']=  $this->Product_model->select($id,'product_images');
-				$data['main_content'] = $this->load->view('product/product_details', $data, true);
+		$data['category']=  $this->Common_model->select('category');
+		$data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
+		$data['pics']=  $this->Product_model->select($id,'product_images');
+		$data['main_content'] = $this->load->view('product/product_details', $data, true);
 		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
 		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
 		$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
 		$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
 		$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
 		$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
-		        $this->load->view('index', $data);
+		$this->load->view('index', $data);
 		    }
 
 

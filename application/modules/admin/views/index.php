@@ -61,18 +61,18 @@
 					<li>
 						<a class="active" href="<?php echo base_url('admin/Dashboard') ?>" data-toggle="collapse" data-target="#dashboard_dr">
 							<div class="pull-left"><i class="zmdi zmdi-view-dashboard mr-20"></i><span class="right-nav-text">Dashboard</span></div>
-
 							<div class="clearfix"></div>
 						</a>
 
 					</li>
+
 					<li>
 						<a href="<?php echo base_url('admin/user') ?>" data-toggle="collapse" data-target="#ecom_dr">
 							<div class="pull-left"><i class="zmdi zmdi-account-o mr-20"></i><span class="right-nav-text">Users</span></div>
 							<div class="clearfix"></div>
 						</a>
-
 					</li>
+
 					<li>
 						<a href="javascript:void(0)" data-toggle="collapse" data-target="#pro">
 							<div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Products </span></div>
@@ -89,6 +89,9 @@
 							</li>
 							<li>
 								<a href="<?php echo base_url('admin/Attribute') ?>">Attribute </a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('admin/Product/Gst') ?>">GST </a>
 							</li>
 						</ul>
 					</li>
@@ -184,12 +187,12 @@
 						</a>
 					</li>
 					<li>
-						<a href="javascript:void(0)" data-toggle="collapse" data-target="#setting">
+						<a href="<?php echo base_url('admin/setting/SettingData') ?>" >
 							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Setting</span></div>
-							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
 							<div class="clearfix"></div>
 						</a>
-						<ul id="setting" class="collapse collapse-level-1 two-col-list">
+					</li>
+						<!-- <ul id="setting" class="collapse collapse-level-1 two-col-list">
 
 							<li>
 								<a href="<?php echo base_url('admin/Social') ?>">Social icon</a>
@@ -203,8 +206,10 @@
 							<li>
 								<a href="<?php echo base_url('admin/setting/logo') ?>"> Logo</a>
 							</li>
-
-						</ul>
+							<li>
+								<a href="<?php echo base_url('admin/setting/SettingData') ?>"> Setting Data</a>
+							</li>
+						</ul> -->
 					</li>
 				<?php } else {
 				?>

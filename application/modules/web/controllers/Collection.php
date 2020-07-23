@@ -54,9 +54,10 @@ class Collection extends CI_Controller {
 					 'qty'    => 1,
 					 'price'    => $value['price'],
 					 'name'    => $value['name'],
+					 'gst'    => $value['gst'],
 					 'image' => $value['profile_pic']
 			 );
-			// print_r($data1);exit;
+			 
 		$this->cart->insert($data1);
 			 // Redirect to the cart page
 			  redirect('web/Collection/');
@@ -121,6 +122,7 @@ class Collection extends CI_Controller {
 					 'qty'    => 1,
 					 'price'  => $value['price'],
 					 'name'  => $value['name'],
+					 'gst'    => $value['gst'],
 					 'image' => $value['profile_pic']
 			 );
 		   $this->cart->insert($carddata);
@@ -192,13 +194,13 @@ class Collection extends CI_Controller {
         $data['product_data']=  $this->Common_model->select('products');
         $data['user_data']=  $this->Common_model->select('user_details');
 				$data['category']=  $this->Common_model->select('category');
-		$data['main_content'] = $this->load->view('collection/checkout',$data, true);
-			$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
-			$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
-			$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
-			$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
-			$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
-			$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
+		    $data['main_content'] = $this->load->view('collection/checkout',$data, true);
+				$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
+				$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');
+				$data['Menu_coll_image'] = $this->Homepage_model->get_menu_by_type('collection');
+				$data['Menu_coll_text'] = $this->Common_model->get_menu('collection');
+				$data['Menu_tech_image'] = $this->Homepage_model->get_menu_by_type('technique');
+				$data['Menu_tech_text'] = $this->Common_model->get_menu('technique');
         $this->load->view('index', $data);
 			}
 			else{

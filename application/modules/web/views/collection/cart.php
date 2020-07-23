@@ -32,6 +32,7 @@
                                            <th class="pro-thumbnail">Thumbnail</th>
                                            <th class="pro-title">Product</th>
                                            <th class="pro-price">Price</th>
+                                           <th class="pro-quantity">GST</th>
                                            <th class="pro-quantity">Quantity</th>
                                            <th class="pro-subtotal">Total</th>
                                            <th class="pro-remove">Remove</th>
@@ -46,7 +47,8 @@
                                            </td>
                                            <td><?php echo $item["name"]; ?></td>
                                            <td><?php echo '₹'.$item["price"]; ?></td>
-                                           <td><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td> 
+                                           <td><?php echo $item["gst"].'%'; ?></td>
+                                           <td><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td>
                                            <td><?php echo '₹'.$item["subtotal"]; ?></td>
                                            <td class="pro-remove">
                                                <a href="<?php echo base_url('web/collection/removeItem/'.$item["rowid"]); ?>"  onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></a>
@@ -60,17 +62,17 @@
                                </table>
                            </div>
                            <!-- Cart Update Option -->
-                           <div class="cart-update-option d-block d-md-flex justify-content-between">
+                           <!-- <div class="cart-update-option d-block d-md-flex justify-content-between">
                                <div class="apply-coupon-wrapper">
                                    <form action="#" method="post" class=" d-block d-md-flex">
                                        <input type="text" placeholder="Enter Your Coupon Code" required />
                                        <button class="btn btn-sqr">Apply Coupon</button>
                                    </form>
                                </div>
-                               <!-- <div class="cart-update">
+                               <div class="cart-update">
                                    <a href="#" class="btn btn-sqr">Update Cart</a>
-                               </div> -->
-                           </div>
+                               </div>
+                           </div> -->
                        </div>
                    </div>
                    <div class="row">
@@ -84,22 +86,23 @@
 
                                          <?php if($this->cart->total_items() > 0){
                 		                        $sub_total=0;
+                                            $gst=0;
                 													  foreach($cartIvalue as $item){
-
                                              $data['cartIvalue']=$item;
                 														 $sub_total=($sub_total+$item['subtotal']);
+                                             $gst = $gst+$item['gst'];
                 													 } ?>
                                            <tr>
                                                <td>Sub Total</td>
                                                <td><?php echo '₹'.$sub_total;?></td>
                                            </tr>
                                            <tr>
-                                               <td>Tax(10%)</td>
-                                               <td>₹10</td>
+                                               <td>Tax</td>
+                                               <td><?php echo $gst?>%</td>
                                            </tr>
                                            <tr class="total">
                                                <td>Total</td>
-                                               <?php $total=0; $total=$sub_total+10?>
+                                               <?php $total=0; $total=$sub_total+$gst?>
                                                <td class="total-amount"><?php echo '₹'.$total;?></td>
                                            </tr>
                                          <?php }else{?>
@@ -109,7 +112,7 @@
                                              </tr>
 
                                              <tr>
-                                                 <td>Tax(0%)</td>
+                                                 <td>Tax </td>
                                                  <td>₹0</td>
                                              </tr>
 

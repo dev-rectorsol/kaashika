@@ -43,7 +43,7 @@
 													 <th>Name</th>
 													 <th>Price</th>
 													 <th>Quantity</th>
-													 <!-- <th>Status</th> -->
+													 <th>Status</th>
 													 <th>Action</th>
 												 </tr>
 								       <?php $i=1; foreach($product_data as $row){?>
@@ -55,7 +55,7 @@
 													 <td class="get_data" ><?php echo $row['price'] ?></td>
 													 <td class="get_data" ><?php echo $row['quantity'] ?></td>
 
-<!--
+
 												  <td class="get_data">
                             <?php if($row['status']=='On_Sell'){?>
 													<a href="<?php echo base_url('admin/product/update_status1/').$row['id'] ?>" class="text-center tip" style="color:#28a745"><?php echo $row['status'] ?></a>
@@ -63,7 +63,7 @@
 													<?php	}else{	?>
 														<a href="<?php echo base_url('admin/product/update_status2/').$row['id'] ?>" class="text-center tip " style="color:#17a2b8"><?php echo $row['status'] ?></a>
 											     <?php		}?>
-													</td> -->
+													</td>
 
 
 													 <td>

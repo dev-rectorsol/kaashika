@@ -86,6 +86,19 @@
 												placeholder="Discount">
 										</div>
 									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 control-label " for="example-input-small">
+										GST</label>
+										<div class="col-sm-10">
+											<select name="gst" class="form-control">
+												<option value="none">Select</option>
+												<?php foreach($gstValue as $row){ ?>
+												<option value="<?php echo $row['gstValue'] ?>"> <?php echo $row['gstName'] ?>
+												</option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
 
 									<div class="form-group row">
 										<label class="col-sm-2 control-label " for="example-input-small"> Product
@@ -100,9 +113,9 @@
 										  <label class="col-sm-2 control-label " for="example-input-small"> Handwoven</label>
 											<div class="col-sm-10">
     											<div class="radio radio-primary">
-    												<input type="radio" name="radio" id="radio3" value="option3">
+    												<input type="radio" name="radio" id="radio3" value="yes">
     												<label for="radio3"> Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    												<input type="radio" name="radio" id="radio4" value="option4">
+    												<input type="radio" name="radio" id="radio4" value="no">
     												<label for="radio4"> No </label>
     											</div>
 											</div>
@@ -133,9 +146,9 @@
 													class="btn btn-success">+</button>
 											</div>
 										</div>
-										<div class="form-group row" id="add_data">
+										<div class="form-group row" id="add_data"></div>
 
-										</div>
+
 									</div>
 								</div>
 								<div id="tagstab" class="tab-pane fade" role="tabpanel">

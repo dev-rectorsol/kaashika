@@ -17,9 +17,6 @@
         <!-- /Breadcrumb -->
     </div>
 
-    <hr class="light-grey-hr" />
-
-
     <div class="col-sm-12">
         <div class="panel panel-default card-view">
 
@@ -84,13 +81,25 @@
                                         <label class="col-sm-2 control-label " for="example-input-small">
                                             Discount</label>
                                         <div class="col-sm-9">
-
                                             <input type="text" name="discount" class="form-control input-sm"
                                                 value="<?php echo $product_data[0]['discount']?>">
-
                                         </div>
-
                                     </div>
+
+                                    <div class="form-group row">
+                                      <label class="col-sm-2 control-label " for="example-input-small">
+                                      GST</label>
+                                      <div class="col-sm-10">
+                                        <select name="gst" class="form-control">
+
+                                          <?php foreach($gstValue as $row){
+                                            ?>
+                                          <option  <?php if($product_data[0]['gst']==$row['gstValue']){?> selected <?php } ?>  value="<?php echo $product_data[0]['gst'] ?>"> <?php echo $row['gstName'] ?> </option>
+                                        <?php }?>
+                                        </select>
+                                      </div>
+                                    </div>
+
                                     <div class="form-group row">
                                         <label class="col-sm-2 control-label " for="example-input-small"> Product
                                             image</label>

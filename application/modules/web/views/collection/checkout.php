@@ -23,79 +23,7 @@
        <div class="checkout-page-wrapper section-padding">
            <div class="container">
                <div class="row">
-                   <div class="col-12">
-                       <!-- Checkout Login Coupon Accordion Start -->
-                       <div class="checkoutaccordion" id="checkOutAccordion">
-                           <div class="card">
-                               <h6>Returning Customer? <span data-toggle="collapse" data-target="#logInaccordion">Click
-                                           Here To Login</span></h6>
-                               <div id="logInaccordion" class="collapse" data-parent="#checkOutAccordion">
-                                   <div class="card-body">
-                                       <p>If you have shopped with us before, please enter your details in the boxes
-                                           below. If you are a new customer, please proceed to the Billing &amp;
-                                           Shipping section.</p>
-                                       <div class="login-reg-form-wrap mt-20">
-                                           <div class="row">
-                                               <div class="col-lg-7 m-auto">
-                                                   <form action="#" method="post">
-                                                       <div class="row">
-                                                           <div class="col-md-12">
-                                                               <div class="single-input-item">
-                                                                   <input type="email" placeholder="Enter your Email" required />
-                                                               </div>
-                                                           </div>
 
-                                                           <div class="col-md-12">
-                                                               <div class="single-input-item">
-                                                                   <input type="password" placeholder="Enter your Password" required />
-                                                               </div>
-                                                           </div>
-                                                       </div>
-
-                                                       <div class="single-input-item">
-                                                           <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                                               <div class="remember-meta">
-                                                                   <div class="custom-control custom-checkbox">
-                                                                       <input type="checkbox" class="custom-control-input" id="rememberMe" required />
-                                                                       <label class="custom-control-label" for="rememberMe">Remember
-                                                                           Me</label>
-                                                                   </div>
-                                                               </div>
-
-                                                               <a href="#" class="forget-pwd">Forget Password?</a>
-                                                           </div>
-                                                       </div>
-
-                                                       <div class="single-input-item">
-                                                           <button class="btn btn-sqr">Login</button>
-                                                       </div>
-                                                   </form>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-
-                           <!-- <div class="card">
-                               <h6>Have A Coupon? <span data-toggle="collapse" data-target="#couponaccordion">Click
-                                           Here To Enter Your Code</span></h6>
-                               <div id="couponaccordion" class="collapse" data-parent="#checkOutAccordion">
-                                   <div class="card-body">
-                                       <div class="cart-update-option">
-                                           <div class="apply-coupon-wrapper">
-                                               <form action="#" method="post" class=" d-block d-md-flex">
-                                                   <input type="text" placeholder="Enter Your Coupon Code" required />
-                                                   <button class="btn btn-sqr">Apply Coupon</button>
-                                               </form>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div> -->
-                       </div>
-                       <!-- Checkout Login Coupon Accordion End -->
-                   </div>
                </div>
                <div class="row">
                    <!-- Checkout Billing Details -->
@@ -130,6 +58,19 @@
                                    </div>
 
                                    <br><br>
+                                   <?php if($this->cart->total_items() > 0){
+                                     $sub_total=0;
+                                     $gst=0;
+                                     foreach($cartIvalue as $item){
+
+                                       $gst= $gst+ $item['gst'];
+                                      $sub_total=($sub_total+$item['subtotal']);
+                                   }
+                                
+                                 ?>
+
+                                <input type="hidden"  name="total" value="<?php echo $sub_total+$gst+70?>" required />
+                                <?php } ?>
                                     <button type="submit" name="placeOrder" class="btn btn-sqr">Place Order</button>
 
                                </form>
@@ -164,14 +105,20 @@
                                        <tfoot>
                                          <?php if($this->cart->total_items() > 0){
                 		                        $sub_total=0;
+                                            $gst=0;
                 													  foreach($cartIvalue as $item){
 
                                              $data['cartIvalue']=$item;
+                                             	$gst= $gst+ $item['gst'];
                 														 $sub_total=($sub_total+$item['subtotal']);
                                           }   ?>
+                                          <tr>
+                                              <td>Tax</td>
+                                              <td><strong><?php echo $gst.'%';?></strong></td>
+                                          </tr>
                                            <tr>
                                                <td>Sub Total</td>
-                                               <td><strong><?php echo '₹'.$sub_total;?></strong></td>
+                                               <td><strong><?php echo '₹'.($sub_total+ $gst);?></strong></td>
                                            </tr>
                                            <tr>
                                                <td>Shipping</td>
