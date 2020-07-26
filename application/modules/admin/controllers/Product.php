@@ -66,7 +66,7 @@ class Product extends CI_Controller {
 		//  echo "<pre>";
 		// 				 print_r($_FILES);
 		// 				 exit();
-		 if(isset($_FILES['profile']['name'])){
+		if(isset($_FILES['profile']['name'])){
 		$config['upload_path']          = './uploads/product';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 11264;
@@ -198,7 +198,7 @@ class Product extends CI_Controller {
 		// 				 print_r($_FILES);
 		// 				 exit();
 
-			$config['upload_path']          = './uploads/product';
+		$config['upload_path']          = './uploads/product';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 11264;
 		$config['max_width']            = 6000;
@@ -232,7 +232,7 @@ class Product extends CI_Controller {
 			'price' => $data1['price'],
 			'quantity' => $data1['quantity'],
 			'discount' => $data1['discount'],
-				'gst' => $data1['gst'],
+			'gst' => $data1['gst'],
 			// 'profile_pic' => $pic,
 		];
 		  $this->Common_model->update($data,'id',$id,'products');

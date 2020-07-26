@@ -18,7 +18,7 @@ $(function(){
     });
 });
 $(document).ready(function(){
-  $('.addfeatureimage').on('click', function(event){
+  $('#addfeatureimage').on('click', function(event){
 
     event.preventDefault();
     $.ajax({
@@ -34,21 +34,8 @@ $(document).ready(function(){
     $('.addfeatureimage').html("Add feature image");
     $(this).addClass('hide');
   });
-  $('#lectureremovepreview').on('click', function(){
-    $("#addlecturepreview").html("");
-    $('#addlectureimage').html("Add Video File");
-    $(this).addClass('hide');
-  });
-  $('#addlectureimage').on('click', function(event){
-    event.preventDefault();
-    $.ajax({
-      url: '<?php echo base_url('admin/media/get_video_model'); ?>',
-      type: 'POST',
-      success: function(response){
-        $("body").append(response);
-      }
-    });
-  });
+
+
 });
 
 

@@ -52,7 +52,7 @@
 									 <td><?php echo $row['phone'] ?></td>
 									 <td><?php echo my_date_show($row['created']) ?></td>
 
-								  <td><?php if($row['status']==1){?>
+								  <td style="font-size:16px;font-weight:bold"><?php if($row['status']==1){?>
 										<a href="<?php echo base_url('admin/order/update_status1/').$row['id'] ?>"  class=" " style="color:#007bff;">Created</a>
 									   <?php	}elseif($row['status']==2){?>
 										<a href="<?php echo base_url('admin/order/update_status2/').$row['id'] ?>"  class=" " style="color:#28a745;">Accepted</a>

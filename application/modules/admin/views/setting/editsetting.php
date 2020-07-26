@@ -22,8 +22,9 @@
 										<div class="panel panel-default card-view">
 											<div class="panel-wrapper collapse in">
 												<div class="panel-body">
+													<?php foreach($setting as $value):?>
 													<div class="form-wrap">
-														<form action="<?php echo base_url('admin/setting/edit_setting')?>" method="POST" enctype="multipart/form-data">
+														<form action="<?php echo base_url('admin/setting/update/').$value['id']?>" method="POST" enctype="multipart/form-data">
 
 
 															<h6 class="txt-dark capitalize-font"> Footer Contact</h6>
@@ -31,19 +32,19 @@
 															<div class="row">
 																<div class="col-md-4">
 																	<div class="form-group">
-								                      <input name="address" type="text" class="form-control" placeholder="Address">
+								                      <input name="address" type="text" value="<?php echo $value['address']?>" class="form-control" placeholder="Address">
 								                  </div>
 																</div>
 
 																<div class="col-md-4">
 																	<div class="form-group">
-																			<input name="email" type="text" class="form-control" placeholder="Email Id">
+																			<input name="email" type="text" value="<?php echo $value['email']?>"  class="form-control" placeholder="Email Id">
 																	</div>
 																</div>
 
 																<div class="col-md-4">
 																<div class="form-group">
-																			<input name="phone" type="text" class="form-control" placeholder="Contact Number">
+																			<input name="phone" type="text" value="<?php echo $value['phone']?>"  class="form-control" placeholder="Contact Number">
 																	</div>
 																</div>
 
@@ -55,16 +56,18 @@
 															<div class="row">
 																<div class="col-md-5">
 																	<div class="form-group">
-																		<input name="title" type="text" class="form-control" placeholder="Title">
+																		<input name="title" type="text" value="<?php echo $value['title']?>"  class="form-control" placeholder="Title">
 																	</div>
 																</div>
 
 																		<div class="form-group">
-																			<label class="control-label col-md-2 text-right">Add Icon</label>
-																			<div class="col-md-5">
+	                                     <div class="col-md-6">
+																			<?php if($value['favicon']!=''){?>
+																				<img src="<?php echo base_url('uploads/product/').$value['favicon']?>">
+																			<?php }?>
 																				<input type="file" name="favicon">
-																	   </div>
-															  </div>
+																	  	</div>
+															    </div>
 														 </div>
 
 															<!--/row-->
@@ -74,14 +77,16 @@
 															<div class="row">
 																<div class="col-md-5">
 																	<div class="form-group">
-																		 <input name="about" type="text" class="form-control" placeholder="About">
+																		 <input name="about" type="text" value="<?php echo $value['about']?>" class="form-control" placeholder="About">
 																	</div>
 																</div>
 																<!--/span-->
 
 																	<div class="form-group">
-																	 <label class="control-label col-sm-2 text-right">Logo</label>
-																		<div class="col-md-5">
+																			<div class="col-md-6">
+																		<?php if($value['logo']!=''){?>
+																			<img src="<?php echo base_url('uploads/product/').$value['logo']?> " style="width:200px;height:80px;">
+																		<?php } ?>
 																			<input type="file" name="logo">
 																		</div>
 																</div>
@@ -92,12 +97,13 @@
 																<input type="hidden"
 																	name="<?php echo $this->security->get_csrf_token_name();?>"
 																	value="<?php echo $this->security->get_csrf_hash();?>">
-																<button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>save</span></button>
+																<button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>Update</span></button>
 																<button type="button" class="btn btn-warning pull-left">Cancel</button>
 																<div class="clearfix"></div>
 															</div>
 														</form>
-												</div>
+												 </div>
+											  <?php endforeach;?>
 											</div>
 										</div>
 									</div>

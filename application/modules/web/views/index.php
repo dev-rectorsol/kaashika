@@ -12,9 +12,9 @@
 					<!-- start logo area -->
 					<div class="col-lg-2">
 						<div class="logo">
-							<?php foreach ($logo as $value) : ?>
+							<?php foreach ($setting as $value) : ?>
 								<a href="<?php echo base_url('web/home') ?>">
-									<img src="<?php echo base_url($value['source']) ?>" alt="Brand Logo" height="70px;">
+									<img src="<?php echo base_url('uploads/product/').$value['logo'] ?>" alt="Brand Logo" height="70px;">
 								</a>
 							<?php endforeach; ?>
 						</div>
@@ -350,18 +350,18 @@
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
 					<div class="widget-item">
-						<?php foreach ($logo as $value) : ?>
+						<?php foreach ($setting as $value) : ?>
 
 
 							<div class="widget-title">
 								<div class="widget-logo">
 									<a href="<?php echo base_url('web/home') ?>">
-										<img src="<?php echo base_url($value['source']) ?>" alt="brand logo" height="80px">
+										<img src="<?php echo base_url('uploads/product/').$value['logo'] ?>" alt="brand logo" height="80px">
 									</a>
 								</div>
 							</div>
 							<div class="widget-body">
-								<p><?php echo $value['discription'] ?> </p>
+								<p><?php echo $value['about'] ?> </p>
 							</div>
 						<?php endforeach; ?>
 					</div>
@@ -372,7 +372,7 @@
 						<div class="widget-body">
 							<address class="contact-block">
 								<ul>
-									<?php foreach ($contact as $value) : ?>
+									<?php foreach ($setting as $value) : ?>
 										<li><i class="pe-7s-home"></i><?php echo $value['address'] ?></li>
 										<li><i class="pe-7s-mail"></i> <a href="<?php echo $value['email'] ?>"><?php echo $value['email'] ?> </a></li>
 										<li><i class="pe-7s-call"></i> <a href="<?php echo $value['phone'] ?>"><?php echo $value['phone'] ?></a></li>
@@ -388,10 +388,11 @@
 						<div class="widget-body">
 							<ul class="info-list">
 								<li><a href="<?php echo base_url('web/home/about') ?>">about us</a></li>
+								<li><a href="<?php echo base_url('web/home/contact') ?>">contact us</a></li>
 								<!-- <li><a href="#">Delivery Information</a></li>
 																	<li><a href="#">privet policy</a></li>
 																	<li><a href="#">Terms & Conditions</a></li> -->
-								<li><a href="<?php echo base_url('web/home/contact') ?>">contact us</a></li>
+
 								<!-- <li><a href="#">site map</a></li> -->
 							</ul>
 						</div>
@@ -403,7 +404,7 @@
 						<?php if (is_array($social)) : ?>
 							<div class="widget-body social-link">
 								<?php foreach ($social as $value) : ?>
-									<a href="<?php echo $value['link']; ?>"><i class="<?php echo $value['icon']; ?>"></i></a>
+									<a href="<?php echo $value['link']; ?>"><i class="<?php echo $value['icon'];?>"></i></a>
 
 								<?php endforeach; ?>
 							</div>

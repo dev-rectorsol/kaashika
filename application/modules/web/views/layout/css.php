@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <?php foreach($title as $value):?>
+    <?php foreach($setting as $value):?>
     <title><?php echo $value['title']?></title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url($value['source']) ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('uploads/product/').$value['favicon'] ?>">
    <?php endforeach;?>
     <!-- CSS
 	============================================ -->

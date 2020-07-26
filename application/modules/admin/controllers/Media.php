@@ -120,9 +120,9 @@ class Media extends CI_Controller {
 
 	public function get_model()
 	{
-      $fileData = array('file');
-      $data = $this->common_model->gallerys(10, 0);
-      foreach ($data as $key => $value) {
+        $fileData = array('file');
+        $data = $this->common_model->gallerys(10, 0);
+        foreach ($data as $key => $value) {
         $fileData['file'][$key] = (array)json_decode($value['details']);
         $fileData['file'][$key]['id'] = $value['id'];
       }

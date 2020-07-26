@@ -101,7 +101,7 @@
                                           <a  href="<?php echo base_url('web/Collection/wishlist/').$product_details['id']?>"  class="wishlist" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like wish"></i></a>
 
                                         </div>
-                                        
+
                                     </div>
 
                                 </div>
@@ -129,7 +129,7 @@
                                             <div class="tab-pane fade show active" id="tab_one">
                                                 <div class="tab-one">
 
-                                                    <p> <?php echo $product_details['name'];?> </p>
+                                                    <p> <?php echo $product_details['description'];?> </p>
 
                                                 </div>
                                             </div>

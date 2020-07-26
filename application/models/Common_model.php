@@ -494,4 +494,12 @@ function getMaxUserId(){
       return $query->row();
     }
 
+    function get_setting($table){
+        $this->db->select();
+        $this->db->from($table);
+        // $this->db->where('id',$id);
+        $query = $this->db->get();
+        return $query->result_array();
+      }
+
 }

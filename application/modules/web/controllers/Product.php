@@ -20,13 +20,7 @@ class Product extends CI_Controller {
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
 				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				$data['title'] = json_decode($title_value, true);
-
-				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				$data['logo'] = json_decode($logo, true);
-
-				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
+			$data['setting']=$this->Common_model->select('homesetting');
 
 				$data['category']=  $this->Common_model->select('category');
 		$data['main_content'] = $this->load->view('product/product_details', $data, true);
@@ -44,14 +38,7 @@ class Product extends CI_Controller {
 				$data['page'] = 'Cart';
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
-				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				$data['title'] = json_decode($title_value, true);
-
-				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				$data['logo'] = json_decode($logo, true);
-
-				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
+			$data['setting']=$this->Common_model->select('homesetting');
 
 				$data['product_data']=  $this->Common_model->select('products');
 				$data['category']=  $this->Common_model->select('category');

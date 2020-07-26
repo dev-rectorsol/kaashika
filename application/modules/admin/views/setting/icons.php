@@ -6556,7 +6556,7 @@
       var obj = $(this).find('span').attr('class');
       var html = '<span class="'+obj+'"></span> <span class="mls title">'+obj+'</span>';
       html += '<input type="hidden" name="icon" value="'+obj+'">';
-      $('#addIcon').html(html);
+      $('.addIcon').html(html);
     });
 
     $(function() {

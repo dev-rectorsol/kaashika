@@ -353,9 +353,172 @@ class setting extends CI_Controller {
 		public function SettingData(){
 			$data= array();
 			$data['page'] ='Setting Data';
+			$data['setting']=$this->common_model->get_setting('homesetting');
+
 			// $data['app_logo'] = json_decode($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value, true);
-			$data['main_content']= $this->load->view('setting/settingData',$data, true);
+			$data['main_content']= $this->load->view('setting/editsetting',$data, true);
 			$this->load->view('index',$data);
 		}
 
+
+		public function edit_setting()
+    {
+			if($_POST){
+			$data1=$this->security->xss_clean($_POST);
+		 //  echo "<pre>";
+		 // 				 print_r($_FILES);
+		 // 				 exit();
+		 if(isset($_FILES['favicon']['name'])){
+		 $config['upload_path']          = './uploads/product';
+		 $config['allowed_types']        = 'gif|jpg|png|jpeg';
+		 $config['max_size']             = 11264;
+		 $config['max_width']            = 6000;
+		 $config['max_height']           = 6000;
+
+		 $this->load->library('upload', $config);
+
+		 if($this->upload->do_upload('favicon')){
+				 $img=$this->upload->data();
+						 //  echo "<pre>";
+						 //  print_r($img);
+						 //  exit();
+			 $favicon=$img['file_name'];
+		 }else{
+			 echo "file not uploaded"; echo $this->upload->display_errors();exit;
+		 }
+
+			}else{
+			 $favicon="";
+			 echo "file not found"; exit;
+			}
+			if(isset($_FILES['logo']['name'])){
+			$config['upload_path']          = './uploads/product';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 11264;
+			$config['max_width']            = 6000;
+			$config['max_height']           = 6000;
+
+			$this->load->library('upload', $config);
+
+			if($this->upload->do_upload('logo')){
+					$img=$this->upload->data();
+							//  echo "<pre>";
+							//  print_r($img);
+							//  exit();
+				$logo=$img['file_name'];
+			}else{
+				echo "file not uploaded"; echo $this->upload->display_errors();exit;
+			}
+
+			 }else{
+				$logo="";
+				echo "file not found"; exit;
+			 }
+
+			 $data=[ 'address' => $data1['address'],
+			 'email' => $data1['email'],
+			 'phone' => $data1['phone'],
+			 'title' => $data1['title'],
+			 'favicon' => $favicon,
+			 'about' => $data1['about'],
+			 'logo' => $logo,
+		 ];
+		 // pre($data);exit;
+			 $id=$this->common_model->insert($data,'homesetting');
+       redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+		public function update($id)
+		{
+		 //echo $id;exit;
+		 if($_POST){
+		 $data1=$this->security->xss_clean($_POST);
+		$config['upload_path']          = './uploads/product';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 11264;
+		$config['max_width']            = 6000;
+		$config['max_height']           = 6000;
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('favicon');
+		$img=$this->upload->data();
+						//  echo "<pre>";
+						//  print_r($img);
+						//  exit();
+		$favicon=$img['file_name'];
+
+		 if($favicon!='' )
+		 {
+
+			 $data=[
+			 'address' => $data1['address'],
+			 'email' => $data1['email'],
+			 'phone' => $data1['phone'],
+			 'title' => $data1['title'],
+			 'favicon' => $favicon,
+			 'about' => $data1['about'],
+];
+			$this->common_model->update($data,'id',$id,'homesetting');
+
+		}
+		else{
+			$data=[ 'address' => $data1['address'],
+			'email' => $data1['email'],
+			'phone' => $data1['phone'],
+			'title' => $data1['title'],
+			'about' => $data1['about'],
+			// 'profile_pic' => $pic,
+		];
+			$this->common_model->update($data,'id',$id,'homesetting');
+
+
+		}
+		
+}
+if($_POST){
+$data1=$this->security->xss_clean($_POST);
+$config['upload_path']          = './uploads/product';
+$config['allowed_types']        = 'gif|jpg|png|jpeg';
+$config['max_size']             = 11264;
+$config['max_width']            = 6000;
+$config['max_height']           = 6000;
+
+$this->load->library('upload', $config);
+$this->upload->do_upload('logo');
+$img=$this->upload->data();
+			 //  echo "<pre>";
+			 //  print_r($img);
+			 //  exit();
+$logo=$img['file_name'];
+
+if($logo!='' )
+{
+
+	$data=[
+	'address' => $data1['address'],
+	'email' => $data1['email'],
+	'phone' => $data1['phone'],
+	'title' => $data1['title'],
+	'logo' => $logo,
+	'about' => $data1['about'],
+];
+ $this->common_model->update($data,'id',$id,'homesetting');
+
+}
+else{
+ $data=[ 'address' => $data1['address'],
+ 'email' => $data1['email'],
+ 'phone' => $data1['phone'],
+ 'title' => $data1['title'],
+ 'about' => $data1['about'],
+ // 'profile_pic' => $pic,
+];
+ $this->common_model->update($data,'id',$id,'homesetting');
+
+
+}
+redirect(base_url() . 'admin/setting/SettingData', 'refresh');
+}
+}
 }

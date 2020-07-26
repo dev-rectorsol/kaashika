@@ -6,8 +6,8 @@
 			<div class="nav-header pull-left">
 				<div class="logo-wrap">
 					<a href="<?php echo base_url('admin/dashboard')?>">
-						<img class="brand-img" src="<?php echo base_url('optimum') ?>/img/logo.png" alt="brand" />
-						<span class="brand-text">Kashika</span>
+						<img class="brand-img" src="<?php echo base_url('optimum') ?>/img/logo.png" alt="brand" height="50px;" width="180px;"/>
+
 					</a>
 				</div>
 			</div>
@@ -187,17 +187,21 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url('admin/setting/SettingData') ?>" >
+							<a href="javascript:void(0)" data-toggle="collapse" data-target="#setting">
 							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Setting</span></div>
+							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
 							<div class="clearfix"></div>
 						</a>
-					</li>
-						<!-- <ul id="setting" class="collapse collapse-level-1 two-col-list">
+
+						<ul id="setting" class="collapse collapse-level-1 two-col-list">
 
 							<li>
 								<a href="<?php echo base_url('admin/Social') ?>">Social icon</a>
 							</li>
 							<li>
+								<a href="<?php echo base_url('admin/setting/SettingData') ?>"> Setting Data</a>
+							</li>
+							<!-- <li>
 								<a href="<?php echo base_url('admin/setting/contact') ?>">Footer Contact</a>
 							</li>
 							<li>
@@ -205,11 +209,9 @@
 							</li>
 							<li>
 								<a href="<?php echo base_url('admin/setting/logo') ?>"> Logo</a>
-							</li>
-							<li>
-								<a href="<?php echo base_url('admin/setting/SettingData') ?>"> Setting Data</a>
-							</li>
-						</ul> -->
+							</li> -->
+
+						</ul>
 					</li>
 				<?php } else {
 				?>

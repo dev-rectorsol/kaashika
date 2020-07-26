@@ -1,31 +1,32 @@
 <?php include('layout/header.php'); ?>
-
+<style>
+.main_box{
+  box-shadow: 5px 5px 10px #888888;
+  border-radius: 5px;
+}
+</style>
     <div class="wrapper  pa-0">
       <header class="sp-header">
         <div class="sp-logo-wrap pull-left">
-          <a href="index.html">
-            <img class="brand-img mr-10" src="<?php echo base_url('optimum'); ?>/img/logo.png" alt="brand"/>
-            <span class="brand-text">Snoopy</span>
-          </a>
+
         </div>
-        <div class="form-group mb-0 pull-right">
-          <span class="inline-block pr-10">Already have an account?</span>
-          <a class="inline-block btn btn-warning btn-rounded btn-outline" href="<?php echo base_url('auth'); ?>">Sign In</a>
-        </div>
+
         <div class="clearfix"></div>
       </header>
 
       <!-- Main Content -->
-      <div class="page-wrapper pa-0 ma-0 auth-page">
+      <div class="page-wrapper pa-0 ma-0 auth-page" style="background:#edeff0">
         <div class="container-fluid">
           <!-- Row -->
           <div class="table-struct full-width full-height">
             <div class="table-cell vertical-align-middle auth-form-wrap">
               <div class="auth-form  ml-auto mr-auto no-float">
-                <div class="row">
+                <div class="row main_box" style="background:#fff;padding:25px;">
                   <div class="col-sm-12 col-xs-12">
-                    <div class="mb-30">
-                      <h3 class="text-center txt-dark mb-10">Sign up to Snoopy</h3>
+                    <div class="mb-30 text-center">
+                      <a href="">
+                        <img class="brand-img mr-10" src="<?php echo base_url('optimum'); ?>/img/logo.png" alt="brand"/>
+                      </a>
                       <h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
                     </div>
                     <div class="form-wrap">
@@ -50,31 +51,36 @@
 											<?php endif; ?>
                       <form action="<?php echo base_url('authentication/Register/Signup')?>" method="post">
                         <div class="form-group">
-                          <label class="control-label mb-10" for="exampleInputName_1">Username</label>
+                          <label class="control-label mb-10" for="exampleInputName_1" style="color:#772644;font-weight:bold;">Username</label>
                           <input type="text" class="form-control" required="" name="fullname" placeholder="Full name">
                         </div>
                         <div class="form-group">
-                          <label class="control-label mb-10" for="exampleInputEmail_2">Email or Phone</label>
-                          <input class="uk-input" type="text" id="username" name="username" placeholder= "Email or Mobile">
+                          <label class="control-label mb-10" for="exampleInputEmail_2" style="color:#772644;font-weight:bold;">Email / Phone</label>
+                          <input type="text" class="form-control" required="" name="username" id="username" placeholder="email or phone">
+
                         </div>
                         <div class="form-group">
-                          <label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>
+                          <label class="pull-left control-label mb-10" for="exampleInputpwd_2" style="color:#772644;font-weight:bold;">Password</label>
                           <input type="password" class="form-control" required="" name="password" placeholder="********">
                         </div>
                         <div class="form-group">
-                          <label class="pull-left control-label mb-10" for="exampleInputpwd_3">Confirm Password</label>
+                          <label class="pull-left control-label mb-10" for="exampleInputpwd_3" style="color:#772644;font-weight:bold;">Confirm Password</label>
                           <input type="password" class="form-control" required="" name="re-password" placeholder="********">
                         </div>
                         <div class="form-group">
                           <div class="checkbox checkbox-primary pr-10 pull-left">
                             <input id="checkbox_2" required="" type="checkbox">
-                            <label for="checkbox_2"> I agree to all <span class="txt-orange">Terms</span></label>
+                            <label for="checkbox_2"> I agree to all <span style="color:#772644;font-weight:bold;">Terms</span></label>
                           </div>
                           <div class="clearfix"></div>
                         </div>
-                        <div class="form-group text-center">
+                        <div class="form-group">
+
+                            <span class="inline-block pr-10">Already have an account?</span>
+                            <a class="" href="<?php echo base_url('auth'); ?> " style="color:#772644;font-weight:bold;">Sign In</a>
+
                           <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-                          <button type="submit" class="btn btn-warning btn-rounded">sign Up</button>
+                          <button type="submit" class="btn btn-rounded pull-right" style="background:#772644;">sign Up</button>
                         </div>
                       </form>
                     </div>

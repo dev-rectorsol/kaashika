@@ -104,17 +104,7 @@ public function __construct()
         // echo "<pre>";
         // print_r($data['order']);exit;
         // echo $data['order']['id'].$data['order']['grand_total'].$data['order']['grand_total'];
-        $title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-        $data['title'] = json_decode($title_value, true);
-        foreach ($data['title'] as $value){
-          $data['title']=$value;
-        }
-
-        $logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-        $data['logo'] = json_decode($logo, true);
-        foreach ($data['logo'] as $value){
-        $data['logo']=$value;
-      }
+        $data['setting']=$this->Common_model->select('homesetting');
 
       // echo $data['logo']['source'];exit;
         // Load order details view

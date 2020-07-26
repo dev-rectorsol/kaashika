@@ -49,7 +49,7 @@
                                         <div class="price-input">
                                             <label for="amount">Price: </label>
                                             <input type="text" id="amount">
-                                            <input type="hidden" value="<?php echo $id; ?>" id="color_id">
+                                            <input type="hidden" value="<?php echo $id; ?>" class="min_id">
                                             <input type="hidden" value="price" id="price">
 
                                             <input type="hidden" value="search" class="search">
@@ -67,43 +67,47 @@
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <h5 class="sidebar-title">color filter</h5>
+                        <?php foreach ($color as $value) : ?>
                         <div class="sidebar-body">
-                            <select name="color" class="color">
-                                <<option>--select fabric--</option>
-                                <?php foreach ($color as $value) : ?>
-                                    <option value="<?php echo $value['fab_name']; ?>" style="text-transform:capitalize;"><?php echo $value['fab_name']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <input type="hidden" value="<?php echo $id; ?>" id="c_id">
+
+                          <label>
+                               <input type="checkbox" class="filter_all color" value="<?php echo $value['fab_name']; ?>">
+                              <?php echo $value['fab_name']; ?>
+                           </label>
+
+
+                            <input type="hidden" value="<?php echo $id; ?>"  class="min_id">
                             <input type="hidden" value="Color" id="clr">
                             <input type="hidden" value="search" class="search">
                         </div>
+                         <?php endforeach; ?>
                     </div><br><br>
                     <!-- single sidebar end -->
                     <div class="sidebar-single">
                         <h5 class="sidebar-title">Fabric Filter</h5>
+                          <?php foreach ($fabric as $value) : ?>
                         <div class="sidebar-body">
-                            <select name="fabric" id="fabric">
-                                <option>--select fabric--</option>
-                                <?php foreach ($fabric as $value) : ?>
-                                    <option value="<?php echo $value['fab_name']; ?>" style="text-transform:capitalize;"><?php echo $value['fab_name']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <input type="hidden" value="<?php echo $id; ?>" id="f_id">
+                          <label>
+                              <input type="checkbox" class="filter_all fabric" value="<?php echo $value['fab_name']; ?>">
+                              <?php echo $value['fab_name']; ?>
+                           </label>
+
+                            <input type="hidden" value="<?php echo $id; ?>" id="f_id" class="min_id">
                             <input type="hidden" value="Fabric" id="fab">
                             <input type="hidden" value="search" class="search">
                         </div>
+                          <?php endforeach; ?>
                     </div><br><br>
                     <div class="sidebar-single">
                         <h5 class="sidebar-title">Pattern Filter</h5>
                         <div class="sidebar-body">
-                            <select name="patern" id="patern">
+                            <select name="patern" id="filter_all patern">
                                 <option>--select patern--</option>
                                 <?php foreach ($pattern as $value) : ?>
                                     <option value="<?php echo $value['fab_name']; ?>" style="text-transform:capitalize;"><?php echo $value['fab_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
-                            <input type="hidden" value="<?php echo $id; ?>" id="p_id">
+                            <input type="hidden" value="<?php echo $id; ?>" id="p_id" class="min_id">
                             <input type="hidden" value="Pattern" id="par">
                             <input type="hidden" value="search" class="search">
                         </div>
@@ -111,13 +115,13 @@
                     <div class="sidebar-single">
                         <h5 class="sidebar-title">Weaving Filter</h5>
                         <div class="sidebar-body">
-                            <select name="weaving" id="weaving">
+                            <select name="weaving" id="filter_all weaving">
                                 <option>--select weaving--</option>
                                 <?php foreach ($weaving as $value) : ?>
                                     <option value="<?php echo $value['fab_name']; ?>" style="text-transform:capitalize;"><?php echo $value['fab_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
-                            <input type="hidden" value="<?php echo $id; ?>" id="w_id">
+                            <input type="hidden" value="<?php echo $id; ?>" id="w_id" class="min_id">
                             <input type="hidden" value="Weaving" id="weav">
                             <input type="hidden" value="search" class="search">
                         </div>
@@ -173,9 +177,7 @@
                         </div>
                     </div>
                     <!-- shop product top wrap start -->
-
                     <?php echo $content ?>
-
                     <!-- start pagination area -->
                     <div class="paginatoin-area text-center">
                         <?php echo $links ?>

@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="<?php echo base_url('admin/media/add');?>" class="btn btn-link btn-info">upload new</a>
+        <a href="<?php echo base_url('admin/media/add'); ?>" class="btn btn-link btn-info">upload new</a>
       </div>
     </div>
   </div>
@@ -83,10 +83,10 @@
       });
 
       $('.info').click(function() {
-        var preview = $('#addiconpreview');
+        var preview = $('#addfeaturepreview');
         var obj = $(this);
-        var button = $('#addicon');
-        var remove = $('#removeicon');
+        var button = $('#addfeatureimage');
+        var remove = $('#removepreview');
         var name = obj.attr('data-name');
         var url = obj.attr('src');
         var path = obj.attr('data-path');
@@ -98,24 +98,6 @@
         remove.removeClass('hide');
         button.html('change feature images');
       });
-
-      $('.info').click(function(){
-        var preview = $('#addlogopreview');
-        var obj = $(this);
-        var button = $('#addlogo');
-        var remove = $('#removelogo');
-        var name = obj.attr('data-name');
-        var url = obj.attr('src');
-        var path = obj.attr('data-path');
-        var html = '<img src=" '+url+'" >';
-        html += '<input type="hidden" name="featureImage" value="'+path+'" >';
-        preview.html("");
-        preview.html(html);
-        $('#featureImageModel').remove();
-        remove.removeClass('hide');
-        button.html('change feature images');
-      });
-
 
       $('.close').on("click", function(){
         $('#featureImageModel').remove();

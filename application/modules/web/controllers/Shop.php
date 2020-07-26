@@ -19,23 +19,7 @@ class Shop extends CI_Controller {
 
 	public function index(){
 
-        // $data = array();
-        // $data['page'] = 'Cart';
-				// $social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
-				// $data['social'] = json_decode($social_value, true);
-				//
-				//  $title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				//  $data['title'] = json_decode($title_value, true);
-				//
-				//  $logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				//  $data['logo'] = json_decode($logo, true);
-				//
-				//  $contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				//  $data['contact'] = json_decode($contact_value, true);
-				//
-				// $data['category']=  $this->Common_model->select('category');
-        // $data['main_content'] = $this->load->view('shop/shop', $data, true);
-        // $this->load->view('index', $data);
+
     }
 
 		public function shop_by_category($id){
@@ -84,14 +68,7 @@ class Shop extends CI_Controller {
 					$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 					$data['social'] = json_decode($social_value, true);
 
-					 $title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-					 $data['title'] = json_decode($title_value, true);
-
-					 $logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-					 $data['logo'] = json_decode($logo, true);
-
-					 $contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-					 $data['contact'] = json_decode($contact_value, true);
+					 $data['setting']=$this->Common_model->select('homesetting');
 	        		 $data['product_by_category']=  $this->Shop_model->select($data1,'category','indexing');
 					 $data['count'] =count($data['product_by_category']);
 					 $data['count'];
@@ -156,7 +133,6 @@ class Shop extends CI_Controller {
 					  $data['id']=$this->input->post('id');
 						$name=$this->input->post('colorname');
 						$data['name'][]=$name;
-
 				}
 				if(!null($_POST['fabricname'] && $_POST['fabricname']!=""))
 				{
@@ -173,58 +149,39 @@ class Shop extends CI_Controller {
 			}
 		}
 
-			// function price()
-			//  {
-			// // echo $id;exit;
-			// 	$data=array();
-			// 	$data['min']=$this->input->post('min');
-			// 	$data['price']=$this->input->post('price');
-			// 	$data['max']=$this->input->post('max');
-			// 	$data['id']=$this->input->post('id');
-			// 	// echo $min.$max.$id;exit;
-			// 	$data['items']=  $this->Shop_model->select_attr_price($data);
-      //  // print_r($data['items']);exit;
-			// 	$data['data'] = $this->load->view('shop/color_pro', $data, true);
-			// 	$this->load->view('shop/index', $data);
-			// }
-			//
-			// function fabric_filter()
-			//  {
-			// // echo $id;exit;
-			// 	$data=array();
-			// 	$name=$this->input->post('name');
-			// 	$id=$this->input->post('id');
-			// 	$data['items']=  $this->Shop_model->select_attr_price($id,$name,'category','indexing');
-			// 	// echo "<pre>";
-			// 	// print_r($data['items']);exit;
-			// 	$data['data'] = $this->load->view('shop/color_pro', $data, true);
-			// 	$this->load->view('shop/index', $data);
-			// }
-			// function patern_filter()
-			//  {
-			// // echo $id;exit;
-			// 	$data=array();
-			// 	$name=$this->input->post('name');
-			// 	$id=$this->input->post('id');
-			// 	$data['items']=  $this->Shop_model->select_attr_price($id,$name,'category','indexing');
-			// 	// echo "<pre>";
-			// 	// print_r($data['items']);exit;
-			//
-			// 	$data['data'] = $this->load->view('shop/color_pro', $data, true);
-			// 	$this->load->view('shop/index', $data);
-			// }
-			// function weaving_filter()
-			//  {
-			// // echo $id;exit;
-			// 	$data=array();
-			// 	$name=$this->input->post('name');
-			// 	$id=$this->input->post('id');
-			// 	$data['items']= $this->Shop_model->select_attr_price($id,$name,'category','indexing');
-			// 	// echo "<pre>";
-			// 	// print_r($data['items']);exit;
-			// 	$data['data'] = $this->load->view('shop/color_pro', $data, true);
-			// 	$this->load->view('shop/index', $data);
-			// }
+function filter()
+{
+	$data=array();
+	$this->security->xss_clean($_POST);
+	if ($_POST) {
+
+    // if (isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"])) {
+    //     $data['min']= $_POST["minimum_price"] ;
+		// 		$data['max']=$_POST["maximum_price"];
+		//
+    // }
+    if (isset($_POST["color"])) {
+
+        $data['color'] = implode("','", $_POST["color"]);
+			  $data['name']=$data['color'];
+    }
+
+    if (isset($_POST["fabric"])) {
+        $data['fabric'] = implode("','", $_POST["fabric"]);
+        $data['name']=$data['fabric'];
+    }
+
+    if (isset($_POST["patern"])) {
+        $data['patern'] = implode("','", $_POST["patern"]);
+        $data['name']=$data['patern'];
+    }
+		$data['id']=$this->input->post('id');
+		$data['items']=  $this->Shop_model->select_attr_color($data['id'],$data['name'],'category','indexing');
+		$data['data'] = $this->load->view('shop/color_pro', $data, true);
+		$this->load->view('shop/index', $data);
+	}
+}
+
 
 			public function product_details($id){
 				$data = array();
@@ -268,15 +225,7 @@ class Shop extends CI_Controller {
 		$data["links"] = $this->pagination->create_links();
 		        $data['page'] = 'product details';
 						$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
-						$data['social'] = json_decode($social_value, true);
-						$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-						$data['title'] = json_decode($title_value, true);
-
-						$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-						$data['logo'] = json_decode($logo, true);
-
-						$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-						$data['contact'] = json_decode($contact_value, true);
+						$data['setting']=$this->Common_model->select('homesetting');
 
             $data['product_details']=  $this->Shop_model->select_product_details_byid($id,'products');
 						foreach($data['product_details'] as $value){
@@ -308,14 +257,7 @@ class Shop extends CI_Controller {
 				$data['page'] = 'Cart';
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
-				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				$data['title'] = json_decode($title_value, true);
-
-				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				$data['logo'] = json_decode($logo, true);
-
-				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
+			$data['setting']=$this->Common_model->select('homesetting');
 
 				$data['product_data']=  $this->Common_model->select('products');
 				$data['user_data']=  $this->Common_model->select('user_details');
@@ -334,15 +276,7 @@ class Shop extends CI_Controller {
         $data['page'] = 'Checkout';
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
-				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				$data['title'] = json_decode($title_value, true);
-
-				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				$data['logo'] = json_decode($logo, true);
-
-				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
-
+				$data['setting']=$this->Common_model->select('homesetting');
         $data['product_data']=  $this->Common_model->select('products');
         $data['user_data']=  $this->Common_model->select('user_details');
 				$data['category']=  $this->Common_model->select('category');

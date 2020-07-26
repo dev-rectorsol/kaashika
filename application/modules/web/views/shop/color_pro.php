@@ -1,6 +1,9 @@
 <!-- product single item start -->
 <?php foreach($items as $value):?>
-<div class="col-md-4 col-sm-6">
+<div class="col-md-4 col-sm-6 ">
+
+
+
     <!-- product grid start -->
     <div class="product-item">
         <figure class="product-thumb">
@@ -30,7 +33,7 @@
             <div class="product-identity">
 
             </div>
-            
+
             <h6 class="product-name">
                 <a href="<?php echo base_url('web/shop/product_details/').$value['id'] ?>"><?php echo $value['name']?></a>
             </h6>
@@ -106,6 +109,7 @@
         </div>
     </div>
     <!-- product list item end -->
-</div>
+ </div>
+
 <?php endforeach;?>
 <!-- product single item start -->

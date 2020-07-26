@@ -15,24 +15,17 @@ class Pages extends CI_Controller {
 	}
 
 	public function collection($id){
-        
+
         $data = array();
         $data['page'] = 'Collection';
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
-				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				$data['title'] = json_decode($title_value, true);
-
-				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				$data['logo'] = json_decode($logo, true);
-
-				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
+				$data['setting']=$this->Common_model->select('homesetting');
 
                 $data['category']=  $this->Common_model->select('category');
-        
+
         $data['collection'] =  $this->Common_model->get_collection($id);
-     
+
         $data['product'] =  $this->Common_model->get_collection_product($id);
         //     echo '<pre>';
         //    // print_r($data['product']);
@@ -66,11 +59,11 @@ class Pages extends CI_Controller {
 
 		$data['technique'] =  $this->Common_model->select_option($id, 'technique_id','technique');
 
-		
+
 		//     echo '<pre>';
 		//    // print_r($data['product']);
 		//     exit;
-		
+
 		$data['main_content'] = $this->load->view('pages/technique', $data, true);
 		$data['Menu_shop_image'] = $this->Homepage_model->get_menu_by_type('shop');
 		$data['Menu_shop_text'] = $this->Common_model->get_menu('shop');

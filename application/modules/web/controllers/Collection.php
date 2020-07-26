@@ -20,14 +20,7 @@ class Collection extends CI_Controller {
 		$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 		$data['social'] = json_decode($social_value, true);
 
-		$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-		$data['title'] = json_decode($title_value, true);
-
-		$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-		$data['logo'] = json_decode($logo, true);
-
-		$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-		$data['contact'] = json_decode($contact_value, true);
+	  $data['setting']=$this->Common_model->select('homesetting');
 
 		$data['product_data']=  $this->Common_model->select('products');
     $data['cartIvalue'] = $this->cart->contents();
@@ -57,7 +50,7 @@ class Collection extends CI_Controller {
 					 'gst'    => $value['gst'],
 					 'image' => $value['profile_pic']
 			 );
-			 
+
 		$this->cart->insert($data1);
 			 // Redirect to the cart page
 			  redirect('web/Collection/');
@@ -140,13 +133,7 @@ class Collection extends CI_Controller {
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
 				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				$data['title'] = json_decode($title_value, true);
-
-				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				$data['logo'] = json_decode($logo, true);
-
-				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
+			  $data['setting']=$this->Common_model->select('homesetting');
 	      $data['cartIvalue'] = $this->cart->contents();
 				$data['product_data']=  $this->Common_model->select('products');
 				$data['user_data']=  $this->Common_model->select('user_details');
@@ -182,14 +169,7 @@ class Collection extends CI_Controller {
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
 				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				$data['title'] = json_decode($title_value, true);
-
-				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				$data['logo'] = json_decode($logo, true);
-
-				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
-
+			  $data['setting']=$this->Common_model->select('homesetting');
 				$data['cartIvalue'] = $this->cart->contents();
         $data['product_data']=  $this->Common_model->select('products');
         $data['user_data']=  $this->Common_model->select('user_details');
@@ -221,14 +201,7 @@ class Collection extends CI_Controller {
         $data['page'] = 'Checkout';
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
-				$title_value = !empty($this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value : '';
-				$data['title'] = json_decode($title_value, true);
-
-				$logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
-				$data['logo'] = json_decode($logo, true);
-
-				$contact_value = !empty($this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'contact_us'))->row()->setting_value : '';
-				$data['contact'] = json_decode($contact_value, true);
+				$data['setting']=$this->Common_model->select('homesetting');
 				$data['cartIvalue'] = $this->cart->contents();
         $data['product_data']=  $this->Common_model->select('products');
         $data['user_data']=  $this->Common_model->select('user_details');
