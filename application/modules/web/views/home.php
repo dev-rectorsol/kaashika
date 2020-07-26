@@ -4,7 +4,7 @@
             <!-- single slider item start -->
             <?php foreach ($slider as $value) : ?>
                 <div class="hero-single-slide hero-overlay">
-                    <div class="hero-slider-item bg-img" data-bg="<?php echo base_url($value['source']); ?>">
+                    <div class="hero-slider-item bg-img" data-bg="<?php echo base_url('uploads/slider/').$value['source']; ?>">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">

@@ -29,13 +29,24 @@ class Article extends CI_Controller {
 			if($_POST){
 				$data1=$_POST;
 				$id = $this->common_model->get_last_id('article');
+				$config['upload_path']          = './uploads/blog';
+				$config['allowed_types']        = 'gif|jpg|png|jpeg';
+				$config['max_size']             = 11264;
+				$config['max_width']            = 6000;
+				$config['max_height']           = 6000;
+
+				$this->load->library('upload', $config);
+				$this->upload->do_upload('favicon');
+				$img=$this->upload->data();
+
+				$favicon=$img['file_name'];
 				if($data1['submit']=='save') {
 					$article=[
 						'postid' => getCustomId($id, 'post'),
 						'title' => $data1['name'],
 						'content' => $data1['content'],
 						'created_by' => $_SESSION['userID'],
-						'slug' => $data1['slug'],
+
 						'created_at	' => current_datetime()
 					];
 				} else {
@@ -44,7 +55,7 @@ class Article extends CI_Controller {
 						'title' => $data1['name'],
 						'content' => $data1['content'],
 						'created_by' => $_SESSION['userID'],
-						'slug' => $data1['slug'],
+
 						'created_at' => current_datetime(),
 						'public_at' => current_datetime(),
 						'is_publish' => 1,
@@ -54,9 +65,9 @@ class Article extends CI_Controller {
 				// echo $id;exit;
 				if ($id) {
 				  $this->common_model->indexing($_POST, $id);
-					if ( isset($_POST['featureImage'])){
+					if (isset($favicon)){
 						// if added feature images
-						$this->common_model->addThumb($_POST['featureImage'], $id);
+						$this->common_model->addThumb($favicon, $id);
 					}
 				 	$this->session->set_flashdata(array('error' => 0, 'msg' => 'Article add Done'));
 				 	redirect(base_url('admin/article/View/'), 'refresh');

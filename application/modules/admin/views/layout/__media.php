@@ -19,7 +19,6 @@ $(function(){
 });
 $(document).ready(function(){
   $('#addfeatureimage').on('click', function(event){
-
     event.preventDefault();
     $.ajax({
       url: '<?php echo base_url('admin/media/get_model'); ?>',
@@ -31,7 +30,22 @@ $(document).ready(function(){
   });
   $('#removepreview').on('click', function(){
     $("#addfeaturepreview").html("");
-    $('.addfeatureimage').html("Add feature image");
+    $('#addfeatureimage').html("Add feature image");
+    $(this).addClass('hide');
+  });
+  $('#editfeatureimage').on('click', function(event){
+    event.preventDefault();
+    $.ajax({
+      url: '<?php echo base_url('admin/media/get_model'); ?>',
+      type: 'POST',
+      success: function(response){
+        $("body").append(response);
+      }
+    })
+  });
+  $('#removepreview').on('click', function(){
+    $("#addfeaturepreview").html("");
+    $('#editfeatureimage').html("Add feature image");
     $(this).addClass('hide');
   });
 

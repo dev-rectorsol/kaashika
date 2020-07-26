@@ -67,9 +67,9 @@ class Shop extends CI_Controller {
 	        $data['page'] = 'Category wishe product';
 					$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 					$data['social'] = json_decode($social_value, true);
-
-					 $data['setting']=$this->Common_model->select('homesetting');
-	        		 $data['product_by_category']=  $this->Shop_model->select($data1,'category','indexing');
+	        $data['cartIvalue'] = $this->cart->contents();
+					$data['setting']=$this->Common_model->select('homesetting');
+	        $data['product_by_category']=  $this->Shop_model->select($data1,'category','indexing');
 					 $data['count'] =count($data['product_by_category']);
 					 $data['count'];
 					 $data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
@@ -143,7 +143,7 @@ class Shop extends CI_Controller {
 				$data['items']=  $this->Shop_model->select_attr_price($data);
      }
 
-
+	      $data['cartIvalue'] = $this->cart->contents();
 				$data['data'] = $this->load->view('shop/color_pro', $data, true);
 				$this->load->view('shop/index', $data);
 			}
@@ -225,8 +225,9 @@ function filter()
 		$data["links"] = $this->pagination->create_links();
 		        $data['page'] = 'product details';
 						$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
+						$data['social'] = json_decode($social_value, true);
 						$data['setting']=$this->Common_model->select('homesetting');
-
+	          $data['cartIvalue'] = $this->cart->contents();
             $data['product_details']=  $this->Shop_model->select_product_details_byid($id,'products');
 						foreach($data['product_details'] as $value){
 						$data['product_details']= $value;
@@ -258,7 +259,7 @@ function filter()
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
 			$data['setting']=$this->Common_model->select('homesetting');
-
+	$data['cartIvalue'] = $this->cart->contents();
 				$data['product_data']=  $this->Common_model->select('products');
 				$data['user_data']=  $this->Common_model->select('user_details');
 				$data['category']=  $this->Common_model->select('category');
@@ -277,6 +278,7 @@ function filter()
 				$social_value = !empty($this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'social_icon'))->row()->setting_value : '';
 				$data['social'] = json_decode($social_value, true);
 				$data['setting']=$this->Common_model->select('homesetting');
+					$data['cartIvalue'] = $this->cart->contents();
         $data['product_data']=  $this->Common_model->select('products');
         $data['user_data']=  $this->Common_model->select('user_details');
 				$data['category']=  $this->Common_model->select('category');

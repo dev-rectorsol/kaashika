@@ -37,18 +37,12 @@ class Home extends CI_Controller {
 				 $logo = !empty($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value : '';
 				 $data['logo'] = json_decode($logo, true);
 			   $data['setting']=$this->Common_model->select('homesetting');
-				//
-				// $data['product_details']=  $this->Shop_model->select_product_details($id,'products');
-				// foreach($data['product_details'] as $value){
-				// $data['product_details']= $value;
-				// }
-				// $data['attribute']=  $this->Product_model->select_attr($id,'product_attributes');
-				// $data['pics']=  $this->Product_model->select($id,'product_images');
+
 				$data['cartIvalue'] = $this->cart->contents();
 				// pre($data['cartIvalue'] );exit;
 				$data['category']=  $this->Common_model->select('category');
 				$data['article_data'] =  $this->article_model->select_article_data();
-			//	print_r($data['article_data']);exit;
+
 				$data['product']=  $this->Product_model->getProductList();
 				$data['Best_Sell_product']=  $this->Product_model->select_best_product('Best_Sell','products');
 				$data['on_Sell_product']=  $this->Product_model->select_best_product('On_Sell','products');

@@ -487,7 +487,7 @@
 										</h3>
 										<p>
 											<span class="cart-quantity"><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></span>
-											<span class="cart-price"><?php echo '₹' . $item["subtotal"]; ?></span>
+											<span class="cart-price"><?php echo '₹' . $item["price"]; ?></span>
 										</p>
 									</div>
 									<div><br>

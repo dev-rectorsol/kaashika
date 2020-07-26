@@ -42,10 +42,14 @@ class Collection extends CI_Controller {
 				$data['product_details']=  $this->Shop_model->select_product_details($id,'products');
 			//	print_r($data['product_details']);exit;
 				foreach($data['product_details'] as $value){
+					$total = $value['price'];
+					$dis = $value['discount'];
+					$dis_price =  $value['price'] * ($value['discount'] / 100);
+					$regular = $total - $dis_price;
 					$data1 = array(
 					 'id'    => $value['id'],
 					 'qty'    => 1,
-					 'price'    => $value['price'],
+					 'price'    => $regular,
 					 'name'    => $value['name'],
 					 'gst'    => $value['gst'],
 					 'image' => $value['profile_pic']
@@ -109,24 +113,25 @@ class Collection extends CI_Controller {
 				$data['product_details']=  $this->Shop_model->select_product_details($id,'products');
 
 				foreach($data['product_details'] as $value){
+					$total = $value['price'];
+					$dis = $value['discount'];
+					$dis_price =  $value['price'] * ($value['discount'] / 100);
+					$regular = $total - $dis_price;
 
 					$carddata = array(
 					 'id'    => $value['id'],
 					 'qty'    => 1,
-					 'price'  => $value['price'],
+					 'price'  => $regular,
 					 'name'  => $value['name'],
 					 'gst'    => $value['gst'],
 					 'image' => $value['profile_pic']
 			 );
-		   $this->cart->insert($carddata);
+
+		    $this->cart->insert($carddata);
 			  redirect('web/home');
 				}
 
 	}
-
-
-
-
 		public function cart(){
 				$data = array();
 	      $data['page'] = 'Cart';

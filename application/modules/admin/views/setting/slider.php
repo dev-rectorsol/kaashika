@@ -23,7 +23,7 @@
 				<div class="modal-dialog" role="document ">
 					<div class="modal-content">
 
-            <form action="<?php echo base_url('admin/setting/addslider')?>" method="POST">
+            <form action="<?php echo base_url('admin/setting/addslider')?>" method="POST" enctype="multipart/form-data">
               <div class="modal-header header-color-modal bg-color-1 ">
               <h4>Add Category </h4>
               <div class="modal-close-area modal-close-df">
@@ -42,10 +42,12 @@
                     <div class="form-group">
                       <input name="url" type="url" class="form-control" placeholder="Button Url (optional)" style="color:blue;">
                     </div>
-                    <span id="addfeaturepreview" >
-      							</span>
+										<div class="form-group">
+                      <input name="favicon" type="file" class="form-control">
+                    </div>
+                    <!-- <span id="addfeaturepreview" ></span>
                     <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
-                    <button  type="button" class="addfeatureimage btn btn-link" style="color:blue" name="button">Add Slider image</button>
+                    <button  id="addfeatureimage" type="button" class="addfeatureimage btn btn-link" style="color:blue" name="button">Add Slider image</button> -->
                     <div class="modal-footer">
                       <span id="msg" style="color: red;"></span>
                         <input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">
@@ -95,7 +97,7 @@
                        <?php echo $value['details'] ?>
                      </td>
                      <td class="text-center">
-                       <img src="<?php echo base_url($value['source']) ?>" alt="" width="120" height="80">
+                       <img src="<?php echo base_url('uploads/slider/').$value['source'] ?>" alt="" width="120" height="80">
                      </td>
                      <td>
                        <a href="<?php echo $value['buttonUrl'] ?>"></a>
@@ -113,7 +115,7 @@
 										 <div class="modal-content">
                        <form  id="sliderForm" class="form-horizontal" method="post"
                          action="<?php echo base_url('admin/setting/editslider/').$key?>"
-                         name="basic_validate" id="basic_validate" novalidate="novalidate">
+                         name="basic_validate" id="basic_validate" novalidate="novalidate" enctype="multipart/form-data">
                          <div class="modal-header header-color-modal bg-color-1 ">
                            <h4 class="modal-title">Edit slider</h4>
                            <div class="modal-close-area modal-close-df">
@@ -135,12 +137,14 @@
 		 				                    <div class="form-group">
 		 				                      <input name="url" type="url" class="form-control" placeholder="Button Url (optional)" style="color:blue;" value="<?php echo $value['buttonUrl'] ?>">
 		 				                    </div>
-
-	 				                      <span id="addfeaturepreview"></span>
-																<!-- <span><img src="<?php echo base_url($value['source']) ?>" alt="" width="120" height="80"></span> -->
-
-		 				                    <button id="removepreview" type="button" class="btn btn-link hide"  style="color:blue">remove</button>
-		 				                    <button id="" type="button" class="addfeatureimage btn btn-link" style="color:blue" name="button">Add Slider image</button>
+																<div class="form-group row">
+																	<div class="col-sm-6">
+																	<input name="favicon" type="file" class="form-control">
+																</div>
+																	<div class="col-sm-6">
+																		<img src="<?php echo base_url('uploads/slider/').$value['source'] ?>" width="200px;" height="100px;">
+																	</div>
+																</div>
 
 			                         <div class="modal-footer">
 																   <span id="msg" style="color: red;"></span>

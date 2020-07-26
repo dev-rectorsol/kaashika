@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-		        <form action="<?php echo base_url('admin/Article/add')?>" method="POST">
+		        <form action="<?php echo base_url('admin/Article/add')?>" method="POST" enctype="multipart/form-data">
 		          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		            <div class="product-status-wrap drp-lst">
 
@@ -34,9 +34,10 @@
 		                <textarea name="content" class="summernote" coll="10" row="10" required>Add a content here</textarea>
 		              </div>
 									<div class="form-group">
-											<span id="addfeaturepreview"> </span>
+										  <input name="favicon" type="file" class="form-control">
+											<!-- <span id="addfeaturepreview"> </span>
 										 <button id="removepreview" type="button" class="btn btn-link hide" style="color:#667add;">remove</button>
-										 <button type="button" class="addfeatureimage btn btn-link" name="button" style="color:#667add;">Add feature image</button>
+										 <button id="addfeatureimage" type="button" class=" btn btn-link" name="button" style="color:#667add;">Add feature image</button> -->
 	                </div>
 									<div class="modal-footer">
 									 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />

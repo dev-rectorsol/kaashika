@@ -168,7 +168,7 @@ else{
 
     function select_product_details($id,$table){
       //echo $id;
-        $this->db->select('products.id,products.quantity,products.name,products.price,products.profile_pic,products.gst,');
+        $this->db->select('products.id,products.quantity,products.name,products.price,products.profile_pic,products.gst,products.discount,');
         $this->db->from($table);
         $this->db->where('products.id',$id);
         $this->db->join('indexing','products.id=indexing.root','left');

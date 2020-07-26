@@ -32,18 +32,21 @@
 															<div class="row">
 																<div class="col-md-4">
 																	<div class="form-group">
+																		<label>Address</label>
 								                      <input name="address" type="text" value="<?php echo $value['address']?>" class="form-control" placeholder="Address">
 								                  </div>
 																</div>
 
 																<div class="col-md-4">
 																	<div class="form-group">
+																		<label>Email</label>
 																			<input name="email" type="text" value="<?php echo $value['email']?>"  class="form-control" placeholder="Email Id">
 																	</div>
 																</div>
 
 																<div class="col-md-4">
 																<div class="form-group">
+																	<label>Mobile</label>
 																			<input name="phone" type="text" value="<?php echo $value['phone']?>"  class="form-control" placeholder="Contact Number">
 																	</div>
 																</div>
@@ -56,12 +59,14 @@
 															<div class="row">
 																<div class="col-md-5">
 																	<div class="form-group">
+																		<label>Application Title</label>
 																		<input name="title" type="text" value="<?php echo $value['title']?>"  class="form-control" placeholder="Title">
 																	</div>
 																</div>
 
 																		<div class="form-group">
 	                                     <div class="col-md-6">
+
 																			<?php if($value['favicon']!=''){?>
 																				<img src="<?php echo base_url('uploads/product/').$value['favicon']?>">
 																			<?php }?>
@@ -77,15 +82,18 @@
 															<div class="row">
 																<div class="col-md-5">
 																	<div class="form-group">
+																		<label>About</label>
 																		 <input name="about" type="text" value="<?php echo $value['about']?>" class="form-control" placeholder="About">
 																	</div>
 																</div>
 																<!--/span-->
 
 																	<div class="form-group">
+
 																			<div class="col-md-6">
+
 																		<?php if($value['logo']!=''){?>
-																			<img src="<?php echo base_url('uploads/product/').$value['logo']?> " style="width:200px;height:80px;">
+																			<img src="<?php echo base_url('uploads/product/').$value['logo']?> ">
 																		<?php } ?>
 																			<input type="file" name="logo">
 																		</div>

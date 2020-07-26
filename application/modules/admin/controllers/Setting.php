@@ -29,13 +29,26 @@ class setting extends CI_Controller {
 	public function addslider(){
 		if($_POST){
 			$slider=$this->security->xss_clean($_POST);
-			//echo print_r($slider);exit;
-			$data = [
-				'heading' => $slider['heading'],
-				'details' => $slider['details'],
-				'buttonUrl' => $slider['url'],
-				'source' => $slider['featureImage']
-			];
+			// echo print_r($slider);exit;
+			if(isset($_FILES['favicon']['name'])){
+			$config['upload_path']          = './uploads/slider';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 11264;
+			$config['max_width']            = 6000;
+			$config['max_height']           = 6000;
+
+			$this->load->library('upload', $config);
+			$this->upload->do_upload('favicon');
+			$img=$this->upload->data();
+
+			$favicon=$img['file_name'];
+
+				 			$data = [
+				 				'heading' => $slider['heading'],
+				 				'details' => $slider['details'],
+				 				'buttonUrl' => $slider['url'],
+				 				'source' =>  $favicon,
+				 			];
 
 			$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '[]';
 	//echo print_r($slider_value);exit;
@@ -57,16 +70,38 @@ class setting extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
 		}
 	}
+}
 	public function editslider($id){
 		if($_POST){
 			$slider=$this->security->xss_clean($_POST);
-			//echo print_r($slider);exit;
-			$data = [
-				'heading' => $slider['heading'],
-				'details' => $slider['details'],
-				'buttonUrl' => $slider['url'],
-				'source' => $slider['featureImage']
-			];
+			if(isset($_FILES['favicon']['name'])){
+			$config['upload_path']          = './uploads/slider';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 11264;
+			$config['max_width']            = 6000;
+			$config['max_height']           = 6000;
+
+			$this->load->library('upload', $config);
+			$this->upload->do_upload('favicon');
+			$img=$this->upload->data();
+
+			$favicon=$img['file_name'];
+    if($favicon!=''){
+				 			$data = [
+				 				'heading' => $slider['heading'],
+				 				'details' => $slider['details'],
+				 				'buttonUrl' => $slider['url'],
+				 				'source' =>  $favicon,
+				 			];
+						}
+						else {
+							$data = [
+								'heading' => $slider['heading'],
+								'details' => $slider['details'],
+								'buttonUrl' => $slider['url'],
+
+							];
+						}
 			$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '[]';
 	//echo print_r($slider_value);exit;
 			$arr_data = json_decode($slider_value, true);
@@ -89,6 +124,7 @@ class setting extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
 		}
 	}
+}
 	public function deleteslider($id){
 		$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '[]';
 
@@ -354,86 +390,18 @@ class setting extends CI_Controller {
 			$data= array();
 			$data['page'] ='Setting Data';
 			$data['setting']=$this->common_model->get_setting('homesetting');
-
 			// $data['app_logo'] = json_decode($this->db->get_where('setting', array('setting_name' => 'application_logo'))->row()->setting_value, true);
 			$data['main_content']= $this->load->view('setting/editsetting',$data, true);
 			$this->load->view('index',$data);
 		}
 
-
-		public function edit_setting()
-    {
-			if($_POST){
-			$data1=$this->security->xss_clean($_POST);
-		 //  echo "<pre>";
-		 // 				 print_r($_FILES);
-		 // 				 exit();
-		 if(isset($_FILES['favicon']['name'])){
-		 $config['upload_path']          = './uploads/product';
-		 $config['allowed_types']        = 'gif|jpg|png|jpeg';
-		 $config['max_size']             = 11264;
-		 $config['max_width']            = 6000;
-		 $config['max_height']           = 6000;
-
-		 $this->load->library('upload', $config);
-
-		 if($this->upload->do_upload('favicon')){
-				 $img=$this->upload->data();
-						 //  echo "<pre>";
-						 //  print_r($img);
-						 //  exit();
-			 $favicon=$img['file_name'];
-		 }else{
-			 echo "file not uploaded"; echo $this->upload->display_errors();exit;
-		 }
-
-			}else{
-			 $favicon="";
-			 echo "file not found"; exit;
-			}
-			if(isset($_FILES['logo']['name'])){
-			$config['upload_path']          = './uploads/product';
-			$config['allowed_types']        = 'gif|jpg|png|jpeg';
-			$config['max_size']             = 11264;
-			$config['max_width']            = 6000;
-			$config['max_height']           = 6000;
-
-			$this->load->library('upload', $config);
-
-			if($this->upload->do_upload('logo')){
-					$img=$this->upload->data();
-							//  echo "<pre>";
-							//  print_r($img);
-							//  exit();
-				$logo=$img['file_name'];
-			}else{
-				echo "file not uploaded"; echo $this->upload->display_errors();exit;
-			}
-
-			 }else{
-				$logo="";
-				echo "file not found"; exit;
-			 }
-
-			 $data=[ 'address' => $data1['address'],
-			 'email' => $data1['email'],
-			 'phone' => $data1['phone'],
-			 'title' => $data1['title'],
-			 'favicon' => $favicon,
-			 'about' => $data1['about'],
-			 'logo' => $logo,
-		 ];
-		 // pre($data);exit;
-			 $id=$this->common_model->insert($data,'homesetting');
-       redirect($_SERVER['HTTP_REFERER']);
-        }
-    }
-
 		public function update($id)
 		{
 		 //echo $id;exit;
 		 if($_POST){
-		 $data1=$this->security->xss_clean($_POST);
+		$data1=$this->security->xss_clean($_POST);
+		// pre($data1);exit;
+		 if(isset($_FILES['favicon']['name'])){
 		$config['upload_path']          = './uploads/product';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 11264;
@@ -458,10 +426,11 @@ class setting extends CI_Controller {
 			 'title' => $data1['title'],
 			 'favicon' => $favicon,
 			 'about' => $data1['about'],
-];
-			$this->common_model->update($data,'id',$id,'homesetting');
+     ];
 
+			$this->common_model->update($data,'id',$id,'homesetting');
 		}
+	}
 		else{
 			$data=[ 'address' => $data1['address'],
 			'email' => $data1['email'],
@@ -471,54 +440,36 @@ class setting extends CI_Controller {
 			// 'profile_pic' => $pic,
 		];
 			$this->common_model->update($data,'id',$id,'homesetting');
+		}
 
+		if(isset($_FILES['logo']['name'])){
+		$config['upload_path']          = './uploads/product';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 11264;
+		$config['max_width']            = 6000;
+		$config['max_height']           = 6000;
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('logo');
+		$img=$this->upload->data();
+					  // echo "<pre>";
+					  // print_r($img);
+					  // exit();
+		$logo=$img['file_name'];
+
+		if($logo!='' )
+		{
+
+			$data=[
+
+			'logo' => $logo,
+			'about' => $data1['about'],
+		];
+		 $this->common_model->update($data,'id',$id,'homesetting');
 
 		}
-		
-}
-if($_POST){
-$data1=$this->security->xss_clean($_POST);
-$config['upload_path']          = './uploads/product';
-$config['allowed_types']        = 'gif|jpg|png|jpeg';
-$config['max_size']             = 11264;
-$config['max_width']            = 6000;
-$config['max_height']           = 6000;
-
-$this->load->library('upload', $config);
-$this->upload->do_upload('logo');
-$img=$this->upload->data();
-			 //  echo "<pre>";
-			 //  print_r($img);
-			 //  exit();
-$logo=$img['file_name'];
-
-if($logo!='' )
-{
-
-	$data=[
-	'address' => $data1['address'],
-	'email' => $data1['email'],
-	'phone' => $data1['phone'],
-	'title' => $data1['title'],
-	'logo' => $logo,
-	'about' => $data1['about'],
-];
- $this->common_model->update($data,'id',$id,'homesetting');
-
-}
-else{
- $data=[ 'address' => $data1['address'],
- 'email' => $data1['email'],
- 'phone' => $data1['phone'],
- 'title' => $data1['title'],
- 'about' => $data1['about'],
- // 'profile_pic' => $pic,
-];
- $this->common_model->update($data,'id',$id,'homesetting');
-
-
+		}
 }
 redirect(base_url() . 'admin/setting/SettingData', 'refresh');
-}
 }
 }
