@@ -142,14 +142,14 @@
 
 					</li>
 
-					<li>
+					<!-- <li>
 						<a href="<?php echo base_url('admin/Tags') ?>" data-toggle="collapse" data-target="#table_dr">
 							<div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tags</span></div>
 							<div class="clearfix"></div>
 						</a>
 
-					</li>
-					<li>
+					</li> -->
+					<!-- <li>
 						<a href="javascript:void(0)" data-toggle="collapse" data-target="#ui_dr1">
 							<div class="pull-left"><i class="zmdi zmdi-collection-music mr-20"></i><span class="right-nav-text">Blog</span></div>
 							<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
@@ -164,21 +164,21 @@
 							</li>
 
 						</ul>
-					</li>
+					</li> -->
 
-					<li>
+					<!-- <li>
 						<a href="<?php echo base_url('admin/Testimonial') ?>" data-toggle="collapse" data-target="#maps_dr">
 							<div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Testimonial</span></div>
 							<div class="clearfix"></div>
 						</a>
-					</li>
+					</li> -->
 
-					<li>
+					<!-- <li>
 						<a href="<?php echo base_url('admin/Contact') ?>" data-toggle="collapse" data-target="#pages_dr">
 							<div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Contact List</span></div>
 							<div class="clearfix"></div>
 						</a>
-					</li>
+					</li> -->
 
 					<li>
 						<a href="<?php echo base_url('admin/order') ?>">

@@ -31,7 +31,7 @@ class Category extends CI_Controller {
 			$aim=[
 			'name' => $data1['name'],
 			'parent' => $data1['parent'],
-			'source'=> $data1['featureImage']
+			// 'source'=> $data1['featureImage']
 			// 'icon' => $data1['icon'],
 			];
 			//print_r($aim);exit;
@@ -65,7 +65,7 @@ class Category extends CI_Controller {
              $aim=[
             'name' => $data1['name'],
             'parent' => $data1['parent'],
-						'source'=> $data1['featureImage']
+						// 'source'=> $data1['featureImage']
         ];
 				print_r($aim);exit;
 

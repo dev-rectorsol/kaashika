@@ -66,7 +66,6 @@
 											</ul>
 										</li>
 
-
 										<li class="position-static"><a href="">Collection <i class="fa fa-angle-down"></i></a>
 											<ul class="megamenu dropdown">
 												<li class="mega-title"><span>New Arrival</span>
@@ -188,16 +187,16 @@
 				<div class="col-12">
 					<div class="mobile-main-header">
 						<div class="mobile-logo">
-							<?php foreach ($logo as $value) : ?>
+							<?php foreach ($setting as $value) : ?>
 								<a href="<?php echo base_url('web/home') ?>">
-									<img src="<?php echo base_url($value['source']) ?>" alt="Brand Logo">
+									<img src="<?php echo base_url('uploads/product/').$value['logo'] ?>" alt="Brand Logo">
 								</a>
 							<?php endforeach; ?>
 						</div>
 						<div class="mobile-menu-toggler">
 							<div class="mini-cart-wrap">
-								<a href="cart.html">
-									<i class="pe-7s-shopbag"></i>
+							<a href="<?php echo base_url('web/collection/cart') ?>"><i class="fa fa-shopping-cart"></i>
+
 									<div class="notification"><?php echo $this->cart->total_items(); ?></div>
 								</a>
 							</div>
@@ -236,91 +235,151 @@
 				<!-- search box end -->
 
 				<!-- mobile menu start -->
-				<div class="mobile-navigation">
+       <div class="mobile-navigation">
 
-					<!-- mobile menu navigation start -->
-					<nav>
-						<ul class="mobile-menu">
+           <!-- mobile menu navigation start -->
+           <nav>
+               <ul class="mobile-menu">
+                   	<li class="active"><a href="<?php echo base_url('web/home') ?>">Home</a></li>
+                    <li class="menu-item-has-children"><a href="#">Shop</a>
+                       <ul class="megamenu dropdown">
+												 <li class="mega-title menu-item-has-children"><span>New Arrival</span>
+			                      <ul class="dropdown">
+															<?php foreach ($Menu_shop_text as $row1) { ?>
+																<li><a href="<?php echo $row1['url'] ?>"><?php echo $row1['title'] ?></a></li>
+															<?php } ?>
+			                      </ul>
+		                     </li>
 
-							<li class="active"><a href="<?php echo base_url('web/home') ?>">Home</a></li>
-							<li><a href="<?php echo base_url('web/home/about') ?>">About Us</a></li>
+                           <li class="mega-title menu-item-has-children"><span>Clothing</span>
+	 													<ul class="dropdown"><?php foreach ($category as $row) { ?>
+	 														<li><a href="<?php echo base_url('web/shop/shop_by_category/').$row['id'] ?>"><?php echo $row['name'] ?></a></li>
+	                             <?php } ?>
+	 													</ul>
+                           </li>
+													 	<?php foreach ($Menu_shop_image as $row) { ?>
+													 <li class="mega-title menu-item-has-children"><span>column </span>
+														 <a href="<?php echo $row['url'] ?>">
+															 <div class='container'>
+																 <img src="<?php echo base_url('/uploads/product/') . $row['image'] ?>" style="width:150px " alt="<?php echo $row['image'] ?>">
+															 </div>
+															 <div class='container '>
+																 <?php echo $row['title'] ?>
+															 </div>
+														 </a>
+                          </li>
+                         <?php } ?>
+                       </ul>
+                   </li>
 
-							<li class="menu-item-has-children "><a href="#">shop</a>
-								<ul class="dropdown">
-									<?php foreach ($category as $value) { ?>
-										<li><a href="<?php echo base_url('web/shop/shop_by_category/') . $value['id'] ?>"><?php echo $value['name'] ?></a></li>
-									<?php
-									} ?>
+									  <li class="menu-item-has-children"><a href="#">Collection</a>
+                       <ul class="megamenu dropdown">
+                           <li class="mega-title menu-item-has-children"><span>New Arrival</span>
+	 													<ul class="dropdown"><?php foreach ($Menu_coll_text as $row1) { ?>
+	 															<li><a href="<?php echo base_url('/web/') . $row1['url']?>"><?php echo $row1['title'] ?></a></li>
+	 														<?php } ?>
+	 													</ul>
+                           </li>
+													 	<?php foreach ($Menu_coll_image as $row) { ?>
+                           <li class="mega-title menu-item-has-children"><span> column </span>
+ 														<a href="<?php echo $row['url'] ?>">
+ 															<div class='container'>
+ 																<img src="<?php echo base_url('/uploads/product/') . $row['image'] ?>" style="width:150px " alt="<?php echo $row['image'] ?>">
+ 															</div>
+ 															<div class='container '>
+ 																<?php echo $row['title'] ?>
+ 															</div>
+ 														</a>
+                           </li>
+												 <?php } ?>
+                       </ul>
+                   </li>
+									 <li class="menu-item-has-children"><a href="#">Technique</a>
+                     <ul class="megamenu dropdown">
+                          <li class="mega-title menu-item-has-children"><span>New Arrival</span>
+														<ul class="dropdown"><?php foreach ($Menu_tech_text as $row1) { ?>
+																<li><a href="<?php echo base_url('/web/') . $row1['url'] ?>"><?php echo $row1['title'] ?></a></li>
+															<?php } ?>
+														</ul>
+                          </li>
+													<?php foreach ($Menu_tech_image as $row) { ?>
+                          <li class="mega-title menu-item-has-children"><span>column </span>
+														<a href="<?php echo $row['url'] ?>">
+															<div class='container'>
+																<img src="<?php echo base_url('/uploads/product/') . $row['image'] ?>" style="width:150px " alt="<?php echo $row['image'] ?>">
+															</div>
+															<div class='container '>
+																<?php echo $row['title'] ?>
+															</div>
+														</a>
+                          </li>
+												<?php } ?>
 
-								</ul>
-							</li>
-							<!-- <li><a href="">shop <i class="fa fa-angle-down"></i></a>
-																		<ul class="dropdown">
-																			<?php foreach ($category as $value) { ?>
-																				<li><a href="<?php echo base_url('web/shop/shop_by_category/') . $value['id'] ?>"><?php echo $value['name'] ?></a></li>
-																				<?php
-																			} ?>
-																		</ul>
-																</li> -->
+                      </ul>
+                   </li>
+                  <li><a href="<?php echo base_url('web/home/about') ?>">About Us</a></li>
+               </ul>
+           </nav>
+           <!-- mobile menu navigation end -->
+       </div>
+       <!-- mobile menu end -->
 
-							<li><a href="<?php echo base_url('web/Home/contact') ?>">Contact us</a></li>
+       <div class="mobile-settings">
+           <ul class="nav">
 
-						</ul>
-					</nav>
-					<!-- mobile menu navigation end -->
-				</div>
-				<!-- mobile menu end -->
+               <li>
+                   <div class="dropdown mobile-top-dropdown">
+                       <a href="#" class="dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           My Account
+                           <i class="fa fa-angle-down"></i>
+                       </a>
+                       <div class="dropdown-menu" aria-labelledby="myaccount">
+												 <a class="dropdown-item" href="<?php echo base_url('auth') ?>">login</a>
+												 <a class="dropdown-item" href="<?php echo base_url('join') ?>">Register</a>
+												 <?php if (check()) {
+												 	if ($this->session->userdata('email')) { ?>
+												 	<a class="dropdown-item"  href="<?php echo base_url('admin/yourorder') ?>">Your Order</a>
+												 <?php }
+												 } ?>
+												 <a class="dropdown-item" href="<?php echo base_url('Authentication/logout') ?>">Logout</a>
+                           
+                       </div>
+                   </div>
+               </li>
+           </ul>
+       </div>
 
-				<div class="mobile-settings">
-					<ul class="nav">
-						<li>
-							<div class="dropdown mobile-top-dropdown">
-								<a href="#" class="dropdown-toggle" id="currency" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Currency
-									<i class="fa fa-angle-down"></i>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="currency">
-									<a class="dropdown-item" href="#">$ USD</a>
-									<a class="dropdown-item" href="#">$ EURO</a>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="dropdown mobile-top-dropdown">
-								<a href="#" class="dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									My Account
-									<i class="fa fa-angle-down"></i>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="myaccount">
-									<a class="dropdown-item" href="my-account.html">my account</a>
-									<a class="dropdown-item" href="login-register.html"> login</a>
-									<a class="dropdown-item" href="login-register.html">register</a>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
 
 				<!-- offcanvas widget area start -->
 				<div class="offcanvas-widget-area">
 					<div class="off-canvas-contact-widget">
 						<ul>
-							<li><i class="fa fa-mobile"></i>
-								<a href="#">0123456789</a>
-							</li>
-							<li><i class="fa fa-envelope-o"></i>
-								<a href="#">info@yourdomain.com</a>
-							</li>
+							<?php foreach ($setting as $value) : ?>
+								<li><i class="pe-7s-home"></i><?php echo $value['address'] ?></li>
+								<li><i class="pe-7s-mail"></i> <a href="<?php echo $value['email'] ?>"><?php echo $value['email'] ?> </a></li>
+								<li><i class="pe-7s-call"></i> <a href="<?php echo $value['phone'] ?>"><?php echo $value['phone'] ?></a></li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 					<div class="off-canvas-social-widget">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-youtube-play"></i></a>
+						<?php if (is_array($social)) : ?>
+							<div class="widget-body social-link">
+								<?php foreach ($social as $value) : ?>
+									<a href="<?php echo $value['link']; ?>"><i class="<?php echo $value['icon'];?>"></i></a>
+								<?php endforeach; ?>
+							</div>
+						<?php else : ?>
+							<div class="widget-body social-link">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-pinterest-p"></i></a>
+								<a href="#"><i class="fa fa-linkedin"></i></a>
+								<a href="#"><i class="fa fa-youtube-play"></i></a>
+							</div>
+						<?php endif; ?>
+
 					</div>
-				</div>
+
 				<!-- offcanvas widget area end -->
 			</div>
 		</div>

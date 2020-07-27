@@ -163,7 +163,7 @@ public function getLimitOrder(){
   $this->db->select('c.customer_name, c.email, c.phone,c.postcode,c.address,o.id,o.created,o.status');
   $this->db->from('orders as o');
   $this->db->join('customers as c', 'c.id =o.customer_id', 'inner');
-  $this->db->where('o.status',1);
+  
   $this->db->limit(10);
   $query = $this->db->get();
 //  echo $this->db->last_query($query);exit;
@@ -199,7 +199,33 @@ public function newAllOrder(){
   $this->db->from('orders');
   $this->db->where('status',1);
   $id = $this->db->get()->num_rows();
-
+  return $id;
+}
+public function totalOrder(){
+  $this->db->select('status');
+  $this->db->from('orders');
+  $id = $this->db->get()->num_rows();
+  return $id;
+}
+public function pending(){
+  $this->db->select('status');
+  $this->db->from('orders');
+  $this->db->where('status',3);
+  $id = $this->db->get()->num_rows();
+  return $id;
+}
+public function accepted(){
+  $this->db->select('status');
+  $this->db->from('orders');
+  $this->db->where('status',2);
+  $id = $this->db->get()->num_rows();
+  return $id;
+}
+public function cancle(){
+  $this->db->select('status');
+  $this->db->from('orders');
+  $this->db->where('status',4);
+  $id = $this->db->get()->num_rows();
   return $id;
 }
 public function getProductList(){

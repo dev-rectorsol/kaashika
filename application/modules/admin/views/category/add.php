@@ -50,14 +50,14 @@
                   </select>
                </div>
               </div>
-							  <div class="form-group row">
+							  <!-- <div class="form-group row">
 									<div class="col-sm-12">
 										<span id="addfeaturepreview"></span>
 
 										<button id="removepreview" type="button" class="btn btn-link hide" style="color:#667add;">remove</button>
 										<button id="" type="button" class="addfeatureimage btn btn-link" name="button" style="color:#667add;">Add related image</button>
 						     </div>
-					     </div>
+					     </div> -->
               <div class="modal-footer">
 								<span id="msg" style="color: red;"></span>
 								<input type="reset" class="btn btn-primary" class="close" data-dismiss="modal" value="Cancel">
@@ -124,7 +124,7 @@
                          <div class="modal-body">
                            <div class="widget-content nopadding">
                              <div class="form-group row">
-                              
+
                                <div class="col-sm-12">
                                  <input type="text" class="form-control" name="name"
                                    value="<?php echo $row['name'] ?>" id="required">
@@ -141,14 +141,14 @@
  							                  </select>
 															 </div>
 														 </div>
-														 <div class="form-group row">
+														 <!-- <div class="form-group row">
 															 <div class="col-sm-12">
 	 															<span id="addfeaturepreview"></span>
 
 	 															<button id="removepreview" type="button" class=" btn btn-link hide" style="color:#667add;">remove</button>
 	 															<button id="" type="button" class="addfeatureimage btn btn-link" name="button" style="color:#667add;">Add related image</button>
 	 											     </div>
-						 					     </div>
+						 					     </div> -->
 
                            </div>
 

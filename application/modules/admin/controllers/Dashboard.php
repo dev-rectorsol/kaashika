@@ -22,6 +22,10 @@ class Dashboard extends CI_Controller {
 		$data= array();
 		$data['page'] ='Dashboard';
 		$data['newOrder']=  $this->Product_model->newAllOrder();
+		$data['pending']=  $this->Product_model->pending();
+		$data['accepted']=  $this->Product_model->accepted();
+		$data['cancle']=  $this->Product_model->cancle();
+		$data['totalOrder']=  $this->Product_model->totalOrder();
 		$data['new_contact']=  $this->Contact_model->newcontact('contact','status','New');
 		$data['new_customer']=  $this->Contact_model->newcustomer('customers');
 		$data['orderlimit']= $this->Product_model->getLimitOrder();

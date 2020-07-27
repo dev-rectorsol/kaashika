@@ -81,17 +81,17 @@
 
 
        <!-- testimonial area start -->
-       <section class="testimonial-area section-padding bg-img" data-bg="<?php echo base_url() ?>/assets/img/testimonial/testimonials-bg.jpg">
+       <!-- <section class="testimonial-area section-padding bg-img" data-bg="<?php echo base_url() ?>/assets/img/testimonial/testimonials-bg.jpg">
            <div class="container">
                <div class="row">
-                   <div class="col-12">
+                   <div class="col-12"> -->
                        <!-- section title start -->
-                       <div class="section-title text-center">
+                       <!-- <div class="section-title text-center">
                            <h2 class="title">testimonials</h2>
                            <p class="sub-title">What they say</p>
-                       </div>
+                       </div> -->
                        <!-- section title start -->
-                   </div>
+                   <!-- </div>
                </div>
                <div class="row">
                    <div class="col-12">
@@ -137,5 +137,5 @@
                    </div>
                </div>
            </div>
-       </section>
+       </section> -->
        <!-- testimonial area end -->

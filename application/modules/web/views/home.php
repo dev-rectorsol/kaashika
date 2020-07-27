@@ -404,23 +404,23 @@
 <!-- group product end -->
 
 <!-- latest blog area start -->
-<section class="latest-blog-area section-padding pt-0">
+<!-- <section class="latest-blog-area section-padding pt-0">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12"> -->
                 <!-- section title start -->
-                <div class="section-title text-center">
+                <!-- <div class="section-title text-center">
                     <h2 class="title">latest blogs</h2>
                     <p class="sub-title">There are latest blog posts</p>
-                </div>
+                </div> -->
                 <!-- section title start -->
-            </div>
+            <!-- </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="blog-carousel-active slick-row-10 slick-arrow-style">
+                <div class="blog-carousel-active slick-row-10 slick-arrow-style"> -->
                     <!-- blog post item start -->
-                    <?php foreach ($article_data as $value) : ?>
+                    <!-- <?php foreach ($article_data as $value) : ?>
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
@@ -436,11 +436,11 @@
                                 </h5>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endforeach; ?> -->
                     <!-- blog post item end -->
-                </div>
+                <!-- </div>
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <?php include('home_js.php') ?>
